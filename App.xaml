@@ -4,6 +4,17 @@
              xmlns:local="clr-namespace:SamsungUi.Demo"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Carichiamo il tema chiaro come predefinito all'avvio -->
+                <ResourceDictionary Source="Themes/ColorsLight.xaml"/>
+                <ResourceDictionary Source="/Themes/Button.xaml"/>
+                <ResourceDictionary Source="/Themes/Card.xaml"/>
+                <ResourceDictionary Source="/Themes/Indicators.xaml"/>
+                <ResourceDictionary Source="/Themes/Selectors.xaml"/>
+                <ResourceDictionary Source="/Themes/Charts.xaml"/>
+                <ResourceDictionary Source="/Themes/Calendar.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

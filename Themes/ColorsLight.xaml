@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Palette Samsung One UI - Tema Chiaro -->
+    <Color x:Key="OneUiBackgroundRaw">#F2F2F7</Color>
+    <Color x:Key="OneUiSurfaceRaw">#FFFFFF</Color>
+    <Color x:Key="OneUiPrimaryRaw">#0381FE</Color>
+    <Color x:Key="OneUiTextPrimaryRaw">#000000</Color>
+    <Color x:Key="OneUiTextSecondaryRaw">#757575</Color>
+    <Color x:Key="OneUiControlBackgroundRaw">#E5E5EA</Color>
+
+    <!-- Pennelli (Brushes) pronti all'uso -->
+    <SolidColorBrush x:Key="OneUiBackgroundBrush" Color="{StaticResource OneUiBackgroundRaw}"/>
+    <SolidColorBrush x:Key="OneUiSurfaceBrush" Color="{StaticResource OneUiSurfaceRaw}"/>
+    <SolidColorBrush x:Key="OneUiPrimaryBrush" Color="{StaticResource OneUiPrimaryRaw}"/>
+    <SolidColorBrush x:Key="OneUiTextPrimaryBrush" Color="{StaticResource OneUiTextPrimaryRaw}"/>
+    <SolidColorBrush x:Key="OneUiTextSecondaryBrush" Color="{StaticResource OneUiTextSecondaryRaw}"/>
+    <SolidColorBrush x:Key="OneUiControlBackgroundBrush" Color="{StaticResource OneUiControlBackgroundRaw}"/>
+    <SolidColorBrush x:Key="OneUiSliderActiveBrush" Color="#765091"/>
+    <SolidColorBrush x:Key="OneUiSliderTrackBrush" Color="#EAE2F0"/>
+    <SolidColorBrush x:Key="OneUiSliderTickBrush" Color="#9C8EB2"/>
+    <SolidColorBrush x:Key="OneUiChartBarBrush" Color="#3A91FF"/>
+    <SolidColorBrush x:Key="OneUiChartGridEvenBrush" Color="#F4F4F6"/>
+    <SolidColorBrush x:Key="OneUiChartGridOddBrush" Color="#FAFAFC"/>
+    <SolidColorBrush x:Key="OneUiChartLineBrush" Color="#EAEAEA"/>
+    <SolidColorBrush x:Key="OneUiChartSelectedDayText" Color="#FFFFFF"/>
+    
+    <SolidColorBrush x:Key="OneUiCalendarSelectedBrush" Color="#765091"/>
+    <SolidColorBrush x:Key="OneUiCalendarHoverBrush" Color="#F2F2F7"/>
+    <SolidColorBrush x:Key="OneUiCalendarTodayTextBrush" Color="#0377FF"/>
+    <SolidColorBrush x:Key="OneUiCalendarSelectedTextBrush" Color="#FFFFFF"/>
+
+</ResourceDictionary>

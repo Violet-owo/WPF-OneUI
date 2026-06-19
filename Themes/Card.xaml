@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Stile per la Card Contenitore in stile Samsung One UI -->
+    <Style x:Key="OneUiCardStyle" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource OneUiSurfaceBrush}"/>
+        <Setter Property="CornerRadius" Value="24"/>
+        <Setter Property="Padding" Value="24"/>
+        <Setter Property="Margin" Value="12"/>
+
+        <!-- Effetto ombra leggerissimo e morbido tipico di One UI -->
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="15" 
+                                  ShadowDepth="2" 
+                                  Opacity="0.04" 
+                                  Color="Black"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
