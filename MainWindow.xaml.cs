@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -61,26 +61,12 @@ namespace SamsungUi.Demo
 
         private void ThemeModeToggle_Checked(object sender, RoutedEventArgs e)
         {
-            ChangeTheme(new Uri("Themes/ColorsDark.xaml", UriKind.Relative));
+            SamsungUi.Appearance.ThemeManager.ApplyTheme(SamsungUi.Appearance.ThemeType.Dark);
         }
 
         private void ThemeModeToggle_Unchecked(object sender, RoutedEventArgs e)
         {
-            ChangeTheme(new Uri("Themes/ColorsLight.xaml", UriKind.Relative));
-        }
-
-        private void ChangeTheme(Uri newThemeUrl)
-        {
-            var currentTheme = Application.Current.Resources.MergedDictionaries
-                .FirstOrDefault(d => d.Source != null &&
-                                (d.Source.OriginalString.Contains("ColorsLight.xaml") ||
-                                d.Source.OriginalString.Contains("ColorsDark.xaml")));
-            if (currentTheme != null)
-            {
-                Application.Current.Resources.MergedDictionaries.Remove(currentTheme);
-            }
-
-            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = newThemeUrl });
+            SamsungUi.Appearance.ThemeManager.ApplyTheme(SamsungUi.Appearance.ThemeType.Light);
         }
 
         // Semplice classe POCO per strutturare i dati del grafico

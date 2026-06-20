@@ -1,4 +1,4 @@
-﻿<Application x:Class="SamsungUi.Demo.App"
+<Application x:Class="SamsungUi.Demo.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SamsungUi.Demo"
@@ -7,13 +7,13 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!-- Carichiamo il tema chiaro come predefinito all'avvio -->
-                <ResourceDictionary Source="Themes/ColorsLight.xaml"/>
-                <ResourceDictionary Source="/Themes/Button.xaml"/>
-                <ResourceDictionary Source="/Themes/Card.xaml"/>
-                <ResourceDictionary Source="/Themes/Indicators.xaml"/>
-                <ResourceDictionary Source="/Themes/Selectors.xaml"/>
-                <ResourceDictionary Source="/Themes/Charts.xaml"/>
-                <ResourceDictionary Source="/Themes/Calendar.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ColorsLight.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Button.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Card.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Indicators.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Selectors.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Charts.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Calendar.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
