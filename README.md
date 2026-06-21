@@ -79,6 +79,8 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // or ThemeType.Light
 | DonutChart | `<sui:SamsungDonutChart>` | 🟡 |
 | ChartPopup | `<sui:SamsungChartPopup>` | 🟡 |
 | ToastService | `SamsungToastService.Show()` | 🟢 |
+| Gallery | `<sui:Gallery>` (Concept) | 🟡 |
+| Notification | `<sui:SamsungNotification>` | 🔴 |
 
 *(Legend: 🟢 Completed | 🟡 Work in Progress | 🔴 Draft/Defective)*
 
@@ -174,6 +176,8 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // o ThemeType.Light
 | DonutChart | `<sui:SamsungDonutChart>` | 🟡 |
 | ChartPopup | `<sui:SamsungChartPopup>` | 🟡 |
 | ToastService | `SamsungToastService.Show()` | 🟢 |
+| Gallery | `<sui:Gallery>` (Concept) | 🟡 |
+| Notification | `<sui:SamsungNotification>` | 🔴 |
 
 *(Legenda: 🟢 Completato | 🟡 Work in Progress | 🔴 Bozza/Difettoso)*
 

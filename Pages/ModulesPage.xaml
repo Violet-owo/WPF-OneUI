@@ -7,6 +7,21 @@
       Title="ModulesPage">
 
     <WrapPanel Margin="24,0"  HorizontalAlignment="Stretch" MaxWidth="1200">
+        <!-- Declarative XAML Notification Demo -->
+        <sui:SamsungNotification x:Name="XamlNotification" 
+                                 Title="XAML Notification" 
+                                 Description="Questa notifica è stata definita completamente in XAML."
+                                 NotificationPosition="TopCenter"
+                                 IsSoundOn="True"
+                                 Click="XamlNotification_Click">
+            <sui:SamsungNotification.CardBackground>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#00C6FF" Offset="0"/>
+                    <GradientStop Color="#0072FF" Offset="1"/>
+                </LinearGradientBrush>
+            </sui:SamsungNotification.CardBackground>
+        </sui:SamsungNotification>
+
         <!--Status Indicator card-->
         <StackPanel>
             <TextBlock Text="Status indicators" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
@@ -161,6 +176,26 @@
                                        Series2Unit="unit"
                                        MaxYValue="300"/>
                         </Grid>
+                    </StackPanel>
+                </sui:SamsungCard>
+            </WrapPanel>
+        </StackPanel>
+
+        <!-- Notifications Demo -->
+        <StackPanel>
+            <TextBlock Text="Notifications" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
+            <WrapPanel HorizontalAlignment="Left" Margin="16,0">
+                <sui:SamsungCard Width="450" Margin="8" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                    <StackPanel>
+                        <TextBlock Text="Test In-App Notifications" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
+                        
+                        <WrapPanel >
+                            <sui:SamsungButton Content="Top Right" Width="120" Margin="4" Click="OnTestNotificationTopRight_Click" />
+                            <sui:SamsungButton Content="Top Left" Width="120" Margin="4" Click="OnTestNotificationTopLeft_Click" />
+                            <sui:SamsungButton Content="Bottom Right" Width="120" Margin="4" Click="OnTestNotificationBottomRight_Click" />
+                            <sui:SamsungButton Content="Bottom Center Sound" Variant="Primary" Width="auto" Margin="4" Click="OnTestNotificationBottomCenter_Click" />
+                            <sui:SamsungButton Content="XAML Sound" Variant="Primary" Width="160" Margin="4" Click="OnTestXamlNotification_Click" />
+                        </WrapPanel>
                     </StackPanel>
                 </sui:SamsungCard>
             </WrapPanel>

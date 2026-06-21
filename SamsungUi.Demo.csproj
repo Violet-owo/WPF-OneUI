@@ -19,4 +19,11 @@
     <ProjectReference Include="SamsungUi\SamsungUi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Resource Include="Assets\**" />
+    <Content Include="Assets\**\*.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

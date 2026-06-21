@@ -22,6 +22,7 @@
                 <!-- Icons using Segoe Fluent Icons: E771=List/Controls, E787=Calendar/Modules, E713=Settings -->
                 <sui:SamsungNavigationBarItem Icon="&#xE771;" Text="Controls" IsSelected="True"/>
                 <sui:SamsungNavigationBarItem Icon="&#xE787;" Text="Modules"/>
+                <sui:SamsungNavigationBarItem Icon="&#xE8B9;" Text="Gallery"/>
                 <sui:SamsungNavigationBarItem Icon="&#xE916;" Text="Stopwatch"/>
                 <sui:SamsungNavigationBarItem Icon="&#xE713;" Text="Settings"/>
             </sui:SamsungNavigationBar>

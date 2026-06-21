@@ -19,6 +19,7 @@
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ProgressIndicators.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Layout.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Lists.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Notification.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

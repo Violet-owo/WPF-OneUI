@@ -211,4 +211,99 @@
         </Setter>
     </Style>
 
+    <Style x:Key="SamsungFullscreenModalOverlayStyle" TargetType="{x:Type ContentControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContentControl}">
+                    <Grid x:Name="RootGrid" Background="Transparent">
+                        <!-- Immersive dark background -->
+                        <Border Background="#E6000000" x:Name="Overlay" Opacity="0"/>
+                        <!-- Fullscreen container without borders, shadows or padding -->
+                        <Border x:Name="DialogContainer" 
+                                Background="Transparent" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Stretch" 
+                                Padding="0" 
+                                RenderTransformOrigin="0.5,0.5"
+                                SnapsToDevicePixels="True"
+                                Opacity="0">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="0.95" ScaleY="0.95"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter Content="{TemplateBinding Content}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="Overlay" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.2"/>
+                                    <DoubleAnimation Storyboard.TargetName="DialogContainer" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.25">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="DialogContainer" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" From="0.2" To="1" Duration="0:0:0.25">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                    <DoubleAnimation Storyboard.TargetName="DialogContainer" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="0.2" To="1" Duration="0:0:0.25">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut"/>
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ========================================== -->
+    <!-- GALLERY CONTROLS                           -->
+    <!-- ========================================== -->
+
+    <!-- SamsungGridViewBig: rendering done via OnRender in C# -->
+    <Style TargetType="{x:Type localControls:SamsungGridViewBig}">
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
+    <!-- SamsungGridViewMedium: rendering done via OnRender in C# -->
+    <Style TargetType="{x:Type localControls:SamsungGridViewMedium}">
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
+    <!-- SamsungGridViewSmall: rendering done via OnRender in C# -->
+    <Style TargetType="{x:Type localControls:SamsungGridViewSmall}">
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
+    <Style TargetType="{x:Type localControls:SamsungListViewImageText}">
+        <Setter Property="Margin" Value="0,0,0,16"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type localControls:SamsungListViewImageText}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Rectangle Grid.Column="0" RadiusX="12" RadiusY="12" Width="56" Height="56" Margin="0,0,16,0">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ImageSource}" Stretch="UniformToFill"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{TemplateBinding MainText}" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,2"/>
+                            <TextBlock Text="{TemplateBinding SubText}" FontSize="14" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>
