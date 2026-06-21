@@ -26,6 +26,12 @@ namespace SamsungUi.Controls
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.Register(nameof(IsOpen), typeof(bool), typeof(SamsungModal), new PropertyMetadata(false, OnIsOpenChanged));
 
+        /// <summary>
+        /// Identifies the OverlayStyleKey dependency property.
+        /// </summary>
+        public static readonly DependencyProperty OverlayStyleKeyProperty =
+            DependencyProperty.Register(nameof(OverlayStyleKey), typeof(string), typeof(SamsungModal), new PropertyMetadata("SamsungModalOverlayStyle"));
+
         // --- Properties ---
 
         /// <summary>
@@ -36,6 +42,16 @@ namespace SamsungUi.Controls
         {
             get => (bool)GetValue(IsOpenProperty);
             set => SetValue(IsOpenProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the Resource Key of the style to apply to the overlay container.
+        /// Defaults to "SamsungModalOverlayStyle".
+        /// </summary>
+        public string OverlayStyleKey
+        {
+            get => (string)GetValue(OverlayStyleKeyProperty);
+            set => SetValue(OverlayStyleKeyProperty, value);
         }
 
         // --- Fields ---
@@ -74,7 +90,7 @@ namespace SamsungUi.Controls
             var overlayContainer = new ContentControl
             {
                 Content = _savedContent,
-                Style = (Style)Application.Current.TryFindResource("SamsungModalOverlayStyle"),
+                Style = (Style)Application.Current.TryFindResource(OverlayStyleKey ?? "SamsungModalOverlayStyle"),
                 DataContext = this.DataContext
             };
 
@@ -82,10 +98,50 @@ namespace SamsungUi.Controls
             adornerLayer.Add(_adorner);
         }
 
-        private void CloseModal()
+        private async void CloseModal()
         {
             if (_adorner != null)
             {
+                var container = (_adorner as OverlayAdorner)?.Child as ContentControl;
+                if (container != null)
+                {
+                    // Optionally find specific parts
+                    container.ApplyTemplate();
+                    var dialogContainer = container.Template.FindName("DialogContainer", container) as UIElement;
+                    var overlay = container.Template.FindName("Overlay", container) as UIElement;
+
+                    if (dialogContainer != null && overlay != null)
+                    {
+                        var fadeOut = new System.Windows.Media.Animation.DoubleAnimation(0, TimeSpan.FromSeconds(0.2));
+                        var scaleOut = new System.Windows.Media.Animation.DoubleAnimation(0.2, TimeSpan.FromSeconds(0.2))
+                        {
+                            EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseIn }
+                        };
+
+                        overlay.BeginAnimation(UIElement.OpacityProperty, fadeOut);
+                        dialogContainer.BeginAnimation(UIElement.OpacityProperty, fadeOut);
+
+                        if (dialogContainer.RenderTransform is System.Windows.Media.TransformGroup tg)
+                        {
+                            foreach (var transform in tg.Children)
+                            {
+                                if (transform is System.Windows.Media.ScaleTransform stg)
+                                {
+                                    stg.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleXProperty, scaleOut);
+                                    stg.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleYProperty, scaleOut);
+                                }
+                            }
+                        }
+                        else if (dialogContainer.RenderTransform is System.Windows.Media.ScaleTransform st)
+                        {
+                            st.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleXProperty, scaleOut);
+                            st.BeginAnimation(System.Windows.Media.ScaleTransform.ScaleYProperty, scaleOut);
+                        }
+
+                        await System.Threading.Tasks.Task.Delay(200);
+                    }
+                }
+
                 var window = Window.GetWindow(this) ?? Application.Current.MainWindow;
                 if (window != null && window.Content is UIElement contentToAdorn)
                 {
@@ -106,6 +162,8 @@ namespace SamsungUi.Controls
     public class OverlayAdorner : Adorner
     {
         private readonly UIElement _child;
+        public UIElement Child => _child;
+
         public OverlayAdorner(UIElement adornedElement, UIElement child) : base(adornedElement)
         {
             _child = child;

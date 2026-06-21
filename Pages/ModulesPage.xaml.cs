@@ -70,6 +70,90 @@ namespace SamsungUi.Demo.Pages
             this.DataContext = this;
         }
 
+        // --- Event Handlers ---
+        private int _testCount = 1;
+
+        private void OnTestNotificationTopRight_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var brush = new LinearGradientBrush(
+                (Color)ColorConverter.ConvertFromString("#FFB045"),
+                (Color)ColorConverter.ConvertFromString("#FF763A"),
+                new System.Windows.Point(0, 0),
+                new System.Windows.Point(1, 1));
+            
+            SamsungUi.Controls.SamsungNotificationService.Show(
+                title: $"Before bed ({_testCount++})",
+                description: "Wind down before bed by turning on the Blue light filter, adjusting the screen brightness, and more.",
+                background: brush,
+                icon: null,
+                position: SamsungUi.Controls.NotificationPosition.TopRight,
+                onClick: () => SamsungUi.Controls.SamsungToastService.Show("Hai cliccato la notifica Top Right!")
+            );
+        }
+
+        private void OnTestNotificationTopLeft_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var brush = new LinearGradientBrush(
+                (Color)ColorConverter.ConvertFromString("#FF6B6B"),
+                (Color)ColorConverter.ConvertFromString("#EE3A3A"),
+                new System.Windows.Point(0, 0),
+                new System.Windows.Point(1, 1));
+
+            SamsungUi.Controls.SamsungNotificationService.Show(
+                title: $"Save battery at night ({_testCount++})",
+                description: "This routine will run if you go to bed without plugging in your phone.",
+                background: brush,
+                icon: null,
+                position: SamsungUi.Controls.NotificationPosition.TopLeft,
+                onClick: () => SamsungUi.Controls.SamsungToastService.Show("Hai cliccato la notifica Top Left!")
+            );
+        }
+
+        private void OnTestNotificationBottomRight_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var brush = new LinearGradientBrush(
+                (Color)ColorConverter.ConvertFromString("#6B9CFF"),
+                (Color)ColorConverter.ConvertFromString("#3A76EE"),
+                new System.Windows.Point(0, 0),
+                new System.Windows.Point(1, 1));
+
+            SamsungUi.Controls.SamsungNotificationService.Show(
+                title: $"Driving ({_testCount++})",
+                description: "Get behind the wheel with ease by automatically setting up your phone for driving.",
+                background: brush,
+                icon: null,
+                position: SamsungUi.Controls.NotificationPosition.BottomRight,
+                onClick: () => SamsungUi.Controls.SamsungToastService.Show("Hai cliccato la notifica Bottom Right!")
+            );
+        }
+
+        private void OnTestNotificationBottomCenter_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var brush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8E24AA"));
+
+            SamsungUi.Controls.SamsungNotificationService.Show(
+                title: $"Custom Update ({_testCount++})",
+                description: "System has been updated successfully.",
+                background: brush,
+                icon: null,
+                position: SamsungUi.Controls.NotificationPosition.BottomCenter,
+                onClick: () => SamsungUi.Controls.SamsungToastService.Show("Hai cliccato la notifica Bottom Center!"),
+                isSoundOn: true
+            );
+        }
+
+        private void OnTestXamlNotification_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            // The notification is declared in XAML, we just call Show() on it.
+            // Alternatively, we could do XamlNotification.IsOpen = true;
+            XamlNotification.Show();
+        }
+
+        private void XamlNotification_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            SamsungUi.Controls.SamsungToastService.Show("Hai cliccato la notifica dichiarata in XAML!");
+        }
+
         // --- Nested Classes ---
         public class ChartDataPoint
         {
