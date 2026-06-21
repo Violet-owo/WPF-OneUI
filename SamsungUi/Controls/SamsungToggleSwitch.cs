@@ -4,11 +4,13 @@ using System.Windows.Controls;
 namespace SamsungUi.Controls
 {
     /// <summary>
-    /// Rappresenta un interruttore (toggle switch) con grafica e animazioni in stile Samsung One UI.
-    /// Si basa sul comportamento nativo di <see cref="CheckBox"/>.
+    /// Represents a toggle switch with Samsung One UI style graphics and animations.
+    /// It is based on the native behavior of <see cref="CheckBox"/>.
     /// </summary>
     public class SamsungToggleSwitch : CheckBox
     {
+        // --- Initialization ---
+
         static SamsungToggleSwitch()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SamsungToggleSwitch), new FrameworkPropertyMetadata(typeof(SamsungToggleSwitch)));

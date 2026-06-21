@@ -4,11 +4,12 @@ using System.Windows.Controls;
 namespace SamsungUi.Controls
 {
     /// <summary>
-    /// Campo di testo in stile Samsung One UI.
-    /// Supporta la variante IsSearchBar per essere utilizzato come barra di ricerca.
+    /// A Samsung One UI style text box.
+    /// Supports the IsSearchBar variant to be used as a search bar.
     /// </summary>
     public class SamsungTextBox : TextBox
     {
+        // --- Dependency Properties ---
         public static readonly DependencyProperty IsSearchBarProperty =
             DependencyProperty.Register(
                 nameof(IsSearchBar),
@@ -16,11 +17,15 @@ namespace SamsungUi.Controls
                 typeof(SamsungTextBox),
                 new PropertyMetadata(false));
 
+        // --- Properties ---
+
         public bool IsSearchBar
         {
             get => (bool)GetValue(IsSearchBarProperty);
             set => SetValue(IsSearchBarProperty, value);
         }
+
+        // --- Initialization ---
 
         static SamsungTextBox()
         {

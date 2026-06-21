@@ -7,6 +7,7 @@ namespace SamsungUi.Demo.Pages
 {
     public class ColorPaletteItem : System.ComponentModel.INotifyPropertyChanged
     {
+        // --- Properties ---
         public SolidColorBrush Brush { get; set; }
         
         private bool _isSelected;
@@ -28,10 +29,12 @@ namespace SamsungUi.Demo.Pages
 
     public partial class SettingsPage : SamsungUi.Controls.SamsungExpandablePage
     {
+        // --- Fields ---
         private bool _isUpdatingSliders = false;
         private System.Collections.ObjectModel.ObservableCollection<ColorPaletteItem> _baseColors;
         private System.Collections.ObjectModel.ObservableCollection<ColorPaletteItem> _customColors;
 
+        // --- Initialization ---
         public SettingsPage()
         {
             InitializeComponent();
@@ -51,6 +54,7 @@ namespace SamsungUi.Demo.Pages
             CustomColorPaletteItems.ItemsSource = _customColors;
         }
 
+        // --- Event Handlers & Callbacks ---
         private void AccentColor_Checked(object sender, RoutedEventArgs e)
         {
             if (sender is RadioButton rb && rb.DataContext is ColorPaletteItem item)
@@ -59,7 +63,7 @@ namespace SamsungUi.Demo.Pages
                 {
                     ApplyAccentColor(item.Brush.Color);
                     
-                    // Deseleziona tutti gli altri colori per evitare glitch visivi (doppi anelli)
+                    // Deselect all other colors to avoid visual glitches (double rings)
                     if (_baseColors != null)
                     {
                         foreach (var c in _baseColors)
@@ -78,12 +82,13 @@ namespace SamsungUi.Demo.Pages
             }
         }
 
+        // --- Methods ---
         private void ApplyAccentColor(Color color)
         {
             var brush = new SolidColorBrush(color);
             Application.Current.Resources["OneUiPrimaryBrush"] = brush;
             
-            // Calcola un hover scurendo leggermente il colore
+            // Calculate a slightly darker color for hover effect
             var hoverColor = Color.FromArgb(color.A, (byte)Math.Max(0, color.R - 30), (byte)Math.Max(0, color.G - 30), (byte)Math.Max(0, color.B - 30));
             Application.Current.Resources["OneUiPrimaryHoverBrush"] = new SolidColorBrush(hoverColor);
             
@@ -150,7 +155,7 @@ namespace SamsungUi.Demo.Pages
             var color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value);
             var brush = new SolidColorBrush(color);
             
-            // Deseleziona tutti gli altri colori prima di aggiungere il nuovo
+            // Deselect all other colors before adding the new one
             if (_baseColors != null) { foreach (var c in _baseColors) c.IsSelected = false; }
             if (_customColors != null) { foreach (var c in _customColors) c.IsSelected = false; }
             
@@ -186,7 +191,7 @@ namespace SamsungUi.Demo.Pages
 
             bool isSearchEmpty = string.IsNullOrEmpty(query);
 
-            // Filtra gli elementi nella pagina Settings
+            // Filter the elements in the Settings page
             WiFiRow.Visibility = (isSearchEmpty || "wi-fi".Contains(query) || "network".Contains(query)) ? Visibility.Visible : Visibility.Collapsed;
             BluetoothRow.Visibility = (isSearchEmpty || "bluetooth".Contains(query)) ? Visibility.Visible : Visibility.Collapsed;
             WiFiSep.Visibility = (WiFiRow.Visibility == Visibility.Visible && BluetoothRow.Visibility == Visibility.Visible) ? Visibility.Visible : Visibility.Collapsed;
@@ -202,7 +207,7 @@ namespace SamsungUi.Demo.Pages
             AccentColorRow.Visibility = (isSearchEmpty || "accent color".Contains(query) || "colors".Contains(query) || "display".Contains(query)) ? Visibility.Visible : Visibility.Collapsed;
             AccentColorPanel.Visibility = AccentColorRow.Visibility;
 
-            // Auto-navigazione nella scheda corretta
+            // Auto-navigate to the correct tab
             if (!isSearchEmpty)
             {
                 if (WiFiRow.Visibility == Visibility.Visible || BluetoothRow.Visibility == Visibility.Visible)
@@ -219,7 +224,7 @@ namespace SamsungUi.Demo.Pages
                 }
             }
 
-            // Filtra le card nelle altre pagine tramite la MainWindow
+            // Filter cards in other pages via MainWindow
             if (Application.Current.MainWindow is MainWindow mainWindow)
             {
                 mainWindow.FilterAllPages(query);

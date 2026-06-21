@@ -12,6 +12,12 @@
 
 ## 🇬🇧 English
 
+### 📖 About this project
+I built this library purely out of passion and as a personal hobby. I've always loved the clean, rounded aesthetics of Samsung devices and wanted to bring that same experience to WPF desktop applications. 
+Since this is a solo passion project (with the occasional help of an AI assistant to speed up the boring parts!), please consider it a **Work In Progress**. You might encounter some minor bugs or missing features.
+
+For the official design system documentation, check out the [Samsung One UI Guidelines](https://developer.samsung.com/one-ui).
+
 ### ✨ Features
 - **Fluid Animations**: Smooth transitions and micro-interactions typical of One UI.
 - **Dynamic Theming**: Easily switch between Light and Dark mode using the built-in `ThemeManager`.
@@ -42,9 +48,67 @@ using SamsungUi.Appearance;
 ThemeManager.ApplyTheme(ThemeType.Dark); // or ThemeType.Light
 ```
 
+### 📸 Screenshots
+*(Upload your screenshots here)*
+- ![Light Mode Example](placeholder_light.png)
+- ![Dark Mode Example](placeholder_dark.png)
+
+### 🧩 Components Status
+
+| Component Name | XAML Tag | Status |
+|----------------|----------|:------:|
+| Button | `<sui:SamsungButton>` | 🟢 |
+| Card | `<sui:SamsungCard>` | 🟢 |
+| CheckBox | `<sui:SamsungCheckBox>` | 🟢 |
+| EditBox | `<sui:SamsungEditBox>` | 🟢 |
+| PasswordBox | `<sui:SamsungPasswordBox>` | 🟢 |
+| TextBox | `<sui:SamsungTextBox>` | 🟢 |
+| ListBox | `<sui:SamsungListBox>` | 🟢 |
+| Slider | `<sui:SamsungSlider>` | 🟢 |
+| RadioButton | `<sui:SamsungRadioButton>` | 🟢 |
+| ProgressBar | `<sui:SamsungProgressBar>` | 🟢 |
+| TabControl | `<sui:SamsungTabControl>` | 🟢 |
+| ToggleSwitch | `<sui:SamsungToggleSwitch>` | 🟢 |
+| ExpandablePage | `<sui:SamsungExpandablePage>` | 🟢 |
+| SegmentedBar | `<sui:SamsungSegmentedBar>` | 🟢 |
+| Modal | `<sui:SamsungModal>` | 🟢 |
+| NavigationBar | `<sui:SamsungNavigationBar>` | 🟢 |
+| DonutChart | `<sui:SamsungDonutChart>` | 🟡 |
+| ChartPopup | `<sui:SamsungChartPopup>` | 🟡 |
+| ToastService | `SamsungToastService.Show()` | 🟢 |
+
+*(Legend: 🟢 Completed | 🟡 Work in Progress | 🔴 Draft/Defective)*
+
+### 📝 Examples
+Here are some quick examples of how to use the components in your XAML:
+
+**SamsungButton**
+```xml
+<sui:SamsungButton Content="Click Me" IsPrimary="True" />
+```
+
+**SamsungEditBox**
+```xml
+<sui:SamsungEditBox Hint="Username" InputType="Text" />
+<sui:SamsungEditBox Hint="Password" InputType="Password" />
+```
+
+**SamsungCard**
+```xml
+<sui:SamsungCard>
+    <TextBlock Text="Hello World from One UI!" FontSize="16" />
+</sui:SamsungCard>
+```
+
 ---
 
 ## 🇮🇹 Italiano
+
+### 📖 Il progetto
+Ho creato questa libreria per pura passione e come passatempo personale. Ho sempre adorato l'estetica pulita e tondeggiante dei dispositivi Samsung e volevo portare la stessa esperienza sulle applicazioni desktop WPF.
+Trattandosi di un progetto amatoriale sviluppato nel tempo libero (aiutandomi di tanto in tanto con un assistente IA per velocizzare le parti più tediose!), ti prego di considerarlo un **Work In Progress**. Il codice potrebbe contenere ancora dei piccoli errori o comportamenti imprevisti.
+
+Per la documentazione ufficiale del design system, puoi visitare le [Linee guida Samsung One UI](https://developer.samsung.com/one-ui).
 
 ### ✨ Funzionalità
 - **Animazioni Fluide**: Transizioni morbide e micro-interazioni tipiche di One UI.
@@ -74,6 +138,58 @@ Puoi cambiare il tema dell'applicazione a runtime:
 ```csharp
 using SamsungUi.Appearance;
 ThemeManager.ApplyTheme(ThemeType.Dark); // o ThemeType.Light
+```
+
+### 📸 Screenshot
+*(Carica qui i tuoi screenshot)*
+- ![Esempio Tema Chiaro](placeholder_light.png)
+- ![Esempio Tema Scuro](placeholder_dark.png)
+
+### 🧩 Stato dei Componenti
+
+| Nome Componente | Tag XAML | Stato |
+|-----------------|----------|:-----:|
+| Button | `<sui:SamsungButton>` | 🟢 |
+| Card | `<sui:SamsungCard>` | 🟢 |
+| CheckBox | `<sui:SamsungCheckBox>` | 🟢 |
+| EditBox | `<sui:SamsungEditBox>` | 🟢 |
+| PasswordBox | `<sui:SamsungPasswordBox>` | 🟢 |
+| TextBox | `<sui:SamsungTextBox>` | 🟢 |
+| ListBox | `<sui:SamsungListBox>` | 🟢 |
+| Slider | `<sui:SamsungSlider>` | 🟢 |
+| RadioButton | `<sui:SamsungRadioButton>` | 🟢 |
+| ProgressBar | `<sui:SamsungProgressBar>` | 🟢 |
+| TabControl | `<sui:SamsungTabControl>` | 🟢 |
+| ToggleSwitch | `<sui:SamsungToggleSwitch>` | 🟢 |
+| ExpandablePage | `<sui:SamsungExpandablePage>` | 🟢 |
+| SegmentedBar | `<sui:SamsungSegmentedBar>` | 🟢 |
+| Modal | `<sui:SamsungModal>` | 🟢 |
+| NavigationBar | `<sui:SamsungNavigationBar>` | 🟢 |
+| DonutChart | `<sui:SamsungDonutChart>` | 🟡 |
+| ChartPopup | `<sui:SamsungChartPopup>` | 🟡 |
+| ToastService | `SamsungToastService.Show()` | 🟢 |
+
+*(Legenda: 🟢 Completato | 🟡 Work in Progress | 🔴 Bozza/Difettoso)*
+
+### 📝 Esempi di utilizzo
+Ecco alcuni rapidi esempi di come utilizzare i componenti all'interno del tuo XAML:
+
+**SamsungButton**
+```xml
+<sui:SamsungButton Content="Cliccami" IsPrimary="True" />
+```
+
+**SamsungEditBox**
+```xml
+<sui:SamsungEditBox Hint="Nome utente" InputType="Text" />
+<sui:SamsungEditBox Hint="Password" InputType="Password" />
+```
+
+**SamsungCard**
+```xml
+<sui:SamsungCard>
+    <TextBlock Text="Ciao Mondo da One UI!" FontSize="16" />
+</sui:SamsungCard>
 ```
 
 ---

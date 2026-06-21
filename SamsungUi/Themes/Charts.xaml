@@ -3,7 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:sui="clr-namespace:SamsungUi.Controls">
 
-    <!-- STYLE ESTERNO PER LA BAR OPACIZZATA -->
+    <!-- EXTERNAL STYLE FOR THE FADED BAR -->
     <Style x:Key="AnimatedBarStyle" TargetType="Border">
         <Setter Property="Opacity" Value="1"/>
         <Style.Triggers>
@@ -13,7 +13,7 @@
         </Style.Triggers>
     </Style>
 
-    <!-- STYLE PRINCIPALE DEL BARCHART -->
+    <!-- MAIN STYLE FOR THE BARCHART -->
     <Style x:Key="OneUiBarChartStyle" TargetType="ItemsControl">
         <Setter Property="ItemsPanel">
             <Setter.Value>
@@ -35,7 +35,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <!-- SFONDO A RIGHE ALTERNATE -->
+                        <!-- ALTERNATING ROW BACKGROUND -->
                         <Border Grid.Row="0">
                             <Border.Style>
                                 <Style TargetType="Border">
@@ -50,7 +50,7 @@
                             </Border.Style>
                         </Border>
 
-                        <!-- BARRA ANIMATA (clickable) -->
+                        <!-- ANIMATED BAR (clickable) -->
                         <Grid Grid.Row="0" VerticalAlignment="Bottom" Height="150" Margin="4,0">
                             <Border x:Name="AnimatedBar"
                                     Style="{StaticResource AnimatedBarStyle}"
@@ -64,7 +64,7 @@
                                     <ScaleTransform ScaleY="0"/>
                                 </Border.LayoutTransform>
 
-                                <!-- ANIMAZIONE INGRESSO -->
+                                <!-- ENTRY ANIMATION -->
                                 <Border.Triggers>
                                     <EventTrigger RoutedEvent="FrameworkElement.Loaded">
                                         <BeginStoryboard>
@@ -81,10 +81,10 @@
                             </Border>
                         </Grid>
 
-                        <!-- LINEA DI SEPARAZIONE -->
+                        <!-- SEPARATOR LINE -->
                         <Border Grid.Row="1" Height="1" Background="{DynamicResource OneUiChartLineBrush}"/>
 
-                        <!-- LABEL + CERCHIO SELEZIONE -->
+                        <!-- LABEL + SELECTION CIRCLE -->
                         <Grid Grid.Row="2" Height="34">
                             <Border x:Name="SelectionCircle"
                                     Width="22"
@@ -234,7 +234,7 @@
         </Setter>
     </Style>
 
-    <!-- STYLE DEL GRAFICO A LINEE (SamsungLineChart) -->
+    <!-- STYLE FOR LINE CHART (SamsungLineChart) -->
     <Style TargetType="{x:Type sui:SamsungLineChart}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="MinHeight" Value="220"/>
@@ -408,7 +408,7 @@
         </Setter>
     </Style>
 
-    <!-- STYLE PER SEGMENTED BAR CHART -->
+    <!-- STYLE FOR SEGMENTED BAR CHART -->
     <Style TargetType="{x:Type sui:SamsungSegmentedBar}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
@@ -497,7 +497,7 @@
         </Setter>
     </Style>
 
-    <!-- STYLE PER DONUT CHART -->
+    <!-- STYLE FOR DONUT CHART -->
     <Style TargetType="{x:Type sui:SamsungDonutChart}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
@@ -555,10 +555,10 @@
     </Style>
 
     <!-- ══════════════════════════════════════════════════════════════════
-         STYLE PER SAMSUNG CHART POPUP
-         Popup card riusabile per tutti i chart. Il DataContext viene
-         impostato via code-behind all'istanza SamsungChartPopup,
-         quindi i binding interni puntano direttamente alle sue DP.
+         STYLE FOR SAMSUNG CHART POPUP
+         Reusable popup card for all charts. The DataContext is
+         set via code-behind to the SamsungChartPopup instance,
+         so internal bindings point directly to its DPs.
          ══════════════════════════════════════════════════════════════════ -->
     <Style TargetType="{x:Type sui:SamsungChartPopup}">
         <Setter Property="Background" Value="Transparent"/>

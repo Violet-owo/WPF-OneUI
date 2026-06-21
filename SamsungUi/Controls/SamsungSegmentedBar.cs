@@ -15,13 +15,19 @@ namespace SamsungUi.Controls
     [TemplatePart(Name = "PART_SegmentsContainer", Type = typeof(Panel))]
     public class SamsungSegmentedBar : Control
     {
+        // --- Initialization ---
+
         static SamsungSegmentedBar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SamsungSegmentedBar), new FrameworkPropertyMetadata(typeof(SamsungSegmentedBar)));
         }
 
+        // --- Fields ---
+
         private Panel? _segmentsContainer;
         private Popup? _popup;
+
+        // --- Dependency Properties ---
 
         public static readonly DependencyProperty SegmentsProperty =
             DependencyProperty.Register(nameof(Segments), typeof(IEnumerable<ChartSegment>), typeof(SamsungSegmentedBar),
@@ -99,6 +105,8 @@ namespace SamsungUi.Controls
             set => SetValue(IsPopupOpenProperty, value);
         }
 
+        // --- Event Handlers & Callbacks ---
+
         private static void OnSegmentsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is SamsungSegmentedBar bar)
@@ -119,6 +127,8 @@ namespace SamsungUi.Controls
         {
             UpdateSegments();
         }
+
+        // --- Methods ---
 
         public override void OnApplyTemplate()
         {

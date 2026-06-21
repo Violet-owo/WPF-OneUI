@@ -5,13 +5,14 @@ using System.Windows.Controls.Primitives;
 namespace SamsungUi.Controls
 {
     /// <summary>
-    /// Indicatore di progresso in stile Samsung One UI.
-    /// Imposta <see cref="IsRing"/> = true per usare lo stile ad anello circolare animato.
+    /// A Samsung One UI style progress indicator.
+    /// Set <see cref="IsRing"/> = true to use the animated circular ring style.
     /// </summary>
     [TemplatePart(Name = "PART_Indicator", Type = typeof(FrameworkElement))]
     [TemplatePart(Name = "PART_Track", Type = typeof(FrameworkElement))]
     public class SamsungProgressBar : ProgressBar
     {
+        // --- Dependency Properties ---
         public static readonly DependencyProperty IsRingProperty =
             DependencyProperty.Register(
                 nameof(IsRing),
@@ -19,11 +20,15 @@ namespace SamsungUi.Controls
                 typeof(SamsungProgressBar),
                 new PropertyMetadata(false));
 
+        // --- Properties ---
+
         public bool IsRing
         {
             get => (bool)GetValue(IsRingProperty);
             set => SetValue(IsRingProperty, value);
         }
+
+        // --- Initialization ---
 
         static SamsungProgressBar()
         {

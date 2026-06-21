@@ -30,9 +30,7 @@ namespace SamsungUi.Controls
 
         private Popup? _popup;
 
-        // ──────────────────────────────────────────────────────────────────────
-        //  Dependency Properties
-        // ──────────────────────────────────────────────────────────────────────
+        // --- Dependency Properties ---
 
         /// <summary>The segment whose data is displayed inside the popup card.</summary>
         public static readonly DependencyProperty SelectedSegmentProperty =
@@ -89,9 +87,7 @@ namespace SamsungUi.Controls
             set => SetValue(ValueUnitProperty, value);
         }
 
-        // ──────────────────────────────────────────────────────────────────────
-        //  Template
-        // ──────────────────────────────────────────────────────────────────────
+        // --- Methods ---
 
         public override void OnApplyTemplate()
         {
@@ -116,6 +112,7 @@ namespace SamsungUi.Controls
             }
         }
 
+        // --- Event Handlers & Callbacks ---
         private void OnPopupClosed(object? sender, EventArgs e)
         {
             // When the user clicks outside (StaysOpen=False) we reset IsOpen

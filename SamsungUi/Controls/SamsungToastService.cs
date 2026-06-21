@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace SamsungUi.Controls
 {
     /// <summary>
-    /// Classe interna utilizzata per proiettare il toast sopra l'interfaccia utente.
-    /// Utilizza il layer Adorner per garantire che il toast sia sempre in primo piano
-    /// senza ricorrere a finestre di sistema.
+    /// Internal class used to project the toast over the user interface.
+    /// It uses the Adorner layer to ensure the toast is always in the foreground
+    /// without resorting to system windows.
     /// </summary>
     public class ToastAdorner : System.Windows.Documents.Adorner
     {
@@ -39,18 +39,20 @@ namespace SamsungUi.Controls
     }
 
     /// <summary>
-    /// Servizio statico per visualizzare notifiche effimere (toast) in stile Samsung One UI.
-    /// I toast vengono visualizzati nella parte inferiore dello schermo e scompaiono automaticamente.
+    /// Static service to display ephemeral notifications (toasts) in Samsung One UI style.
+    /// Toasts are displayed at the bottom of the screen and automatically disappear.
     /// </summary>
     public static class SamsungToastService
     {
+        // --- Methods ---
+
         /// <summary>
-        /// Mostra un nuovo messaggio toast sullo schermo.
+        /// Shows a new toast message on the screen.
         /// </summary>
-        /// <param name="message">Il testo principale da visualizzare nel toast.</param>
-        /// <param name="actionText">Testo opzionale per un pulsante di azione a destra (es. "ANNULLA").</param>
-        /// <param name="actionCallback">Azione eseguita al click del pulsante opzionale.</param>
-        /// <param name="autoClose">Indica se il toast deve chiudersi da solo dopo alcuni secondi.</param>
+        /// <param name="message">The main text to display in the toast.</param>
+        /// <param name="actionText">Optional text for an action button on the right (e.g. "UNDO").</param>
+        /// <param name="actionCallback">Action executed on clicking the optional button.</param>
+        /// <param name="autoClose">Indicates whether the toast should close itself after a few seconds.</param>
         public static void Show(string message, string actionText = null, Action actionCallback = null, bool autoClose = true)
         {
             Application.Current.Dispatcher.InvokeAsync(async () =>

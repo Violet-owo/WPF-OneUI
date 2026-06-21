@@ -13,13 +13,16 @@ namespace SamsungUi.Demo.Pages
 {
     public partial class StopwatchPage : SamsungUi.Controls.SamsungExpandablePage, INotifyPropertyChanged
     {
+        // --- Fields ---
         private DispatcherTimer _timer;
         private Stopwatch _stopwatch;
         private TimeSpan _lastLapTotalTime = TimeSpan.Zero;
         private int _lapCounter = 1;
 
+        // --- Events ---
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        // --- Properties ---
         private string _elapsedTimeText = "00:00.00";
         public string ElapsedTimeText
         {
@@ -76,6 +79,7 @@ namespace SamsungUi.Demo.Pages
             new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF8A65"))
         };
 
+        // --- Initialization ---
         public StopwatchPage()
         {
             InitializeComponent();
@@ -87,6 +91,7 @@ namespace SamsungUi.Demo.Pages
             DataContext = this;
         }
 
+        // --- Event Handlers & Callbacks ---
         private void Timer_Tick(object? sender, EventArgs e)
         {
             var elapsed = _stopwatch.Elapsed;
@@ -155,6 +160,7 @@ namespace SamsungUi.Demo.Pages
             }
         }
 
+        // --- Methods ---
         private void UpdateCharts()
         {
             // Limit to last 7 laps for visual clarity in charts
@@ -179,6 +185,7 @@ namespace SamsungUi.Demo.Pages
         }
     }
 
+    // --- Nested Classes ---
     public class LapItem
     {
         public int Index { get; set; }

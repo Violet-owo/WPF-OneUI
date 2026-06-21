@@ -4,11 +4,13 @@ using System.Windows.Controls;
 namespace SamsungUi.Controls
 {
     /// <summary>
-    /// Rappresenta un contenitore a forma di Card tipico del design Samsung One UI.
-    /// Utilizzato per raggruppare elementi correlati con bordi arrotondati, padding standard e un'ombra soffice.
+    /// Represents a Card container typical of Samsung One UI design.
+    /// Used to group related elements with rounded corners, standard padding, and a soft shadow.
     /// </summary>
     public class SamsungCard : ContentControl
     {
+        // --- Initialization ---
+
         static SamsungCard()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SamsungCard), new FrameworkPropertyMetadata(typeof(SamsungCard)));

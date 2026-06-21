@@ -7,14 +7,13 @@ namespace SamsungUi.Demo
 {
     public partial class MainWindow : Window
     {
+        // --- Fields ---
         private ControlsPage _controlsPage;
         private ModulesPage _modulesPage;
         private StopwatchPage _stopwatchPage;
         private SettingsPage _settingsPage;
 
-
-
-        public MainWindow()
+        // --- Initialization ---        public MainWindow()
         {
             InitializeComponent();
             
@@ -27,6 +26,8 @@ namespace SamsungUi.Demo
             // Load initial page
             MainFrame.Navigate(_controlsPage);
         }
+
+        // --- Event Handlers & Callbacks ---
 
         private void NavBar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -51,6 +52,8 @@ namespace SamsungUi.Demo
                     break;
             }
         }
+
+        // --- Methods ---
 
         public void FilterAllPages(string query)
         {

@@ -11,11 +11,12 @@ namespace SamsungUi.Controls
     }
 
     /// <summary>
-    /// Pulsante in stile Samsung One UI.
-    /// Supporta varianti Normal, Primary e Ghost per adattarsi a diversi contesti visivi.
+    /// A Samsung One UI style button.
+    /// Supports Normal, Primary, and Ghost variants to adapt to different visual contexts.
     /// </summary>
     public class SamsungButton : Button
     {
+        // --- Dependency Properties ---
         public static readonly DependencyProperty VariantProperty =
             DependencyProperty.Register(
                 nameof(Variant),
@@ -23,11 +24,15 @@ namespace SamsungUi.Controls
                 typeof(SamsungButton),
                 new PropertyMetadata(ButtonVariant.Normal));
 
+        // --- Properties ---
+
         public ButtonVariant Variant
         {
             get => (ButtonVariant)GetValue(VariantProperty);
             set => SetValue(VariantProperty, value);
         }
+
+        // --- Initialization ---
 
         static SamsungButton()
         {

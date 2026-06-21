@@ -5,32 +5,39 @@ using System.Windows.Controls.Primitives;
 namespace SamsungUi.Controls
 {
     /// <summary>
-    /// Rappresenta un campo di inserimento password che supporta la funzionalità
-    /// di mostrare/nascondere il testo in chiaro (reveal).
+    /// Represents a password input field that supports the feature
+    /// to reveal/hide the clear text.
     /// </summary>
     [TemplatePart(Name = "PART_PasswordBox", Type = typeof(PasswordBox))]
     [TemplatePart(Name = "PART_TextBox", Type = typeof(TextBox))]
     [TemplatePart(Name = "PART_RevealButton", Type = typeof(ToggleButton))]
     public class SamsungPasswordBox : Control
     {
+        // --- Fields ---
         private PasswordBox? _passwordBox;
         private TextBox? _textBox;
         private ToggleButton? _revealButton;
         private bool _isUpdating;
+
+        // --- Initialization ---
 
         static SamsungPasswordBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SamsungPasswordBox), new FrameworkPropertyMetadata(typeof(SamsungPasswordBox)));
         }
 
+        // --- Dependency Properties ---
+
         /// <summary>
-        /// Identifica la dependency property per la password.
+        /// Identifies the Password dependency property.
         /// </summary>
         public static readonly DependencyProperty PasswordProperty =
             DependencyProperty.Register(nameof(Password), typeof(string), typeof(SamsungPasswordBox), new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnPasswordChanged));
 
+        // --- Properties ---
+
         /// <summary>
-        /// Ottiene o imposta il testo della password. Può essere associato in binding (TwoWay).
+        /// Gets or sets the password text. Can be data bound (TwoWay).
         /// </summary>
         public string Password
         {
@@ -39,19 +46,21 @@ namespace SamsungUi.Controls
         }
 
         /// <summary>
-        /// Identifica la dependency property per lo stato di visibilità della password.
+        /// Identifies the IsPasswordRevealed dependency property.
         /// </summary>
         public static readonly DependencyProperty IsPasswordRevealedProperty =
             DependencyProperty.Register(nameof(IsPasswordRevealed), typeof(bool), typeof(SamsungPasswordBox), new PropertyMetadata(false, OnIsPasswordRevealedChanged));
 
         /// <summary>
-        /// Ottiene o imposta un valore che indica se la password è attualmente visibile in chiaro.
+        /// Gets or sets a value indicating whether the password is currently visible in clear text.
         /// </summary>
         public bool IsPasswordRevealed
         {
             get => (bool)GetValue(IsPasswordRevealedProperty);
             set => SetValue(IsPasswordRevealedProperty, value);
         }
+
+        // --- Methods ---
 
         public override void OnApplyTemplate()
         {
@@ -78,6 +87,8 @@ namespace SamsungUi.Controls
 
             UpdateVisibility();
         }
+
+        // --- Event Handlers & Callbacks ---
 
         private static void OnPasswordChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

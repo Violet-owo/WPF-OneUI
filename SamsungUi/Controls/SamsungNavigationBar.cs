@@ -7,16 +7,19 @@ using System.Windows.Media.Animation;
 namespace SamsungUi.Controls
 {
     /// <summary>
-    /// Rappresenta una barra di navigazione inferiore stile Samsung One UI,
-    /// dotata di un indicatore animato che scorre verso l'elemento selezionato.
+    /// Represents a bottom navigation bar in Samsung One UI style,
+    /// featuring an animated indicator that slides to the selected item.
     /// </summary>
     [TemplatePart(Name = "PART_SelectionIndicator", Type = typeof(Border))]
     [TemplatePart(Name = "PART_IndicatorTransform", Type = typeof(TranslateTransform))]
     public class SamsungNavigationBar : ListBox
     {
+        // --- Fields ---
         private Border? _selectionIndicator;
         private TranslateTransform? _indicatorTransform;
         private bool _isLoaded;
+
+        // --- Initialization ---
 
         static SamsungNavigationBar()
         {
@@ -32,6 +35,8 @@ namespace SamsungUi.Controls
             };
         }
 
+        // --- Methods ---
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -43,6 +48,8 @@ namespace SamsungUi.Controls
                 UpdateIndicator(false);
             }
         }
+
+        // --- Event Handlers & Callbacks ---
 
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
@@ -112,25 +119,30 @@ namespace SamsungUi.Controls
     }
 
     /// <summary>
-    /// Rappresenta un singolo elemento all'interno di una <see cref="SamsungNavigationBar"/>.
-    /// Supporta icone vettoriali (tramite caratteri) e testo.
+    /// Represents a single item inside a <see cref="SamsungNavigationBar"/>.
+    /// Supports vector icons (via character) and text.
     /// </summary>
     public class SamsungNavigationBarItem : ListBoxItem
     {
+        // --- Initialization ---
         static SamsungNavigationBarItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SamsungNavigationBarItem), new FrameworkPropertyMetadata(typeof(SamsungNavigationBarItem)));
         }
 
+        // --- Dependency Properties ---
+
         /// <summary>
-        /// Identifica la dependency property per l'icona dell'elemento.
+        /// Identifies the Icon dependency property.
         /// </summary>
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register(nameof(Icon), typeof(string), typeof(SamsungNavigationBarItem), new PropertyMetadata(string.Empty));
 
+        // --- Properties ---
+
         /// <summary>
-        /// Ottiene o imposta il carattere (o la stringa) che rappresenta l'icona dell'elemento.
-        /// Generalmente viene utilizzato un carattere di un font speciale come Segoe MDL2 Assets.
+        /// Gets or sets the character (or string) representing the item's icon.
+        /// Generally, a character from a special font like Segoe MDL2 Assets is used.
         /// </summary>
         public string Icon
         {
@@ -139,13 +151,13 @@ namespace SamsungUi.Controls
         }
 
         /// <summary>
-        /// Identifica la dependency property per il testo descrittivo dell'elemento.
+        /// Identifies the Text dependency property.
         /// </summary>
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register(nameof(Text), typeof(string), typeof(SamsungNavigationBarItem), new PropertyMetadata(string.Empty));
 
         /// <summary>
-        /// Ottiene o imposta il testo visualizzato sotto l'icona dell'elemento.
+        /// Gets or sets the text displayed below the item's icon.
         /// </summary>
         public string Text
         {

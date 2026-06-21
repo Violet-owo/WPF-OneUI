@@ -13,7 +13,7 @@ namespace SamsungUi.Models
 
         public List<CalendarEvent> Events { get; set; } = new List<CalendarEvent>();
 
-        // Helpers per il binding XAML
+        // XAML Binding Helpers
         public bool HasEvents => Events != null && Events.Any();
         public CalendarEvent? FirstEvent => Events?.FirstOrDefault();
     }

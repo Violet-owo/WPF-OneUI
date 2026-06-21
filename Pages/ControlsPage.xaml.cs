@@ -5,11 +5,13 @@ namespace SamsungUi.Demo.Pages
 {
     public partial class ControlsPage : SamsungUi.Controls.SamsungExpandablePage
     {
+        // --- Initialization ---
         public ControlsPage()
         {
             InitializeComponent();
         }
 
+        // --- Event Handlers & Callbacks ---
         private void OpenModal_Click(object sender, RoutedEventArgs e)
         {
             DemoModal.IsOpen = true;

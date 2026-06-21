@@ -101,7 +101,7 @@
                             </TextBlock.Style>
                         </TextBlock>
 
-                        <!-- Pallino dell'evento -->
+                        <!-- Event dot -->
                         <Ellipse Width="4" Height="4" Margin="0,0,0,4"
                                  Fill="{Binding FirstEvent.DotColor}"
                                  HorizontalAlignment="Center"
@@ -113,7 +113,7 @@
                                         <DataTrigger Binding="{Binding HasEvents}" Value="True">
                                             <Setter Property="Visibility" Value="Visible"/>
                                         </DataTrigger>
-                                        <!-- Nascondi il pallino se il giorno non è del mese corrente -->
+                                        <!-- Hide the dot if the day is not in the current month -->
                                         <DataTrigger Binding="{Binding IsCurrentMonth}" Value="False">
                                             <Setter Property="Visibility" Value="Collapsed"/>
                                         </DataTrigger>
@@ -122,7 +122,7 @@
                             </Ellipse.Style>
                         </Ellipse>
 
-                        <!-- Popup Dettaglio Evento -->
+                        <!-- Event Detail Popup -->
                         <Popup AllowsTransparency="True" StaysOpen="False" Placement="Bottom" VerticalOffset="4">
                             <Popup.Style>
                                 <Style TargetType="Popup">
@@ -132,7 +132,7 @@
                                             <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding HasEvents}" Value="True"/>
                                                 <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected}" Value="True"/>
-                                                <!-- Mostra popup solo per il mese corrente -->
+                                                <!-- Show popup only for the current month -->
                                                 <Condition Binding="{Binding IsCurrentMonth}" Value="True"/>
                                             </MultiDataTrigger.Conditions>
                                             <Setter Property="IsOpen" Value="True"/>
@@ -144,12 +144,12 @@
                             <Border Background="{DynamicResource OneUiSurfaceBrush}" 
                                     CornerRadius="12" Padding="16" Margin="12" MaxWidth="250"
                                     BorderBrush="{DynamicResource OneUiControlBackgroundBrush}" BorderThickness="1">
-                                <!-- Ombra per il Popup -->
+                                <!-- Popup Shadow -->
                                 <Border.Effect>
                                     <DropShadowEffect Color="Black" Opacity="0.15" BlurRadius="12" Direction="270" ShadowDepth="4"/>
                                 </Border.Effect>
                                 
-                                <!-- Animazione di ingresso -->
+                                <!-- Entry Animation -->
                                 <Border.Triggers>
                                     <EventTrigger RoutedEvent="Loaded">
                                         <BeginStoryboard>

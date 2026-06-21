@@ -4,10 +4,12 @@ using System.Windows.Controls;
 namespace SamsungUi.Controls
 {
     /// <summary>
-    /// ListBoxItem in stile Samsung One UI.
+    /// A Samsung One UI style ListBoxItem.
     /// </summary>
     public class SamsungListBoxItem : ListBoxItem
     {
+        // --- Initialization ---
+
         static SamsungListBoxItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SamsungListBoxItem), new FrameworkPropertyMetadata(typeof(SamsungListBoxItem)));

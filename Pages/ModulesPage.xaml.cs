@@ -7,6 +7,7 @@ namespace SamsungUi.Demo.Pages
 {
     public partial class ModulesPage : SamsungUi.Controls.SamsungExpandablePage
     {
+        // --- Properties ---
         public List<ChartDataPoint> WeeklyUsageData { get; set; }
         public List<CalendarDay> CalendarDays { get; set; }
 
@@ -14,6 +15,7 @@ namespace SamsungUi.Demo.Pages
         public List<double> HistorySeries2 { get; set; }
         public List<string> HistoryXLabels { get; set; }
 
+        // --- Initialization ---
         public ModulesPage()
         {
             InitializeComponent();
@@ -68,6 +70,7 @@ namespace SamsungUi.Demo.Pages
             this.DataContext = this;
         }
 
+        // --- Nested Classes ---
         public class ChartDataPoint
         {
             public string Label { get; set; }

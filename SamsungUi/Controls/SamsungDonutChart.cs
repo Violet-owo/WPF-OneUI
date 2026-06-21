@@ -15,12 +15,16 @@ namespace SamsungUi.Controls
     [TemplatePart(Name = "PART_DonutCanvas", Type = typeof(Canvas))]
     public class SamsungDonutChart : Control
     {
+        // --- Initialization ---
         static SamsungDonutChart()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SamsungDonutChart), new FrameworkPropertyMetadata(typeof(SamsungDonutChart)));
         }
 
+        // --- Fields ---
         private Canvas? _donutCanvas;
+
+        // --- Dependency Properties ---
 
         public static readonly DependencyProperty SegmentsProperty =
             DependencyProperty.Register(nameof(Segments), typeof(IEnumerable<ChartSegment>), typeof(SamsungDonutChart),
@@ -32,6 +36,7 @@ namespace SamsungUi.Controls
             set => SetValue(SegmentsProperty, value);
         }
 
+        // --- Properties ---
         public static readonly DependencyProperty CenterTextProperty =
             DependencyProperty.Register(nameof(CenterText), typeof(string), typeof(SamsungDonutChart),
                 new PropertyMetadata(string.Empty));
@@ -84,6 +89,7 @@ namespace SamsungUi.Controls
             set => SetValue(IsPopupOpenProperty, value);
         }
 
+        // --- Event Handlers & Callbacks ---
         private static void OnSegmentsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is SamsungDonutChart chart)
@@ -105,6 +111,7 @@ namespace SamsungUi.Controls
             UpdateChart();
         }
 
+        // --- Methods ---
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();

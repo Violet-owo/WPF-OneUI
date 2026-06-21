@@ -11,6 +11,7 @@ namespace SamsungUi.Appearance
 
     public static class ThemeManager
     {
+        // --- Methods ---
         public static void ApplyTheme(ThemeType theme)
         {
             var app = Application.Current;
@@ -20,7 +21,7 @@ namespace SamsungUi.Appearance
                 ? new Uri("pack://application:,,,/SamsungUi;component/Themes/ColorsLight.xaml", UriKind.Absolute)
                 : new Uri("pack://application:,,,/SamsungUi;component/Themes/ColorsDark.xaml", UriKind.Absolute);
 
-            // Trova e rimuove il dizionario dei colori esistente
+            // Find and remove the existing color dictionary
             ResourceDictionary? existingThemeDict = null;
             foreach (var dict in app.Resources.MergedDictionaries)
             {
@@ -36,7 +37,7 @@ namespace SamsungUi.Appearance
                 app.Resources.MergedDictionaries.Remove(existingThemeDict);
             }
 
-            // Aggiunge il nuovo dizionario dei colori
+            // Add the new color dictionary
             app.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = themeUri });
         }
     }

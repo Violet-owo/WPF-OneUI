@@ -4,10 +4,12 @@ using System.Windows.Controls;
 namespace SamsungUi.Controls
 {
     /// <summary>
-    /// RadioButton in stile Samsung One UI.
+    /// A Samsung One UI style RadioButton.
     /// </summary>
     public class SamsungRadioButton : RadioButton
     {
+        // --- Initialization ---
+
         static SamsungRadioButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SamsungRadioButton), new FrameworkPropertyMetadata(typeof(SamsungRadioButton)));

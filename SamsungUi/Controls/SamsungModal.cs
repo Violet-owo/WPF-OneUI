@@ -6,26 +6,31 @@ using System.Windows.Media;
 namespace SamsungUi.Controls
 {
     /// <summary>
-    /// Rappresenta una finestra di dialogo modale personalizzata stile Samsung One UI.
-    /// Utilizza il layer Adorner per oscurare la finestra principale e centrare il contenuto
-    /// senza ricorrere a finestre di popup native o a elementi bloccanti, per una massima fluidità.
+    /// Represents a custom modal dialog in Samsung One UI style.
+    /// It uses the Adorner layer to dim the main window and center the content
+    /// without resorting to native popup windows or blocking elements, for maximum fluidity.
     /// </summary>
     public class SamsungModal : ContentControl
     {
+        // --- Initialization ---
         static SamsungModal()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SamsungModal), new FrameworkPropertyMetadata(typeof(SamsungModal)));
         }
 
+        // --- Dependency Properties ---
+
         /// <summary>
-        /// Identifica la dependency property per lo stato di apertura/chiusura della modale.
+        /// Identifies the IsOpen dependency property.
         /// </summary>
         public static readonly DependencyProperty IsOpenProperty =
             DependencyProperty.Register(nameof(IsOpen), typeof(bool), typeof(SamsungModal), new PropertyMetadata(false, OnIsOpenChanged));
 
+        // --- Properties ---
+
         /// <summary>
-        /// Ottiene o imposta un valore che indica se la modale è visibile a schermo.
-        /// Può essere agganciato in binding (es. ad un ViewModel).
+        /// Gets or sets a value indicating whether the modal is visible on screen.
+        /// Can be data bound (e.g. to a ViewModel).
         /// </summary>
         public bool IsOpen
         {
@@ -33,8 +38,12 @@ namespace SamsungUi.Controls
             set => SetValue(IsOpenProperty, value);
         }
 
+        // --- Fields ---
+
         private Adorner _adorner;
         private object _savedContent;
+
+        // --- Event Handlers & Callbacks ---
 
         private static void OnIsOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -44,6 +53,8 @@ namespace SamsungUi.Controls
             else
                 modal.CloseModal();
         }
+
+        // --- Methods ---
 
         private void ShowModal()
         {
@@ -89,8 +100,8 @@ namespace SamsungUi.Controls
     }
 
     /// <summary>
-    /// Classe interna utilizzata per proiettare la modale e la patina oscurante sopra la finestra principale
-    /// attraverso il sistema Adorner di WPF.
+    /// Internal class used to project the modal and the dimming overlay over the main window
+    /// through the WPF Adorner system.
     /// </summary>
     public class OverlayAdorner : Adorner
     {
