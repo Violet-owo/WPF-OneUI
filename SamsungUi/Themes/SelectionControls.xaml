@@ -1,8 +1,9 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sui="clr-namespace:SamsungUi.Controls">
 
     <!-- One UI CheckBox -->
-    <Style x:Key="OneUiCheckBoxStyle" TargetType="CheckBox">
+    <Style TargetType="{x:Type sui:SamsungCheckBox}">
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Padding" Value="12,0,0,0"/>
@@ -10,7 +11,7 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="CheckBox">
+                <ControlTemplate TargetType="{x:Type sui:SamsungCheckBox}">
                     <Grid Background="Transparent">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -56,7 +57,7 @@
     </Style>
 
     <!-- One UI RadioButton -->
-    <Style x:Key="OneUiRadioButtonStyle" TargetType="RadioButton">
+    <Style TargetType="{x:Type sui:SamsungRadioButton}">
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Padding" Value="12,0,0,0"/>
@@ -64,7 +65,7 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="RadioButton">
+                <ControlTemplate TargetType="{x:Type sui:SamsungRadioButton}">
                     <Grid Background="Transparent">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>

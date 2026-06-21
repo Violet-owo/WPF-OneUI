@@ -9,64 +9,80 @@
     <Grid>
         <StackPanel Margin="24,0" HorizontalAlignment="Stretch" MaxWidth="1200">
             
-            <TextBox x:Name="SearchBox" Style="{StaticResource OneUiSearchBarStyle}" Margin="0,0,0,16" HorizontalAlignment="Stretch" TextChanged="SearchBox_TextChanged"/>
+            <sui:SamsungTextBox x:Name="SearchBox" IsSearchBar="True" Margin="0,0,0,16" HorizontalAlignment="Stretch" TextChanged="SearchBox_TextChanged"/>
             
-            <TabControl Style="{StaticResource OneUiTabControlStyle}" Margin="0,0,0,16" HorizontalAlignment="Stretch">
+            <sui:SamsungTabControl x:Name="SettingsTabControl" Margin="0,0,0,16" HorizontalAlignment="Stretch">
                 
                 <!-- CONNECTIONS TAB -->
-                <TabItem Header="Connections" Style="{StaticResource OneUiTabItemStyle}">
+                <sui:SamsungTabItem Header="Connections">
                     <StackPanel Margin="0,16,0,0" HorizontalAlignment="Stretch">
-                        <Border Style="{StaticResource OneUiCardStyle}" Margin="0,8" HorizontalAlignment="Stretch">
+                        <sui:SamsungCard Margin="0,8" HorizontalAlignment="Stretch">
                             <StackPanel>
                                 <TextBlock Text="Network settings" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
                                 <Grid x:Name="WiFiRow">
-                                    <TextBlock Text="Wi-Fi" FontSize="15" FontWeight="Medium" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                                    <CheckBox Style="{StaticResource OneUiToggleSwitchStyle}" HorizontalAlignment="Right" IsChecked="True"/>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Wi-Fi" FontSize="16" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
+                                    <sui:SamsungToggleSwitch Grid.Column="1" IsChecked="True"/>
                                 </Grid>
-                                <Separator x:Name="WiFiSep" Margin="16,16,-16,16"/>
+                                <Separator x:Name="WiFiSep" Background="{DynamicResource OneUiControlBackgroundBrush}" Margin="0,16" Height="1" BorderThickness="0"/>
                                 <Grid x:Name="BluetoothRow">
-                                    <TextBlock Text="Bluetooth" FontSize="15" FontWeight="Medium" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                                    <CheckBox Style="{StaticResource OneUiToggleSwitchStyle}" HorizontalAlignment="Right" IsChecked="False"/>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Bluetooth" FontSize="16" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
+                                    <sui:SamsungToggleSwitch Grid.Column="1" IsChecked="False"/>
                                 </Grid>
                             </StackPanel>
-                        </Border>
+                        </sui:SamsungCard>
                     </StackPanel>
-                </TabItem>
+                </sui:SamsungTabItem>
                 
                 <!-- SOUNDS TAB -->
-                <TabItem Header="Sounds" Style="{StaticResource OneUiTabItemStyle}">
+                <sui:SamsungTabItem Header="Sounds">
                     <StackPanel Margin="0,16,0,0" HorizontalAlignment="Stretch">
-                        <Border Style="{StaticResource OneUiCardStyle}" Margin="0,8" HorizontalAlignment="Stretch">
+                        <sui:SamsungCard Margin="0,8" HorizontalAlignment="Stretch">
                             <StackPanel>
                                 <TextBlock Text="Volume" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
                                 <Grid x:Name="RingtoneRow" Margin="0,0,0,8">
-                                    <TextBlock Text="Ringtone" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                                    <TextBlock Text="60%" FontSize="13" Foreground="{DynamicResource OneUiSliderActiveBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Ringtone" FontSize="16" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1" Text="Over the Horizon" FontSize="14" Foreground="{DynamicResource OneUiPrimaryBrush}" VerticalAlignment="Center" Cursor="Hand"/>
                                 </Grid>
-                                <Slider x:Name="RingtoneSlider" Minimum="0" Maximum="100" Value="60" Style="{StaticResource OneUiSliderStyle}" Margin="0,0,0,16"/>
+                                <sui:SamsungSlider x:Name="RingtoneSlider" Minimum="0" Maximum="100" Value="60" />
                                 
-                                <Grid x:Name="MediaRow" Margin="0,0,0,8">
-                                    <TextBlock Text="Media" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                                    <TextBlock Text="85%" FontSize="13" Foreground="{DynamicResource OneUiSliderActiveBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                <Grid x:Name="MediaRow" Margin="0,16,0,8">
+                                    <TextBlock Text="Media" FontSize="16" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
                                 </Grid>
-                                <Slider x:Name="MediaSlider" Minimum="0" Maximum="100" Value="85" Style="{StaticResource OneUiSliderStyle}"/>
+                                <sui:SamsungSlider x:Name="MediaSlider" Minimum="0" Maximum="100" Value="85" />
                             </StackPanel>
-                        </Border>
+                        </sui:SamsungCard>
                     </StackPanel>
-                </TabItem>
+                </sui:SamsungTabItem>
                 
                 <!-- DISPLAY TAB -->
-                <TabItem Header="Display" Style="{StaticResource OneUiTabItemStyle}">
+                <sui:SamsungTabItem Header="Display">
                     <StackPanel Margin="0,16,0,0" HorizontalAlignment="Stretch">
-                        <Border Style="{StaticResource OneUiCardStyle}" Margin="0,8" HorizontalAlignment="Stretch">
+                        <sui:SamsungCard Margin="0,8" HorizontalAlignment="Stretch">
                             <StackPanel>
                                 <TextBlock Text="Display settings" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
                                 
-                                <Grid x:Name="DarkModeRow" Margin="0,0,0,24">
-                                    <TextBlock Text="Dark mode" FontSize="15" FontWeight="Medium" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                                    <CheckBox x:Name="ThemeModeToggle" Style="{StaticResource ThemeToggleSwitchStyle}" HorizontalAlignment="Right" IsChecked="False" Checked="ThemeModeToggle_Checked" Unchecked="ThemeModeToggle_Unchecked"/>
+                                <Grid x:Name="DarkModeRow">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Dark Mode" FontSize="16" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
+                                    <sui:SamsungToggleSwitch Grid.Column="1" x:Name="ThemeModeToggle" Style="{StaticResource ThemeToggleSwitchStyle}" IsChecked="False" Checked="ThemeModeToggle_Checked" Unchecked="ThemeModeToggle_Unchecked"/>
                                 </Grid>
 
+                                <Separator Background="{DynamicResource OneUiControlBackgroundBrush}" Margin="0,16" Height="1" BorderThickness="0"/>
                                 <Grid x:Name="AccentColorRow" Margin="0,0,0,12">
                                     <TextBlock Text="Accent color" FontSize="15" FontWeight="Medium" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
                                 </Grid>
@@ -80,7 +96,7 @@
                                         </ItemsControl.ItemsPanel>
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <RadioButton GroupName="Colors" IsChecked="{Binding IsSelected, Mode=TwoWay}" Width="40" Height="40" Margin="0,0,12,12" Background="{Binding Brush}" Cursor="Hand" Checked="AccentColor_Checked" BorderThickness="0">
+                                                <RadioButton IsChecked="{Binding IsSelected, Mode=TwoWay}" Width="40" Height="40" Margin="0,0,12,12" Background="{Binding Brush}" Cursor="Hand" Checked="AccentColor_Checked" BorderThickness="0">
                                                     <RadioButton.Template>
                                                         <ControlTemplate TargetType="RadioButton">
                                                             <Grid>
@@ -113,7 +129,7 @@
                                         </ItemsControl.ItemsPanel>
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <RadioButton GroupName="Colors" IsChecked="{Binding IsSelected, Mode=TwoWay}" Width="40" Height="40" Margin="0,0,12,12" Background="{Binding Brush}" Cursor="Hand" Checked="AccentColor_Checked" BorderThickness="0">
+                                                <RadioButton IsChecked="{Binding IsSelected, Mode=TwoWay}" Width="40" Height="40" Margin="0,0,12,12" Background="{Binding Brush}" Cursor="Hand" Checked="AccentColor_Checked" BorderThickness="0">
                                                     <RadioButton.Template>
                                                         <ControlTemplate TargetType="RadioButton">
                                                             <Grid>
@@ -136,32 +152,32 @@
                                         </ItemsControl.ItemTemplate>
                                     </ItemsControl>
                                     
-                                    <Button Width="40" Height="40" Margin="0,0,0,12" Background="{DynamicResource OneUiControlBackgroundHoverBrush}" Cursor="Hand" Click="OpenColorPicker_Click" BorderThickness="0">
-                                        <Button.Template>
-                                            <ControlTemplate TargetType="Button">
+                                    <sui:SamsungButton Width="40" Height="40" Margin="0,0,0,12" Background="{DynamicResource OneUiControlBackgroundHoverBrush}" Cursor="Hand" Click="OpenColorPicker_Click" BorderThickness="0">
+                                        <sui:SamsungButton.Template>
+                                            <ControlTemplate TargetType="{x:Type sui:SamsungButton}">
                                                 <Border Background="{TemplateBinding Background}" CornerRadius="20" SnapsToDevicePixels="True">
                                                     <TextBlock Text="+" FontSize="24" FontWeight="Light" Foreground="{DynamicResource OneUiTextPrimaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-4,0,0"/>
                                                 </Border>
                                             </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
+                                        </sui:SamsungButton.Template>
+                                    </sui:SamsungButton>
                                 </WrapPanel>
                             </StackPanel>
-                        </Border>
+                        </sui:SamsungCard>
                     </StackPanel>
-                </TabItem>
-            </TabControl>
+                </sui:SamsungTabItem>
+            </sui:SamsungTabControl>
 
             <TextBlock Text="About" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="8,40,24,10" HorizontalAlignment="Left"/>
-            <Border Style="{StaticResource OneUiCardStyle}" Margin="8" HorizontalAlignment="Stretch">
+            <sui:SamsungCard Margin="8" HorizontalAlignment="Stretch">
                 <StackPanel>
                     <TextBlock Text="Samsung UI WPF" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,8"/>
                     <TextBlock Text="Version 1.0.0" FontSize="14" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,0,0,16"/>
-                    <TextBlock Text="A modern WPF component library inspired by Samsung One UI. Designed with fluid animations, rounded corners, and a clean minimalist aesthetic." 
+                    <TextBlock Text="A stunning, fluent, and highly responsive WPF component library bringing the elegance of Samsung's One UI design language to desktop applications." FontSize="14" 
                                Foreground="{DynamicResource OneUiTextSecondaryBrush}" TextWrapping="Wrap" Margin="0,0,0,20"/>
-                    <Button Content="Check for updates" Style="{StaticResource OneUiButtonStyle}" HorizontalAlignment="Stretch" Margin="0"/>
+                    <sui:SamsungButton Content="Check for updates" HorizontalAlignment="Stretch" Margin="0"/>
                 </StackPanel>
-            </Border>
+            </sui:SamsungCard>
             
             <!-- Bottom margin for nav bar -->
             <Grid Height="100"/>
@@ -175,13 +191,13 @@
                 <Border x:Name="ColorPreviewBorder" Height="80" CornerRadius="16" Background="#0381FE" Margin="0,0,0,24"/>
                 
                 <TextBlock Text="Red" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
-                <Slider x:Name="RedSlider" Minimum="0" Maximum="255" Value="3" Style="{StaticResource OneUiSliderStyle}" Margin="0,0,0,16" ValueChanged="ColorSlider_ValueChanged"/>
+                <sui:SamsungSlider x:Name="RedSlider" Minimum="0" Maximum="255" Value="3"  Margin="0,0,0,16" ValueChanged="ColorSlider_ValueChanged"/>
                 
                 <TextBlock Text="Green" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
-                <Slider x:Name="GreenSlider" Minimum="0" Maximum="255" Value="129" Style="{StaticResource OneUiSliderStyle}" Margin="0,0,0,16" ValueChanged="ColorSlider_ValueChanged"/>
+                <sui:SamsungSlider x:Name="GreenSlider" Minimum="0" Maximum="255" Value="129"  Margin="0,0,0,16" ValueChanged="ColorSlider_ValueChanged"/>
                 
                 <TextBlock Text="Blue" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
-                <Slider x:Name="BlueSlider" Minimum="0" Maximum="255" Value="254" Style="{StaticResource OneUiSliderStyle}" Margin="0,0,0,32" ValueChanged="ColorSlider_ValueChanged"/>
+                <sui:SamsungSlider x:Name="BlueSlider" Minimum="0" Maximum="255" Value="254"  Margin="0,0,0,32" ValueChanged="ColorSlider_ValueChanged"/>
                 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -190,8 +206,8 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     
-                    <Button Grid.Column="0" Content="Cancel" Style="{StaticResource OneUiButtonStyle}" Click="CloseColorPicker_Click"/>
-                    <Button Grid.Column="2" Content="Apply" Style="{StaticResource OneUiPrimaryButtonStyle}" Click="ApplyCustomColor_Click"/>
+                    <sui:SamsungButton Grid.Column="0" Content="Cancel" Click="CloseColorPicker_Click"/>
+                    <sui:SamsungButton Grid.Column="2" Content="Apply" Variant="Primary" Click="ApplyCustomColor_Click"/>
                 </Grid>
             </StackPanel>
         </sui:SamsungModal>

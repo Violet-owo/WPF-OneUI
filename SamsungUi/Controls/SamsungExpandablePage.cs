@@ -14,9 +14,9 @@ namespace SamsungUi.Controls
     [TemplatePart(Name = "PART_BigHeaderTitle", Type = typeof(UIElement))]
     public class SamsungExpandablePage : Page
     {
-        private ScrollViewer _scrollViewer;
-        private UIElement _smallHeader;
-        private UIElement _bigHeaderTitle;
+        private ScrollViewer? _scrollViewer;
+        private UIElement? _smallHeader;
+        private UIElement? _bigHeaderTitle;
 
         /// <summary>
         /// Identifica la dependency property per il titolo della pagina.

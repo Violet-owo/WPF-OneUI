@@ -9,6 +9,7 @@
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Charts.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Calendar.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Input.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/PasswordBox.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Modal.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/NavigationBar.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ScrollBar.xaml"/>

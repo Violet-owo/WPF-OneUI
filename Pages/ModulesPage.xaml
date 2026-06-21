@@ -9,107 +9,129 @@
     <StackPanel Margin="24,0" HorizontalAlignment="Center" MaxWidth="1200">
         <TextBlock Text="Status indicators" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
 
-                <WrapPanel HorizontalAlignment="Left">
-                    <Border Style="{StaticResource OneUiCardStyle}" Width="340" Margin="8" VerticalAlignment="Top">
-                        <StackPanel>
-                            <TextBlock Text="Device care" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
-                            <StackPanel>
-                                <Grid>
-                                    <TextBlock Text="🔋 Battery" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
-                                    <TextBlock Text="10 h 23 m left" FontSize="14" HorizontalAlignment="Right" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
-                                </Grid>
-                                <TextBlock Text="98%" FontSize="20" FontWeight="Bold" Margin="0,4,0,8" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
-                                <ProgressBar Value="98" Maximum="100" Style="{StaticResource OneUiProgressBarStyle}"/>
-                            </StackPanel>
-                            <Separator/>
-                            <StackPanel>
-                                <Grid>
-                                    <TextBlock Text="💾 Storage" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
-                                    <TextBlock Text="225.9 GB / 256 GB" FontSize="14" HorizontalAlignment="Right" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
-                                </Grid>
-                                <TextBlock Text="88% used" FontSize="20" FontWeight="Bold" Margin="0,4,0,8" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
-                                <ProgressBar Value="88" Maximum="100" Style="{StaticResource OneUiProgressBarStyle}"/>
-                            </StackPanel>
-                            <Separator/>
-                            <StackPanel>
-                                <Grid>
-                                    <TextBlock Text="⚡ Memory" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
-                                    <TextBlock Text="8.2 GB / 12 GB" FontSize="14" HorizontalAlignment="Right" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
-                                </Grid>
-                                <TextBlock Text="67% used" FontSize="20" FontWeight="Bold" Margin="0,4,0,8" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
-                                <ProgressBar Value="67" Maximum="100" Style="{StaticResource OneUiProgressBarStyle}"/>
-                            </StackPanel>
+        <WrapPanel HorizontalAlignment="Left">
+
+            <!-- Device Care Card -->
+            <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
+                <StackPanel>
+                    <TextBlock Text="Device care" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
+
+                    <!-- Battery -->
+                    <StackPanel>
+                        <Grid Margin="0,0,0,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="🔋 Battery" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                            <TextBlock Grid.Column="1" Text="10 h 23 m left" FontSize="14" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                        </Grid>
+                        <TextBlock Text="98%" FontSize="20" FontWeight="Bold" Margin="0,4,0,8" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                        <sui:SamsungProgressBar Value="98" Maximum="100"/>
+                    </StackPanel>
+
+                    <!-- Memory -->
+                    <StackPanel Margin="0,16,0,0">
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Memory" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="4.2 GB / 8 GB" FontSize="12" Foreground="{DynamicResource OneUiTextSecondaryBrush}" VerticalAlignment="Center"/>
+                        </Grid>
+                        <sui:SamsungProgressBar Value="88" Maximum="100"/>
+                    </StackPanel>
+
+                    <!-- Storage -->
+                    <StackPanel Margin="0,16,0,0">
+                        <Grid Margin="0,0,0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Storage" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="82 GB / 128 GB" FontSize="12" Foreground="{DynamicResource OneUiTextSecondaryBrush}" VerticalAlignment="Center"/>
+                        </Grid>
+                        <sui:SamsungProgressBar Value="67" Maximum="100"/>
+                    </StackPanel>
+                </StackPanel>
+            </sui:SamsungCard>
+
+            <!-- Loading Indicators Card -->
+            <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
+                <StackPanel>
+                    <TextBlock Text="Loading indicators" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,16,0,16">
+                        <sui:SamsungProgressBar IsRing="True" Margin="0,0,32,0"/>
+                        <sui:SamsungProgressBar IsRing="True" Width="24" Height="24" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                    </StackPanel>
+                </StackPanel>
+            </sui:SamsungCard>
+
+            <!-- Screen Time Card -->
+            <sui:SamsungCard Width="400" Margin="8" VerticalAlignment="Top">
+                <StackPanel>
+                    <Grid Margin="0,0,0,24">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Screen time" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                            <TextBlock Text="Daily average: 2 h 41 min" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,2,0,0"/>
                         </StackPanel>
-                    </Border>
+                        <TextBlock Grid.Column="1" Text="Details" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center" Cursor="Hand"/>
+                    </Grid>
 
-                    <Border Style="{StaticResource OneUiCardStyle}" Width="340" Margin="8" VerticalAlignment="Top">
-                        <StackPanel>
-                            <TextBlock Text="Loading indicators" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,16,0,16">
-                                <ProgressBar Style="{StaticResource OneUiProgressRingStyle}" Margin="0,0,32,0"/>
-                                <ProgressBar Style="{StaticResource OneUiProgressRingStyle}" Width="24" Height="24" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </Border>
+                    <Grid Height="180" VerticalAlignment="Bottom" Margin="0,10,0,0">
+                        <!-- ItemsSource is bound to WeeklyUsageData in code behind -->
+                        <ItemsControl ItemsSource="{Binding WeeklyUsageData}" Style="{StaticResource OneUiBarChartStyle}" AlternationCount="2"/>
+                    </Grid>
+                </StackPanel>
+            </sui:SamsungCard>
+        </WrapPanel>
 
-                    <Border Style="{StaticResource OneUiCardStyle}" Width="400" Margin="8" VerticalAlignment="Top">
-                        <StackPanel>
-                            <Grid Margin="0,0,0,24">
-                                <StackPanel>
-                                    <TextBlock Text="Screen time" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
-                                    <TextBlock Text="Daily average: 2 h 41 min" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,2,0,0"/>
-                                </StackPanel>
-                                <TextBlock Text="Details" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" HorizontalAlignment="Right" VerticalAlignment="Center" Cursor="Hand"/>
-                            </Grid>
+        <TextBlock Text="Calendar" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
 
-                            <Grid Height="180" VerticalAlignment="Bottom" Margin="0,10,0,0">
-                                <!-- ItemsSource is bound to WeeklyUsageData in code behind -->
-                                <ItemsControl ItemsSource="{Binding WeeklyUsageData}" Style="{StaticResource OneUiBarChartStyle}" AlternationCount="2"/>
-                            </Grid>
-                        </StackPanel>
-                    </Border>
-                </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left">
+            <sui:SamsungCard x:Name="Calendar" Width="400" Margin="8" VerticalAlignment="Top">
+                <StackPanel>
+                    <TextBlock Text="{Binding DayNumber}"
+                               FontSize="14"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="{DynamicResource OneUiTextPrimaryBrush}">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsCurrentMonth}" Value="False">
+                                        <Setter Property="Opacity" Value="0.3"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
 
-                <TextBlock Text="Calendar" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
+                    <UniformGrid Columns="7" Margin="0,0,0,4">
+                        <TextBlock Text="M" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
+                        <TextBlock Text="T" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
+                        <TextBlock Text="W" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
+                        <TextBlock Text="T" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
+                        <TextBlock Text="F" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
+                        <TextBlock Text="S" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
+                        <TextBlock Text="S" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
+                    </UniformGrid>
 
-                <WrapPanel HorizontalAlignment="Left">
-                    <Border Name="Calendar" Style="{StaticResource OneUiCardStyle}" Width="400" Margin="8" VerticalAlignment="Top">
-                        <StackPanel>
-                            <TextBlock Text="{Binding DayNumber}" 
-                                       FontSize="14" 
-                                       FontWeight="Medium"
-                                       HorizontalAlignment="Center" 
-                                       VerticalAlignment="Center"
-                                       Foreground="{DynamicResource OneUiTextPrimaryBrush}">
-                                <TextBlock.Style>
-                                    <Style TargetType="TextBlock">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsCurrentMonth}" Value="False">
-                                                <Setter Property="Opacity" Value="0.3"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
+                    <ListBox ItemsSource="{Binding CalendarDays}"
+                             Style="{StaticResource OneUiCalendarStyle}"
+                             SelectionMode="Single"/>
+                </StackPanel>
+            </sui:SamsungCard>
+        </WrapPanel>
 
-                            <UniformGrid Columns="7" Margin="0,0,0,4">
-                                <TextBlock Text="M" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
-                                <TextBlock Text="T" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
-                                <TextBlock Text="W" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
-                                <TextBlock Text="T" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
-                                <TextBlock Text="F" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
-                                <TextBlock Text="S" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
-                                <TextBlock Text="S" Style="{StaticResource OneUiCalendarHeaderStyle}"/>
-                            </UniformGrid>
-
-                            <ListBox ItemsSource="{Binding CalendarDays}" 
-                                     Style="{StaticResource OneUiCalendarStyle}"
-                                     SelectionMode="Single"/>
-                        </StackPanel>
-                    </Border>
-                </WrapPanel>
-                
-                <!-- Bottom margin for nav bar -->
-                <Grid Height="100"/>
+        <!-- Bottom margin for nav bar -->
+        <Grid Height="100"/>
     </StackPanel>
 </sui:SamsungExpandablePage>

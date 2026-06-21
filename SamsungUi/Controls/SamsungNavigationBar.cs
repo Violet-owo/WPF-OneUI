@@ -14,8 +14,8 @@ namespace SamsungUi.Controls
     [TemplatePart(Name = "PART_IndicatorTransform", Type = typeof(TranslateTransform))]
     public class SamsungNavigationBar : ListBox
     {
-        private Border _selectionIndicator;
-        private TranslateTransform _indicatorTransform;
+        private Border? _selectionIndicator;
+        private TranslateTransform? _indicatorTransform;
         private bool _isLoaded;
 
         static SamsungNavigationBar()

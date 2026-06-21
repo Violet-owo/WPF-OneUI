@@ -13,9 +13,9 @@ namespace SamsungUi.Controls
     [TemplatePart(Name = "PART_RevealButton", Type = typeof(ToggleButton))]
     public class SamsungPasswordBox : Control
     {
-        private PasswordBox _passwordBox;
-        private TextBox _textBox;
-        private ToggleButton _revealButton;
+        private PasswordBox? _passwordBox;
+        private TextBox? _textBox;
+        private ToggleButton? _revealButton;
         private bool _isUpdating;
 
         static SamsungPasswordBox()

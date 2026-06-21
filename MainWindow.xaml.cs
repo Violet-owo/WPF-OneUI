@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using SamsungUi.Demo.Pages;
+using SamsungUi.Controls;
 
 namespace SamsungUi.Demo
 {
@@ -9,6 +10,8 @@ namespace SamsungUi.Demo
         private ControlsPage _controlsPage;
         private ModulesPage _modulesPage;
         private SettingsPage _settingsPage;
+
+
 
         public MainWindow()
         {
@@ -59,16 +62,16 @@ namespace SamsungUi.Demo
             {
                 if (childObj is DependencyObject child)
                 {
-                    if (child is Border border && border.Style == Application.Current.TryFindResource("OneUiCardStyle"))
+                    if (child is SamsungCard card)
                     {
                         if (string.IsNullOrEmpty(query))
                         {
-                            border.Visibility = Visibility.Visible;
+                            card.Visibility = Visibility.Visible;
                         }
                         else
                         {
-                            bool match = SearchTextBlocks(border, query);
-                            border.Visibility = match ? Visibility.Visible : Visibility.Collapsed;
+                            bool match = SearchTextBlocks(card, query);
+                            card.Visibility = match ? Visibility.Visible : Visibility.Collapsed;
                         }
                     }
                     else

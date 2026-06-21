@@ -207,15 +207,15 @@ namespace SamsungUi.Demo.Pages
             {
                 if (WiFiRow.Visibility == Visibility.Visible || BluetoothRow.Visibility == Visibility.Visible)
                 {
-                    SelectTabItem(WiFiRow, "Connections");
+                    SelectTabItem("Connections");
                 }
                 else if (RingtoneRow.Visibility == Visibility.Visible || MediaRow.Visibility == Visibility.Visible)
                 {
-                    SelectTabItem(RingtoneRow, "Sounds");
+                    SelectTabItem("Sounds");
                 }
                 else if (DarkModeRow.Visibility == Visibility.Visible || AccentColorRow.Visibility == Visibility.Visible)
                 {
-                    SelectTabItem(DarkModeRow, "Display");
+                    SelectTabItem("Display");
                 }
             }
 
@@ -226,22 +226,15 @@ namespace SamsungUi.Demo.Pages
             }
         }
 
-        private void SelectTabItem(DependencyObject element, string header)
+        private void SelectTabItem(string header)
         {
-            var parent = LogicalTreeHelper.GetParent(element);
-            while (parent != null && !(parent is TabControl))
+            if (SettingsTabControl == null) return;
+            foreach (TabItem item in SettingsTabControl.Items)
             {
-                parent = LogicalTreeHelper.GetParent(parent);
-            }
-            if (parent is TabControl tabControl)
-            {
-                foreach (TabItem item in tabControl.Items)
+                if (item.Header?.ToString() == header)
                 {
-                    if (item.Header?.ToString() == header)
-                    {
-                        tabControl.SelectedItem = item;
-                        break;
-                    }
+                    SettingsTabControl.SelectedItem = item;
+                    break;
                 }
             }
         }

@@ -9,128 +9,140 @@
     <Grid>
         <StackPanel Margin="24,0" HorizontalAlignment="Center" MaxWidth="1200">
             <WrapPanel HorizontalAlignment="Left">
-                <Border Style="{StaticResource OneUiCardStyle}" Width="340" Margin="8" VerticalAlignment="Top">
+                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Buttons" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
-                        <Button Content="Primary button" Style="{StaticResource OneUiPrimaryButtonStyle}" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
-                        <Button Content="Secondary button" Style="{StaticResource OneUiButtonStyle}" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
-                        <Button Content="Disabled state" Style="{StaticResource OneUiButtonStyle}" HorizontalAlignment="Stretch" IsEnabled="False" Margin="0"/>
+                        <sui:SamsungButton Content="Primary button" Variant="Primary" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
+                        <sui:SamsungButton Content="Secondary button" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
+                        <sui:SamsungButton Content="Disabled state" HorizontalAlignment="Stretch" IsEnabled="False" Margin="0"/>
                     </StackPanel>
-                </Border>
+                </sui:SamsungCard>
 
-                <Border Style="{StaticResource OneUiCardStyle}" Width="340" Margin="8" VerticalAlignment="Top">
+                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Input fields" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
                         
                         <TextBlock Text="Username" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
-                        <TextBox Style="{StaticResource OneUiTextBoxStyle}" Margin="0,0,0,16" Text="JohnDoe99"/>
+                        <sui:SamsungTextBox Margin="0,0,0,16" Text="JohnDoe99"/>
                         
                         <TextBlock Text="Password" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
                         <sui:SamsungPasswordBox Password="SecretPassword"/>
                     </StackPanel>
-                </Border>
+                </sui:SamsungCard>
 
-                <Border Style="{StaticResource OneUiCardStyle}" Width="340" Margin="8" VerticalAlignment="Top">
+                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Selection controls" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
                         
                         <TextBlock Text="Checkboxes" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,0,0,8"/>
-                        <CheckBox Content="Sync data" Style="{StaticResource OneUiCheckBoxStyle}" IsChecked="True" Margin="0,0,0,12"/>
-                        <CheckBox Content="Receive notifications" Style="{StaticResource OneUiCheckBoxStyle}" IsChecked="False" Margin="0,0,0,24"/>
+                        <sui:SamsungCheckBox Content="Sync data" IsChecked="True" Margin="0,0,0,12"/>
+                        <sui:SamsungCheckBox Content="Receive notifications" IsChecked="False" Margin="0,0,0,24"/>
                         
                         <TextBlock Text="Radio buttons" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,0,0,8"/>
-                        <RadioButton Content="Wi-Fi only" Style="{StaticResource OneUiRadioButtonStyle}" IsChecked="True" GroupName="NetworkGroup" Margin="0,0,0,12"/>
-                        <RadioButton Content="Over any network" Style="{StaticResource OneUiRadioButtonStyle}" IsChecked="False" GroupName="NetworkGroup" Margin="0"/>
+                        <sui:SamsungRadioButton Content="Wi-Fi only" IsChecked="True" GroupName="NetworkGroup" Margin="0,0,0,12"/>
+                        <sui:SamsungRadioButton Content="Over any network" IsChecked="False" GroupName="NetworkGroup" Margin="0"/>
                     </StackPanel>
-                </Border>
+                </sui:SamsungCard>
 
-                <Border Style="{StaticResource OneUiCardStyle}" Width="340" Margin="8" VerticalAlignment="Top">
+                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Toasts &amp; feedback" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
-                        <Button Content="Show label toast" Style="{StaticResource OneUiButtonStyle}" HorizontalAlignment="Stretch" Margin="0,0,0,8" Click="ShowLabelToast_Click"/>
-                        <Button Content="Show action toast (auto close)" Style="{StaticResource OneUiButtonStyle}" HorizontalAlignment="Stretch" Click="ShowActionToast_Click" Margin="0,0,0,8"/>
-                        <Button Content="Show action toast (persistent)" Style="{StaticResource OneUiPrimaryButtonStyle}" HorizontalAlignment="Stretch" Click="ShowPersistentActionToast_Click" Margin="0"/>
+                        <sui:SamsungButton Content="Show label toast" HorizontalAlignment="Stretch" Margin="0,0,0,8" Click="ShowLabelToast_Click"/>
+                        <sui:SamsungButton Content="Show action toast (auto close)" HorizontalAlignment="Stretch" Click="ShowActionToast_Click" Margin="0,0,0,8"/>
+                        <sui:SamsungButton Content="Show action toast (persistent)" Variant="Primary" HorizontalAlignment="Stretch" Click="ShowPersistentActionToast_Click" Margin="0"/>
                     </StackPanel>
-                </Border>
+                </sui:SamsungCard>
 
-                <Border Style="{StaticResource OneUiCardStyle}" Width="340" Margin="8" VerticalAlignment="Top">
+                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Quick actions" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,12"/>
-                        <Button Content="Wi-Fi connection" Style="{StaticResource OneUiButtonStyle}" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
-                        <Button Content="Connected devices" Style="{StaticResource OneUiButtonStyle}" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
-                        <Button Content="Sound and vibration" Style="{StaticResource OneUiButtonStyle}" HorizontalAlignment="Stretch" Margin="0"/>
+                        <sui:SamsungButton Content="Wi-Fi connection" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
+                        <sui:SamsungButton Content="Connected devices" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
+                        <sui:SamsungButton Content="Sound and vibration" HorizontalAlignment="Stretch" Margin="0"/>
                     </StackPanel>
-                </Border>
+                </sui:SamsungCard>
 
-                <Border Style="{StaticResource OneUiCardStyle}" Width="340" Margin="8" VerticalAlignment="Top">
+                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Lists" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
-                        <ListBox Style="{StaticResource OneUiListBoxStyle}" SelectedIndex="0" Background="{DynamicResource OneUiBackgroundBrush}" Margin="-8,0,-8,0">
-                            <ListBoxItem Style="{StaticResource OneUiListBoxItemStyle}">
+                        <sui:SamsungListBox SelectedIndex="0" Background="{DynamicResource OneUiBackgroundBrush}" Margin="-8,0,-8,0">
+                            <sui:SamsungListBoxItem>
                                 <StackPanel>
                                     <TextBlock Text="Wi-Fi" FontSize="16" FontWeight="SemiBold"/>
                                     <TextBlock Text="Connected to MyNetwork" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
                                 </StackPanel>
-                            </ListBoxItem>
-                            <ListBoxItem Style="{StaticResource OneUiListBoxItemStyle}">
+                            </sui:SamsungListBoxItem>
+                            <sui:SamsungListBoxItem>
                                 <StackPanel>
                                     <TextBlock Text="Bluetooth" FontSize="16" FontWeight="SemiBold"/>
                                     <TextBlock Text="On" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
                                 </StackPanel>
-                            </ListBoxItem>
-                            <ListBoxItem Style="{StaticResource OneUiListBoxItemStyle}">
+                            </sui:SamsungListBoxItem>
+                            <sui:SamsungListBoxItem>
                                 <StackPanel>
                                     <TextBlock Text="NFC and payment" FontSize="16" FontWeight="SemiBold"/>
                                 </StackPanel>
-                            </ListBoxItem>
-                        </ListBox>
+                            </sui:SamsungListBoxItem>
+                        </sui:SamsungListBox>
                     </StackPanel>
-                </Border>
+                </sui:SamsungCard>
             </WrapPanel>
 
             <TextBlock Text="Media &amp; volume" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
 
             <WrapPanel HorizontalAlignment="Left">
-                <Border Style="{StaticResource OneUiCardStyle}" Width="400" Margin="8" VerticalAlignment="Top">
+                <sui:SamsungCard Width="400" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <Grid Margin="0,0,0,16">
-                            <TextBlock Text="Media volume" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                            <TextBlock Text="80%" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Media volume" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="80%" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
                         </Grid>
-                        <Slider Minimum="0" Maximum="100" Value="80" Style="{StaticResource OneUiSliderStyle}"/>
+                        <sui:SamsungSlider Minimum="0" Maximum="100" Value="80" />
                     </StackPanel>
-                </Border>
+                </sui:SamsungCard>
 
-                <Border Style="{StaticResource OneUiCardStyle}" Width="400" Margin="8" VerticalAlignment="Top">
+                <sui:SamsungCard Width="400" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <Grid Margin="0,0,0,16">
-                            <TextBlock Text="Ringtone" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                            <TextBlock Text="35%" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Ringtone" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="35%" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
                         </Grid>
-                        <Slider Minimum="0" Maximum="100" Value="35" Style="{StaticResource OneUiSliderStyle}"/>
+                        <sui:SamsungSlider Minimum="0" Maximum="100" Value="35" />
                     </StackPanel>
-                </Border>
+                </sui:SamsungCard>
 
-                <Border Style="{StaticResource OneUiCardStyle}" Width="400" Margin="8" VerticalAlignment="Top">
+                <sui:SamsungCard Width="400" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <Grid Margin="0,0,0,16">
-                            <TextBlock Text="Alarm (Stepped)" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                            <TextBlock Text="Level 3" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Alarm (Stepped)" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="Level 3" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
                         </Grid>
-                        <Slider Minimum="0" Maximum="5" Value="3" TickFrequency="1" IsSnapToTickEnabled="True" Style="{StaticResource OneUiSliderStyle}"/>
+                        <sui:SamsungSlider Minimum="0" Maximum="5" Value="3" TickFrequency="1" IsSnapToTickEnabled="True" />
                     </StackPanel>
-                </Border>
+                </sui:SamsungCard>
             </WrapPanel>
 
             <TextBlock Text="Dialogs &amp; modals" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
 
             <WrapPanel HorizontalAlignment="Left">
-                <Border Style="{StaticResource OneUiCardStyle}" Width="340" Margin="8" VerticalAlignment="Top">
+                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Text="Show modal window" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
-                        <Button Content="Open modal" Style="{StaticResource OneUiPrimaryButtonStyle}" HorizontalAlignment="Stretch" Click="OpenModal_Click" Margin="0"/>
+                        <sui:SamsungButton Content="Open modal" Variant="Primary" HorizontalAlignment="Stretch" Click="OpenModal_Click" Margin="0"/>
                     </StackPanel>
-                </Border>
+                </sui:SamsungCard>
             </WrapPanel>
 
             <Grid Height="100"/>
@@ -142,7 +154,7 @@
                 <TextBlock Text="Add contact" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
                 
                 <TextBlock Text="Full name" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
-                <TextBox Style="{StaticResource OneUiTextBoxStyle}" Margin="0,0,0,16" Text="Violet Miller"/>
+                <sui:SamsungTextBox Margin="0,0,0,16" Text="Violet Miller"/>
 
                 <TextBlock Text="Secret password" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
                 <sui:SamsungPasswordBox Margin="0,0,0,24" Password="SecretPassword123"/>
@@ -154,8 +166,8 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     
-                    <Button Grid.Column="0" Content="Cancel" Style="{StaticResource OneUiButtonStyle}" Click="CloseModal_Click"/>
-                    <Button Grid.Column="2" Content="Save" Style="{StaticResource OneUiPrimaryButtonStyle}" Click="CloseModal_Click"/>
+                    <sui:SamsungButton Grid.Column="0" Content="Cancel" Click="CloseModal_Click"/>
+                    <sui:SamsungButton Grid.Column="2" Content="Save" Variant="Primary" Click="CloseModal_Click"/>
                 </Grid>
             </StackPanel>
         </sui:SamsungModal>

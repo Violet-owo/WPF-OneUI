@@ -1,15 +1,16 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sui="clr-namespace:SamsungUi.Controls">
 
     <!-- One UI ListBox Style -->
-    <Style x:Key="OneUiListBoxStyle" TargetType="ListBox">
+    <Style TargetType="{x:Type sui:SamsungListBox}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="ListBox">
+                <ControlTemplate TargetType="{x:Type sui:SamsungListBox}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
@@ -24,7 +25,7 @@
     </Style>
 
     <!-- One UI ListBoxItem Style -->
-    <Style x:Key="OneUiListBoxItemStyle" TargetType="ListBoxItem">
+    <Style TargetType="{x:Type sui:SamsungListBoxItem}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
         <Setter Property="Padding" Value="24,16,24,16"/>
@@ -33,7 +34,7 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="ListBoxItem">
+                <ControlTemplate TargetType="{x:Type sui:SamsungListBoxItem}">
                     <Border x:Name="Bd"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"

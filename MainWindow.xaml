@@ -9,19 +9,21 @@
         Title="Samsung One UI WPF Component Gallery" Height="750" Width="1100"
         MinWidth="450" Background="{DynamicResource OneUiBackgroundBrush}" FontFamily="Roboto, Segoe UI">
 
-    <Grid>
-        <!-- Title Bar -->
-        <TextBlock Text="Component Gallery" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,24,24,16" VerticalAlignment="Top"/>
+    <AdornerDecorator>
+        <Grid>
+            <!-- Title Bar -->
+            <TextBlock Text="Component Gallery" FontSize="28" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,24,24,16" VerticalAlignment="Top"/>
 
-        <!-- Main Content Area (Pages) -->
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0,70,0,100" />
+            <!-- Main Content Area (Pages) -->
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="0,70,0,100" />
 
-        <!-- Navigation Bar at the bottom -->
-        <sui:SamsungNavigationBar x:Name="NavBar" VerticalAlignment="Bottom" Margin="0,0,0,24" SelectionChanged="NavBar_SelectionChanged">
-            <!-- Icons using Segoe Fluent Icons: E771=List/Controls, E787=Calendar/Modules, E713=Settings -->
-            <sui:SamsungNavigationBarItem Icon="&#xE771;" Text="Controls" IsSelected="True"/>
-            <sui:SamsungNavigationBarItem Icon="&#xE787;" Text="Modules"/>
-            <sui:SamsungNavigationBarItem Icon="&#xE713;" Text="Settings"/>
-        </sui:SamsungNavigationBar>
-    </Grid>
+            <!-- Navigation Bar at the bottom -->
+            <sui:SamsungNavigationBar x:Name="NavBar" VerticalAlignment="Bottom" Margin="0,0,0,24" SelectionChanged="NavBar_SelectionChanged">
+                <!-- Icons using Segoe Fluent Icons: E771=List/Controls, E787=Calendar/Modules, E713=Settings -->
+                <sui:SamsungNavigationBarItem Icon="&#xE771;" Text="Controls" IsSelected="True"/>
+                <sui:SamsungNavigationBarItem Icon="&#xE787;" Text="Modules"/>
+                <sui:SamsungNavigationBarItem Icon="&#xE713;" Text="Settings"/>
+            </sui:SamsungNavigationBar>
+        </Grid>
+    </AdornerDecorator>
 </Window>
