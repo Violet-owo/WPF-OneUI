@@ -13,7 +13,8 @@ namespace SamsungUi.Demo
         private StopwatchPage _stopwatchPage;
         private SettingsPage _settingsPage;
 
-        // --- Initialization ---        public MainWindow()
+        // --- Initialization ---
+        public MainWindow()
         {
             InitializeComponent();
             

@@ -49,9 +49,12 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // or ThemeType.Light
 ```
 
 ### 📸 Screenshots
-*(Upload your screenshots here)*
-- ![Light Mode Example](placeholder_light.png)
-- ![Dark Mode Example](placeholder_dark.png)
+- ![Controls Light Mode](Screen/ControlsLight.png)
+- ![Controls Dark Mode](Screen/ControlsDark.png)
+- ![Modules Light Mode](Screen/ModulesLight.png)
+- ![Modules Dark Mode](Screen/ModulesDark.png)
+- ![Stopwatch Light Mode](Screen/StopwatchLight.png)
+- ![Stopwatch Dark Mode](Screen/StopwatchDark.png)
 
 ### 🧩 Components Status
 
@@ -141,9 +144,12 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // o ThemeType.Light
 ```
 
 ### 📸 Screenshot
-*(Carica qui i tuoi screenshot)*
-- ![Esempio Tema Chiaro](placeholder_light.png)
-- ![Esempio Tema Scuro](placeholder_dark.png)
+- ![Controlli Tema Chiaro](Screen/ControlsLight.png)
+- ![Controlli Tema Scuro](Screen/ControlsDark.png)
+- ![Moduli Tema Chiaro](Screen/ModulesLight.png)
+- ![Moduli Tema Scuro](Screen/ModulesDark.png)
+- ![Cronometro Tema Chiaro](Screen/StopwatchLight.png)
+- ![Cronometro Tema Scuro](Screen/StopwatchDark.png)
 
 ### 🧩 Stato dei Componenti
 
