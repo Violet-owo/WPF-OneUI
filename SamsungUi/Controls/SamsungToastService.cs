@@ -74,7 +74,7 @@ namespace SamsungUi.Controls
                 var border = new Border
                 {
                     CornerRadius = new CornerRadius(24),
-                    Background = new SolidColorBrush(Color.FromArgb(230, 40, 40, 40)), // Dark translucent
+                    Background = new SolidColorBrush(Color.FromArgb(230, 100, 100, 100)), // Dark translucent
                     Padding = new Thickness(24, 14, 24, 14),
                     Opacity = 0,
                     RenderTransform = new TranslateTransform(0, 30), // Start lower

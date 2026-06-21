@@ -6,10 +6,11 @@
       PageTitle="Modules"
       Title="ModulesPage">
 
-    <StackPanel Margin="24,0" HorizontalAlignment="Center" MaxWidth="1200">
-        <TextBlock Text="Status indicators" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
-
-        <WrapPanel HorizontalAlignment="Left">
+    <WrapPanel Margin="24,0"  HorizontalAlignment="Stretch" MaxWidth="1200">
+        <!--Status Indicator card-->
+        <StackPanel>
+            <TextBlock Text="Status indicators" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
+            <WrapPanel HorizontalAlignment="Left">
 
             <!-- Device Care Card -->
             <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
@@ -90,19 +91,22 @@
                     </Grid>
                 </StackPanel>
             </sui:SamsungCard>
+
+            
         </WrapPanel>
-
-        <TextBlock Text="Calendar" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
-
-        <WrapPanel HorizontalAlignment="Left">
-            <sui:SamsungCard x:Name="Calendar" Width="400" Margin="8" VerticalAlignment="Top">
+        </StackPanel>
+        <!--Calendar card-->
+        <StackPanel>
+            <TextBlock Text="Calendar" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
+            <WrapPanel HorizontalAlignment="Left" >
+            <sui:SamsungCard x:Name="Calendar" Width="400" Margin="8" VerticalAlignment="Top" HorizontalAlignment="Stretch">
                 <StackPanel>
                     <TextBlock Text="{Binding DayNumber}"
-                               FontSize="14"
-                               FontWeight="Medium"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Foreground="{DynamicResource OneUiTextPrimaryBrush}">
+                                   FontSize="14"
+                                   FontWeight="Medium"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="{DynamicResource OneUiTextPrimaryBrush}">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
@@ -125,13 +129,45 @@
                     </UniformGrid>
 
                     <ListBox ItemsSource="{Binding CalendarDays}"
-                             Style="{StaticResource OneUiCalendarStyle}"
-                             SelectionMode="Single"/>
+                                 Style="{StaticResource OneUiCalendarStyle}"
+                                 SelectionMode="Single"/>
                 </StackPanel>
             </sui:SamsungCard>
         </WrapPanel>
+        </StackPanel>
+        <!-- History Chart Card -->
+        <StackPanel Name="ChartPanel">
+            <TextBlock Text="Chart" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
+            <WrapPanel HorizontalAlignment="Left" >
+                <sui:SamsungCard Width="450" Margin="8" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="History data" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                                <TextBlock Text="Interactive Spline Area Chart" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,2,0,0"/>
+                            </StackPanel>
+                        </Grid>
 
-        <!-- Bottom margin for nav bar -->
+                        <Grid Height="230" VerticalAlignment="Bottom">
+                            <sui:SamsungLineChart Series1="{Binding HistorySeries1}"
+                                       Series2="{Binding HistorySeries2}"
+                                       XAxisLabels="{Binding HistoryXLabels}"
+                                       SelectedIndex="9"
+                                       Series1Unit="unit"
+                                       Series2Unit="unit"
+                                       MaxYValue="300"/>
+                        </Grid>
+                    </StackPanel>
+                </sui:SamsungCard>
+            </WrapPanel>
+        </StackPanel>
+ 
+
+                <!-- Bottom margin for nav bar -->
         <Grid Height="100"/>
-    </StackPanel>
+    </WrapPanel>
 </sui:SamsungExpandablePage>

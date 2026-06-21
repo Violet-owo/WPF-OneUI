@@ -9,6 +9,7 @@ namespace SamsungUi.Demo
     {
         private ControlsPage _controlsPage;
         private ModulesPage _modulesPage;
+        private StopwatchPage _stopwatchPage;
         private SettingsPage _settingsPage;
 
 
@@ -20,6 +21,7 @@ namespace SamsungUi.Demo
             // Initialize pages
             _controlsPage = new ControlsPage();
             _modulesPage = new ModulesPage();
+            _stopwatchPage = new StopwatchPage();
             _settingsPage = new SettingsPage();
 
             // Load initial page
@@ -41,6 +43,9 @@ namespace SamsungUi.Demo
                 case "Modules":
                     MainFrame.Navigate(_modulesPage);
                     break;
+                case "Stopwatch":
+                    MainFrame.Navigate(_stopwatchPage);
+                    break;
                 case "Settings":
                     MainFrame.Navigate(_settingsPage);
                     break;
@@ -53,6 +58,7 @@ namespace SamsungUi.Demo
             
             FilterCards(_controlsPage, query);
             FilterCards(_modulesPage, query);
+            FilterCards(_stopwatchPage, query);
         }
 
         private void FilterCards(DependencyObject parent, string query)

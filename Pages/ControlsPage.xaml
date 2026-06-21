@@ -22,11 +22,11 @@
                     <StackPanel>
                         <TextBlock Text="Input fields" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
                         
-                        <TextBlock Text="Username" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
-                        <sui:SamsungTextBox Margin="0,0,0,16" Text="JohnDoe99"/>
+                        <TextBlock Text="Username" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4" />
+                        <sui:SamsungTextBox VerticalAlignment="Top" Padding="7" Height="50" Margin="0,0,0,16" Text="JohnDoe99"/>
                         
                         <TextBlock Text="Password" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
-                        <sui:SamsungPasswordBox Password="SecretPassword"/>
+                        <sui:SamsungPasswordBox Height="50" Password="SecretPassword"/>
                     </StackPanel>
                 </sui:SamsungCard>
 
@@ -99,9 +99,9 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Media volume" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="1" Text="80%" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="{Binding ElementName=MediaSlider, Path=Value, StringFormat={}{0}%}" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
                         </Grid>
-                        <sui:SamsungSlider Minimum="0" Maximum="100" Value="80" />
+                        <sui:SamsungSlider Name="MediaSlider" Minimum="0" Maximum="100" Value="80" TickFrequency="1" IsSnapToTickEnabled="True" />
                     </StackPanel>
                 </sui:SamsungCard>
 
@@ -112,10 +112,10 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Ringtone" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="1" Text="35%" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="0" Text="Ringtone (5)" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="{Binding ElementName=RingtoneSlider, Path=Value, StringFormat={}{0}%}" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
                         </Grid>
-                        <sui:SamsungSlider Minimum="0" Maximum="100" Value="35" />
+                        <sui:SamsungSlider Name="RingtoneSlider" Minimum="0" Maximum="100" Value="35" TickFrequency="5" IsSnapToTickEnabled="True" />
                     </StackPanel>
                 </sui:SamsungCard>
 
@@ -126,10 +126,10 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Alarm (Stepped)" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="1" Text="Level 3" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="0" Text="Stepped Slider (3)" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" Text="{Binding ElementName=StepSlider, Path=Value}" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
                         </Grid>
-                        <sui:SamsungSlider Minimum="0" Maximum="5" Value="3" TickFrequency="1" IsSnapToTickEnabled="True" />
+                        <sui:SamsungSlider Name="StepSlider" Minimum="0" Maximum="12" Value="0" TickFrequency="3" IsSnapToTickEnabled="True" />
                     </StackPanel>
                 </sui:SamsungCard>
             </WrapPanel>

@@ -10,9 +10,17 @@ namespace SamsungUi.Demo.Pages
         public List<ChartDataPoint> WeeklyUsageData { get; set; }
         public List<CalendarDay> CalendarDays { get; set; }
 
+        public List<double> HistorySeries1 { get; set; }
+        public List<double> HistorySeries2 { get; set; }
+        public List<string> HistoryXLabels { get; set; }
+
         public ModulesPage()
         {
             InitializeComponent();
+
+            HistorySeries1 = new List<double> { 90, 140, 160, 162, 150, 130, 115, 110, 120, 132, 154, 185, 230 };
+            HistorySeries2 = new List<double> { 250, 210, 190, 180, 170, 160, 172, 190, 204, 210, 202, 188, 150 };
+            HistoryXLabels = new List<string> { "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
 
             WeeklyUsageData = new List<ChartDataPoint>
             {

@@ -1,5 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:sui="clr-namespace:SamsungUi.Controls">
 
     <!-- STYLE ESTERNO PER LA BAR OPACIZZATA -->
     <Style x:Key="AnimatedBarStyle" TargetType="Border">
@@ -25,7 +27,8 @@
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <Grid>
+                    <!-- Root grid – also PlacementTarget for the popup -->
+                    <Grid x:Name="BarRoot" Cursor="Hand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
@@ -47,7 +50,7 @@
                             </Border.Style>
                         </Border>
 
-                        <!-- BARRA ANIMATA -->
+                        <!-- BARRA ANIMATA (clickable) -->
                         <Grid Grid.Row="0" VerticalAlignment="Bottom" Height="150" Margin="4,0">
                             <Border x:Name="AnimatedBar"
                                     Style="{StaticResource AnimatedBarStyle}"
@@ -61,7 +64,7 @@
                                     <ScaleTransform ScaleY="0"/>
                                 </Border.LayoutTransform>
 
-                                <!-- ANIMAZIONE -->
+                                <!-- ANIMAZIONE INGRESSO -->
                                 <Border.Triggers>
                                     <EventTrigger RoutedEvent="FrameworkElement.Loaded">
                                         <BeginStoryboard>
@@ -120,9 +123,591 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
+
+                            <!-- ═══════════════════════════════════════
+                                 Bar Detail Popup
+                                 ═══════════════════════════════════════ -->
+                            <Popup x:Name="BarPopup"
+                                   AllowsTransparency="True"
+                                   StaysOpen="False"
+                                   Placement="Top"
+                                   VerticalOffset="-8"
+                                   PlacementTarget="{Binding ElementName=BarRoot}">
+                                <Popup.Style>
+                                    <Style TargetType="Popup">
+                                        <Setter Property="IsOpen" Value="False"/>
+                                    </Style>
+                                </Popup.Style>
+
+                                <Border Background="{DynamicResource OneUiSurfaceBrush}"
+                                        CornerRadius="12"
+                                        Padding="0"
+                                        Margin="8"
+                                        MinWidth="110"
+                                        BorderBrush="{DynamicResource OneUiControlBackgroundBrush}"
+                                        BorderThickness="1">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="Black" Opacity="0.22" BlurRadius="16"
+                                                          Direction="270" ShadowDepth="5"/>
+                                    </Border.Effect>
+                                    <Border.Triggers>
+                                        <EventTrigger RoutedEvent="Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                     From="0" To="1" Duration="0:0:0.18"/>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                                     From="0.88" To="1" Duration="0:0:0.18">
+                                                        <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                                     From="0.88" To="1" Duration="0:0:0.18">
+                                                        <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                                    </DoubleAnimation>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Border.Triggers>
+                                    <Border.RenderTransform>
+                                        <ScaleTransform CenterX="0" CenterY="1"/>
+                                    </Border.RenderTransform>
+
+                                    <!-- Card layout: left accent + content -->
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Blue accent strip -->
+                                        <Border Grid.Column="0"
+                                                Background="{DynamicResource OneUiChartBarBrush}"
+                                                CornerRadius="12,0,0,12"/>
+
+                                        <StackPanel Grid.Column="1" Margin="10,10,10,10">
+                                            <!-- Day label -->
+                                            <TextBlock Text="{Binding Label}"
+                                                       FontSize="14" FontWeight="Bold"
+                                                       Foreground="{DynamicResource OneUiTextPrimaryBrush}"
+                                                       HorizontalAlignment="Center"/>
+                                            <Rectangle Height="1" Margin="0,6,0,6"
+                                                       Fill="{DynamicResource OneUiChartLineBrush}"/>
+                                            <!-- Value -->
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <TextBlock Text="{Binding Value, StringFormat={}{0} min}"
+                                                           FontSize="13" FontWeight="SemiBold"
+                                                           Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Popup>
                         </Grid>
+
+                        <!-- Transparent hit-area overlay that opens the popup on click -->
+                        <Border Grid.Row="0" Grid.RowSpan="3"
+                                Background="Transparent"
+                                x:Name="ClickOverlay"/>
                     </Grid>
+
+                    <DataTemplate.Triggers>
+                        <!-- Open BarPopup on any click on the column -->
+                        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown"
+                                      SourceName="BarRoot">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames
+                                        Storyboard.TargetName="BarPopup"
+                                        Storyboard.TargetProperty="IsOpen">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <sys:Boolean>True</sys:Boolean>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </DataTemplate.Triggers>
                 </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- STYLE DEL GRAFICO A LINEE (SamsungLineChart) -->
+    <Style TargetType="{x:Type sui:SamsungLineChart}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="MinHeight" Value="220"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungLineChart}">
+                    <Grid Background="Transparent" ClipToBounds="False">
+                        
+                        <!-- Grid Lines (Background) -->
+                        <Grid Margin="20,50,50,40" Panel.ZIndex="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource OneUiChartLineBrush}"/>
+                            <Border Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource OneUiChartLineBrush}"/>
+                            <Border Grid.Row="2" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource OneUiChartLineBrush}"/>
+                            <Border Grid.Row="3" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource OneUiChartLineBrush}"/>
+                        </Grid>
+
+                        <!-- Canvas containing all rendering elements (Foreground) -->
+                        <Canvas x:Name="PART_ChartCanvas" Background="Transparent" ClipToBounds="False" Panel.ZIndex="1">
+                            
+                            <!-- Area Fill: Series 2 (Pink/Target) -->
+                            <Path Data="{Binding Series2AreaGeometry, RelativeSource={RelativeSource TemplatedParent}}" Opacity="0.08">
+                                <Path.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#E3A8B1" Offset="0"/>
+                                        <GradientStop Color="#E3A8B1" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+
+                            <!-- Area Fill: Series 1 (Blue/Value) -->
+                            <Path Data="{Binding Series1AreaGeometry, RelativeSource={RelativeSource TemplatedParent}}" Opacity="0.08">
+                                <Path.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#0381FE" Offset="0"/>
+                                        <GradientStop Color="#0381FE" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+
+                            <!-- Smooth Line Series 2 (Pink/Target) -->
+                            <Path Data="{Binding Series2Geometry, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Stroke="#E3A8B1" StrokeThickness="2.5" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+
+                            <!-- Smooth Line Series 1 (Blue/Value) -->
+                            <Path Data="{Binding Series1Geometry, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Stroke="#0381FE" StrokeThickness="2.5" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+
+                            <!-- Interactive Selection Vertical Line Indicator -->
+                            <Line X1="{Binding TooltipX, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Y1="50"
+                                  X2="{Binding TooltipX, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Y2="{Binding TooltipY, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Stroke="{DynamicResource OneUiChartLineBrush}" StrokeThickness="1"
+                                  Visibility="{TemplateBinding SelectedPointVisibility}"/>
+
+                            <!-- Selected Point 2 Circle (Pink Series) -->
+                            <Ellipse Width="10" Height="10" Fill="White" Stroke="#E3A8B1" StrokeThickness="2.5"
+                                     Canvas.Left="{Binding SelectedPoint2.X, RelativeSource={RelativeSource TemplatedParent}}"
+                                     Canvas.Top="{Binding SelectedPoint2.Y, RelativeSource={RelativeSource TemplatedParent}}"
+                                     Visibility="{TemplateBinding SelectedPointVisibility}">
+                                <Ellipse.RenderTransform>
+                                    <TranslateTransform X="-5" Y="-5"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <!-- Selected Point 1 Circle (Blue Series) -->
+                            <Ellipse Width="10" Height="10" Fill="White" Stroke="#0381FE" StrokeThickness="2.5"
+                                     Canvas.Left="{Binding SelectedPoint1.X, RelativeSource={RelativeSource TemplatedParent}}"
+                                     Canvas.Top="{Binding SelectedPoint1.Y, RelativeSource={RelativeSource TemplatedParent}}"
+                                     Visibility="{TemplateBinding SelectedPointVisibility}">
+                                <Ellipse.RenderTransform>
+                                    <TranslateTransform X="-5" Y="-5"/>
+                                </Ellipse.RenderTransform>
+                            </Ellipse>
+
+                            <!-- Tooltip bubble container -->
+                            <Border Background="#252528" CornerRadius="12" Padding="12,13"
+                                    Canvas.Left="{Binding TooltipX, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Canvas.Top="{Binding TooltipY, RelativeSource={RelativeSource TemplatedParent}}"
+                                    Visibility="{TemplateBinding SelectedPointVisibility}"
+                                    HorizontalAlignment="Center">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.15" Color="Black"/>
+                                </Border.Effect>
+                                <Border.RenderTransform>
+                                    <TranslateTransform X="-55" Y="-64"/>
+                                </Border.RenderTransform>
+                                <StackPanel Orientation="Vertical">
+                                    <!-- Series 1 (Blue) -->
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,3">
+                                        <Ellipse Width="6" Height="6" Fill="#52A1FF" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                        <TextBlock Text="{Binding SelectedSeries1Text, RelativeSource={RelativeSource TemplatedParent}}"
+                                                   Foreground="#82B3FF" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                    <!-- Series 2 (White/Target) -->
+                                    <StackPanel Orientation="Horizontal">
+                                        <Ellipse Width="6" Height="6" Fill="#FFFFFF" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                        <TextBlock Text="{Binding SelectedSeries2Text, RelativeSource={RelativeSource TemplatedParent}}"
+                                                   Foreground="#FAFAFA" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Tooltip Arrow Pointer -->
+                            <Path Data="M 0,0 L 8,8 L 16,0 Z" Fill="#252528"
+                                  Canvas.Left="{Binding TooltipX, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Canvas.Top="{Binding TooltipY, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Visibility="{TemplateBinding SelectedPointVisibility}">
+                                <Path.RenderTransform>
+                                    <TranslateTransform X="-8" Y="-8"/>
+                                </Path.RenderTransform>
+                            </Path>
+
+                        </Canvas>
+
+                        <!-- Y-Axis Labels on the Right -->
+                        <Grid HorizontalAlignment="Right" Width="40" Margin="0,50,10,40" Panel.ZIndex="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="000" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-6,0,0"/>
+                            <TextBlock Grid.Row="1" Text="000" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-6,0,0"/>
+                            <TextBlock Grid.Row="2" Text="000" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-6,0,0"/>
+                            <TextBlock Grid.Row="3" Text="0" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,-6"/>
+                        </Grid>
+
+                        <!-- X-Axis Labels (Pills) at the bottom -->
+                        <ItemsControl ItemsSource="{Binding XAxisPills, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="40" Panel.ZIndex="3">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas Background="Transparent" IsItemsHost="True" ClipToBounds="False"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemContainerStyle>
+                                <Style TargetType="ContentPresenter">
+                                    <Setter Property="Canvas.Left" Value="{Binding XPosition}"/>
+                                    <Setter Property="Canvas.Top" Value="8"/>
+                                </Style>
+                            </ItemsControl.ItemContainerStyle>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Width="40" Height="28" Margin="-20,0,0,0" Background="Transparent" Cursor="Hand">
+                                        <!-- Selection pill background -->
+                                        <Border x:Name="PillBorder" Width="24" Height="24" CornerRadius="12" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock Text="{Binding Text}" FontSize="11" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </Grid>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                            <Setter TargetName="PillBorder" Property="Background" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+                                            <Setter TargetName="PillBorder" Property="TextBlock.Foreground" Value="{DynamicResource OneUiChartSelectedDayText}"/>
+                                            <Setter TargetName="PillBorder" Property="TextBlock.FontWeight" Value="Bold"/>
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- STYLE PER SEGMENTED BAR CHART -->
+    <Style TargetType="{x:Type sui:SamsungSegmentedBar}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungSegmentedBar}">
+                    <StackPanel Orientation="Vertical" ClipToBounds="False">
+
+                        <StackPanel Margin="0,0,0,16">
+                            <TextBlock Text="{TemplateBinding TitleText}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                <TextBlock Text="{Binding TotalValue, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}}" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontWeight="SemiBold"/>
+                                <TextBlock Text=" " FontSize="13"/>
+                                <TextBlock Text="{TemplateBinding ValueUnit}" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                <TextBlock Text="  •  " FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                <TextBlock Text="{TemplateBinding DescriptionText}" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Segments Bar wrapper – PlacementTarget for the Popup -->
+                        <Grid x:Name="PART_BarRoot" Height="18">
+                            <!-- Empty track background (pill-shaped) -->
+                            <Border CornerRadius="9" Background="{DynamicResource OneUiControlBackgroundBrush}"/>
+                            <!-- Pill segments container – filled by code-behind -->
+                            <StackPanel x:Name="PART_SegmentsContainer" Orientation="Horizontal"
+                                        ClipToBounds="False"/>
+
+                            <!-- ══════════════════════════════════════════════════
+                                 Segment Detail Popup — reusable SamsungChartPopup
+                                 ══════════════════════════════════════════════════ -->
+                            <sui:SamsungChartPopup
+                                SelectedSegment="{Binding SelectedSegment,
+                                                 RelativeSource={RelativeSource TemplatedParent}}"
+                                IsOpen="{Binding IsPopupOpen,
+                                         RelativeSource={RelativeSource TemplatedParent},
+                                         Mode=TwoWay}"
+                                ValueUnit="{TemplateBinding ValueUnit}"/>
+                        </Grid>
+
+                        <TextBlock Text="0 unit" FontSize="11" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,4,0,0" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding TotalValue, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0} unit}" FontSize="11" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,-16,0,0" HorizontalAlignment="Right"/>
+
+
+                        <!-- Legend below Segmented Bar -->
+                        <ItemsControl ItemsSource="{TemplateBinding Segments}" Margin="0,16,0,0">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,6,0,6">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Label -->
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Label}" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontWeight="Medium" Margin="0,0,0,4"/>
+
+                                        <!-- Value -->
+                                        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,4">
+                                            <TextBlock Text="{Binding Value, StringFormat={}{0:0.0}}" FontSize="13" Foreground="{DynamicResource OneUiTextPrimaryBrush}" FontWeight="SemiBold"/>
+                                            <TextBlock Text=" " FontSize="13"/>
+                                            <TextBlock Text="{Binding Path=ValueUnit, RelativeSource={RelativeSource AncestorType=sui:SamsungSegmentedBar}}" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                        </StackPanel>
+
+                                        <!-- Progress Bar of segment's color -->
+                                        <ProgressBar Grid.Row="1" Grid.ColumnSpan="2" Height="6" Maximum="100" Value="{Binding Percentage}" Foreground="{Binding Brush}" Margin="0,2,0,0">
+                                            <ProgressBar.Template>
+                                                <ControlTemplate TargetType="ProgressBar">
+                                                    <Grid x:Name="PART_Track">
+                                                        <Border CornerRadius="3" Background="{DynamicResource OneUiControlBackgroundBrush}"/>
+                                                        <Border x:Name="PART_Indicator" CornerRadius="3" Background="{TemplateBinding Foreground}" HorizontalAlignment="Left"/>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </ProgressBar.Template>
+                                        </ProgressBar>
+                                        
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- STYLE PER DONUT CHART -->
+    <Style TargetType="{x:Type sui:SamsungDonutChart}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungDonutChart}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Donut Canvas + Center Text -->
+                        <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <!-- Donut Canvas -->
+                            <Canvas x:Name="PART_DonutCanvas" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                            <!-- Center Text -->
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Panel.ZIndex="10">
+                                <TextBlock Text="{TemplateBinding CenterText}" FontSize="26" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{TemplateBinding CenterSubtext}" FontSize="12" Foreground="{DynamicResource OneUiTextSecondaryBrush}" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                            </StackPanel>
+
+                            <!-- ══════════════════════════════════════════════════
+                                 Segment Detail Popup — reusable SamsungChartPopup
+                                 ══════════════════════════════════════════════════ -->
+                            <sui:SamsungChartPopup
+                                SelectedSegment="{Binding SelectedSegment,
+                                                 RelativeSource={RelativeSource TemplatedParent}}"
+                                IsOpen="{Binding IsPopupOpen,
+                                         RelativeSource={RelativeSource TemplatedParent},
+                                         Mode=TwoWay}"
+                                ValueUnit="{TemplateBinding ValueUnit}"/>
+                        </Grid>
+
+                        <!-- Legend below Donut Chart -->
+                        <ItemsControl Grid.Row="1" ItemsSource="{TemplateBinding Segments}" HorizontalAlignment="Center" Margin="0,16,0,0">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel HorizontalAlignment="Center"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Margin="8,4">
+                                        <Ellipse Width="8" Height="8" Fill="{Binding Brush}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                        <TextBlock Text="{Binding Label}" FontSize="12" Foreground="{DynamicResource OneUiTextSecondaryBrush}" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         STYLE PER SAMSUNG CHART POPUP
+         Popup card riusabile per tutti i chart. Il DataContext viene
+         impostato via code-behind all'istanza SamsungChartPopup,
+         quindi i binding interni puntano direttamente alle sue DP.
+         ══════════════════════════════════════════════════════════════════ -->
+    <Style TargetType="{x:Type sui:SamsungChartPopup}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width"  Value="0"/>
+        <Setter Property="Height" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungChartPopup}">
+                    <!-- Zero-size host — the popup floats above everything at mouse position -->
+                    <Grid Width="0" Height="0">
+                        <Popup x:Name="PART_Popup"
+                               AllowsTransparency="True"
+                               StaysOpen="False"
+                               Placement="Mouse"
+                               HorizontalOffset="12"
+                               VerticalOffset="12">
+
+                            <Border Background="{DynamicResource OneUiSurfaceBrush}"
+                                    CornerRadius="14"
+                                    Padding="0"
+                                    Margin="8"
+                                    MinWidth="200"
+                                    MaxWidth="280"
+                                    BorderBrush="{DynamicResource OneUiControlBackgroundBrush}"
+                                    BorderThickness="1">
+
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" Opacity="0.22" BlurRadius="18"
+                                                      Direction="270" ShadowDepth="6"/>
+                                </Border.Effect>
+
+                                <!-- Fade + scale-in animation (same as calendar popup) -->
+                                <Border.Triggers>
+                                    <EventTrigger RoutedEvent="Loaded">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetProperty="Opacity"
+                                                    From="0" To="1" Duration="0:0:0.18"/>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                                    From="0.88" To="1" Duration="0:0:0.18">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                                <DoubleAnimation
+                                                    Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                                    From="0.88" To="1" Duration="0:0:0.18">
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Border.Triggers>
+                                <Border.RenderTransform>
+                                    <ScaleTransform CenterX="0" CenterY="0"/>
+                                </Border.RenderTransform>
+
+                                <!-- Card inner layout: overlapping borders for perfect rounded corners -->
+                                <Grid>
+                                    <!-- Full-width blue background perfectly hugging the outer stroke -->
+                                    <Border Background="{Binding SelectedSegment.Brush}"
+                                            CornerRadius="13"/>
+
+                                    <!-- White foreground shifted 4px right to expose the blue accent -->
+                                    <Border Background="{DynamicResource OneUiSurfaceBrush}"
+                                            CornerRadius="9,13,13,9"
+                                            Margin="4,0,0,0">
+                                        
+                                        <!-- Content -->
+                                        <StackPanel Margin="14,14,14,14">
+
+                                            <!-- Segment label (e.g. "Lap 3") -->
+                                            <TextBlock Text="{Binding SelectedSegment.Label}"
+                                                       FontSize="15" FontWeight="Bold"
+                                                       Foreground="{DynamicResource OneUiTextPrimaryBrush}"
+                                                       TextWrapping="Wrap"/>
+
+                                            <Rectangle Height="1" Margin="0,8,0,8"
+                                                       Fill="{DynamicResource OneUiChartLineBrush}"/>
+
+                                            <!-- Duration / Value row -->
+                                            <Grid Margin="0,0,0,6">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="Duration"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource OneUiTextSecondaryBrush}"
+                                                           VerticalAlignment="Center"/>
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                    <TextBlock
+                                                        Text="{Binding SelectedSegment.Value, StringFormat={}{0:0.00}}"
+                                                        FontSize="13" FontWeight="SemiBold"
+                                                        Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                                                    <TextBlock Text=" "
+                                                               FontSize="13"
+                                                               Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                                    <TextBlock Text="{Binding ValueUnit}"
+                                                               FontSize="13"
+                                                               Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <!-- Percentage row -->
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="Share"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource OneUiTextSecondaryBrush}"
+                                                           VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="1"
+                                                           Text="{Binding SelectedSegment.Percentage, StringFormat={}{0:F1}%}"
+                                                           FontSize="13" FontWeight="SemiBold"
+                                                           Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                                            </Grid>
+
+                                            <!-- Mini progress bar -->
+                                            <ProgressBar Height="4" Margin="0,10,0,0"
+                                                         Maximum="100"
+                                                         Value="{Binding SelectedSegment.Percentage}"
+                                                         Foreground="{Binding SelectedSegment.Brush}">
+                                                <ProgressBar.Template>
+                                                    <ControlTemplate TargetType="ProgressBar">
+                                                        <Grid x:Name="PART_Track">
+                                                            <Border CornerRadius="2"
+                                                                    Background="{DynamicResource OneUiControlBackgroundBrush}"/>
+                                                            <Border x:Name="PART_Indicator" CornerRadius="2"
+                                                                    Background="{TemplateBinding Foreground}"
+                                                                    HorizontalAlignment="Left"/>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </ProgressBar.Template>
+                                            </ProgressBar>
+
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>

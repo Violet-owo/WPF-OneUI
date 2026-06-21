@@ -14,9 +14,9 @@
             <sui:SamsungTabControl x:Name="SettingsTabControl" Margin="0,0,0,16" HorizontalAlignment="Stretch">
                 
                 <!-- CONNECTIONS TAB -->
-                <sui:SamsungTabItem Header="Connections">
-                    <StackPanel Margin="0,16,0,0" HorizontalAlignment="Stretch">
-                        <sui:SamsungCard Margin="0,8" HorizontalAlignment="Stretch">
+                <sui:SamsungTabItem Header="Connections" >
+                    <StackPanel Margin="0,16,0,0" HorizontalAlignment="Stretch" Width="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}, Path=ActualWidth}" >
+                        <sui:SamsungCard Margin="0,8" HorizontalAlignment="Stretch"  >
                             <StackPanel>
                                 <TextBlock Text="Network settings" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
                                 <Grid x:Name="WiFiRow">
@@ -43,7 +43,7 @@
                 
                 <!-- SOUNDS TAB -->
                 <sui:SamsungTabItem Header="Sounds">
-                    <StackPanel Margin="0,16,0,0" HorizontalAlignment="Stretch">
+                    <StackPanel Margin="0,16,0,0" HorizontalAlignment="Stretch" Width="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}, Path=ActualWidth}">
                         <sui:SamsungCard Margin="0,8" HorizontalAlignment="Stretch">
                             <StackPanel>
                                 <TextBlock Text="Volume" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
@@ -69,8 +69,8 @@
                 <!-- DISPLAY TAB -->
                 <sui:SamsungTabItem Header="Display">
                     <StackPanel Margin="0,16,0,0" HorizontalAlignment="Stretch">
-                        <sui:SamsungCard Margin="0,8" HorizontalAlignment="Stretch">
-                            <StackPanel>
+                        <sui:SamsungCard Margin="0,8" HorizontalAlignment="Stretch" >
+                            <StackPanel Width="{Binding RelativeSource={RelativeSource AncestorType=StackPanel}, Path=ActualWidth}">
                                 <TextBlock Text="Display settings" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
                                 
                                 <Grid x:Name="DarkModeRow">
@@ -79,7 +79,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="Dark Mode" FontSize="16" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                                    <sui:SamsungToggleSwitch Grid.Column="1" x:Name="ThemeModeToggle" Style="{StaticResource ThemeToggleSwitchStyle}" IsChecked="False" Checked="ThemeModeToggle_Checked" Unchecked="ThemeModeToggle_Unchecked"/>
+                                    <sui:SamsungToggleSwitch Grid.Column="1" x:Name="ThemeModeToggle" Style="{StaticResource ThemeToggleSwitchStyle}" IsChecked="False" Checked="ThemeModeToggle_Checked" Unchecked="ThemeModeToggle_Unchecked" Margin="0,0,40,0"/>
                                 </Grid>
 
                                 <Separator Background="{DynamicResource OneUiControlBackgroundBrush}" Margin="0,16" Height="1" BorderThickness="0"/>
