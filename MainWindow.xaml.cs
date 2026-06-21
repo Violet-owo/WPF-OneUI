@@ -1,80 +1,99 @@
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using SamsungUi.Demo.Pages;
 
 namespace SamsungUi.Demo
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private ControlsPage _controlsPage;
+        private ModulesPage _modulesPage;
+        private SettingsPage _settingsPage;
 
-        public List<ChartDataPoint> WeeklyUsageData { get; set; }
-        public List<CalendarDay> CalendarDays { get; set; }
         public MainWindow()
         {
             InitializeComponent();
+            
+            // Initialize pages
+            _controlsPage = new ControlsPage();
+            _modulesPage = new ModulesPage();
+            _settingsPage = new SettingsPage();
 
-            WeeklyUsageData = new List<ChartDataPoint>
+            // Load initial page
+            MainFrame.Navigate(_controlsPage);
+        }
+
+        private void NavBar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (NavBar == null || MainFrame == null) return;
+
+            var selectedItem = NavBar.SelectedItem as SamsungUi.Controls.SamsungNavigationBarItem;
+            if (selectedItem == null) return;
+
+            switch (selectedItem.Text)
             {
-                new ChartDataPoint { Label = "S", Value = 110, IsHighlight = false },
-                new ChartDataPoint { Label = "D", Value = 112, IsHighlight = false },
-                new ChartDataPoint { Label = "L", Value = 95,  IsHighlight = false },
-                new ChartDataPoint { Label = "M", Value = 125, IsHighlight = false },
-                new ChartDataPoint { Label = "M", Value = 138, IsHighlight = false },
-                new ChartDataPoint { Label = "G", Value = 115, IsHighlight = false },
-                new ChartDataPoint { Label = "V", Value = 110, IsHighlight = true } // Giorno corrente evidenziato col cerchio
-            };
-
-            CalendarDays = new List<CalendarDay>();
-
-            CalendarDays.Add(new CalendarDay { DayNumber = "29", IsCurrentMonth = false });
-            CalendarDays.Add(new CalendarDay { DayNumber = "30", IsCurrentMonth = false });
-
-            // Giorni del mese corrente
-            for (int i = 1; i <= 31; i++)
-            {
-                CalendarDays.Add(new CalendarDay
-                {
-                    DayNumber = i.ToString(),
-                    IsCurrentMonth = true,
-                    IsToday = (i == 19) // Evidenziamo il giorno 19 come oggi
-                });
+                case "Controls":
+                    MainFrame.Navigate(_controlsPage);
+                    break;
+                case "Modules":
+                    MainFrame.Navigate(_modulesPage);
+                    break;
+                case "Settings":
+                    MainFrame.Navigate(_settingsPage);
+                    break;
             }
-
-            // Spazi per completare la griglia finale
-            CalendarDays.Add(new CalendarDay { DayNumber = "1", IsCurrentMonth = false });
-            CalendarDays.Add(new CalendarDay { DayNumber = "2", IsCurrentMonth = false });
-
-            // Diamo il DataContext a noi stessi per far funzionare i Binding in XAML
-            this.DataContext = this;
-            this.InvalidateVisual();
         }
 
-        private void ThemeModeToggle_Checked(object sender, RoutedEventArgs e)
+        public void FilterAllPages(string query)
         {
-            SamsungUi.Appearance.ThemeManager.ApplyTheme(SamsungUi.Appearance.ThemeType.Dark);
+            query = query?.ToLower().Trim() ?? "";
+            
+            FilterCards(_controlsPage, query);
+            FilterCards(_modulesPage, query);
         }
 
-        private void ThemeModeToggle_Unchecked(object sender, RoutedEventArgs e)
+        private void FilterCards(DependencyObject parent, string query)
         {
-            SamsungUi.Appearance.ThemeManager.ApplyTheme(SamsungUi.Appearance.ThemeType.Light);
+            if (parent == null) return;
+            foreach (var childObj in LogicalTreeHelper.GetChildren(parent))
+            {
+                if (childObj is DependencyObject child)
+                {
+                    if (child is Border border && border.Style == Application.Current.TryFindResource("OneUiCardStyle"))
+                    {
+                        if (string.IsNullOrEmpty(query))
+                        {
+                            border.Visibility = Visibility.Visible;
+                        }
+                        else
+                        {
+                            bool match = SearchTextBlocks(border, query);
+                            border.Visibility = match ? Visibility.Visible : Visibility.Collapsed;
+                        }
+                    }
+                    else
+                    {
+                        FilterCards(child, query);
+                    }
+                }
+            }
         }
 
-        // Semplice classe POCO per strutturare i dati del grafico
-        public class ChartDataPoint
+        private bool SearchTextBlocks(DependencyObject parent, string query)
         {
-            public string Label { get; set; }
-            public double Value { get; set; }
-            public bool IsHighlight { get; set; }
+            if (parent == null) return false;
+            if (parent is TextBlock textBlock && textBlock.Text != null && textBlock.Text.ToLower().Contains(query))
+                return true;
+            
+            foreach (var childObj in LogicalTreeHelper.GetChildren(parent))
+            {
+                if (childObj is DependencyObject child)
+                {
+                    if (SearchTextBlocks(child, query))
+                        return true;
+                }
+            }
+            return false;
         }
     }
 }

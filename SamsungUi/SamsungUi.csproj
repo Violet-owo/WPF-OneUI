@@ -5,6 +5,18 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
+    
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    
+    <!-- NuGet Metadata -->
+    <Title>Samsung UI for WPF</Title>
+    <Description>A beautiful, modern, and fluid UI library for WPF, inspired by Samsung One UI.</Description>
+    <Authors>Violet Miller</Authors>
+    <PackageTags>wpf;ui;samsung;oneui;controls;styles;theme</PackageTags>
+    <RepositoryUrl>https://github.com/Violet-owo/SamsungUi</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
 </Project>

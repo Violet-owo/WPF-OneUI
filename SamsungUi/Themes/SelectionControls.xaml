@@ -1,0 +1,107 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- One UI CheckBox -->
+    <Style x:Key="OneUiCheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Padding" Value="12,0,0,0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <Grid Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="CheckBorder" 
+                                Width="22" Height="22" 
+                                CornerRadius="6" 
+                                Background="{DynamicResource OneUiControlBackgroundBrush}" 
+                                BorderThickness="0" 
+                                VerticalAlignment="Center">
+                            <Path x:Name="CheckMark" 
+                                  Data="M4 11 L9 16 L18 6" 
+                                  Stroke="{DynamicResource OneUiSurfaceBrush}" 
+                                  StrokeThickness="2.5" 
+                                  StrokeStartLineCap="Round" 
+                                  StrokeEndLineCap="Round" 
+                                  StrokeLineJoin="Round" 
+                                  Opacity="0" 
+                                  HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"
+                                  Stretch="None"/>
+                        </Border>
+                        <ContentPresenter Grid.Column="1" 
+                                          Margin="{TemplateBinding Padding}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="CheckBorder" Property="Background" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                            <Setter TargetName="CheckMark" Property="Opacity" Value="1"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="CheckBorder" Property="Opacity" Value="0.8"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- One UI RadioButton -->
+    <Style x:Key="OneUiRadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Padding" Value="12,0,0,0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Grid Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="RadioBorder" 
+                                Width="22" Height="22" 
+                                CornerRadius="11" 
+                                Background="{DynamicResource OneUiControlBackgroundBrush}" 
+                                BorderThickness="0" 
+                                VerticalAlignment="Center">
+                            <Ellipse x:Name="RadioMark" 
+                                     Width="10" Height="10" 
+                                     Fill="{DynamicResource OneUiSurfaceBrush}" 
+                                     Opacity="0" 
+                                     HorizontalAlignment="Center" 
+                                     VerticalAlignment="Center"/>
+                        </Border>
+                        <ContentPresenter Grid.Column="1" 
+                                          Margin="{TemplateBinding Padding}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="RadioBorder" Property="Background" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                            <Setter TargetName="RadioMark" Property="Opacity" Value="1"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RadioBorder" Property="Opacity" Value="0.8"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

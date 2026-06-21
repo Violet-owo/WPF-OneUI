@@ -1,0 +1,66 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- One UI Linear ProgressBar -->
+    <Style x:Key="OneUiProgressBarStyle" TargetType="ProgressBar">
+        <Setter Property="Foreground" Value="{DynamicResource OneUiPrimaryBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource OneUiControlBackgroundBrush}"/>
+        <Setter Property="Height" Value="6"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}" CornerRadius="3" />
+                        <Border x:Name="PART_Track" CornerRadius="3" />
+                        <Border x:Name="PART_Indicator" Background="{TemplateBinding Foreground}" CornerRadius="3" HorizontalAlignment="Left" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- One UI Circular Progress Ring (Spinner) -->
+    <!-- Utilizziamo una ProgressBar con IsIndeterminate=True come base per lo spinner circolare -->
+    <Style x:Key="OneUiProgressRingStyle" TargetType="ProgressBar">
+        <Setter Property="Foreground" Value="{DynamicResource OneUiPrimaryBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="IsIndeterminate" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Grid Background="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                        <!-- Un arco con estremità arrotondate che ruota all'infinito -->
+                        <Path Stretch="Uniform" 
+                              Stroke="{TemplateBinding Foreground}" 
+                              StrokeThickness="4" 
+                              StrokeStartLineCap="Round" 
+                              StrokeEndLineCap="Round" 
+                              Data="M 20,2 A 18,18 0 1 1 2,20" 
+                              RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <RotateTransform x:Name="RotTransform" Angle="0"/>
+                            </Path.RenderTransform>
+                            <Path.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="RotTransform" 
+                                                             Storyboard.TargetProperty="Angle" 
+                                                             From="0" To="360" 
+                                                             Duration="0:0:1" 
+                                                             RepeatBehavior="Forever"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Path.Triggers>
+                        </Path>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

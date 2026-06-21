@@ -8,12 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <!-- Carichiamo il tema chiaro come predefinito all'avvio -->
                 <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ColorsLight.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Button.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Card.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Indicators.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Selectors.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Charts.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Calendar.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/SamsungUi.Controls.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
