@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sui="clr-namespace:SamsungUi.Controls">
 
     <!-- ScrollBar Thumb Style -->
     <Style x:Key="OneUiScrollBarThumb" TargetType="{x:Type Thumb}">
@@ -116,5 +117,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="{x:Type sui:SamsungScrollViewer}" BasedOn="{StaticResource {x:Type ScrollViewer}}"/>
 
 </ResourceDictionary>

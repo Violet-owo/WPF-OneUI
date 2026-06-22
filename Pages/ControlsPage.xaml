@@ -9,86 +9,88 @@
     <Grid>
         <StackPanel Margin="24,0" HorizontalAlignment="Center" MaxWidth="1200">
             <WrapPanel HorizontalAlignment="Left">
+                <!--Buttons-->
                 <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
-                        <TextBlock Text="Buttons" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Buttons"/>
                         <sui:SamsungButton Content="Primary button" Variant="Primary" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
                         <sui:SamsungButton Content="Secondary button" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
                         <sui:SamsungButton Content="Disabled state" HorizontalAlignment="Stretch" IsEnabled="False" Margin="0"/>
                     </StackPanel>
                 </sui:SamsungCard>
-
+                <!--Edit e Imput-->
                 <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
-                        <TextBlock Text="Input fields" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Input fields"/>
                         
-                        <TextBlock Text="Username" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4" />
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Username" Margin="4,0,0,4" />
                         <sui:SamsungTextBox VerticalAlignment="Top" Padding="7" Height="50" Margin="0,0,0,16" Text="JohnDoe99"/>
                         
-                        <TextBlock Text="Password" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Password" Margin="4,0,0,4"/>
                         <sui:SamsungPasswordBox Height="50" Password="SecretPassword"/>
                     </StackPanel>
                 </sui:SamsungCard>
-
+                <!-- Controls-->
                 <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
-                        <TextBlock Text="Selection controls" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Selection controls"/>
                         
-                        <TextBlock Text="Checkboxes" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,0,0,8"/>
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Checkboxes" Margin="0,0,0,8"/>
                         <sui:SamsungCheckBox Content="Sync data" IsChecked="True" Margin="0,0,0,12"/>
                         <sui:SamsungCheckBox Content="Receive notifications" IsChecked="False" Margin="0,0,0,24"/>
                         
-                        <TextBlock Text="Radio buttons" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,0,0,8"/>
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Radio buttons" Margin="0,0,0,8"/>
                         <sui:SamsungRadioButton Content="Wi-Fi only" IsChecked="True" GroupName="NetworkGroup" Margin="0,0,0,12"/>
                         <sui:SamsungRadioButton Content="Over any network" IsChecked="False" GroupName="NetworkGroup" Margin="0"/>
                     </StackPanel>
                 </sui:SamsungCard>
-
+                <!-- Toast -->
                 <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
-                        <TextBlock Text="Toasts &amp; feedback" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Toasts &amp; feedback"/>
                         <sui:SamsungButton Content="Show label toast" HorizontalAlignment="Stretch" Margin="0,0,0,8" Click="ShowLabelToast_Click"/>
                         <sui:SamsungButton Content="Show action toast (auto close)" HorizontalAlignment="Stretch" Click="ShowActionToast_Click" Margin="0,0,0,8"/>
                         <sui:SamsungButton Content="Show action toast (persistent)" Variant="Primary" HorizontalAlignment="Stretch" Click="ShowPersistentActionToast_Click" Margin="0"/>
                     </StackPanel>
                 </sui:SamsungCard>
-
+                <!--Quick actions-->
                 <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
-                        <TextBlock Text="Quick actions" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,12"/>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Quick actions"/>
                         <sui:SamsungButton Content="Wi-Fi connection" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
                         <sui:SamsungButton Content="Connected devices" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
                         <sui:SamsungButton Content="Sound and vibration" HorizontalAlignment="Stretch" Margin="0"/>
                     </StackPanel>
                 </sui:SamsungCard>
-
+                <!--List Box-->
                 <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
-                        <TextBlock Text="Lists" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Lists"/>
                         <sui:SamsungListBox SelectedIndex="0" Background="{DynamicResource OneUiBackgroundBrush}" Margin="-8,0,-8,0">
                             <sui:SamsungListBoxItem>
                                 <StackPanel>
-                                    <TextBlock Text="Wi-Fi" FontSize="16" FontWeight="SemiBold"/>
-                                    <TextBlock Text="Connected to MyNetwork" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                    <TextBlock Style="{DynamicResource OneUiNormalStyle}" FontWeight="SemiBold" Text="Wi-Fi"/>
+                                    <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Connected to MyNetwork"/>
                                 </StackPanel>
                             </sui:SamsungListBoxItem>
                             <sui:SamsungListBoxItem>
                                 <StackPanel>
-                                    <TextBlock Text="Bluetooth" FontSize="16" FontWeight="SemiBold"/>
-                                    <TextBlock Text="On" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                    <TextBlock Style="{DynamicResource OneUiNormalStyle}" FontWeight="SemiBold" Text="Bluetooth"/>
+                                    <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="On"/>
                                 </StackPanel>
                             </sui:SamsungListBoxItem>
                             <sui:SamsungListBoxItem>
                                 <StackPanel>
-                                    <TextBlock Text="NFC and payment" FontSize="16" FontWeight="SemiBold"/>
+                                    <TextBlock Style="{DynamicResource OneUiNormalStyle}" FontWeight="SemiBold" Text="NFC and payment"/>
                                 </StackPanel>
                             </sui:SamsungListBoxItem>
                         </sui:SamsungListBox>
                     </StackPanel>
                 </sui:SamsungCard>
-                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
+                <!--Edit Variant-->
+                    <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
-                        <TextBlock Text="Edit variant" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Edit variant"/>
                         <!-- Normal variant -->
                         <sui:SamsungEditBox Hint="Username" Text="{Binding Username}"/>
                         <!-- Password variant (automatically shows the eye icon) -->
@@ -98,10 +100,10 @@
                     </StackPanel>
                 </sui:SamsungCard>
             </WrapPanel>
+            <!--Sliders-->
+                <TextBlock Style="{DynamicResource OneUiTitleStyle}" Text="Sliders &amp; Stepped Sliders" Margin="24,40,24,10" HorizontalAlignment="Left"/>
 
-            <TextBlock Text="Media &amp; volume" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
-
-            <WrapPanel HorizontalAlignment="Left">
+            <WrapPanel Name="Sliders" HorizontalAlignment="Left">
                 <sui:SamsungCard Width="400" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <Grid Margin="0,0,0,16">
@@ -109,8 +111,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Media volume" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="1" Text="{Binding ElementName=MediaSlider, Path=Value, StringFormat={}{0}%}" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="0" Style="{DynamicResource OneUiSubtitleStyle}" Text="Smooth Slider" VerticalAlignment="Center" Margin="0"/>
+                            <TextBlock Grid.Column="1" Text="{Binding ElementName=MediaSlider, Path=Value, StringFormat={}{0}%}" Style="{DynamicResource OneUiNormalStyle}" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
                         </Grid>
                         <sui:SamsungSlider Name="MediaSlider" Minimum="0" Maximum="100" Value="80" TickFrequency="1" IsSnapToTickEnabled="True" />
                     </StackPanel>
@@ -123,8 +125,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Ringtone (5)" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="1" Text="{Binding ElementName=RingtoneSlider, Path=Value, StringFormat={}{0}%}" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="0" Style="{DynamicResource OneUiSubtitleStyle}" Text="Stepped Slider (5)" VerticalAlignment="Center" Margin="0"/>
+                            <TextBlock Grid.Column="1" Text="{Binding ElementName=RingtoneSlider, Path=Value, StringFormat={}{0}%}" Style="{DynamicResource OneUiNormalStyle}" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
                         </Grid>
                         <sui:SamsungSlider Name="RingtoneSlider" Minimum="0" Maximum="100" Value="35" TickFrequency="5" IsSnapToTickEnabled="True" />
                     </StackPanel>
@@ -137,20 +139,198 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="Stepped Slider (3)" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Column="1" Text="{Binding ElementName=StepSlider, Path=Value}" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="0" Style="{DynamicResource OneUiSubtitleStyle}" Text="Stepped Slider (3)" VerticalAlignment="Center" Margin="0"/>
+                            <TextBlock Grid.Column="1" Text="{Binding ElementName=StepSlider, Path=Value}" Style="{DynamicResource OneUiNormalStyle}" Foreground="{DynamicResource OneUiSliderActiveBrush}" VerticalAlignment="Center"/>
                         </Grid>
                         <sui:SamsungSlider Name="StepSlider" Minimum="0" Maximum="12" Value="0" TickFrequency="3" IsSnapToTickEnabled="True" />
                     </StackPanel>
                 </sui:SamsungCard>
             </WrapPanel>
 
-            <TextBlock Text="Dialogs &amp; modals" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
+            <TextBlock Style="{DynamicResource OneUiTitleStyle}" Text="Usefull components" Margin="24,40,24,10" HorizontalAlignment="Left"/>
 
             <WrapPanel HorizontalAlignment="Left">
+                <!-- GroupBox & Label -->
+                <sui:SamsungGroupBox Width="340" Margin="8" VerticalAlignment="Top" Header=" Custom Group Box">
+                    <sui:SamsungGroupBox.IconContent>
+                        <!-- Icona profilo tonda blu -->
+                        <Border Background="{DynamicResource OneUiPrimaryBrush}" CornerRadius="12" Width="24" Height="24">
+                            <Path Data="M 12,12 C 14.761,12 17,9.761 17,7 C 17,4.239 14.761,2 12,2 C 9.239,2 7,4.239 7,7 C 7,9.761 9.239,12 12,12 Z M 12,14 C 8.667,14 2,15.667 2,19 L 2,22 L 22,22 L 22,19 C 22,15.667 15.333,14 12,14 Z" 
+                                  Fill="White" Stretch="Uniform" Width="14" Height="14" Margin="0,2,0,0"/>
+                        </Border>
+                    </sui:SamsungGroupBox.IconContent>
+                    
+                    <!-- Contenitore interno grigio -->
+                    <Border Background="{DynamicResource OneUiControlBackgroundBrush}" CornerRadius="16" Padding="16,16,16,16">
+                        <StackPanel>
+                            <!-- Titolo con pallino blu -->
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                <Ellipse Width="8" Height="8" Fill="{DynamicResource OneUiPrimaryBrush}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Account attivo" VerticalAlignment="Center" Margin="0"/>
+                            </StackPanel>
+                            <!-- Sottotitolo indentato -->
+                            <TextBlock Style="{DynamicResource OneUiNormalStyle}"
+                                       Foreground="{DynamicResource OneUiTextSecondaryBrush}" 
+                                       Text="Il tuo account è completamente configurato." 
+                                       TextWrapping="Wrap" 
+                                       Margin="16,0,0,0"/>
+                        </StackPanel>
+                    </Border>
+                </sui:SamsungGroupBox>
+
+                <!-- Expander & Tooltip -->
+                <StackPanel Width="340" Margin="8" VerticalAlignment="Top">
+                    <sui:SamsungExpander x:Name="AccountExpander" Header="Custom Expander">
+                        <sui:SamsungExpander.IconContent>
+                            <!-- Icona utente -->
+                            <Path Data="M 12,12 C 14.761,12 17,9.761 17,7 C 17,4.239 14.761,2 12,2 C 9.239,2 7,4.239 7,7 C 7,9.761 9.239,12 12,12 Z M 12,14 C 8.667,14 2,15.667 2,19 L 2,22 L 22,22 L 22,19 C 22,15.667 15.333,14 12,14 Z" 
+                                  Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="20" Height="20"/>
+                        </sui:SamsungExpander.IconContent>
+                        
+                        <StackPanel Margin="0,8,0,0">
+                            <!-- Contenuto Profilo -->
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Immagine Profilo" Margin="0,0,0,12"/>
+                            <Border Background="{DynamicResource OneUiControlBackgroundHoverBrush}" CornerRadius="30" Width="60" Height="60" HorizontalAlignment="Center" Margin="0,0,0,8">
+                                <TextBlock Style="{DynamicResource OneUiTitleStyle}" Text="MR" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+                            </Border>
+                            <TextBlock Style="{DynamicResource OneUiSmallLinkStyle}" Text="Cambia immagine" HorizontalAlignment="Center" Margin="0,0,0,16"/>
+                            
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Dettagli Personali" Margin="0,0,0,8"/>
+                            <sui:SamsungTextBox Text="Marco Rossi" Margin="0,0,0,8"/>
+                            <sui:SamsungTextBox Text="m.rossi@mail.it" Margin="0,0,0,8"/>
+                            <sui:SamsungTextBox Text="+39 333 1234567" Margin="0,0,0,16"/>
+                            
+                            <Grid Margin="0,16,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <sui:SamsungButton Content="Salva Modifiche" Variant="Primary" Grid.Column="0" Click="OnSaveAccountClick"/>
+                                <sui:SamsungButton Content="Annulla" Grid.Column="2" Click="OnCancelAccountClick"/>
+                            </Grid>
+                        </StackPanel>
+                    </sui:SamsungExpander>
+                </StackPanel>
+
+                <!-- BusyIndicator -->
+                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Loading state" Margin="0,0,0,16"/>
+                        <sui:SamsungButton Content="Show Busy Indicator (2s)" Variant="Primary" Click="OnShowBusyIndicatorClick"/>
+                    </StackPanel>
+                </sui:SamsungCard>
+
+                <!-- ScrollViewer -->
+                <sui:SamsungGroupBox Width="340" Height="280" Margin="8" VerticalAlignment="Top" Header="Custom ScrollView ">
+                    <sui:SamsungGroupBox.IconContent>
+                        <!-- Icona Lista (list-ul) -->
+                        <Path Data="M 3,6 L 3,8 L 5,8 L 5,6 L 3,6 Z M 7,6 L 7,8 L 21,8 L 21,6 L 7,6 Z M 3,11 L 3,13 L 5,13 L 5,11 L 3,11 Z M 7,11 L 7,13 L 21,13 L 21,11 L 7,11 Z M 3,16 L 3,18 L 5,18 L 5,16 L 3,16 Z M 7,16 L 7,18 L 21,18 L 21,16 L 7,16 Z"
+                              Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="20" Height="20"/>
+                    </sui:SamsungGroupBox.IconContent>
+
+                    <sui:SamsungListView Margin="0,8,0,0">
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 1" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 2" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 3" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 4" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 5" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 6" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 7" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 8" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 9" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 10" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 11" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 12" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 13" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 14" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                        <sui:SamsungListViewItem>
+                            <sui:SamsungListViewItem.IconContent>
+                                <Path Data="M 6,2 C 4.89,2 4,2.89 4,4 L 4,20 C 4,21.1 4.89,22 6,22 L 18,22 C 19.1,22 20,21.1 20,20 L 20,8 L 14,2 L 6,2 Z M 13,3.5 L 18.5,9 L 14,9 L 14,3.5 Z M 6,4 L 12,4 L 12,10 L 18,10 L 18,20 L 6,20 L 6,4 Z" Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="18" Height="22"/>
+                            </sui:SamsungListViewItem.IconContent>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Element 15" Margin="0"/>
+                        </sui:SamsungListViewItem>
+                    </sui:SamsungListView>
+                </sui:SamsungGroupBox>
+            </WrapPanel>
+
+            <TextBlock Text="Dialogs &amp; modals" FontSize="{DynamicResource OneUiSubtitleFontSize}" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="24,40,24,10" HorizontalAlignment="Left"/>
+
+            <WrapPanel HorizontalAlignment="Left">
+                <!--Dialog-->
                 <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
-                        <TextBlock Text="Show modal window" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
+                        <TextBlock Text="Show modal window" FontSize="{DynamicResource OneUiSubtitleFontSize}" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
                         <sui:SamsungButton Content="Open modal" Variant="Primary" HorizontalAlignment="Stretch" Click="OpenModal_Click" Margin="0"/>
                     </StackPanel>
                 </sui:SamsungCard>
@@ -162,12 +342,12 @@
         <!-- Overlay Modal -->
         <sui:SamsungModal x:Name="DemoModal" IsOpen="False">
             <StackPanel Width="300">
-                <TextBlock Text="Add contact" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
+                <TextBlock Style="{DynamicResource OneUiTitleStyle}" Text="Add contact" Margin="0,0,0,16"/>
                 
-                <TextBlock Text="Full name" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
+                <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Full name" Margin="4,0,0,4"/>
                 <sui:SamsungTextBox Margin="0,0,0,16" Text="Violet Miller"/>
 
-                <TextBlock Text="Secret password" FontSize="14" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="4,0,0,4"/>
+                <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Secret password" Margin="4,0,0,4"/>
                 <sui:SamsungPasswordBox Margin="0,0,0,24" Password="SecretPassword123"/>
                 
                 <Grid>

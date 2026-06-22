@@ -92,7 +92,7 @@ namespace SamsungUi.Controls
                 {
                     Text = message,
                     Foreground = Brushes.White,
-                    FontSize = 14,
+                    FontSize = (double)(Application.Current.TryFindResource("OneUiNormalFontSize") ?? 14.0),
                     VerticalAlignment = VerticalAlignment.Center,
                     Margin = string.IsNullOrEmpty(actionText) ? new Thickness(0) : new Thickness(0, 0, 16, 0)
                 };

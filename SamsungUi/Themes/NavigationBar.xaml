@@ -18,11 +18,11 @@
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}">
                             <TextBlock Text="{TemplateBinding Icon}" 
                                        FontFamily="Segoe MDL2 Assets, Segoe Fluent Icons, Segoe UI Symbol" 
-                                       FontSize="20" 
+                                       FontSize="{DynamicResource OneUiTitleFontSize}" 
                                        HorizontalAlignment="Center"
                                        Margin="0,0,0,4"/>
                             <TextBlock Text="{TemplateBinding Text}" 
-                                       FontSize="12" 
+                                       FontSize="{DynamicResource OneUiSmallFontSize}" 
                                        FontWeight="Medium"
                                        HorizontalAlignment="Center"/>
                         </StackPanel>
@@ -57,10 +57,8 @@
                             CornerRadius="24"
                             Padding="{TemplateBinding Padding}"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
-                        <Border.Effect>
-                            <DropShadowEffect Color="Black" Opacity="0.1" BlurRadius="20" Direction="270" ShadowDepth="4"/>
-                        </Border.Effect>
+                            VerticalAlignment="Center"
+                            Effect="{DynamicResource OneUiModalShadow}">
                         <Grid>
                             <Canvas HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="0" ClipToBounds="True">
                                 <!-- The animated pill background -->

@@ -32,7 +32,7 @@
                                 <Grid x:Name="PART_BigHeader" Height="160">
                                     <TextBlock x:Name="PART_BigHeaderTitle" 
                                                Text="{TemplateBinding PageTitle}" 
-                                               FontSize="34" FontWeight="Bold" 
+                                               FontSize="{DynamicResource OneUiPageTitleFontSize}" FontWeight="Bold" 
                                                Foreground="{DynamicResource OneUiTextPrimaryBrush}" 
                                                Margin="24,0,24,24" 
                                                VerticalAlignment="Bottom"/>
@@ -49,7 +49,7 @@
                         <!-- Small Header (Sticky top) -->
                         <Border x:Name="PART_SmallHeader" Grid.Row="0" Height="60" Opacity="0" Background="{DynamicResource OneUiBackgroundBrush}" Panel.ZIndex="10">
                             <TextBlock Text="{TemplateBinding PageTitle}" 
-                                       FontSize="18" FontWeight="SemiBold" 
+                                       FontSize="{DynamicResource OneUiSubtitleFontSize}" FontWeight="SemiBold" 
                                        Foreground="{DynamicResource OneUiTextPrimaryBrush}" 
                                        HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
@@ -107,7 +107,7 @@
     <Style TargetType="{x:Type sui:SamsungTabItem}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextSecondaryBrush}"/>
-        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontSize" Value="{DynamicResource OneUiSubtitleFontSize}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="Margin" Value="0,0,24,0"/>
         <Setter Property="Padding" Value="0,12,0,12"/>
@@ -172,10 +172,8 @@
                                 Padding="24" 
                                 RenderTransformOrigin="0.5,0.5"
                                 SnapsToDevicePixels="True"
-                                Opacity="0">
-                            <Border.Effect>
-                                <DropShadowEffect BlurRadius="30" ShadowDepth="10" Opacity="0.1" Direction="270"/>
-                            </Border.Effect>
+                                Opacity="0"
+                                Effect="{DynamicResource OneUiModalShadow}">
                             <Border.RenderTransform>
                                 <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
                             </Border.RenderTransform>
@@ -297,10 +295,259 @@
                             </Rectangle.Fill>
                         </Rectangle>
                         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="{TemplateBinding MainText}" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,2"/>
-                            <TextBlock Text="{TemplateBinding SubText}" FontSize="14" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                            <TextBlock Text="{TemplateBinding MainText}" FontSize="{DynamicResource OneUiSubtitleFontSize}" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,2"/>
+                            <TextBlock Text="{TemplateBinding SubText}" FontSize="{DynamicResource OneUiNormalFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
                         </StackPanel>
                     </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ========================================== -->
+    <!-- SAMSUNG GROUPBOX                           -->
+    <!-- ========================================== -->
+    <Style TargetType="{x:Type sui:SamsungGroupBox}">
+        <Setter Property="Background" Value="{DynamicResource OneUiSurfaceBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource OneUiBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="Padding" Value="24"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungGroupBox}">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="26"
+                            Padding="{TemplateBinding Padding}"
+                            Effect="{DynamicResource OneUiCardShadow}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Header with Icon and Text -->
+                            <Grid Grid.Row="0" Margin="0,0,0,16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter Grid.Column="0" 
+                                                  Content="{TemplateBinding IconContent}" 
+                                                  Margin="0,0,12,0"
+                                                  VerticalAlignment="Center"/>
+                                <ContentPresenter Grid.Column="1" 
+                                                  ContentSource="Header" RecognizesAccessKey="True"
+                                                  VerticalAlignment="Center"
+                                                  TextBlock.FontWeight="SemiBold"
+                                                  TextBlock.FontSize="{DynamicResource OneUiSubtitleFontSize}"
+                                                  TextBlock.Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                            </Grid>
+                            
+                            <!-- Content -->
+                            <ContentPresenter Grid.Row="1" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ========================================== -->
+    <!-- SAMSUNG EXPANDER (Overlay Style)           -->
+    <!-- ========================================== -->
+    <Style TargetType="{x:Type sui:SamsungExpander}">
+        <Setter Property="Background" Value="{DynamicResource OneUiSurfaceBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource OneUiBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="Padding" Value="24,16"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungExpander}">
+                    <Grid>
+                        <ToggleButton x:Name="HeaderButton"
+                                      IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Background="{TemplateBinding Background}" 
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      Padding="{TemplateBinding Padding}" 
+                                      HorizontalContentAlignment="Stretch"
+                                      Cursor="Hand"
+                                      FocusVisualStyle="{x:Null}">
+                            <ToggleButton.Template>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border Background="{TemplateBinding Background}" 
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="26"
+                                            Padding="{TemplateBinding Padding}"
+                                            x:Name="BgBorder"
+                                            Effect="{DynamicResource OneUiCardShadow}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <ContentPresenter Grid.Column="0" 
+                                                              Content="{Binding IconContent, RelativeSource={RelativeSource AncestorType=sui:SamsungExpander}}" 
+                                                              Margin="0,0,12,0"
+                                                              VerticalAlignment="Center"/>
+                                            
+                                            <ContentPresenter Grid.Column="1" 
+                                                              Content="{Binding Header, RelativeSource={RelativeSource AncestorType=sui:SamsungExpander}}" 
+                                                              VerticalAlignment="Center"
+                                                              TextBlock.Foreground="{TemplateBinding Foreground}"
+                                                              TextBlock.FontWeight="SemiBold" TextBlock.FontSize="{DynamicResource OneUiSubtitleFontSize}"/>
+                                            
+                                            <Path x:Name="Arrow" Grid.Column="2" 
+                                                  Data="M 0 0 L 6 6 L 12 0" 
+                                                  Stroke="{DynamicResource OneUiTextPrimaryBrush}" StrokeThickness="2" 
+                                                  StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                                                <Path.RenderTransform>
+                                                    <RotateTransform Angle="0"/>
+                                                </Path.RenderTransform>
+                                            </Path>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" To="180" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="Arrow" Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)" To="0" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="BgBorder" Property="Background" Value="{DynamicResource OneUiControlBackgroundHoverBrush}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+                        
+                        <!-- Expanded Content in Popup (Overlay) -->
+                        <Popup IsOpen="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                               PlacementTarget="{Binding ElementName=HeaderButton}"
+                               Placement="Bottom"
+                               AllowsTransparency="True"
+                               PopupAnimation="Fade"
+                               StaysOpen="False">
+                            <Border x:Name="ContentBorder" 
+                                    Background="{DynamicResource OneUiSurfaceBrush}" 
+                                    CornerRadius="26"
+                                    Margin="8,4,8,16" 
+                                    Width="{Binding ActualWidth, ElementName=HeaderButton}"
+                                    Effect="{DynamicResource OneUiCardShadow}">
+                                <ContentPresenter x:Name="ExpandSite" Margin="{TemplateBinding Padding}"/>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ========================================== -->
+    <!-- SAMSUNG LIST VIEW & ITEMS                  -->
+    <!-- ========================================== -->
+
+    <!-- SamsungListViewItem -->
+    <Style TargetType="{x:Type sui:SamsungListViewItem}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource OneUiBorderBrush}"/>
+        <Setter Property="Padding" Value="0,16"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungListViewItem}">
+                    <Border x:Name="Bd" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Icon Content -->
+                            <ContentPresenter Grid.Column="0" 
+                                              Content="{TemplateBinding IconContent}"
+                                              Margin="16,0,16,0"
+                                              VerticalAlignment="Center"/>
+                            
+                            <!-- Main Content & Separator -->
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                
+                                <ContentPresenter Grid.Row="0"
+                                                  Content="{TemplateBinding Content}"
+                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                
+                                <!-- Separator -->
+                                <Border x:Name="Separator" 
+                                        Grid.Row="1" 
+                                        Height="1" 
+                                        Background="{TemplateBinding BorderBrush}" 
+                                        Opacity="1.0"
+                                        Margin="0,0,16,0"
+                                        Visibility="Visible"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource OneUiControlBackgroundHoverBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource OneUiControlBackgroundPressedBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- SamsungListView -->
+    <Style TargetType="{x:Type sui:SamsungListView}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungListView}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}" 
+                            SnapsToDevicePixels="True">
+                        <sui:SamsungScrollViewer Focusable="False" 
+                                                 Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </sui:SamsungScrollViewer>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

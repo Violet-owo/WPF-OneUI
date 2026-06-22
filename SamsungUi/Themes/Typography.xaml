@@ -1,0 +1,76 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- ========================================== -->
+    <!-- SAMSUNG ONE UI TYPOGRAPHY SIZES            -->
+    <!-- ========================================== -->
+    
+    <!-- Page Title: used for massive headers like ExpandablePage -->
+    <sys:Double x:Key="OneUiPageTitleFontSize">34</sys:Double>
+
+    <!-- Title: used for headers, titles of modals, top app bars -->
+    <sys:Double x:Key="OneUiTitleFontSize">20</sys:Double>
+
+    <!-- Subtitle: used for group box headers, major list items -->
+    <sys:Double x:Key="OneUiSubtitleFontSize">16</sys:Double>
+
+    <!-- Normal: used for general text, buttons, body content -->
+    <sys:Double x:Key="OneUiNormalFontSize">14</sys:Double>
+
+    <!-- Small: used for labels, helper text, secondary info -->
+    <sys:Double x:Key="OneUiSmallFontSize">12</sys:Double>
+
+    <!-- Extra Small: used for tooltips, micro-copy, badges -->
+    <sys:Double x:Key="OneUiExtraSmallFontSize">11</sys:Double>
+
+    <!-- ========================================== -->
+    <!-- SAMSUNG ONE UI TYPOGRAPHY STYLES           -->
+    <!-- ========================================== -->
+
+    <!-- Titolo -->
+    <Style x:Key="OneUiTitleStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{DynamicResource OneUiTitleFontSize}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="Margin" Value="0,0,0,16"/>
+    </Style>
+
+    <!-- Sottotitolo -->
+    <Style x:Key="OneUiSubtitleStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{DynamicResource OneUiSubtitleFontSize}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="Margin" Value="0,0,0,8"/>
+    </Style>
+
+    <!-- Normal -->
+    <Style x:Key="OneUiNormalStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{DynamicResource OneUiNormalFontSize}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+    </Style>
+
+    <!-- Piccolo -->
+    <Style x:Key="OneUiSmallStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{DynamicResource OneUiSmallFontSize}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+    </Style>
+
+    <!-- Piccolo Grigio -->
+    <Style x:Key="OneUiSmallGrayStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{DynamicResource OneUiSmallFontSize}"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextSecondaryBrush}"/>
+    </Style>
+
+    <!-- Piccolo Link Blu -->
+    <Style x:Key="OneUiSmallLinkStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{DynamicResource OneUiSmallFontSize}"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiPrimaryBrush}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+</ResourceDictionary>

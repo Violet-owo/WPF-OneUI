@@ -12,6 +12,10 @@ using SamsungUi.Models;
 
 namespace SamsungUi.Controls
 {
+    /// <summary>
+    /// Represents a donut-style pie chart control.
+    /// Displays proportional ring segments with hover effects and interactive tooltips.
+    /// </summary>
     [TemplatePart(Name = "PART_DonutCanvas", Type = typeof(Canvas))]
     public class SamsungDonutChart : Control
     {

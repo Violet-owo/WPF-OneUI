@@ -42,5 +42,23 @@ namespace SamsungUi.Demo.Pages
                 SamsungUi.Controls.SamsungToastService.Show("Updating...");
             }, autoClose: false);
         }
+
+        private void OnSaveAccountClick(object sender, RoutedEventArgs e)
+        {
+            AccountExpander.IsExpanded = false;
+            SamsungUi.Controls.SamsungToastService.Show("Accout Updated.");
+        }
+
+        private void OnCancelAccountClick(object sender, RoutedEventArgs e)
+        {
+            AccountExpander.IsExpanded = false;
+        }
+
+        private async void OnShowBusyIndicatorClick(object sender, RoutedEventArgs e)
+        {
+            SamsungUi.Controls.SamsungBusyIndicator.Show("Loading...");
+            await System.Threading.Tasks.Task.Delay(2000);
+            SamsungUi.Controls.SamsungBusyIndicator.Hide();
+        }
     }
 }

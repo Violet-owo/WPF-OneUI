@@ -11,6 +11,7 @@
     <Color x:Key="OneUiTextPrimaryRaw">#000000</Color>
     <Color x:Key="OneUiTextSecondaryRaw">#757575</Color>
     <Color x:Key="OneUiControlBackgroundRaw">#E5E5EA</Color>
+    <Color x:Key="OneUiBorderRaw">#C7C7CC</Color>
 
     <!-- Pennelli (Brushes) pronti all'uso -->
     <SolidColorBrush x:Key="OneUiBackgroundBrush" Color="{StaticResource OneUiBackgroundRaw}"/>
@@ -19,6 +20,7 @@
     <SolidColorBrush x:Key="OneUiTextPrimaryBrush" Color="{StaticResource OneUiTextPrimaryRaw}"/>
     <SolidColorBrush x:Key="OneUiTextSecondaryBrush" Color="{StaticResource OneUiTextSecondaryRaw}"/>
     <SolidColorBrush x:Key="OneUiControlBackgroundBrush" Color="{StaticResource OneUiControlBackgroundRaw}"/>
+    <SolidColorBrush x:Key="OneUiBorderBrush" Color="{StaticResource OneUiBorderRaw}"/>
     <SolidColorBrush x:Key="OneUiSliderActiveBrush" Color="#765091"/>
     <SolidColorBrush x:Key="OneUiSliderTrackBrush" Color="#EAE2F0"/>
     <SolidColorBrush x:Key="OneUiSliderTickBrush" Color="#9C8EB2"/>
