@@ -77,10 +77,44 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // or ThemeType.Light
 | Modal | `<sui:SamsungModal>` | 🟢 |
 | NavigationBar | `<sui:SamsungNavigationBar>` | 🟢 |
 | DonutChart | `<sui:SamsungDonutChart>` | 🟡 |
-| ChartPopup | `<sui:SamsungChartPopup>` | 🟡 |
+| ChartPopup | `<sui:SamsungChartPopup>` | 🟢 |
 | ToastService | `SamsungToastService.Show()` | 🟢 |
 | Gallery | `<sui:Gallery>` (Concept) | 🟡 |
 | Notification | `<sui:SamsungNotification>` | 🔴 |
+| Expander | `<sui:SamsungExpander>` | 🟡 |
+| GroupBox | `<sui:SamsungGroupBox>` | 🟡 |
+| ScrollViewer | `<sui:SamsungScrollViewer>` | 🟡 |
+| SplitContainer | `<sui:SamsungSplitContainer>` | 🟡 |
+| ComboBox | `<sui:SamsungComboBox>` | 🔴 |
+| AutoCompleteBox | `<sui:SamsungAutoCompleteBox>` | 🔴 |
+| NumericUpDown | `<sui:SamsungNumericUpDown>` | 🔴 |
+| DateTimePicker | `<sui:SamsungDateTimePicker>` | 🔴 |
+| MaskedTextBox | `<sui:SamsungMaskedTextBox>` | 🔴 |
+| ColorPicker | `<sui:SamsungColorPicker>` | 🔴 |
+| DataGrid | `<sui:SamsungDataGrid>` | 🔴 |
+| ListView | `<sui:SamsungListView>` | 🔴 |
+| TreeView | `<sui:SamsungTreeView>` | 🔴 |
+| PropertyGrid | `<sui:SamsungPropertyGrid>` | 🔴 |
+| Chart | `<sui:SamsungChart>` | 🔴 |
+| Gauge | `<sui:SamsungGauge>` | 🔴 |
+| Menu | `<sui:SamsungMenu>` | 🔴 |
+| ContextMenu | `<sui:SamsungContextMenu>` | 🔴 |
+| Ribbon | `<sui:SamsungRibbon>` | 🔴 |
+| NavigationView | `<sui:SamsungNavigationView>` | 🔴 |
+| BreadcrumbBar | `<sui:SamsungBreadcrumbBar>` | 🔴 |
+| Pagination | `<sui:SamsungPagination>` | 🔴 |
+| BusyIndicator | `<sui:SamsungBusyIndicator>` | 🔴 |
+| Tooltip | `<sui:SamsungTooltip>` | 🔴 |
+| StatusBar | `<sui:SamsungStatusBar>` | 🔴 |
+| Rating | `<sui:SamsungRating>` | 🔴 |
+| Window | `<sui:SamsungWindow>` | 🔴 |
+| Dialog | `<sui:SamsungDialog>` | 🔴 |
+| Popup | `<sui:SamsungPopup>` | 🔴 |
+| Flyout | `<sui:SamsungFlyout>` | 🔴 |
+| Label | `<sui:SamsungLabel>` | 🔴 |
+| Hyperlink | `<sui:SamsungHyperlink>` | 🔴 |
+| RichTextBox | `<sui:SamsungRichTextBox>` | 🔴 |
+| Image | `<sui:SamsungImage>` | 🔴 |
 
 *(Legend: 🟢 Completed | 🟡 Work in Progress | 🔴 Draft/Defective)*
 
@@ -178,6 +212,40 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // o ThemeType.Light
 | ToastService | `SamsungToastService.Show()` | 🟢 |
 | Gallery | `<sui:Gallery>` (Concept) | 🟡 |
 | Notification | `<sui:SamsungNotification>` | 🔴 |
+| Expander | `<sui:SamsungExpander>` | 🔴 |
+| GroupBox | `<sui:SamsungGroupBox>` | 🔴 |
+| ScrollViewer | `<sui:SamsungScrollViewer>` | 🔴 |
+| SplitContainer | `<sui:SamsungSplitContainer>` | 🔴 |
+| ComboBox | `<sui:SamsungComboBox>` | 🔴 |
+| AutoCompleteBox | `<sui:SamsungAutoCompleteBox>` | 🔴 |
+| NumericUpDown | `<sui:SamsungNumericUpDown>` | 🔴 |
+| DateTimePicker | `<sui:SamsungDateTimePicker>` | 🔴 |
+| MaskedTextBox | `<sui:SamsungMaskedTextBox>` | 🔴 |
+| ColorPicker | `<sui:SamsungColorPicker>` | 🔴 |
+| DataGrid | `<sui:SamsungDataGrid>` | 🔴 |
+| ListView | `<sui:SamsungListView>` | 🔴 |
+| TreeView | `<sui:SamsungTreeView>` | 🔴 |
+| PropertyGrid | `<sui:SamsungPropertyGrid>` | 🔴 |
+| Chart | `<sui:SamsungChart>` | 🔴 |
+| Gauge | `<sui:SamsungGauge>` | 🔴 |
+| Menu | `<sui:SamsungMenu>` | 🔴 |
+| ContextMenu | `<sui:SamsungContextMenu>` | 🔴 |
+| Ribbon | `<sui:SamsungRibbon>` | 🔴 |
+| NavigationView | `<sui:SamsungNavigationView>` | 🔴 |
+| BreadcrumbBar | `<sui:SamsungBreadcrumbBar>` | 🔴 |
+| Pagination | `<sui:SamsungPagination>` | 🔴 |
+| BusyIndicator | `<sui:SamsungBusyIndicator>` | 🔴 |
+| Tooltip | `<sui:SamsungTooltip>` | 🔴 |
+| StatusBar | `<sui:SamsungStatusBar>` | 🔴 |
+| Rating | `<sui:SamsungRating>` | 🔴 |
+| Window | `<sui:SamsungWindow>` | 🔴 |
+| Dialog | `<sui:SamsungDialog>` | 🔴 |
+| Popup | `<sui:SamsungPopup>` | 🔴 |
+| Flyout | `<sui:SamsungFlyout>` | 🔴 |
+| Label | `<sui:SamsungLabel>` | 🔴 |
+| Hyperlink | `<sui:SamsungHyperlink>` | 🔴 |
+| RichTextBox | `<sui:SamsungRichTextBox>` | 🔴 |
+| Image | `<sui:SamsungImage>` | 🔴 |
 
 *(Legenda: 🟢 Completato | 🟡 Work in Progress | 🔴 Bozza/Difettoso)*
 
