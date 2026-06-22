@@ -1,34 +1,56 @@
-﻿# SamsungPasswordBox
+# SamsungPasswordBox
+
+Il `SamsungPasswordBox` è il campo specifico per l'inserimento di dati sensibili (come password o PIN), progettato esteticamente come un `SamsungTextBox` ma con funzionalità di mascheramento dei caratteri e un pulsante integrato per rivelare temporaneamente la password.
 
 ![SamsungPasswordBox Example](../Screen/SamsungPasswordBox.png)
-> *Screenshot is on a coffee break! The developer will upload it shortly.*
-> *Lo screenshot e' in pausa caffe'! Lo sviluppatore lo carichera' a breve.*
+> 📸 *Lo screenshot è in pausa caffè! Lo sviluppatore lo caricherà a breve.*
 
 ---
 
-## English
+## 🇬🇧 English
 
-The $c is a core element of the **SamsungUi** library, designed to bring the fluid and rounded aesthetics of One UI to your WPF applications.
+The `SamsungPasswordBox` is the specific field for entering sensitive data (like passwords or PINs). It is aesthetically designed like a `SamsungTextBox` but includes character masking features and an integrated toggle button to reveal the password.
 
 ### Inheritance
-This control inherits from the standard WPF equivalent (or Control), fully supporting native properties, bindings, and events.
+This control inherits from `System.Windows.Controls.Control`. Internally, it manages a native `PasswordBox` and a `TextBox` to safely swap between masked and unmasked text.
+
+### Custom Properties
+
+| Property | Type | Default Value | Description |
+|-----------|------|-------------------|-------------|
+| **Password** | `string` | `""` | The actual text of the password. Unlike the native PasswordBox, this exposes a bindable DependencyProperty (Two-Way). |
+| **IsPasswordRevealed** | `bool` | `False` | Controls the visibility of the characters. When `True`, the password is displayed in plain text. |
+
+### Visual Behavior
+- **Reveal Button**: An eye icon is displayed on the right edge of the text field. Clicking it toggles `IsPasswordRevealed`, swapping the masked view with the clear text view.
+- **Design**: Shares the exact same rounded corners, surface background, and focus highlight border as the standard `SamsungTextBox`.
 
 ### How to Use
+```xml
+<sui:SamsungPasswordBox Password="{Binding UserPassword, Mode=TwoWay}" Width="250" />
+```
 
-`xml
-<sui:SamsungPasswordBox />
-``n
 ---
 
-## Italiano
+## 🇮🇹 Italiano
 
-Il $c e' un elemento essenziale della libreria **SamsungUi**, progettato per portare l'estetica fluida e tondeggiante della One UI nelle tue applicazioni WPF.
+Il `SamsungPasswordBox` è il campo specifico per l'inserimento di dati sensibili (come password o PIN), progettato esteticamente come un `SamsungTextBox` ma con funzionalità di mascheramento dei caratteri e un pulsante integrato per rivelare temporaneamente la password.
 
-### Ereditarieta'
-Questo controllo eredita dall'equivalente standard WPF (o da Control), supportando nativamente tutte le proprieta', i binding e gli eventi classici.
+### Ereditarietà
+Questo controllo eredita da `System.Windows.Controls.Control`. Internamente, gestisce un `PasswordBox` nativo e un `TextBox` base, permettendo lo scambio sicuro tra il testo mascherato e quello in chiaro.
+
+### Proprietà Personalizzate
+
+| Proprietà | Tipo | Valore di Default | Descrizione |
+|-----------|------|-------------------|-------------|
+| **Password** | `string` | `""` | Il testo effettivo della password. A differenza del PasswordBox nativo, questo espone una DependencyProperty bindabile (Bidirezionale). |
+| **IsPasswordRevealed** | `bool` | `False` | Controlla la visibilità dei caratteri. Quando è a `True`, la password viene mostrata in chiaro. |
+
+### Comportamento Visivo
+- **Pulsante Rivela**: Sul margine destro compare l'icona di un occhio. Cliccandola si inverte il valore di `IsPasswordRevealed`, scambiando la vista mascherata (con i puntini neri) con quella in chiaro.
+- **Design Base**: Condivide gli stessi bordi smussati, lo sfondo neutro di superficie e l'evidenziazione del bordo al focus del `SamsungTextBox` standard.
 
 ### Come Usarlo
-
-`xml
-<sui:SamsungPasswordBox />
-``n
+```xml
+<sui:SamsungPasswordBox Password="{Binding UserPassword, Mode=TwoWay}" Width="250" />
+```

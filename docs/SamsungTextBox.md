@@ -1,34 +1,64 @@
-﻿# SamsungTextBox
+# SamsungTextBox
+
+Il `SamsungTextBox` è una versione stilizzata e moderna della classica casella di testo WPF. Aggiunge bordi arrotondati e una speciale modalità "Barra di Ricerca".
 
 ![SamsungTextBox Example](../Screen/SamsungTextBox.png)
-> *Screenshot is on a coffee break! The developer will upload it shortly.*
-> *Lo screenshot e' in pausa caffe'! Lo sviluppatore lo carichera' a breve.*
+> 📸 *Lo screenshot è in pausa caffè! Lo sviluppatore lo caricherà a breve.*
 
 ---
 
-## English
+## 🇬🇧 English
 
-The $c is a core element of the **SamsungUi** library, designed to bring the fluid and rounded aesthetics of One UI to your WPF applications.
+The `SamsungTextBox` is a stylized, modern version of the classic WPF text box. It adds rounded borders, a soft surface background, and a special "Search Bar" mode.
 
 ### Inheritance
-This control inherits from the standard WPF equivalent (or Control), fully supporting native properties, bindings, and events.
+Inherits directly from `System.Windows.Controls.TextBox`. You can use all standard properties like `Text`, `MaxLength`, `CaretBrush`, etc.
+
+### Custom Properties
+
+| Property | Type | Default Value | Description |
+|-----------|------|-------------------|-------------|
+| **IsSearchBar** | `bool` | `False` | When set to `True`, a magnifying glass icon appears inside the text box, giving it the classic look of a search bar. |
+
+### Visual Behavior
+- **Default**: A slightly rounded rectangle filled with a neutral surface color.
+- **Focused**: The border gently highlights with the primary accent color.
+- **IsSearchBar=True**: Adds a built-in search icon on the left padding.
 
 ### How to Use
+```xml
+<!-- Standard text field -->
+<sui:SamsungTextBox Text="Hello World" />
 
-`xml
-<sui:SamsungTextBox />
-``n
+<!-- Search bar style -->
+<sui:SamsungTextBox IsSearchBar="True" Width="250" />
+```
+
 ---
 
-## Italiano
+## 🇮🇹 Italiano
 
-Il $c e' un elemento essenziale della libreria **SamsungUi**, progettato per portare l'estetica fluida e tondeggiante della One UI nelle tue applicazioni WPF.
+Il `SamsungTextBox` è una versione stilizzata e moderna della classica casella di testo WPF. Aggiunge bordi arrotondati, uno sfondo neutro "di superficie" e una speciale modalità "Barra di Ricerca".
 
-### Ereditarieta'
-Questo controllo eredita dall'equivalente standard WPF (o da Control), supportando nativamente tutte le proprieta', i binding e gli eventi classici.
+### Ereditarietà
+Eredita direttamente da `System.Windows.Controls.TextBox`. Puoi usare tutte le proprietà standard come `Text`, `MaxLength`, `CaretBrush`, ecc.
+
+### Proprietà Personalizzate
+
+| Proprietà | Tipo | Valore di Default | Descrizione |
+|-----------|------|-------------------|-------------|
+| **IsSearchBar** | `bool` | `False` | Se impostata a `True`, appare l'icona di una lente d'ingrandimento all'interno della casella di testo, trasformandola graficamente in una barra di ricerca. |
+
+### Comportamento Visivo
+- **Default**: Un rettangolo leggermente smussato, riempito con il colore di superficie.
+- **Focused**: Il bordo si evidenzia dolcemente usando il colore di accento principale.
+- **IsSearchBar=True**: Aggiunge un'icona di ricerca integrata sul lato sinistro.
 
 ### Come Usarlo
+```xml
+<!-- Campo di testo standard -->
+<sui:SamsungTextBox Text="Ciao Mondo" />
 
-`xml
-<sui:SamsungTextBox />
-``n
+<!-- Stile barra di ricerca -->
+<sui:SamsungTextBox IsSearchBar="True" Width="250" />
+```
