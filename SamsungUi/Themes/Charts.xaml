@@ -3,32 +3,54 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:sui="clr-namespace:SamsungUi.Controls">
 
-    <!-- EXTERNAL STYLE FOR THE FADED BAR -->
-    <Style x:Key="AnimatedBarStyle" TargetType="Border">
-        <Setter Property="Opacity" Value="1"/>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding IsHighlight}" Value="False">
-                <Setter Property="Opacity" Value="0.85"/>
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>
-
-    <!-- MAIN STYLE FOR THE BARCHART -->
-    <Style x:Key="OneUiBarChartStyle" TargetType="ItemsControl">
+    <!-- STYLE FOR BARCHART (SamsungBarChart) -->
+    <Style TargetType="{x:Type sui:SamsungBarChart}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <UniformGrid Rows="1"
-                                 Columns="{Binding Items.Count, RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
+                    <UniformGrid Rows="1" />
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
-
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungBarChart}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <Border Background="{TemplateBinding Background}" BorderThickness="0" Padding="0">
+                                    <ContentPresenter />
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="ItemTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <!-- Root grid – also PlacementTarget for the popup -->
-                    <Grid x:Name="BarRoot" Cursor="Hand">
+                    <Grid x:Name="BarRoot" Cursor="Hand" Background="Transparent">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
@@ -41,8 +63,7 @@
                                 <Style TargetType="Border">
                                     <Setter Property="Background" Value="{DynamicResource OneUiChartGridEvenBrush}"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ContentPresenter}, Path=(ItemsControl.AlternationIndex)}"
-                                                     Value="1">
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=(ItemsControl.AlternationIndex)}" Value="1">
                                             <Setter Property="Background" Value="{DynamicResource OneUiChartGridOddBrush}"/>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -50,12 +71,12 @@
                             </Border.Style>
                         </Border>
 
-                        <!-- ANIMATED BAR (clickable) -->
+                        <!-- ANIMATED BAR -->
                         <Grid Grid.Row="0" VerticalAlignment="Bottom" Height="150" Margin="4,0">
                             <Border x:Name="AnimatedBar"
-                                    Style="{StaticResource AnimatedBarStyle}"
                                     Width="16"
                                     CornerRadius="8"
+                                    Opacity="0.85"
                                     Background="{DynamicResource OneUiChartBarBrush}"
                                     VerticalAlignment="Bottom"
                                     Height="{Binding Value}">
@@ -90,20 +111,10 @@
                                     Width="22"
                                     Height="22"
                                     CornerRadius="11"
+                                    Visibility="Collapsed"
                                     Background="{DynamicResource OneUiTextPrimaryBrush}"
                                     HorizontalAlignment="Center"
-                                    VerticalAlignment="Center">
-                                <Border.Style>
-                                    <Style TargetType="Border">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsHighlight}" Value="True">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Border.Style>
-                            </Border>
+                                    VerticalAlignment="Center" />
 
                             <TextBlock x:Name="DayLabel"
                                        Text="{Binding Label}"
@@ -111,22 +122,8 @@
                                        FontSize="{DynamicResource OneUiSmallFontSize}"
                                        FontWeight="Medium"
                                        HorizontalAlignment="Center"
-                                       VerticalAlignment="Center">
-                                <TextBlock.Style>
-                                    <Style TargetType="TextBlock">
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsHighlight}" Value="True">
-                                                <Setter Property="Foreground" Value="{DynamicResource OneUiChartSelectedDayText}"/>
-                                                <Setter Property="FontWeight" Value="Bold"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
+                                       VerticalAlignment="Center" />
 
-                            <!-- ═══════════════════════════════════════
-                                 Bar Detail Popup
-                                 ═══════════════════════════════════════ -->
                             <Popup x:Name="BarPopup"
                                    AllowsTransparency="True"
                                    StaysOpen="False"
@@ -151,14 +148,11 @@
                                         <EventTrigger RoutedEvent="Loaded">
                                             <BeginStoryboard>
                                                 <Storyboard>
-                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                                                     From="0" To="1" Duration="0:0:0.18"/>
-                                                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
-                                                                     From="0.88" To="1" Duration="0:0:0.18">
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.18"/>
+                                                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" From="0.88" To="1" Duration="0:0:0.18">
                                                         <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
                                                     </DoubleAnimation>
-                                                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
-                                                                     From="0.88" To="1" Duration="0:0:0.18">
+                                                    <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" From="0.88" To="1" Duration="0:0:0.18">
                                                         <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
                                                     </DoubleAnimation>
                                                 </Storyboard>
@@ -177,48 +171,55 @@
                                         </Grid.ColumnDefinitions>
 
                                         <!-- Blue accent strip -->
-                                        <Border Grid.Column="0"
-                                                Background="{DynamicResource OneUiChartBarBrush}"
-                                                CornerRadius="12,0,0,12"/>
+                                        <Border Grid.Column="0" Background="{DynamicResource OneUiChartBarBrush}" CornerRadius="12,0,0,12"/>
 
                                         <StackPanel Grid.Column="1" Margin="10,10,10,10">
                                             <!-- Day label -->
-                                            <TextBlock Text="{Binding Label}"
-                                                       FontSize="{DynamicResource OneUiNormalFontSize}" FontWeight="Bold"
-                                                       Foreground="{DynamicResource OneUiTextPrimaryBrush}"
-                                                       HorizontalAlignment="Center"/>
-                                            <Rectangle Height="1" Margin="0,6,0,6"
-                                                       Fill="{DynamicResource OneUiChartLineBrush}"/>
+                                            <TextBlock Text="{Binding Label}" FontSize="{DynamicResource OneUiNormalFontSize}" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" HorizontalAlignment="Center"/>
+                                            <Rectangle Height="1" Margin="0,6,0,6" Fill="{DynamicResource OneUiChartLineBrush}"/>
                                             <!-- Value -->
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <TextBlock Text="{Binding Value, StringFormat={}{0} min}"
-                                                           FontSize="{DynamicResource OneUiSmallFontSize}" FontWeight="SemiBold"
-                                                           Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                                                <TextBlock Text="{Binding Value}" FontSize="{DynamicResource OneUiSmallFontSize}" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                                                <!-- Need to find ValueUnit from the ancestor ListBox since RelativeSource might fail inside Popup depending on logical tree -->
+                                                <!-- Fortunately, PlacementTarget works. We can bind to PlacementTarget.Tag or similar, BUT let's try RelativeSource first -->
+                                                <TextBlock Text="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource AncestorType=Popup}}" FontSize="{DynamicResource OneUiSmallFontSize}" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="4,0,0,0"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
                             </Popup>
                         </Grid>
-
-                        <!-- Transparent hit-area overlay that opens the popup on click -->
-                        <Border Grid.Row="0" Grid.RowSpan="3"
-                                Background="Transparent"
-                                x:Name="ClickOverlay"/>
                     </Grid>
 
                     <DataTemplate.Triggers>
-                        <!-- Open BarPopup on any click on the column -->
-                        <EventTrigger RoutedEvent="UIElement.MouseLeftButtonDown"
-                                      SourceName="BarRoot">
+                        <!-- Selection Highlight -->
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListBoxItem}, Path=IsSelected}" Value="True">
+                            <Setter TargetName="AnimatedBar" Property="Opacity" Value="1"/>
+                            <Setter TargetName="SelectionCircle" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="DayLabel" Property="Foreground" Value="{DynamicResource OneUiChartSelectedDayText}"/>
+                            <Setter TargetName="DayLabel" Property="FontWeight" Value="Bold"/>
+                        </DataTrigger>
+                        <!-- Mouse Over opens the popup -->
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard>
-                                    <ObjectAnimationUsingKeyFrames
-                                        Storyboard.TargetName="BarPopup"
-                                        Storyboard.TargetProperty="IsOpen">
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BarPopup" Storyboard.TargetProperty="IsOpen">
                                         <DiscreteObjectKeyFrame KeyTime="0:0:0">
                                             <DiscreteObjectKeyFrame.Value>
                                                 <sys:Boolean>True</sys:Boolean>
+                                            </DiscreteObjectKeyFrame.Value>
+                                        </DiscreteObjectKeyFrame>
+                                    </ObjectAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BarPopup" Storyboard.TargetProperty="IsOpen">
+                                        <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                            <DiscreteObjectKeyFrame.Value>
+                                                <sys:Boolean>False</sys:Boolean>
                                             </DiscreteObjectKeyFrame.Value>
                                         </DiscreteObjectKeyFrame>
                                     </ObjectAnimationUsingKeyFrames>

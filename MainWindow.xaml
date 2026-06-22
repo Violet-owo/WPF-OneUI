@@ -1,4 +1,4 @@
-<Window x:Class="SamsungUi.Demo.MainWindow"
+<sui:SamsungWindow x:Class="SamsungUi.Demo.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,8 @@
         xmlns:sui="clr-namespace:SamsungUi.Controls;assembly=SamsungUi"
         mc:Ignorable="d"
         Title="Samsung One UI WPF Component Gallery" Height="750" Width="1100"
-        MinWidth="450" Background="{DynamicResource OneUiBackgroundBrush}" FontFamily="Roboto, Segoe UI">
+        MinWidth="450" Background="{DynamicResource OneUiBackgroundBrush}" FontFamily="Roboto, Segoe UI"
+        Style="{DynamicResource {x:Type sui:SamsungWindow}}">
 
     <AdornerDecorator>
         <Grid>
@@ -28,4 +29,4 @@
             </sui:SamsungNavigationBar>
         </Grid>
     </AdornerDecorator>
-</Window>
+</sui:SamsungWindow>

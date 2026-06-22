@@ -1,0 +1,307 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sui="clr-namespace:SamsungUi.Controls">
+
+    <!-- Checkerboard Brush -->
+    <DrawingBrush x:Key="OneUiCheckerboardBrush" Viewport="0,0,12,12" ViewportUnits="Absolute" TileMode="Tile">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="#E0E0E0">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0,0,12,12"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FFFFFF">
+                    <GeometryDrawing.Geometry>
+                        <GeometryGroup>
+                            <RectangleGeometry Rect="0,0,6,6"/>
+                            <RectangleGeometry Rect="6,6,6,6"/>
+                        </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <LinearGradientBrush x:Key="OneUiHueGradient" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#FF0000" Offset="0"/>
+        <GradientStop Color="#FFFF00" Offset="0.16666"/>
+        <GradientStop Color="#00FF00" Offset="0.33333"/>
+        <GradientStop Color="#00FFFF" Offset="0.5"/>
+        <GradientStop Color="#0000FF" Offset="0.66666"/>
+        <GradientStop Color="#FF00FF" Offset="0.83333"/>
+        <GradientStop Color="#FF0000" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="OneUiSaturationGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFFFFFFF" Offset="0"/>
+        <GradientStop Color="#00FFFFFF" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Custom Slider Style for Brightness and Opacity -->
+    <Style x:Key="OneUiColorSliderStyle" TargetType="{x:Type Slider}">
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Slider}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" CornerRadius="12">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto" MinHeight="{TemplateBinding MinHeight}"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Track x:Name="PART_Track" Grid.Row="1">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static Slider.DecreaseLarge}">
+                                        <RepeatButton.Template>
+                                            <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                <Border Background="Transparent"/>
+                                            </ControlTemplate>
+                                        </RepeatButton.Template>
+                                    </RepeatButton>
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static Slider.IncreaseLarge}">
+                                        <RepeatButton.Template>
+                                            <ControlTemplate TargetType="{x:Type RepeatButton}">
+                                                <Border Background="Transparent"/>
+                                            </ControlTemplate>
+                                        </RepeatButton.Template>
+                                    </RepeatButton>
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Focusable="false" OverridesDefaultStyle="true" VerticalAlignment="Center" Width="24" Height="24">
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="{x:Type Thumb}">
+                                                <Ellipse Fill="#FFFFFF" Stroke="#E0E0E0" StrokeThickness="1" Effect="{DynamicResource OneUiCardShadow}"/>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- TextBox style for Hex and RGB -->
+    <Style x:Key="OneUiColorInputStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="10">
+                        <ScrollViewer x:Name="PART_ContentHost" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource OneUiControlBackgroundHoverBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Main SamsungColorPicker Style -->
+    <Style TargetType="{x:Type sui:SamsungColorPicker}">
+        <Setter Property="Background" Value="{DynamicResource OneUiBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungColorPicker}">
+                    <Grid>
+                        <!-- Button Swatch -->
+                        <Button x:Name="PART_ToggleButton"
+                                Width="40" Height="40"
+                                Background="Transparent" BorderThickness="0">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Ellipse x:Name="EllipseSwatch" Stroke="{DynamicResource OneUiBorderBrush}" StrokeThickness="1">
+                                            <Ellipse.Fill>
+                                                <SolidColorBrush Color="{Binding SelectedColor, RelativeSource={RelativeSource AncestorType=sui:SamsungColorPicker}}"/>
+                                            </Ellipse.Fill>
+                                        </Ellipse>
+                                        <Border x:Name="PlusSwatch" Background="{DynamicResource OneUiControlBackgroundHoverBrush}" CornerRadius="20" SnapsToDevicePixels="True" Visibility="Collapsed">
+                                            <TextBlock Text="+" FontSize="24" FontWeight="Light" Foreground="{DynamicResource OneUiTextPrimaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-4,0,0"/>
+                                        </Border>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding UsePlusIcon, RelativeSource={RelativeSource AncestorType=sui:SamsungColorPicker}}" Value="True">
+                                            <Setter TargetName="EllipseSwatch" Property="Visibility" Value="Collapsed"/>
+                                            <Setter TargetName="PlusSwatch" Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <!-- Popup -->
+                        <Popup x:Name="PART_Popup" AllowsTransparency="True" StaysOpen="False" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" PlacementTarget="{Binding ElementName=PART_ToggleButton}" Placement="Bottom" VerticalOffset="8">
+                            <!-- Dropdown Card -->
+                            <Border Background="{DynamicResource OneUiSurfaceBrush}" 
+                                    CornerRadius="24" 
+                                    Effect="{DynamicResource OneUiCardShadow}"
+                                    Margin="20"
+                                    Width="360"
+                                    Padding="24">
+                                <StackPanel>
+                                    
+                                    <!-- Spectrum 2D Area -->
+                                    <Border CornerRadius="12" Height="200" Margin="0,0,0,24" ClipToBounds="True">
+                                        <Grid x:Name="PART_SpectrumArea" Background="Transparent" Cursor="Cross">
+                                            <!-- Hue Background -->
+                                            <Rectangle Fill="{StaticResource OneUiHueGradient}"/>
+                                            <!-- Saturation Overlay -->
+                                            <Rectangle Fill="{StaticResource OneUiSaturationGradient}"/>
+                                            
+                                            <!-- Thumb -->
+                                            <Canvas>
+                                                <Ellipse x:Name="PART_SpectrumThumb" Width="28" Height="28" Stroke="#FFFFFF" StrokeThickness="2" Fill="Transparent" Effect="{DynamicResource OneUiCardShadow}">
+                                                </Ellipse>
+                                            </Canvas>
+                                        </Grid>
+                                    </Border>
+                                    
+                                    <!-- Brightness Slider -->
+                                    <Grid Margin="0,0,0,16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="60"/>
+                                        </Grid.ColumnDefinitions>
+                                        <!-- Track Background -->
+                                        <Border CornerRadius="12" Height="24" Margin="0,0,16,0">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="#000000" Offset="0"/>
+                                                    <!-- Dynamic stop color bound to pure hue -->
+                                                    <GradientStop Color="{Binding PureHueBrush.Color, RelativeSource={RelativeSource AncestorType=sui:SamsungColorPicker}}" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <Slider x:Name="PART_BrightnessSlider" Minimum="0" Maximum="1" Value="{Binding Value, RelativeSource={RelativeSource AncestorType=sui:SamsungColorPicker}}" Style="{StaticResource OneUiColorSliderStyle}"/>
+                                        </Border>
+                                        <TextBlock Grid.Column="1" Text="{Binding Value, RelativeSource={RelativeSource AncestorType=sui:SamsungColorPicker}, StringFormat={}{0:P0}}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Foreground="{DynamicResource OneUiTextPrimaryBrush}" FontWeight="Medium"/>
+                                    </Grid>
+                                    
+                                    <!-- Opacity Slider -->
+                                    <Grid Margin="0,0,0,24">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="60"/>
+                                        </Grid.ColumnDefinitions>
+                                        <!-- Track Background -->
+                                        <Border CornerRadius="12" Height="24" Margin="0,0,16,0" Background="{StaticResource OneUiCheckerboardBrush}">
+                                            <Border CornerRadius="12">
+                                                <Border.Background>
+                                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                                        <GradientStop Color="{Binding PureHueBrush.Color, RelativeSource={RelativeSource AncestorType=sui:SamsungColorPicker}}" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Border.Background>
+                                                <Slider x:Name="PART_OpacitySlider" Minimum="0" Maximum="1" Value="{Binding Alpha, RelativeSource={RelativeSource AncestorType=sui:SamsungColorPicker}}" Style="{StaticResource OneUiColorSliderStyle}"/>
+                                            </Border>
+                                        </Border>
+                                        <TextBlock Grid.Column="1" Text="{Binding Alpha, RelativeSource={RelativeSource AncestorType=sui:SamsungColorPicker}, StringFormat={}{0:P0}}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="16" Foreground="{DynamicResource OneUiTextPrimaryBrush}" FontWeight="Medium"/>
+                                    </Grid>
+                                    
+                                    <!-- RGB / Hex Inputs -->
+                                    <Grid Margin="0,0,0,24">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="60"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="50"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        
+                                        <!-- Selected Color Preview -->
+                                        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" CornerRadius="12" Width="40" Height="40" HorizontalAlignment="Left" Background="{StaticResource OneUiCheckerboardBrush}">
+                                            <Border CornerRadius="12">
+                                                <Border.Background>
+                                                    <SolidColorBrush Color="{Binding SelectedColor, RelativeSource={RelativeSource AncestorType=sui:SamsungColorPicker}}"/>
+                                                </Border.Background>
+                                            </Border>
+                                        </Border>
+
+                                        <!-- Labels -->
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="Hex" Style="{DynamicResource OneUiSmallGrayStyle}" HorizontalAlignment="Center"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="2" Text="Red" Style="{DynamicResource OneUiSmallGrayStyle}" HorizontalAlignment="Center"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="3" Text="Green" Style="{DynamicResource OneUiSmallGrayStyle}" HorizontalAlignment="Center"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="4" Text="Blue" Style="{DynamicResource OneUiSmallGrayStyle}" HorizontalAlignment="Center"/>
+                                        
+                                        <!-- TextBoxes -->
+                                        <TextBox x:Name="PART_HexTextBox" Grid.Row="1" Grid.Column="1" Text="#ABC1DD" Style="{StaticResource OneUiColorInputStyle}" Height="32" Margin="0,4,0,0"/>
+                                        <TextBox x:Name="PART_RTextBox" Grid.Row="1" Grid.Column="2" Text="171" Style="{StaticResource OneUiColorInputStyle}" Height="32" Margin="4,4,0,0"/>
+                                        <TextBox x:Name="PART_GTextBox" Grid.Row="1" Grid.Column="3" Text="193" Style="{StaticResource OneUiColorInputStyle}" Height="32" Margin="4,4,0,0"/>
+                                        <TextBox x:Name="PART_BTextBox" Grid.Row="1" Grid.Column="4" Text="221" Style="{StaticResource OneUiColorInputStyle}" Height="32" Margin="4,4,0,0"/>
+                                    </Grid>
+                                    
+                                    <!-- Recent Colors -->
+                                    <StackPanel Margin="0,0,0,24">
+                                        <Border BorderThickness="0,1,0,0" BorderBrush="{DynamicResource OneUiBorderBrush}" Margin="0,0,0,16" Padding="0,16,0,0">
+                                            <TextBlock Text="Recently used colors" Style="{DynamicResource OneUiSmallGrayStyle}" HorizontalAlignment="Left"/>
+                                        </Border>
+                                        <!-- Eyedropper placeholder -> skipped for now but icon added -->
+                                        <Grid>
+                                            <ItemsControl ItemsSource="{Binding RecentColors, RelativeSource={RelativeSource AncestorType=sui:SamsungColorPicker}}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel Orientation="Horizontal"/>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Button Width="36" Height="36" Margin="0,0,12,0" Background="Transparent" BorderThickness="0">
+                                                            <Button.Template>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <Ellipse Stroke="{DynamicResource OneUiBorderBrush}" StrokeThickness="1">
+                                                                        <Ellipse.Fill>
+                                                                            <SolidColorBrush Color="{Binding}"/>
+                                                                        </Ellipse.Fill>
+                                                                    </Ellipse>
+                                                                </ControlTemplate>
+                                                            </Button.Template>
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </Grid>
+                                    </StackPanel>
+                                    
+                                    <!-- Buttons -->
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="8"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <sui:SamsungButton x:Name="PART_CancelButton" Grid.Column="0" Content="Cancel"/>
+                                        <sui:SamsungButton x:Name="PART_DoneButton" Grid.Column="2" Content="Done" Variant="Primary"/>
+                                    </Grid>
+                                    
+                                </StackPanel>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

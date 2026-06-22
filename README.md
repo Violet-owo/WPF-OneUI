@@ -13,6 +13,8 @@
 ## 🇬🇧 English
 
 ### 📖 About this project
+> 📚 **[View the Component Documentation (Wiki)](docs/Home.md)**
+
 I built this library purely out of passion and as a personal hobby. I've always loved the clean, rounded aesthetics of Samsung devices and wanted to bring that same experience to WPF desktop applications. 
 Since this is a solo passion project (with the occasional help of an AI assistant to speed up the boring parts!), please consider it a **Work In Progress**. You might encounter some minor bugs or missing features.
 
@@ -70,51 +72,25 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // or ThemeType.Light
 | Slider | `<sui:SamsungSlider>` | 🟢 |
 | RadioButton | `<sui:SamsungRadioButton>` | 🟢 |
 | ProgressBar | `<sui:SamsungProgressBar>` | 🟢 |
+| Stopwatch | `<sui:SamsungStopwatch>` | 🟢 |
 | TabControl | `<sui:SamsungTabControl>` | 🟢 |
 | ToggleSwitch | `<sui:SamsungToggleSwitch>` | 🟢 |
 | ExpandablePage | `<sui:SamsungExpandablePage>` | 🟢 |
 | SegmentedBar | `<sui:SamsungSegmentedBar>` | 🟢 |
 | Modal | `<sui:SamsungModal>` | 🟢 |
 | NavigationBar | `<sui:SamsungNavigationBar>` | 🟢 |
-| DonutChart | `<sui:SamsungDonutChart>` | 🟡 |
-| ChartPopup | `<sui:SamsungChartPopup>` | 🟢 |
 | ToastService | `SamsungToastService.Show()` | 🟢 |
+| DateTimePicker | `<sui:SamsungDateTimePicker>` | 🟢 |
+| ColorPicker | `<sui:SamsungColorPicker>` | 🟢 |
+| Chart (Bar/Donut) | `<sui:SamsungChart>` | 🟢 |
+| ComboBox | `<sui:SamsungComboBox>` | 🟢 |
+| Badge | `<sui:SamsungBadge>` | 🟢 |
+| Stepper | `<sui:SamsungStepper>` | 🟢 |
+| Expander | `<sui:SamsungExpander>` | 🟢 |
+| Tooltip | `ToolTip="..."` | 🟢 |
+| Window | `<sui:SamsungWindow>` | 🟢 |
+| DataGrid | `<sui:SamsungDataGrid>` | 🟡 |
 | Gallery | `<sui:Gallery>` (Concept) | 🟡 |
-| Notification | `<sui:SamsungNotification>` | 🔴 |
-| Expander | `<sui:SamsungExpander>` | 🟡 |
-| GroupBox | `<sui:SamsungGroupBox>` | 🟡 |
-| ScrollViewer | `<sui:SamsungScrollViewer>` | 🟡 |
-| SplitContainer | `<sui:SamsungSplitContainer>` | 🟡 |
-| ComboBox | `<sui:SamsungComboBox>` | 🔴 |
-| AutoCompleteBox | `<sui:SamsungAutoCompleteBox>` | 🔴 |
-| NumericUpDown | `<sui:SamsungNumericUpDown>` | 🔴 |
-| DateTimePicker | `<sui:SamsungDateTimePicker>` | 🔴 |
-| MaskedTextBox | `<sui:SamsungMaskedTextBox>` | 🔴 |
-| ColorPicker | `<sui:SamsungColorPicker>` | 🔴 |
-| DataGrid | `<sui:SamsungDataGrid>` | 🔴 |
-| ListView | `<sui:SamsungListView>` | 🔴 |
-| TreeView | `<sui:SamsungTreeView>` | 🔴 |
-| PropertyGrid | `<sui:SamsungPropertyGrid>` | 🔴 |
-| Chart | `<sui:SamsungChart>` | 🔴 |
-| Gauge | `<sui:SamsungGauge>` | 🔴 |
-| Menu | `<sui:SamsungMenu>` | 🔴 |
-| ContextMenu | `<sui:SamsungContextMenu>` | 🔴 |
-| Ribbon | `<sui:SamsungRibbon>` | 🔴 |
-| NavigationView | `<sui:SamsungNavigationView>` | 🔴 |
-| BreadcrumbBar | `<sui:SamsungBreadcrumbBar>` | 🔴 |
-| Pagination | `<sui:SamsungPagination>` | 🔴 |
-| BusyIndicator | `<sui:SamsungBusyIndicator>` | 🔴 |
-| Tooltip | `<sui:SamsungTooltip>` | 🔴 |
-| StatusBar | `<sui:SamsungStatusBar>` | 🔴 |
-| Rating | `<sui:SamsungRating>` | 🔴 |
-| Window | `<sui:SamsungWindow>` | 🔴 |
-| Dialog | `<sui:SamsungDialog>` | 🔴 |
-| Popup | `<sui:SamsungPopup>` | 🔴 |
-| Flyout | `<sui:SamsungFlyout>` | 🔴 |
-| Label | `<sui:SamsungLabel>` | 🔴 |
-| Hyperlink | `<sui:SamsungHyperlink>` | 🔴 |
-| RichTextBox | `<sui:SamsungRichTextBox>` | 🔴 |
-| Image | `<sui:SamsungImage>` | 🔴 |
 
 *(Legend: 🟢 Completed | 🟡 Work in Progress | 🔴 Draft/Defective)*
 
@@ -144,6 +120,8 @@ Here are some quick examples of how to use the components in your XAML:
 ## 🇮🇹 Italiano
 
 ### 📖 Il progetto
+> 📚 **[Visualizza la Documentazione dei Componenti (Wiki)](docs/Home.md)**
+
 Ho creato questa libreria per pura passione e come passatempo personale. Ho sempre adorato l'estetica pulita e tondeggiante dei dispositivi Samsung e volevo portare la stessa esperienza sulle applicazioni desktop WPF.
 Trattandosi di un progetto amatoriale sviluppato nel tempo libero (aiutandomi di tanto in tanto con un assistente IA per velocizzare le parti più tediose!), ti prego di considerarlo un **Work In Progress**. Il codice potrebbe contenere ancora dei piccoli errori o comportamenti imprevisti.
 
@@ -201,51 +179,25 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // o ThemeType.Light
 | Slider | `<sui:SamsungSlider>` | 🟢 |
 | RadioButton | `<sui:SamsungRadioButton>` | 🟢 |
 | ProgressBar | `<sui:SamsungProgressBar>` | 🟢 |
+| Stopwatch | `<sui:SamsungStopwatch>` | 🟢 |
 | TabControl | `<sui:SamsungTabControl>` | 🟢 |
 | ToggleSwitch | `<sui:SamsungToggleSwitch>` | 🟢 |
 | ExpandablePage | `<sui:SamsungExpandablePage>` | 🟢 |
 | SegmentedBar | `<sui:SamsungSegmentedBar>` | 🟢 |
 | Modal | `<sui:SamsungModal>` | 🟢 |
 | NavigationBar | `<sui:SamsungNavigationBar>` | 🟢 |
-| DonutChart | `<sui:SamsungDonutChart>` | 🟡 |
-| ChartPopup | `<sui:SamsungChartPopup>` | 🟡 |
 | ToastService | `SamsungToastService.Show()` | 🟢 |
+| DateTimePicker | `<sui:SamsungDateTimePicker>` | 🟢 |
+| ColorPicker | `<sui:SamsungColorPicker>` | 🟢 |
+| Chart (Bar/Donut) | `<sui:SamsungChart>` | 🟢 |
+| ComboBox | `<sui:SamsungComboBox>` | 🟢 |
+| Badge | `<sui:SamsungBadge>` | 🟢 |
+| Stepper | `<sui:SamsungStepper>` | 🟢 |
+| Expander | `<sui:SamsungExpander>` | 🟢 |
+| Tooltip | `ToolTip="..."` | 🟢 |
+| Window | `<sui:SamsungWindow>` | 🟢 |
+| DataGrid | `<sui:SamsungDataGrid>` | 🟡 |
 | Gallery | `<sui:Gallery>` (Concept) | 🟡 |
-| Notification | `<sui:SamsungNotification>` | 🔴 |
-| Expander | `<sui:SamsungExpander>` | 🔴 |
-| GroupBox | `<sui:SamsungGroupBox>` | 🔴 |
-| ScrollViewer | `<sui:SamsungScrollViewer>` | 🔴 |
-| SplitContainer | `<sui:SamsungSplitContainer>` | 🔴 |
-| ComboBox | `<sui:SamsungComboBox>` | 🔴 |
-| AutoCompleteBox | `<sui:SamsungAutoCompleteBox>` | 🔴 |
-| NumericUpDown | `<sui:SamsungNumericUpDown>` | 🔴 |
-| DateTimePicker | `<sui:SamsungDateTimePicker>` | 🔴 |
-| MaskedTextBox | `<sui:SamsungMaskedTextBox>` | 🔴 |
-| ColorPicker | `<sui:SamsungColorPicker>` | 🔴 |
-| DataGrid | `<sui:SamsungDataGrid>` | 🔴 |
-| ListView | `<sui:SamsungListView>` | 🔴 |
-| TreeView | `<sui:SamsungTreeView>` | 🔴 |
-| PropertyGrid | `<sui:SamsungPropertyGrid>` | 🔴 |
-| Chart | `<sui:SamsungChart>` | 🔴 |
-| Gauge | `<sui:SamsungGauge>` | 🔴 |
-| Menu | `<sui:SamsungMenu>` | 🔴 |
-| ContextMenu | `<sui:SamsungContextMenu>` | 🔴 |
-| Ribbon | `<sui:SamsungRibbon>` | 🔴 |
-| NavigationView | `<sui:SamsungNavigationView>` | 🔴 |
-| BreadcrumbBar | `<sui:SamsungBreadcrumbBar>` | 🔴 |
-| Pagination | `<sui:SamsungPagination>` | 🔴 |
-| BusyIndicator | `<sui:SamsungBusyIndicator>` | 🔴 |
-| Tooltip | `<sui:SamsungTooltip>` | 🔴 |
-| StatusBar | `<sui:SamsungStatusBar>` | 🔴 |
-| Rating | `<sui:SamsungRating>` | 🔴 |
-| Window | `<sui:SamsungWindow>` | 🔴 |
-| Dialog | `<sui:SamsungDialog>` | 🔴 |
-| Popup | `<sui:SamsungPopup>` | 🔴 |
-| Flyout | `<sui:SamsungFlyout>` | 🔴 |
-| Label | `<sui:SamsungLabel>` | 🔴 |
-| Hyperlink | `<sui:SamsungHyperlink>` | 🔴 |
-| RichTextBox | `<sui:SamsungRichTextBox>` | 🔴 |
-| Image | `<sui:SamsungImage>` | 🔴 |
 
 *(Legenda: 🟢 Completato | 🟡 Work in Progress | 🔴 Bozza/Difettoso)*
 

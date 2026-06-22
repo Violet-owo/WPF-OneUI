@@ -30,6 +30,30 @@
                         <sui:SamsungPasswordBox Height="50" Password="SecretPassword"/>
                     </StackPanel>
                 </sui:SamsungCard>
+                <!-- Date & Time Pickers -->
+                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Date &amp; Time"/>
+                        
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Date only" Margin="4,0,0,4" />
+                        <sui:SamsungDateTimePicker PickerMode="Date" PlaceholderText="Select date" Margin="0,0,0,16"/>
+                        
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Time only" Margin="4,0,0,4" />
+                        <sui:SamsungDateTimePicker PickerMode="Time" PlaceholderText="Select time" Margin="0,0,0,16"/>
+
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Date &amp; Time (with seconds)" Margin="4,0,0,4" />
+                        <sui:SamsungDateTimePicker PickerMode="DateTime" ShowSeconds="True" PlaceholderText="Select date and time"/>
+                    </StackPanel>
+                </sui:SamsungCard>
+                <!-- Color Picker -->
+                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Color Picker"/>
+                        
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Accent Color" Margin="4,0,0,4" />
+                        <sui:SamsungColorPicker Margin="0,0,0,16" SelectedColor="#FFABC1DD" />
+                    </StackPanel>
+                </sui:SamsungCard>
                 <!-- Controls-->
                 <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
@@ -99,7 +123,67 @@
                         <sui:SamsungEditBox Hint="Età" InputType="Number"/>
                     </StackPanel>
                 </sui:SamsungCard>
+                <!--Gestionale Components-->
+                <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Management Controls"/>
+                        
+                        <!-- Badges -->
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Status Badges" Margin="0,0,0,8"/>
+                        <WrapPanel Margin="0,0,0,16">
+                            <sui:SamsungBadge Content="Success" BadgeStyle="Success" Margin="0,0,8,8"/>
+                            <sui:SamsungBadge Content="Warning" BadgeStyle="Warning" Margin="0,0,8,8"/>
+                            <sui:SamsungBadge Content="Error" BadgeStyle="Error" Margin="0,0,8,8"/>
+                            <sui:SamsungBadge Content="Primary" BadgeStyle="Primary" Margin="0,0,8,8"/>
+                        </WrapPanel>
+                        
+                        <!-- ComboBox -->
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Combo Box" Margin="0,0,0,8"/>
+                        <sui:SamsungComboBox Margin="0,0,0,16" SelectedIndex="0">
+                            <ComboBoxItem Content="Option 1" />
+                            <ComboBoxItem Content="Option 2" />
+                            <ComboBoxItem Content="Option 3" />
+                        </sui:SamsungComboBox>
+                        
+                        <!-- Tooltip -->
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Tooltip" Margin="0,0,0,8"/>
+                        <sui:SamsungButton Content="Hover me for Tooltip" Margin="0,0,0,16" ToolTip="This is a smart tooltip!"/>
+                    </StackPanel>
+                </sui:SamsungCard>
+                
             </WrapPanel>
+
+            <!--Tab Control & Stepper a larghezza intera-->
+            <sui:SamsungCard Margin="8,8,8,24" HorizontalAlignment="Stretch">
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Layout &amp; Wizards"/>
+                    
+                    <!-- Tab Control -->
+                    <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Tab Control" Margin="0,0,0,8"/>
+                    <sui:SamsungTabControl Margin="0,0,0,16">
+                        <sui:SamsungTabItem Header="Details">
+                            <TextBlock Text="Customer details go here." Style="{DynamicResource OneUiNormalStyle}" Margin="24"/>
+                        </sui:SamsungTabItem>
+                        <sui:SamsungTabItem Header="Invoices">
+                            <TextBlock Text="List of invoices." Style="{DynamicResource OneUiNormalStyle}" Margin="24"/>
+                        </sui:SamsungTabItem>
+                    </sui:SamsungTabControl>
+                    
+                    <!-- Stepper -->
+                    <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Stepper (Horizontal)" Margin="0,0,0,8"/>
+                    <sui:SamsungStepper Orientation="Horizontal">
+                        <sui:SamsungStepperItem StepIndex="1" IsCompleted="True">
+                            <TextBlock Text="Details" Style="{DynamicResource OneUiNormalStyle}"/>
+                        </sui:SamsungStepperItem>
+                        <sui:SamsungStepperItem StepIndex="2" IsCurrent="True">
+                            <TextBlock Text="Payment" Style="{DynamicResource OneUiNormalStyle}"/>
+                        </sui:SamsungStepperItem>
+                        <sui:SamsungStepperItem StepIndex="3" IsLastStep="True">
+                            <TextBlock Text="Done" Style="{DynamicResource OneUiNormalStyle}"/>
+                        </sui:SamsungStepperItem>
+                    </sui:SamsungStepper>
+                </StackPanel>
+            </sui:SamsungCard>
             <!--Sliders-->
                 <TextBlock Style="{DynamicResource OneUiTitleStyle}" Text="Sliders &amp; Stepped Sliders" Margin="24,40,24,10" HorizontalAlignment="Left"/>
 

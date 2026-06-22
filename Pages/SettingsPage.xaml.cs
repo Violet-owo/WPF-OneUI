@@ -130,29 +130,9 @@ namespace SamsungUi.Demo.Pages
             mergedDicts.Insert(0, new ResourceDictionary { Source = new Uri("pack://application:,,,/SamsungUi;component/Themes/ColorsLight.xaml") });
         }
 
-        private void OpenColorPicker_Click(object sender, RoutedEventArgs e)
+        private void AccentColorPicker_ColorApplied(object sender, RoutedEventArgs e)
         {
-            var currentBrush = Application.Current.Resources["OneUiPrimaryBrush"] as SolidColorBrush;
-            if (currentBrush != null)
-            {
-                _isUpdatingSliders = true;
-                RedSlider.Value = currentBrush.Color.R;
-                GreenSlider.Value = currentBrush.Color.G;
-                BlueSlider.Value = currentBrush.Color.B;
-                UpdatePreviewColor();
-                _isUpdatingSliders = false;
-            }
-            ColorPickerModal.IsOpen = true;
-        }
-
-        private void CloseColorPicker_Click(object sender, RoutedEventArgs e)
-        {
-            ColorPickerModal.IsOpen = false;
-        }
-
-        private void ApplyCustomColor_Click(object sender, RoutedEventArgs e)
-        {
-            var color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value);
+            var color = AccentColorPicker.SelectedColor;
             var brush = new SolidColorBrush(color);
             
             // Deselect all other colors before adding the new one
@@ -164,24 +144,6 @@ namespace SamsungUi.Demo.Pages
             CustomColorSeparator.Visibility = Visibility.Visible;
             
             ApplyAccentColor(color);
-            ColorPickerModal.IsOpen = false;
-        }
-
-        private void ColorSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (!_isUpdatingSliders && ColorPreviewBorder != null)
-            {
-                UpdatePreviewColor();
-            }
-        }
-
-        private void UpdatePreviewColor()
-        {
-            if (RedSlider == null || GreenSlider == null || BlueSlider == null || ColorPreviewBorder == null)
-                return;
-
-            var color = Color.FromRgb((byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value);
-            ColorPreviewBorder.Background = new SolidColorBrush(color);
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)

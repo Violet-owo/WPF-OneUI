@@ -5,7 +5,7 @@ using SamsungUi.Controls;
 
 namespace SamsungUi.Demo
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : SamsungWindow
     {
         // --- Fields ---
         private ControlsPage _controlsPage;

@@ -18,11 +18,20 @@
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ScrollBar.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/PageTransitions.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/SelectionControls.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Window.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Tooltip.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Badge.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ComboBox.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Stepper.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/TabControl.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ProgressIndicators.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Layout.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Lists.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Notification.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/BasicControls.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Stopwatch.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/DateTimePicker.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ColorPicker.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

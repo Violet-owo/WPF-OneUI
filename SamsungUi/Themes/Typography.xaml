@@ -32,7 +32,6 @@
     <Style x:Key="OneUiTitleStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="{DynamicResource OneUiTitleFontSize}"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
         <Setter Property="Margin" Value="0,0,0,16"/>
     </Style>
 
@@ -40,7 +39,6 @@
     <Style x:Key="OneUiSubtitleStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="{DynamicResource OneUiSubtitleFontSize}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
         <Setter Property="Margin" Value="0,0,0,8"/>
     </Style>
 
@@ -48,14 +46,12 @@
     <Style x:Key="OneUiNormalStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="{DynamicResource OneUiNormalFontSize}"/>
         <Setter Property="FontWeight" Value="Normal"/>
-        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
     </Style>
 
     <!-- Piccolo -->
     <Style x:Key="OneUiSmallStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="{DynamicResource OneUiSmallFontSize}"/>
         <Setter Property="FontWeight" Value="Normal"/>
-        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
     </Style>
 
     <!-- Piccolo Grigio -->

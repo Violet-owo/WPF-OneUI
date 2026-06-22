@@ -1,0 +1,164 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sui="clr-namespace:SamsungUi.Controls">
+
+    <!-- ToggleButton per il ComboBox -->
+    <ControlTemplate x:Key="SamsungComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
+            <Border x:Name="Border" 
+                    Grid.ColumnSpan="2"
+                    CornerRadius="12"
+                    Background="{DynamicResource OneUiControlBackgroundBrush}"
+                    BorderBrush="Transparent"
+                    BorderThickness="1" />
+            <Border Grid.Column="0"
+                    CornerRadius="12,0,0,12" 
+                    Margin="1" 
+                    Background="Transparent" />
+            <!-- Icona freccia (Arrow) -->
+            <Path x:Name="Arrow" 
+                  Grid.Column="1"     
+                  Fill="{DynamicResource OneUiTextPrimaryBrush}" 
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Data="M 0 0 L 4 4 L 8 0 Z"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource OneUiSurfaceBrush}"/>
+                <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource OneUiBorderBrush}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource OneUiSurfaceBrush}"/>
+                <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                <!-- Ruota la freccia quando aperto -->
+                <Setter TargetName="Arrow" Property="RenderTransform">
+                    <Setter.Value>
+                        <RotateTransform Angle="180" CenterX="4" CenterY="2"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Border" Property="Opacity" Value="0.5"/>
+                <Setter TargetName="Arrow" Property="Opacity" Value="0.5"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!-- Stile ComboBox -->
+    <Style TargetType="{x:Type sui:SamsungComboBox}">
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource OneUiControlBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="Padding" Value="16,12"/>
+        <Setter Property="FontSize" Value="{DynamicResource OneUiNormalFontSize}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungComboBox}">
+                    <Grid>
+                        <!-- Pulsante per aprire/chiudere -->
+                        <ToggleButton x:Name="ToggleButton" 
+                                      Template="{StaticResource SamsungComboBoxToggleButton}"
+                                      Grid.Column="2" 
+                                      Focusable="false"
+                                      IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ClickMode="Press">
+                        </ToggleButton>
+                        
+                        <ContentPresenter x:Name="ContentSite" 
+                                          IsHitTestVisible="False" 
+                                          Content="{TemplateBinding SelectionBoxItem}"
+                                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                          Margin="{TemplateBinding Padding}"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Left" />
+
+                        <!-- Menu a tendina (Popup) -->
+                        <Popup x:Name="Popup" 
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True" 
+                               Focusable="False"
+                               PopupAnimation="Fade">
+                            <Grid x:Name="DropDown"
+                                  SnapsToDevicePixels="True"                
+                                  MinWidth="{TemplateBinding ActualWidth}"
+                                  MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                  Margin="0,4,0,8">
+                                <Grid.RenderTransform>
+                                    <TranslateTransform Y="0"/>
+                                </Grid.RenderTransform>
+                                <Border x:Name="DropDownBorder"
+                                        Background="{DynamicResource OneUiSurfaceBrush}"
+                                        BorderThickness="1"
+                                        BorderBrush="{DynamicResource OneUiControlBackgroundBrush}"
+                                        CornerRadius="12"
+                                        Effect="{DynamicResource OneUiModalShadow}"/>
+                                <!-- ScrollViewer contenente gli elementi -->
+                                <ScrollViewer Margin="0,8" SnapsToDevicePixels="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <!-- Animazione del Popup -->
+                        <Trigger Property="IsDropDownOpen" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="DropDown" 
+                                                         Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)" 
+                                                         From="-10" To="0" Duration="0:0:0.15">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- Stile per i singoli ComboBoxItem -->
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type ComboBoxItem}">
+                    <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Padding" Value="16,10"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                                <Border x:Name="ItemBorder" Background="{TemplateBinding Background}" CornerRadius="8" Margin="8,0,8,0">
+                                    <ContentPresenter Margin="{TemplateBinding Padding}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="ItemBorder" Property="Background" Value="{DynamicResource OneUiControlBackgroundBrush}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="ItemBorder" Property="Background" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

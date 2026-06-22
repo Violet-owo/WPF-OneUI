@@ -1,0 +1,420 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sui="clr-namespace:SamsungUi.Controls">
+
+    <!-- Stile per i giorni del calendario -->
+    <Style x:Key="OneUiCalendarDayItemStyle" TargetType="ListBoxItem">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="Width" Value="36"/>
+        <Setter Property="Height" Value="36"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="Bd"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="18"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource OneUiBorderBrush}"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsCurrentMonth}" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource OneUiTextSecondaryBrush}"/>
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsToday}" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </DataTrigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource OneUiSurfaceBrush}"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Stile per gli anni del calendario -->
+    <Style x:Key="OneUiCalendarYearItemStyle" TargetType="ListBoxItem">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="4"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="Bd"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="20"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource OneUiBorderBrush}"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsCurrentYear}" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </DataTrigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource OneUiSurfaceBrush}"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Stile per il Tumbler del Time -->
+    <Style x:Key="OneUiTimeTumblerItemStyle" TargetType="ListBoxItem">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextSecondaryBrush}"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="12">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource OneUiBorderBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource OneUiSurfaceBrush}"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="24"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- SamsungDateTimePicker -->
+    <Style TargetType="{x:Type sui:SamsungDateTimePicker}">
+        <Setter Property="Background" Value="{DynamicResource OneUiInputBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource OneUiBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+        <Setter Property="Padding" Value="16,14"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type sui:SamsungDateTimePicker}">
+                    <Grid>
+                        <!-- DropDown Button (Looks like Expander header) -->
+                        <Button x:Name="PART_ToggleButton" 
+                                Background="{DynamicResource OneUiControlBackgroundBrush}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0"
+                                Foreground="{TemplateBinding Foreground}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="20"
+                                            MinHeight="40"
+                                            Padding="{TemplateBinding Padding}"
+                                            x:Name="BgBorder"
+                                            Effect="{DynamicResource OneUiCardShadow}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <!-- Display Text -->
+                                            <TextBlock x:Name="DisplayTextBlock" 
+                                                       Text="{Binding DisplayText, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}"
+                                                       Foreground="{TemplateBinding Foreground}"
+                                                       VerticalAlignment="Center"
+                                                       FontWeight="Normal"
+                                                       Padding="20,0,0,0"
+                                                       FontSize="{TemplateBinding FontSize}"/>
+                                            <!-- Icon -->
+                                            <Path x:Name="Arrow" Grid.Column="1" 
+                                                  Data="M 0 0 L 6 6 L 12 0" 
+                                                  Stroke="{DynamicResource OneUiTextPrimaryBrush}" StrokeThickness="2" 
+                                                  StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0,20,0" 
+                                                  RenderTransformOrigin="0.5,0.5">
+                                                <Path.RenderTransform>
+                                                    <RotateTransform Angle="0"/>
+                                                </Path.RenderTransform>
+                                            </Path>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding IsDropDownOpen, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}" Value="True">
+                                            <Setter TargetName="BgBorder" Property="Background" Value="{DynamicResource OneUiControlBackgroundHoverBrush}"/>
+                                            <Setter TargetName="Arrow" Property="RenderTransform">
+                                                <Setter.Value>
+                                                    <RotateTransform Angle="180"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding SelectedDate, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}" Value="{x:Null}">
+                                            <Setter TargetName="DisplayTextBlock" Property="Foreground" Value="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                            <Setter TargetName="DisplayTextBlock" Property="FontWeight" Value="Light"/>
+                                        </DataTrigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="BgBorder" Property="Background" Value="{DynamicResource OneUiControlBackgroundHoverBrush}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <!-- Popup -->
+                        <Popup x:Name="PART_Popup" 
+                               IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                               StaysOpen="False"
+                               AllowsTransparency="True"
+                               PlacementTarget="{Binding ElementName=PART_ToggleButton}"
+                               Placement="Bottom"
+                               VerticalOffset="8">
+                            <Border Background="{DynamicResource OneUiSurfaceBrush}"
+                                    CornerRadius="24"
+                                    Margin="16"
+                                    Effect="{DynamicResource OneUiPopupShadow}">
+                                
+                                <Grid Margin="24">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/> <!-- Pickers -->
+                                        <RowDefinition Height="Auto"/> <!-- Actions -->
+                                    </Grid.RowDefinitions>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        
+                                        <!-- DATE SECTION -->
+                                        <StackPanel x:Name="DateSection" Width="280">
+                                            <!-- Header: Month/Year and Navigation -->
+                                            <Grid Margin="0,0,0,16">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Button x:Name="PART_PrevMonthButton" Grid.Column="0" Width="40" Height="40" Cursor="Hand" Background="Transparent" BorderThickness="0">
+                                                    <Button.Template>
+                                                        <ControlTemplate TargetType="Button">
+                                                            <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="20">
+                                                                <TextBlock Text="&lt;" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource OneUiTextSecondaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource OneUiBorderBrush}"/>
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+                                                
+                                                <Button x:Name="PART_HeaderButton" Grid.Column="1" 
+                                                        Foreground="{DynamicResource OneUiTextPrimaryBrush}" Background="Transparent" BorderThickness="0" Cursor="Hand" Margin="8,0">
+                                                    <Button.Template>
+                                                        <ControlTemplate TargetType="Button">
+                                                            <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="16" Padding="12,4">
+                                                                <TextBlock Text="{Binding HeaderText, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}"
+                                                                           FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource OneUiBorderBrush}"/>
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+                                                           
+                                                <Button x:Name="PART_NextMonthButton" Grid.Column="2" Width="40" Height="40" Cursor="Hand" Background="Transparent" BorderThickness="0">
+                                                    <Button.Template>
+                                                        <ControlTemplate TargetType="Button">
+                                                            <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="20">
+                                                                <TextBlock Text="&gt;" FontSize="20" FontWeight="Bold" Foreground="{DynamicResource OneUiTextSecondaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2,0,0"/>
+                                                            </Border>
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource OneUiBorderBrush}"/>
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+                                            </Grid>
+
+                                            <Grid>
+                                                <StackPanel x:Name="MonthViewPanel">
+                                                    <!-- Week Days -->
+                                            <ItemsControl ItemsSource="{Binding WeekDays, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}" Margin="0,0,0,8">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <UniformGrid Columns="7"/>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+
+                                                    <!-- Days Grid -->
+                                                    <ListBox x:Name="PART_CalendarList" 
+                                                             ItemsSource="{Binding CalendarDays, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}"
+                                                             ItemContainerStyle="{StaticResource OneUiCalendarDayItemStyle}"
+                                                             Background="Transparent" BorderThickness="0"
+                                                             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                                        <ListBox.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <UniformGrid Columns="7"/>
+                                                            </ItemsPanelTemplate>
+                                                        </ListBox.ItemsPanel>
+                                                        <ListBox.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding DayNumber}"/>
+                                                            </DataTemplate>
+                                                        </ListBox.ItemTemplate>
+                                                    </ListBox>
+                                                </StackPanel>
+
+                                                <!-- Years Grid -->
+                                                <ListBox x:Name="PART_YearsList"
+                                                         ItemsSource="{Binding CalendarYears, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}"
+                                                         ItemContainerStyle="{StaticResource OneUiCalendarYearItemStyle}"
+                                                         Background="Transparent" BorderThickness="0"
+                                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                                    <ListBox.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <UniformGrid Columns="3" Rows="4"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ListBox.ItemsPanel>
+                                                    <ListBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding DisplayText}"/>
+                                                        </DataTemplate>
+                                                    </ListBox.ItemTemplate>
+                                                </ListBox>
+                                            </Grid>
+                                        </StackPanel>
+
+                                        <!-- Divider between Date and Time -->
+                                        <Border x:Name="SectionDivider" Width="1" Background="{DynamicResource OneUiBorderBrush}" Margin="24,0" Visibility="Collapsed"/>
+
+                                        <!-- TIME SECTION -->
+                                        <StackPanel x:Name="TimeSection" VerticalAlignment="Center">
+                                            <TextBlock Text="Time" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,0,0,16" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <!-- Hours -->
+                                                <ListBox x:Name="PART_HoursList" 
+                                                         ItemsSource="{Binding HoursList, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}"
+                                                         ItemContainerStyle="{StaticResource OneUiTimeTumblerItemStyle}"
+                                                         Height="160" Background="Transparent" BorderThickness="0"
+                                                         ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                                                    <ListBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding DisplayValue}"/>
+                                                        </DataTemplate>
+                                                    </ListBox.ItemTemplate>
+                                                </ListBox>
+                                                <TextBlock Text=":" FontSize="24" FontWeight="Bold" VerticalAlignment="Center" Margin="4,0" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                                <!-- Minutes -->
+                                                <ListBox x:Name="PART_MinutesList" 
+                                                         ItemsSource="{Binding MinutesList, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}"
+                                                         ItemContainerStyle="{StaticResource OneUiTimeTumblerItemStyle}"
+                                                         Height="160" Background="Transparent" BorderThickness="0"
+                                                         ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                                                    <ListBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding DisplayValue}"/>
+                                                        </DataTemplate>
+                                                    </ListBox.ItemTemplate>
+                                                </ListBox>
+                                                <!-- Seconds -->
+                                                <StackPanel x:Name="SecondsPanel" Orientation="Horizontal" Visibility="Collapsed">
+                                                    <TextBlock Text=":" FontSize="24" FontWeight="Bold" VerticalAlignment="Center" Margin="4,0" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                                    <ListBox x:Name="PART_SecondsList" 
+                                                             ItemsSource="{Binding SecondsList, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}"
+                                                             ItemContainerStyle="{StaticResource OneUiTimeTumblerItemStyle}"
+                                                             Height="160" Background="Transparent" BorderThickness="0"
+                                                             ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                                                        <ListBox.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding DisplayValue}"/>
+                                                            </DataTemplate>
+                                                        </ListBox.ItemTemplate>
+                                                    </ListBox>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                    <!-- Actions -->
+                                    <Grid Grid.Row="1" Margin="0,24,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <sui:SamsungButton x:Name="PART_CancelButton" Content="{Binding CancelText, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}" Variant="Normal" Margin="0,0,8,0" Grid.Column="0"/>
+                                        <sui:SamsungButton x:Name="PART_ConfirmButton" Content="{Binding ConfirmText, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}" Variant="Primary" Margin="8,0,0,0" Grid.Column="1"/>
+                                    </Grid>
+
+                                </Grid>
+                            </Border>
+                        </Popup>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="PickerMode" Value="Date">
+                            <Setter TargetName="TimeSection" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="SectionDivider" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="PickerMode" Value="Time">
+                            <Setter TargetName="DateSection" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="SectionDivider" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="PickerMode" Value="DateTime">
+                            <Setter TargetName="SectionDivider" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="ShowSeconds" Value="True">
+                            <Setter TargetName="SecondsPanel" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="ViewMode" Value="Month">
+                            <Setter TargetName="PART_YearsList" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="ViewMode" Value="Year">
+                            <Setter TargetName="MonthViewPanel" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_YearsList" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

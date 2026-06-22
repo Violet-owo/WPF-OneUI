@@ -1,0 +1,105 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SamsungUi.Controls">
+
+    <Style TargetType="{x:Type local:SamsungStepper}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:SamsungStepper}">
+                    <ItemsPresenter />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="{Binding Orientation, RelativeSource={RelativeSource AncestorType=local:SamsungStepper}}" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:SamsungStepperItem}">
+        <Setter Property="Foreground" Value="{DynamicResource OneUiTextSecondaryBrush}"/>
+        <Setter Property="FontSize" Value="{DynamicResource OneUiNormalFontSize}"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Margin" Value="0,0,0,16"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:SamsungStepperItem}">
+                    <StackPanel x:Name="RootPanel" Orientation="Horizontal">
+                        <!-- Step Indicator -->
+                        <Grid x:Name="IndicatorGrid" Width="32" Height="32" Margin="0,0,8,0">
+                            <!-- Background Circle -->
+                            <Ellipse x:Name="IndicatorBg" 
+                                     Fill="{DynamicResource OneUiControlBackgroundBrush}" 
+                                     Stroke="{DynamicResource OneUiBorderBrush}" 
+                                     StrokeThickness="1"/>
+                            
+                            <!-- Check icon for completed -->
+                            <Path x:Name="CheckIcon" 
+                                  Data="M 8,16 L 14,22 L 24,10" 
+                                  Stroke="White" 
+                                  StrokeThickness="2" 
+                                  StrokeStartLineCap="Round" 
+                                  StrokeEndLineCap="Round" 
+                                  StrokeLineJoin="Round" 
+                                  Opacity="0"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"/>
+                            
+                            <!-- Number for current/pending -->
+                            <TextBlock x:Name="StepNumber" 
+                                       Text="{TemplateBinding StepIndex}" 
+                                       Foreground="{DynamicResource OneUiTextPrimaryBrush}" 
+                                       HorizontalAlignment="Center" 
+                                       VerticalAlignment="Center" 
+                                       FontWeight="Bold"/>
+                        </Grid>
+                        
+                        <!-- Step Content / Text -->
+                        <ContentPresenter VerticalAlignment="Center" Margin="0,0,12,0"/>
+
+                        <!-- Connecting Line -->
+                        <Rectangle x:Name="ConnectorLine" 
+                                   Width="32" Height="2" 
+                                   Fill="{DynamicResource OneUiBorderBrush}" 
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,12,0" />
+                    </StackPanel>
+                    
+                    <ControlTemplate.Triggers>
+                        <!-- Nascondi la linea per l'ultimo step -->
+                        <Trigger Property="IsLastStep" Value="True">
+                            <Setter TargetName="ConnectorLine" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <!-- Se l'orientamento del parent è verticale -->
+                        <DataTrigger Binding="{Binding Orientation, RelativeSource={RelativeSource AncestorType=local:SamsungStepper}}" Value="Vertical">
+                            <Setter TargetName="RootPanel" Property="Margin" Value="0,0,0,24"/>
+                        </DataTrigger>
+
+                        <!-- Stato Corrente -->
+                        <Trigger Property="IsCurrent" Value="True">
+                            <Setter TargetName="IndicatorBg" Property="Fill" Value="{DynamicResource OneUiSurfaceBrush}"/>
+                            <Setter TargetName="IndicatorBg" Property="Stroke" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                            <Setter TargetName="IndicatorBg" Property="StrokeThickness" Value="2"/>
+                            <Setter TargetName="StepNumber" Property="Foreground" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Trigger>
+                        
+                        <!-- Stato Completato -->
+                        <Trigger Property="IsCompleted" Value="True">
+                            <Setter TargetName="IndicatorBg" Property="Fill" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                            <Setter TargetName="IndicatorBg" Property="Stroke" Value="{DynamicResource OneUiPrimaryBrush}"/>
+                            <Setter TargetName="CheckIcon" Property="Opacity" Value="1"/>
+                            <Setter TargetName="StepNumber" Property="Opacity" Value="0"/>
+                            <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
