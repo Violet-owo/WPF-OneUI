@@ -7,14 +7,19 @@ using System.Windows.Media;
 
 namespace SamsungUi.Controls
 {
+    /// <summary>
+    /// Represents a smooth curve line chart control. Supports up to two series.
+    /// Features interactive tooltips and X-axis labels that react to hover.
+    /// </summary>
     public class SamsungLineChart : Control
     {
+        // --- Initialization ---
         static SamsungLineChart()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SamsungLineChart), new FrameworkPropertyMetadata(typeof(SamsungLineChart)));
         }
 
-        #region Dependency Properties
+        // --- Dependency Properties ---
 
         public static readonly DependencyProperty Series1Property =
             DependencyProperty.Register(nameof(Series1), typeof(IEnumerable<double>), typeof(SamsungLineChart),
@@ -238,7 +243,7 @@ namespace SamsungUi.Controls
             set => SetValue(XAxisPillsProperty, value);
         }
 
-        #endregion
+        // --- Event Handlers & Callbacks ---
 
         private static void OnDataChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -255,6 +260,8 @@ namespace SamsungUi.Controls
                 chart.UpdateSelectedIndex();
             }
         }
+
+        // --- Methods ---
 
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
@@ -291,6 +298,7 @@ namespace SamsungUi.Controls
             }
         }
 
+        // --- Fields ---
         private List<Point> _s1Points = new();
         private List<Point> _s2Points = new();
 

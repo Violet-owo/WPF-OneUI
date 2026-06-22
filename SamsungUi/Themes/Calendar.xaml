@@ -3,7 +3,7 @@
 
     <Style x:Key="OneUiCalendarHeaderStyle" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextSecondaryBrush}"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontSize" Value="{DynamicResource OneUiSmallFontSize}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
@@ -70,7 +70,7 @@
                 <DataTemplate>
                     <Grid Width="36" Height="36">
                         <TextBlock Text="{Binding DayNumber}" 
-                                   FontSize="14" 
+                                   FontSize="{DynamicResource OneUiNormalFontSize}" 
                                    FontWeight="Medium"
                                    HorizontalAlignment="Center" 
                                    VerticalAlignment="Center">
@@ -143,12 +143,8 @@
                             
                             <Border Background="{DynamicResource OneUiSurfaceBrush}" 
                                     CornerRadius="12" Padding="16" Margin="12" MaxWidth="250"
-                                    BorderBrush="{DynamicResource OneUiControlBackgroundBrush}" BorderThickness="1">
-                                <!-- Popup Shadow -->
-                                <Border.Effect>
-                                    <DropShadowEffect Color="Black" Opacity="0.15" BlurRadius="12" Direction="270" ShadowDepth="4"/>
-                                </Border.Effect>
-                                
+                                    BorderBrush="{DynamicResource OneUiControlBackgroundBrush}" BorderThickness="1"
+                                    Effect="{DynamicResource OneUiPopupShadow}">
                                 <!-- Entry Animation -->
                                 <Border.Triggers>
                                     <EventTrigger RoutedEvent="Loaded">
@@ -174,8 +170,8 @@
                                 </Border.RenderTransform>
                                 
                                 <StackPanel>
-                                    <TextBlock Text="{Binding FirstEvent.Title}" FontWeight="Bold" FontSize="14" Foreground="{DynamicResource OneUiTextPrimaryBrush}" TextWrapping="Wrap"/>
-                                    <TextBlock Text="{Binding FirstEvent.Description}" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                                    <TextBlock Text="{Binding FirstEvent.Title}" FontWeight="Bold" FontSize="{DynamicResource OneUiNormalFontSize}" Foreground="{DynamicResource OneUiTextPrimaryBrush}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding FirstEvent.Description}" FontSize="{DynamicResource OneUiSmallFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}" TextWrapping="Wrap" Margin="0,4,0,0"/>
                                 </StackPanel>
                             </Border>
                         </Popup>

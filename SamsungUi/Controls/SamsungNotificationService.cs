@@ -11,6 +11,9 @@ using System.Windows.Threading;
 
 namespace SamsungUi.Controls
 {
+    /// <summary>
+    /// Specifies the corner or edge where the notification stack should appear.
+    /// </summary>
     public enum NotificationPosition
     {
         TopLeft,
@@ -21,8 +24,12 @@ namespace SamsungUi.Controls
         BottomRight
     }
 
+    /// <summary>
+    /// Represents the parameters for a notification to be displayed.
+    /// </summary>
     public class NotificationRequest
     {
+        // --- Properties ---
         public string Title { get; set; }
         public string Description { get; set; }
         public Brush Background { get; set; }
@@ -32,11 +39,17 @@ namespace SamsungUi.Controls
         public bool IsSoundOn { get; set; }
     }
 
+    /// <summary>
+    /// Service for showing advanced notifications that stack elegantly on screen.
+    /// Supports multiple positions, custom icons, actions, and automatic dismissal.
+    /// </summary>
     public static class SamsungNotificationService
     {
+        // --- Fields ---
         private static readonly Dictionary<NotificationPosition, NotificationStackContainer> _containers = new();
         private static readonly List<MediaPlayer> _activePlayers = new();
 
+        // --- Methods ---
         public static void Show(
             string title, 
             string description, 

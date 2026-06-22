@@ -108,7 +108,7 @@
                             <TextBlock x:Name="DayLabel"
                                        Text="{Binding Label}"
                                        Foreground="{DynamicResource OneUiTextSecondaryBrush}"
-                                       FontSize="12"
+                                       FontSize="{DynamicResource OneUiSmallFontSize}"
                                        FontWeight="Medium"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center">
@@ -145,11 +145,8 @@
                                         Margin="8"
                                         MinWidth="110"
                                         BorderBrush="{DynamicResource OneUiControlBackgroundBrush}"
-                                        BorderThickness="1">
-                                    <Border.Effect>
-                                        <DropShadowEffect Color="Black" Opacity="0.22" BlurRadius="16"
-                                                          Direction="270" ShadowDepth="5"/>
-                                    </Border.Effect>
+                                        BorderThickness="1"
+                                        Effect="{DynamicResource OneUiChartShadow}">
                                     <Border.Triggers>
                                         <EventTrigger RoutedEvent="Loaded">
                                             <BeginStoryboard>
@@ -187,7 +184,7 @@
                                         <StackPanel Grid.Column="1" Margin="10,10,10,10">
                                             <!-- Day label -->
                                             <TextBlock Text="{Binding Label}"
-                                                       FontSize="14" FontWeight="Bold"
+                                                       FontSize="{DynamicResource OneUiNormalFontSize}" FontWeight="Bold"
                                                        Foreground="{DynamicResource OneUiTextPrimaryBrush}"
                                                        HorizontalAlignment="Center"/>
                                             <Rectangle Height="1" Margin="0,6,0,6"
@@ -195,7 +192,7 @@
                                             <!-- Value -->
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                                 <TextBlock Text="{Binding Value, StringFormat={}{0} min}"
-                                                           FontSize="13" FontWeight="SemiBold"
+                                                           FontSize="{DynamicResource OneUiSmallFontSize}" FontWeight="SemiBold"
                                                            Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
                                             </StackPanel>
                                         </StackPanel>
@@ -258,7 +255,26 @@
                         </Grid>
 
                         <!-- Canvas containing all rendering elements (Foreground) -->
-                        <Canvas x:Name="PART_ChartCanvas" Background="Transparent" ClipToBounds="False" Panel.ZIndex="1">
+                        <Canvas x:Name="PART_ChartCanvas" Background="Transparent" ClipToBounds="False" Panel.ZIndex="1" Opacity="0">
+                            <Canvas.RenderTransform>
+                                <TranslateTransform Y="40"/>
+                            </Canvas.RenderTransform>
+                            <Canvas.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                             From="0" To="1" Duration="0:0:0.8"/>
+                                            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)"
+                                                             From="40" To="0" Duration="0:0:0.8">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CubicEase EasingMode="EaseOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Canvas.Triggers>
                             
                             <!-- Area Fill: Series 2 (Pink/Target) -->
                             <Path Data="{Binding Series2AreaGeometry, RelativeSource={RelativeSource TemplatedParent}}" Opacity="0.08">
@@ -321,10 +337,8 @@
                                     Canvas.Left="{Binding TooltipX, RelativeSource={RelativeSource TemplatedParent}}"
                                     Canvas.Top="{Binding TooltipY, RelativeSource={RelativeSource TemplatedParent}}"
                                     Visibility="{TemplateBinding SelectedPointVisibility}"
-                                    HorizontalAlignment="Center">
-                                <Border.Effect>
-                                    <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.15" Color="Black"/>
-                                </Border.Effect>
+                                    HorizontalAlignment="Center"
+                                    Effect="{DynamicResource OneUiSmallPopupShadow}">
                                 <Border.RenderTransform>
                                     <TranslateTransform X="-55" Y="-64"/>
                                 </Border.RenderTransform>
@@ -333,13 +347,13 @@
                                     <StackPanel Orientation="Horizontal" Margin="0,0,0,3">
                                         <Ellipse Width="6" Height="6" Fill="#52A1FF" VerticalAlignment="Center" Margin="0,0,6,0"/>
                                         <TextBlock Text="{Binding SelectedSeries1Text, RelativeSource={RelativeSource TemplatedParent}}"
-                                                   Foreground="#82B3FF" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                                   Foreground="#82B3FF" FontSize="{DynamicResource OneUiExtraSmallFontSize}" FontWeight="SemiBold" VerticalAlignment="Center"/>
                                     </StackPanel>
                                     <!-- Series 2 (White/Target) -->
                                     <StackPanel Orientation="Horizontal">
                                         <Ellipse Width="6" Height="6" Fill="#FFFFFF" VerticalAlignment="Center" Margin="0,0,6,0"/>
                                         <TextBlock Text="{Binding SelectedSeries2Text, RelativeSource={RelativeSource TemplatedParent}}"
-                                                   Foreground="#FAFAFA" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                                                   Foreground="#FAFAFA" FontSize="{DynamicResource OneUiExtraSmallFontSize}" FontWeight="SemiBold" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
@@ -364,10 +378,10 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="000" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-6,0,0"/>
-                            <TextBlock Grid.Row="1" Text="000" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-6,0,0"/>
-                            <TextBlock Grid.Row="2" Text="000" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-6,0,0"/>
-                            <TextBlock Grid.Row="3" Text="0" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,-6"/>
+                            <TextBlock Grid.Row="0" Text="000" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="{DynamicResource OneUiExtraSmallFontSize}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-6,0,0"/>
+                            <TextBlock Grid.Row="1" Text="000" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="{DynamicResource OneUiExtraSmallFontSize}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-6,0,0"/>
+                            <TextBlock Grid.Row="2" Text="000" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="{DynamicResource OneUiExtraSmallFontSize}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-6,0,0"/>
+                            <TextBlock Grid.Row="3" Text="0" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="{DynamicResource OneUiExtraSmallFontSize}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,-6"/>
                         </Grid>
 
                         <!-- X-Axis Labels (Pills) at the bottom -->
@@ -388,7 +402,7 @@
                                     <Grid Width="40" Height="28" Margin="-20,0,0,0" Background="Transparent" Cursor="Hand">
                                         <!-- Selection pill background -->
                                         <Border x:Name="PillBorder" Width="24" Height="24" CornerRadius="12" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding Text}" FontSize="11" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding Text}" FontSize="{DynamicResource OneUiExtraSmallFontSize}" FontWeight="Medium" Foreground="{DynamicResource OneUiTextSecondaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         </Border>
                                     </Grid>
                                     <DataTemplate.Triggers>
@@ -417,13 +431,13 @@
                     <StackPanel Orientation="Vertical" ClipToBounds="False">
 
                         <StackPanel Margin="0,0,0,16">
-                            <TextBlock Text="{TemplateBinding TitleText}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
+                            <TextBlock Text="{TemplateBinding TitleText}" FontSize="{DynamicResource OneUiTitleFontSize}" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
                             <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
-                                <TextBlock Text="{Binding TotalValue, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}}" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontWeight="SemiBold"/>
-                                <TextBlock Text=" " FontSize="13"/>
-                                <TextBlock Text="{TemplateBinding ValueUnit}" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
-                                <TextBlock Text="  •  " FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
-                                <TextBlock Text="{TemplateBinding DescriptionText}" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                <TextBlock Text="{Binding TotalValue, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}}" FontSize="{DynamicResource OneUiSmallFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontWeight="SemiBold"/>
+                                <TextBlock Text=" " FontSize="{DynamicResource OneUiSmallFontSize}"/>
+                                <TextBlock Text="{TemplateBinding ValueUnit}" FontSize="{DynamicResource OneUiSmallFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                <TextBlock Text="  •  " FontSize="{DynamicResource OneUiSmallFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                <TextBlock Text="{TemplateBinding DescriptionText}" FontSize="{DynamicResource OneUiSmallFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
                             </StackPanel>
                         </StackPanel>
 
@@ -447,8 +461,8 @@
                                 ValueUnit="{TemplateBinding ValueUnit}"/>
                         </Grid>
 
-                        <TextBlock Text="0 unit" FontSize="11" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,4,0,0" HorizontalAlignment="Left"/>
-                        <TextBlock Text="{Binding TotalValue, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0} unit}" FontSize="11" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,-16,0,0" HorizontalAlignment="Right"/>
+                        <TextBlock Text="0 unit" FontSize="{DynamicResource OneUiExtraSmallFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,4,0,0" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding TotalValue, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0} unit}" FontSize="{DynamicResource OneUiExtraSmallFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,-16,0,0" HorizontalAlignment="Right"/>
 
 
                         <!-- Legend below Segmented Bar -->
@@ -466,13 +480,13 @@
                                         </Grid.ColumnDefinitions>
 
                                         <!-- Label -->
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Label}" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontWeight="Medium" Margin="0,0,0,4"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Label}" FontSize="{DynamicResource OneUiSmallFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontWeight="Medium" Margin="0,0,0,4"/>
 
                                         <!-- Value -->
                                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,4">
-                                            <TextBlock Text="{Binding Value, StringFormat={}{0:0.0}}" FontSize="13" Foreground="{DynamicResource OneUiTextPrimaryBrush}" FontWeight="SemiBold"/>
-                                            <TextBlock Text=" " FontSize="13"/>
-                                            <TextBlock Text="{Binding Path=ValueUnit, RelativeSource={RelativeSource AncestorType=sui:SamsungSegmentedBar}}" FontSize="13" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                                            <TextBlock Text="{Binding Value, StringFormat={}{0:0.0}}" FontSize="{DynamicResource OneUiSmallFontSize}" Foreground="{DynamicResource OneUiTextPrimaryBrush}" FontWeight="SemiBold"/>
+                                            <TextBlock Text=" " FontSize="{DynamicResource OneUiSmallFontSize}"/>
+                                            <TextBlock Text="{Binding Path=ValueUnit, RelativeSource={RelativeSource AncestorType=sui:SamsungSegmentedBar}}" FontSize="{DynamicResource OneUiSmallFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
                                         </StackPanel>
 
                                         <!-- Progress Bar of segment's color -->
@@ -516,8 +530,8 @@
 
                             <!-- Center Text -->
                             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Panel.ZIndex="10">
-                                <TextBlock Text="{TemplateBinding CenterText}" FontSize="26" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" HorizontalAlignment="Center"/>
-                                <TextBlock Text="{TemplateBinding CenterSubtext}" FontSize="12" Foreground="{DynamicResource OneUiTextSecondaryBrush}" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                                <TextBlock Text="{TemplateBinding CenterText}" FontSize="{DynamicResource OneUiPageTitleFontSize}" FontWeight="Bold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" HorizontalAlignment="Center"/>
+                                <TextBlock Text="{TemplateBinding CenterSubtext}" FontSize="{DynamicResource OneUiSmallFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}" HorizontalAlignment="Center" Margin="0,2,0,0"/>
                             </StackPanel>
 
                             <!-- ══════════════════════════════════════════════════
@@ -543,7 +557,7 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" Margin="8,4">
                                         <Ellipse Width="8" Height="8" Fill="{Binding Brush}" VerticalAlignment="Center" Margin="0,0,6,0"/>
-                                        <TextBlock Text="{Binding Label}" FontSize="12" Foreground="{DynamicResource OneUiTextSecondaryBrush}" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Label}" FontSize="{DynamicResource OneUiSmallFontSize}" Foreground="{DynamicResource OneUiTextSecondaryBrush}" VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -583,12 +597,8 @@
                                     MinWidth="200"
                                     MaxWidth="280"
                                     BorderBrush="{DynamicResource OneUiControlBackgroundBrush}"
-                                    BorderThickness="1">
-
-                                <Border.Effect>
-                                    <DropShadowEffect Color="Black" Opacity="0.22" BlurRadius="18"
-                                                      Direction="270" ShadowDepth="6"/>
-                                </Border.Effect>
+                                    BorderThickness="1"
+                                    Effect="{DynamicResource OneUiChartShadow}">
 
                                 <!-- Fade + scale-in animation (same as calendar popup) -->
                                 <Border.Triggers>
@@ -636,7 +646,7 @@
 
                                             <!-- Segment label (e.g. "Lap 3") -->
                                             <TextBlock Text="{Binding SelectedSegment.Label}"
-                                                       FontSize="15" FontWeight="Bold"
+                                                       FontSize="{DynamicResource OneUiSubtitleFontSize}" FontWeight="Bold"
                                                        Foreground="{DynamicResource OneUiTextPrimaryBrush}"
                                                        TextWrapping="Wrap"/>
 
@@ -650,19 +660,19 @@
                                                     <ColumnDefinition Width="Auto"/>
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Text="Duration"
-                                                           FontSize="12"
+                                                           FontSize="{DynamicResource OneUiSmallFontSize}"
                                                            Foreground="{DynamicResource OneUiTextSecondaryBrush}"
                                                            VerticalAlignment="Center"/>
                                                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                                                     <TextBlock
                                                         Text="{Binding SelectedSegment.Value, StringFormat={}{0:0.00}}"
-                                                        FontSize="13" FontWeight="SemiBold"
+                                                        FontSize="{DynamicResource OneUiSmallFontSize}" FontWeight="SemiBold"
                                                         Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
                                                     <TextBlock Text=" "
-                                                               FontSize="13"
+                                                               FontSize="{DynamicResource OneUiSmallFontSize}"
                                                                Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
                                                     <TextBlock Text="{Binding ValueUnit}"
-                                                               FontSize="13"
+                                                               FontSize="{DynamicResource OneUiSmallFontSize}"
                                                                Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
                                                 </StackPanel>
                                             </Grid>
@@ -674,12 +684,12 @@
                                                     <ColumnDefinition Width="Auto"/>
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Text="Share"
-                                                           FontSize="12"
+                                                           FontSize="{DynamicResource OneUiSmallFontSize}"
                                                            Foreground="{DynamicResource OneUiTextSecondaryBrush}"
                                                            VerticalAlignment="Center"/>
                                                 <TextBlock Grid.Column="1"
                                                            Text="{Binding SelectedSegment.Percentage, StringFormat={}{0:F1}%}"
-                                                           FontSize="13" FontWeight="SemiBold"
+                                                           FontSize="{DynamicResource OneUiSmallFontSize}" FontWeight="SemiBold"
                                                            Foreground="{DynamicResource OneUiTextPrimaryBrush}"/>
                                             </Grid>
 

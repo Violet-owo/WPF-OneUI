@@ -7,7 +7,7 @@
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource OneUiTextSecondaryBrush}"/>
-        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontSize" Value="{DynamicResource OneUiSubtitleFontSize}"/>
         <Setter Property="Padding" Value="0,18,0,8"/>
         <Setter Property="MinHeight" Value="56"/>
         <Setter Property="Template">
@@ -23,7 +23,7 @@
                             <TextBlock x:Name="HintText"
                                        Text="{TemplateBinding Hint}"
                                        Foreground="{DynamicResource OneUiTextSecondaryBrush}"
-                                       FontSize="15"
+                                       FontSize="{DynamicResource OneUiSubtitleFontSize}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
                                        Margin="0,0,0,0"
@@ -86,14 +86,14 @@
                                                 <!-- Eye icon: visible when NOT revealed -->
                                                 <TextBlock x:Name="EyeOpen"
                                                            Text="👁"
-                                                           FontSize="14"
+                                                           FontSize="{DynamicResource OneUiNormalFontSize}"
                                                            HorizontalAlignment="Center"
                                                            VerticalAlignment="Center"
                                                            Opacity="0.5"/>
                                                 <!-- Eye-off: visible when revealed -->
                                                 <TextBlock x:Name="EyeClosed"
                                                            Text="🙈"
-                                                           FontSize="14"
+                                                           FontSize="{DynamicResource OneUiNormalFontSize}"
                                                            HorizontalAlignment="Center"
                                                            VerticalAlignment="Center"
                                                            Visibility="Collapsed"

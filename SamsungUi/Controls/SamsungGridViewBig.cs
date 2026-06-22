@@ -9,15 +9,21 @@ namespace SamsungUi.Controls
     /// </summary>
     public class SamsungGridViewBig : FrameworkElement
     {
+        // --- Dependency Properties ---
+
         public static readonly DependencyProperty ImageSourceProperty =
             DependencyProperty.Register(nameof(ImageSource), typeof(ImageSource), typeof(SamsungGridViewBig),
                 new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsRender));
+
+        // --- Properties ---
 
         public ImageSource ImageSource
         {
             get => (ImageSource)GetValue(ImageSourceProperty);
             set => SetValue(ImageSourceProperty, value);
         }
+
+        // --- Methods ---
 
         protected override Size MeasureOverride(Size availableSize)
         {

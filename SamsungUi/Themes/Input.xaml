@@ -54,7 +54,7 @@
                                 <!-- Search Icon -->
                                 <TextBlock Text="🔍" 
                                            Foreground="{DynamicResource OneUiTextSecondaryBrush}" 
-                                           FontSize="16" 
+                                           FontSize="{DynamicResource OneUiSubtitleFontSize}" 
                                            VerticalAlignment="Center" 
                                            Margin="16,0,0,0" 
                                            HorizontalAlignment="Left"

@@ -17,14 +17,8 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="26"
-                            Padding="{TemplateBinding Padding}">
-                        <!-- Effetto ombra leggerissimo e morbido tipico di One UI -->
-                        <Border.Effect>
-                            <DropShadowEffect BlurRadius="15" 
-                                              ShadowDepth="2" 
-                                              Opacity="0.04" 
-                                              Color="Black"/>
-                        </Border.Effect>
+                            Padding="{TemplateBinding Padding}"
+                            Effect="{DynamicResource OneUiCardShadow}">
                         <ContentPresenter
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>

@@ -12,6 +12,10 @@ using SamsungUi.Models;
 
 namespace SamsungUi.Controls
 {
+    /// <summary>
+    /// Represents a segmented bar control in Samsung One UI style.
+    /// Displays proportional segments based on their value with interactive tooltips.
+    /// </summary>
     [TemplatePart(Name = "PART_SegmentsContainer", Type = typeof(Panel))]
     public class SamsungSegmentedBar : Control
     {

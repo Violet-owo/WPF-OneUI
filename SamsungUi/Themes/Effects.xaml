@@ -1,0 +1,56 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ========================================== -->
+    <!-- EFFECTS & SHADOWS                          -->
+    <!-- ========================================== -->
+
+    <!-- Card Shadow (Very soft, subtle) -->
+    <!-- Used by Card, GroupBox, Expander, ListBox etc. -->
+    <DropShadowEffect x:Key="OneUiCardShadow" 
+                      BlurRadius="15" 
+                      ShadowDepth="2" 
+                      Opacity="0.04" 
+                      Color="Black"/>
+
+    <!-- Popup Shadow (Medium soft) -->
+    <!-- Used by Tooltips, Notifications, ComboBox dropdowns -->
+    <DropShadowEffect x:Key="OneUiPopupShadow" 
+                      BlurRadius="16" 
+                      ShadowDepth="4" 
+                      Opacity="0.15" 
+                      Direction="270"
+                      Color="Black"/>
+
+    <!-- Small Popup Shadow (Tight soft) -->
+    <DropShadowEffect x:Key="OneUiSmallPopupShadow" 
+                      BlurRadius="10" 
+                      ShadowDepth="4" 
+                      Opacity="0.10" 
+                      Direction="270"
+                      Color="Black"/>
+
+    <!-- Modal Shadow (Large, deep) -->
+    <!-- Used by Modals, Nav bars, heavy overlays -->
+    <DropShadowEffect x:Key="OneUiModalShadow" 
+                      BlurRadius="30" 
+                      ShadowDepth="10" 
+                      Opacity="0.10" 
+                      Direction="270"
+                      Color="Black"/>
+
+    <!-- Chart Shadow (Specialized for graphical elements) -->
+    <DropShadowEffect x:Key="OneUiChartShadow" 
+                      BlurRadius="18" 
+                      ShadowDepth="0" 
+                      Opacity="0.22" 
+                      Color="Black"/>
+
+    <!-- Control Element Shadow (Tight, light) -->
+    <DropShadowEffect x:Key="OneUiControlShadow" 
+                      BlurRadius="4" 
+                      ShadowDepth="1" 
+                      Opacity="0.15" 
+                      Color="Black"/>
+
+</ResourceDictionary>
