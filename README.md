@@ -63,12 +63,14 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // or ThemeType.Light
 | Component Name | XAML Tag | Status |
 |----------------|----------|:------:|
 | Button | `<sui:SamsungButton>` | 🟢 |
+| Calendar | `<sui:SamsungCalendar>` | 🟢 |
 | Card | `<sui:SamsungCard>` | 🟢 |
 | CheckBox | `<sui:SamsungCheckBox>` | 🟢 |
 | EditBox | `<sui:SamsungEditBox>` | 🟢 |
 | PasswordBox | `<sui:SamsungPasswordBox>` | 🟢 |
 | TextBox | `<sui:SamsungTextBox>` | 🟢 |
 | ListBox | `<sui:SamsungListBox>` | 🟢 |
+| ListView | `<sui:SamsungListView>` | 🟢 |
 | Slider | `<sui:SamsungSlider>` | 🟢 |
 | RadioButton | `<sui:SamsungRadioButton>` | 🟢 |
 | ProgressBar | `<sui:SamsungProgressBar>` | 🟢 |
@@ -83,12 +85,17 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // or ThemeType.Light
 | DateTimePicker | `<sui:SamsungDateTimePicker>` | 🟢 |
 | ColorPicker | `<sui:SamsungColorPicker>` | 🟢 |
 | Chart (Bar/Donut) | `<sui:SamsungChart>` | 🟢 |
+| LineChart | `<sui:SamsungLineChart>` | 🟢 |
 | ComboBox | `<sui:SamsungComboBox>` | 🟢 |
 | Badge | `<sui:SamsungBadge>` | 🟢 |
 | Stepper | `<sui:SamsungStepper>` | 🟢 |
 | Expander | `<sui:SamsungExpander>` | 🟢 |
 | Tooltip | `ToolTip="..."` | 🟢 |
 | Window | `<sui:SamsungWindow>` | 🟢 |
+| ScrollViewer | `<sui:SamsungScrollViewer>` | 🟢 |
+| GroupBox | `<sui:SamsungGroupBox>` | 🟢 |
+| Image | `<sui:SamsungImage>` | 🟢 |
+| Label | `<sui:SamsungLabel>` | 🟢 |
 | DataGrid | `<sui:SamsungDataGrid>` | 🟡 |
 | Gallery | `<sui:Gallery>` (Concept) | 🟡 |
 
@@ -104,8 +111,8 @@ Here are some quick examples of how to use the components in your XAML:
 
 **SamsungEditBox**
 ```xml
-<sui:SamsungEditBox Hint="Username" InputType="Text" />
-<sui:SamsungEditBox Hint="Password" InputType="Password" />
+<sui:SamsungEditBox Placeholder="Username" InputType="Text" />
+<sui:SamsungEditBox Placeholder="Password" InputType="Password" />
 ```
 
 **SamsungCard**
@@ -170,12 +177,14 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // o ThemeType.Light
 | Nome Componente | Tag XAML | Stato |
 |-----------------|----------|:-----:|
 | Button | `<sui:SamsungButton>` | 🟢 |
+| Calendar | `<sui:SamsungCalendar>` | 🟢 |
 | Card | `<sui:SamsungCard>` | 🟢 |
 | CheckBox | `<sui:SamsungCheckBox>` | 🟢 |
 | EditBox | `<sui:SamsungEditBox>` | 🟢 |
 | PasswordBox | `<sui:SamsungPasswordBox>` | 🟢 |
 | TextBox | `<sui:SamsungTextBox>` | 🟢 |
 | ListBox | `<sui:SamsungListBox>` | 🟢 |
+| ListView | `<sui:SamsungListView>` | 🟢 |
 | Slider | `<sui:SamsungSlider>` | 🟢 |
 | RadioButton | `<sui:SamsungRadioButton>` | 🟢 |
 | ProgressBar | `<sui:SamsungProgressBar>` | 🟢 |
@@ -190,12 +199,17 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // o ThemeType.Light
 | DateTimePicker | `<sui:SamsungDateTimePicker>` | 🟢 |
 | ColorPicker | `<sui:SamsungColorPicker>` | 🟢 |
 | Chart (Bar/Donut) | `<sui:SamsungChart>` | 🟢 |
+| LineChart | `<sui:SamsungLineChart>` | 🟢 |
 | ComboBox | `<sui:SamsungComboBox>` | 🟢 |
 | Badge | `<sui:SamsungBadge>` | 🟢 |
 | Stepper | `<sui:SamsungStepper>` | 🟢 |
 | Expander | `<sui:SamsungExpander>` | 🟢 |
 | Tooltip | `ToolTip="..."` | 🟢 |
 | Window | `<sui:SamsungWindow>` | 🟢 |
+| ScrollViewer | `<sui:SamsungScrollViewer>` | 🟢 |
+| GroupBox | `<sui:SamsungGroupBox>` | 🟢 |
+| Image | `<sui:SamsungImage>` | 🟢 |
+| Label | `<sui:SamsungLabel>` | 🟢 |
 | DataGrid | `<sui:SamsungDataGrid>` | 🟡 |
 | Gallery | `<sui:Gallery>` (Concept) | 🟡 |
 
@@ -211,8 +225,8 @@ Ecco alcuni rapidi esempi di come utilizzare i componenti all'interno del tuo XA
 
 **SamsungEditBox**
 ```xml
-<sui:SamsungEditBox Hint="Nome utente" InputType="Text" />
-<sui:SamsungEditBox Hint="Password" InputType="Password" />
+<sui:SamsungEditBox Placeholder="Nome utente" InputType="Text" />
+<sui:SamsungEditBox Placeholder="Password" InputType="Password" />
 ```
 
 **SamsungCard**
