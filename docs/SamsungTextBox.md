@@ -19,6 +19,8 @@ Inherits directly from `System.Windows.Controls.TextBox`. You can use all standa
 | Property | Type | Default Value | Description |
 |-----------|------|-------------------|-------------|
 | **IsSearchBar** | `bool` | `False` | When set to `True`, a magnifying glass icon appears inside the text box, giving it the classic look of a search bar. |
+| **Placeholder** | `string` | `""` | The placeholder text to display when empty. |
+| **CornerRadius** | `CornerRadius` | `12` | Corner smoothing. `20` when IsSearchBar is True. |
 
 ### Visual Behavior
 - **Default**: A slightly rounded rectangle filled with a neutral surface color.
@@ -48,6 +50,8 @@ Eredita direttamente da `System.Windows.Controls.TextBox`. Puoi usare tutte le p
 | Proprietà | Tipo | Valore di Default | Descrizione |
 |-----------|------|-------------------|-------------|
 | **IsSearchBar** | `bool` | `False` | Se impostata a `True`, appare l'icona di una lente d'ingrandimento all'interno della casella di testo, trasformandola graficamente in una barra di ricerca. |
+| **Placeholder** | `string` | `""` | Il testo di suggerimento mostrato quando vuoto. |
+| **CornerRadius** | `CornerRadius` | `12` | Smussatura degli angoli. `20` quando IsSearchBar è True. |
 
 ### Comportamento Visivo
 - **Default**: Un rettangolo leggermente smussato, riempito con il colore di superficie.

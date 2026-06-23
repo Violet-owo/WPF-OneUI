@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sui="clr-namespace:SamsungUi.Controls">
 
-    <!-- Stile Base per i bottoni della barra del titolo -->
+    <!-- Base style for title bar buttons -->
     <Style x:Key="SamsungWindowButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
@@ -13,7 +13,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid Background="Transparent">
-                        <!-- Sfondo arrotondato per l'hover -->
+                        <!-- Rounded background for hover -->
                         <Border x:Name="HoverBorder" 
                                 Width="32" Height="32" 
                                 CornerRadius="16" 
@@ -36,7 +36,7 @@
         </Setter>
     </Style>
 
-    <!-- Stile Speciale per il bottone di Chiusura (rosso on hover) -->
+    <!-- Special style for the Close button (red on hover) -->
     <Style x:Key="SamsungWindowCloseButtonStyle" TargetType="Button" BasedOn="{StaticResource SamsungWindowButtonStyle}">
         <Setter Property="Template">
             <Setter.Value>
@@ -66,7 +66,7 @@
         </Setter>
     </Style>
 
-    <!-- Style per la finestra SamsungWindow -->
+    <!-- Style for the SamsungWindow -->
     <Style TargetType="{x:Type sui:SamsungWindow}">
         <Setter Property="Background" Value="{DynamicResource OneUiBackgroundBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
@@ -116,7 +116,7 @@
                                            FontWeight="Medium"
                                            Foreground="{TemplateBinding Foreground}"/>
 
-                                <!-- Pulsanti di Sistema -->
+                                <!-- System Buttons -->
                                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Top" Margin="0,4,4,0">
                                     <Button Style="{StaticResource SamsungWindowButtonStyle}" 
                                             Command="{x:Static SystemCommands.MinimizeWindowCommand}" 
@@ -148,7 +148,9 @@
                             </Grid>
 
                             <!-- Contenuto della Finestra -->
-                            <ContentPresenter Grid.Row="1" />
+                            <AdornerDecorator Grid.Row="1">
+                                <ContentPresenter />
+                            </AdornerDecorator>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>

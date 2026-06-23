@@ -36,13 +36,13 @@
                         <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Date &amp; Time"/>
                         
                         <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Date only" Margin="4,0,0,4" />
-                        <sui:SamsungDateTimePicker PickerMode="Date" PlaceholderText="Select date" Margin="0,0,0,16"/>
+                        <sui:SamsungDateTimePicker PickerMode="Date" Placeholder="Select date" Margin="0,0,0,16"/>
                         
                         <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Time only" Margin="4,0,0,4" />
-                        <sui:SamsungDateTimePicker PickerMode="Time" PlaceholderText="Select time" Margin="0,0,0,16"/>
+                        <sui:SamsungDateTimePicker PickerMode="Time" Placeholder="Select time" Margin="0,0,0,16"/>
 
                         <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Date &amp; Time (with seconds)" Margin="4,0,0,4" />
-                        <sui:SamsungDateTimePicker PickerMode="DateTime" ShowSeconds="True" PlaceholderText="Select date and time"/>
+                        <sui:SamsungDateTimePicker PickerMode="DateTime" ShowSeconds="True" Placeholder="Select date and time"/>
                     </StackPanel>
                 </sui:SamsungCard>
                 <!-- Color Picker -->
@@ -81,9 +81,9 @@
                 <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Quick actions"/>
-                        <sui:SamsungButton Content="Wi-Fi connection" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
+                        <sui:SamsungButton Content="Wi-Fi connection" HorizontalAlignment="Stretch"  Margin="0,0,0,8"/>
                         <sui:SamsungButton Content="Connected devices" HorizontalAlignment="Stretch" Margin="0,0,0,8"/>
-                        <sui:SamsungButton Content="Sound and vibration" HorizontalAlignment="Stretch" Margin="0"/>
+                        <sui:SamsungButton Content="Sound and vibration" HorizontalAlignment="Stretch" IsLoading="True" Margin="0"/>
                     </StackPanel>
                 </sui:SamsungCard>
                 <!--List Box-->
@@ -116,11 +116,11 @@
                     <StackPanel>
                         <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Edit variant"/>
                         <!-- Normal variant -->
-                        <sui:SamsungEditBox Hint="Username" Text="{Binding Username}"/>
-                        <!-- Password variant (automatically shows the eye icon) -->
-                        <sui:SamsungEditBox Hint="Password" InputType="Password"/>
-                        <!-- Numeric variant (blocks non-numeric keys) -->
-                        <sui:SamsungEditBox Hint="Età" InputType="Number"/>
+                        <sui:SamsungEditBox Placeholder="Username" Text="{Binding Username}"/>
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Password Input" Margin="4,8,0,4"/>
+                        <sui:SamsungEditBox Placeholder="Password" InputType="Password"/>
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Number Input" Margin="4,8,0,4"/>
+                        <sui:SamsungEditBox Placeholder="Età" InputType="Number"/>
                     </StackPanel>
                 </sui:SamsungCard>
                 <!--Gestionale Components-->
@@ -250,12 +250,12 @@
                             <!-- Titolo con pallino blu -->
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
                                 <Ellipse Width="8" Height="8" Fill="{DynamicResource OneUiPrimaryBrush}" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Account attivo" VerticalAlignment="Center" Margin="0"/>
+                                <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Account active" VerticalAlignment="Center" Margin="0"/>
                             </StackPanel>
                             <!-- Sottotitolo indentato -->
                             <TextBlock Style="{DynamicResource OneUiNormalStyle}"
                                        Foreground="{DynamicResource OneUiTextSecondaryBrush}" 
-                                       Text="Il tuo account è completamente configurato." 
+                                       Text="Account configured." 
                                        TextWrapping="Wrap" 
                                        Margin="16,0,0,0"/>
                         </StackPanel>
@@ -273,13 +273,13 @@
                         
                         <StackPanel Margin="0,8,0,0">
                             <!-- Contenuto Profilo -->
-                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Immagine Profilo" Margin="0,0,0,12"/>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Profilo Pic" Margin="0,0,0,12"/>
                             <Border Background="{DynamicResource OneUiControlBackgroundHoverBrush}" CornerRadius="30" Width="60" Height="60" HorizontalAlignment="Center" Margin="0,0,0,8">
                                 <TextBlock Style="{DynamicResource OneUiTitleStyle}" Text="MR" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
                             </Border>
-                            <TextBlock Style="{DynamicResource OneUiSmallLinkStyle}" Text="Cambia immagine" HorizontalAlignment="Center" Margin="0,0,0,16"/>
+                            <TextBlock Style="{DynamicResource OneUiSmallLinkStyle}" Text="Chaange picture" HorizontalAlignment="Center" Margin="0,0,0,16"/>
                             
-                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Dettagli Personali" Margin="0,0,0,8"/>
+                            <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Personal details" Margin="0,0,0,8"/>
                             <sui:SamsungTextBox Text="Marco Rossi" Margin="0,0,0,8"/>
                             <sui:SamsungTextBox Text="m.rossi@mail.it" Margin="0,0,0,8"/>
                             <sui:SamsungTextBox Text="+39 333 1234567" Margin="0,0,0,16"/>
@@ -290,7 +290,7 @@
                                     <ColumnDefinition Width="8"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <sui:SamsungButton Content="Salva Modifiche" Variant="Primary" Grid.Column="0" Click="OnSaveAccountClick"/>
+                                <sui:SamsungButton Content="Saev" Variant="Primary" Grid.Column="0" Click="OnSaveAccountClick"/>
                                 <sui:SamsungButton Content="Annulla" Grid.Column="2" Click="OnCancelAccountClick"/>
                             </Grid>
                         </StackPanel>

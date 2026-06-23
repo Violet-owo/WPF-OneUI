@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sui="clr-namespace:SamsungUi.Controls">
 
-    <!-- Stile per i giorni del calendario -->
+    <!-- Style for calendar days -->
     <Style x:Key="OneUiCalendarDayItemStyle" TargetType="ListBoxItem">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
@@ -44,7 +44,7 @@
         </Setter>
     </Style>
 
-    <!-- Stile per gli anni del calendario -->
+    <!-- Style for calendar years -->
     <Style x:Key="OneUiCalendarYearItemStyle" TargetType="ListBoxItem">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
@@ -82,7 +82,7 @@
         </Setter>
     </Style>
 
-    <!-- Stile per il Tumbler del Time -->
+    <!-- Style for Time Tumbler -->
     <Style x:Key="OneUiTimeTumblerItemStyle" TargetType="ListBoxItem">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextSecondaryBrush}"/>
@@ -122,6 +122,7 @@
         <Setter Property="Padding" Value="16,14"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="CornerRadius" Value="20"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type sui:SamsungDateTimePicker}">
@@ -137,7 +138,7 @@
                                     <Border Background="{TemplateBinding Background}"
                                             BorderBrush="{TemplateBinding BorderBrush}"
                                             BorderThickness="{TemplateBinding BorderThickness}"
-                                            CornerRadius="20"
+                                            CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=sui:SamsungDateTimePicker}}"
                                             MinHeight="40"
                                             Padding="{TemplateBinding Padding}"
                                             x:Name="BgBorder"

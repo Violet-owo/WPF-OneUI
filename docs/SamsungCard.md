@@ -15,7 +15,9 @@ The `SamsungCard` is the foundational container for structuring layouts in the O
 Inherits from `System.Windows.Controls.ContentControl`. You can place any UI element inside it as `Content`.
 
 ### Custom Properties
-This component does not introduce new `DependencyProperty`. Its behavior is strictly visual and relies on the default ControlTemplate.
+| Property | Type | Default Value | Description |
+|-----------|------|-------------------|-------------|
+| **CornerRadius** | `CornerRadius` | `20` | Corner smoothing. Default is 20 for rounded edges. |
 
 ### Visual Behavior
 - **Background**: Solid surface color, adapting automatically to Light/Dark modes.
@@ -42,7 +44,9 @@ Il `SamsungCard` è il contenitore base per strutturare il layout in stile One U
 Eredita da `System.Windows.Controls.ContentControl`. Puoi inserire qualsiasi elemento UI al suo interno tramite la proprietà `Content`.
 
 ### Proprietà Personalizzate
-Questo componente non introduce nuove `DependencyProperty`. Il suo comportamento è puramente visivo ed è gestito dal ControlTemplate predefinito.
+| Proprietà | Tipo | Valore di Default | Descrizione |
+|-----------|------|-------------------|-------------|
+| **CornerRadius** | `CornerRadius` | `20` | Smussatura degli angoli. Di default è impostato a 20 per bordi arrotondati. |
 
 ### Comportamento Visivo
 - **Sfondo**: Colore solido di superficie (`SurfaceBrush`), che si adatta automaticamente al tema Chiaro/Scuro.

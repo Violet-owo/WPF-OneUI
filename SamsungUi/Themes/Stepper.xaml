@@ -69,11 +69,11 @@
                     </StackPanel>
                     
                     <ControlTemplate.Triggers>
-                        <!-- Nascondi la linea per l'ultimo step -->
+                        <!-- Hide the line for the last step -->
                         <Trigger Property="IsLastStep" Value="True">
                             <Setter TargetName="ConnectorLine" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
-                        <!-- Se l'orientamento del parent è verticale -->
+                        <!-- If parent orientation is vertical -->
                         <DataTrigger Binding="{Binding Orientation, RelativeSource={RelativeSource AncestorType=local:SamsungStepper}}" Value="Vertical">
                             <Setter TargetName="RootPanel" Property="Margin" Value="0,0,0,24"/>
                         </DataTrigger>

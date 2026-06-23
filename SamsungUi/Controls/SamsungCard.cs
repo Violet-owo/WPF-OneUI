@@ -9,6 +9,22 @@ namespace SamsungUi.Controls
     /// </summary>
     public class SamsungCard : ContentControl
     {
+        // --- Dependency Properties ---
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register(
+                nameof(CornerRadius),
+                typeof(CornerRadius),
+                typeof(SamsungCard),
+                new PropertyMetadata(new CornerRadius(26)));
+
+        // --- Properties ---
+
+        public CornerRadius CornerRadius
+        {
+            get => (CornerRadius)GetValue(CornerRadiusProperty);
+            set => SetValue(CornerRadiusProperty, value);
+        }
+
         // --- Initialization ---
 
         static SamsungCard()

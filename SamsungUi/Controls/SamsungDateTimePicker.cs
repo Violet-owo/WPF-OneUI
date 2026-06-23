@@ -105,13 +105,22 @@ namespace SamsungUi.Controls
             set => SetValue(ShowSecondsProperty, value);
         }
 
-        public static readonly DependencyProperty PlaceholderTextProperty =
-            DependencyProperty.Register(nameof(PlaceholderText), typeof(string), typeof(SamsungDateTimePicker), new PropertyMetadata("Select date..."));
+        public static readonly DependencyProperty PlaceholderProperty =
+            DependencyProperty.Register(nameof(Placeholder), typeof(string), typeof(SamsungDateTimePicker), new PropertyMetadata("Select date..."));
 
-        public string PlaceholderText
+        public string Placeholder
         {
-            get => (string)GetValue(PlaceholderTextProperty);
-            set => SetValue(PlaceholderTextProperty, value);
+            get => (string)GetValue(PlaceholderProperty);
+            set => SetValue(PlaceholderProperty, value);
+        }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(SamsungDateTimePicker), new PropertyMetadata(new CornerRadius(20)));
+
+        public CornerRadius CornerRadius
+        {
+            get => (CornerRadius)GetValue(CornerRadiusProperty);
+            set => SetValue(CornerRadiusProperty, value);
         }
 
         public static readonly DependencyProperty DisplayTextProperty =
@@ -321,7 +330,7 @@ namespace SamsungUi.Controls
         {
             if (SelectedDate == null)
             {
-                DisplayText = PlaceholderText;
+                DisplayText = Placeholder;
             }
             else
             {

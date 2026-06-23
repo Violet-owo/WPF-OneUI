@@ -19,8 +19,9 @@ This is a custom `Control` that internally encapsulates a `TextBox` and a `Passw
 | Property | Type | Default Value | Description |
 |-----------|------|-------------------|-------------|
 | **Text** | `string` | `""` | The text content of the box. Binds two-way by default. |
-| **Hint** | `string` | `""` | The placeholder text. When the user types, it scales down and floats above the text. |
-| **InputType** | `InputType` | `Text` | Can be `Text`, `Password`, `Number`, or `Email`. Changes behavior (e.g., masks text if Password, filters non-digits if Number). |
+| **Placeholder** | `string` | `""` | The placeholder text. When the user types, it scales down and floats above the text. |
+| **CornerRadius** | `CornerRadius` | `16` | Corner smoothing. |
+| **InputType** | `InputType` | `Text` | Can be `Text`, `Password`, `Number`, or `Email`. Changes behavior. |
 | **IsPasswordRevealed** | `bool` | `False` | If `InputType` is `Password`, setting this to true will unmask the characters. |
 | **HasText** | `bool` | `False` | (Read-only) Internal property used by the template to trigger the floating hint animation. |
 
@@ -30,8 +31,8 @@ This is a custom `Control` that internally encapsulates a `TextBox` and a `Passw
 
 ### How to Use
 ```xml
-<sui:SamsungEditBox Hint="Username" InputType="Text" />
-<sui:SamsungEditBox Hint="PIN Code" InputType="Number" />
+<sui:SamsungEditBox Placeholder="Username" InputType="Text" />
+<sui:SamsungEditBox Placeholder="PIN Code" InputType="Number" />
 ```
 
 ---
@@ -48,10 +49,11 @@ Si tratta di un `Control` personalizzato che incapsula al suo interno sia una `T
 | Proprietà | Tipo | Valore di Default | Descrizione |
 |-----------|------|-------------------|-------------|
 | **Text** | `string` | `""` | Il contenuto del testo. Ha il binding bidirezionale attivo di default. |
-| **Hint** | `string` | `""` | Il testo di suggerimento. Quando l'utente scrive o focalizza il campo, questo testo si rimpicciolisce e si posiziona in alto (Floating). |
-| **InputType** | `InputType` | `Text` | Può essere `Text`, `Password`, `Number`, o `Email`. Cambia il comportamento del campo (es. maschera il testo se Password, filtra le lettere se Number). |
-| **IsPasswordRevealed** | `bool` | `False` | Se `InputType` è `Password`, impostando questo valore a `True` i caratteri digitati verranno mostrati in chiaro. |
-| **HasText** | `bool` | `False` | (Sola Lettura) Proprietà usata dal template per attivare l'animazione dell'etichetta. |
+| **Placeholder** | `string` | `""` | Il testo di suggerimento. Si rimpicciolisce e si posiziona in alto (Floating). |
+| **CornerRadius** | `CornerRadius` | `16` | Smussatura degli angoli. |
+| **InputType** | `InputType` | `Text` | Può essere `Text`, `Password`, `Number`, o `Email`. Cambia il comportamento del campo. |
+| **IsPasswordRevealed** | `bool` | `False` | Se `InputType` è `Password`, impostando questo valore a `True` mostra in chiaro. |
+| **HasText** | `bool` | `False` | (Sola Lettura) Proprietà usata dal template per l'animazione dell'etichetta. |
 
 ### Comportamento Visivo
 - **Floating Hint**: Il testo `Hint` risiede al centro. Al focus o se il campo non è vuoto, scivola fluidamente verso l'alto rimpicciolendosi.
@@ -59,6 +61,6 @@ Si tratta di un `Control` personalizzato che incapsula al suo interno sia una `T
 
 ### Come Usarlo
 ```xml
-<sui:SamsungEditBox Hint="Nome utente" InputType="Text" />
-<sui:SamsungEditBox Hint="Codice PIN" InputType="Number" />
+<sui:SamsungEditBox Placeholder="Nome utente" InputType="Text" />
+<sui:SamsungEditBox Placeholder="Codice PIN" InputType="Number" />
 ```

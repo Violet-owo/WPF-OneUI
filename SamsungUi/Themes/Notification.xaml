@@ -3,12 +3,12 @@
                     xmlns:local="clr-namespace:SamsungUi.Controls">
 
     <Style TargetType="{x:Type local:SamsungNotificationCard}">
-        <!-- Sfondo di fallback se CardBackground non è impostato -->
+        <!-- Fallback background if CardBackground is not set -->
         <Setter Property="CardBackground" Value="{DynamicResource OneUiControlBackgroundBrush}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Padding" Value="24"/>
         <Setter Property="Margin" Value="16"/>
-        <!-- Larga abbastanza per i dettagli, max 400 -->
+        <!-- Wide enough for details, max 400 -->
         <Setter Property="Width" Value="380"/>
         
         <Setter Property="Template">
@@ -21,7 +21,7 @@
                             Effect="{DynamicResource OneUiPopupShadow}">
                         
                         <Grid>
-                            <!-- Tasto chiusura (X) in alto a destra. Offset negativo per ignorare parzialmente il Padding -->
+                            <!-- Close button (X) top right. Negative offset to partially ignore Padding -->
                             <Button x:Name="PART_CloseButton"
                                     Content="✕"
                                     Foreground="{TemplateBinding Foreground}"

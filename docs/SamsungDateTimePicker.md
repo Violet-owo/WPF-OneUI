@@ -18,10 +18,13 @@ This control inherits from `System.Windows.Controls.Control` and builds a comple
 
 | Property | Type | Default Value | Description |
 |-----------|------|-------------------|-------------|
-| **SelectedDate** | `DateTime?` | `null` | The currently selected date/time. |
-| **PickerMode** | `Enum` | `DateTime` | Determines what to pick: `DateOnly`, `TimeOnly`, or `DateTime`. |
-| **ShowSeconds** | `bool` | `False` | When in time-picking mode, toggles the visibility of the seconds column. |
-| **PlaceholderText**| `string` | `"Select date..."`| Text shown when no date is selected. |
+| **SelectedDate** | `DateTime?` | `null` | The currently selected date/time. Use this for data binding. |
+| **PickerMode** | `Mode` | `DateTime` | Determines what the user can select: `Date`, `Time`, or `DateTime`. |
+| **ShowSeconds** | `bool` | `False` | When true in Time/DateTime modes, adds a tumbler for seconds. |
+| **Placeholder** | `string` | `"Select date..."`| Text shown when `SelectedDate` is null. |
+| **CornerRadius** | `CornerRadius` | `20` | Corner smoothing. |
+| **ConfirmText** | `string` | `"Done"` | Text for the confirmation button (useful for localization). |
+| **CancelText** | `string` | `"Cancel"` | Text for the cancellation button. |
 | **CurrentDisplayMonth** | `DateTime` | `Today` | The month currently displayed in the calendar view. |
 | **ViewMode** | `CalendarViewMode`| `Month` | Defines if the calendar is showing Days, Months, or Years. |
 
@@ -49,10 +52,13 @@ Questo controllo eredita da `System.Windows.Controls.Control` e costruisce un'in
 
 | Proprietà | Tipo | Valore di Default | Descrizione |
 |-----------|------|-------------------|-------------|
-| **SelectedDate** | `DateTime?` | `null` | La data e l'orario attualmente selezionati. |
-| **PickerMode** | `Enum` | `DateTime` | Determina cosa selezionare: `DateOnly`, `TimeOnly`, o `DateTime`. |
-| **ShowSeconds** | `bool` | `False` | Se la selezione dell'orario è attiva, mostra o nasconde la colonna dei secondi. |
-| **PlaceholderText**| `string` | `"Select date..."`| Testo segnaposto quando nessuna data è selezionata. |
+| **SelectedDate** | `DateTime?` | `null` | La data/ora attualmente selezionata. Usa questa proprietà per il data binding. |
+| **PickerMode** | `Mode` | `DateTime` | Determina cosa l'utente può selezionare: `Date`, `Time`, oppure `DateTime`. |
+| **ShowSeconds** | `bool` | `False` | Se true nelle modalità Time/DateTime, aggiunge un selettore per i secondi. |
+| **Placeholder** | `string` | `"Select date..."`| Testo mostrato quando `SelectedDate` è null. |
+| **CornerRadius** | `CornerRadius` | `20` | Smussatura degli angoli. |
+| **ConfirmText** | `string` | `"Done"` | Testo per il pulsante di conferma (utile per la localizzazione). |
+| **CancelText** | `string` | `"Cancel"` | Testo per il pulsante di annullamento. |
 | **CurrentDisplayMonth** | `DateTime` | `Today` | Il mese attualmente mostrato nella griglia del calendario. |
 | **ViewMode** | `CalendarViewMode`| `Month` | Determina se il calendario sta mostrando i Giorni (Month), i Mesi (Year) o gli Anni (Decade). |
 

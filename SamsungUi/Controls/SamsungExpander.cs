@@ -33,8 +33,8 @@ namespace SamsungUi.Controls
         {
             base.OnMouseWheel(e);
             
-            // Se l'expander è aperto e intercetta un evento di scorrimento (anche se il mouse è fuori, 
-            // perché il Popup cattura l'input), blocchiamo l'evento in modo che non "bubbli" 
+            // If the expander is open and intercepts a scroll event (even if the mouse is outside,
+            // because the Popup captures input), we block the event so it doesn't "bubble" up
             // fino allo ScrollViewer della pagina sottostante.
             if (IsExpanded && !e.Handled)
             {

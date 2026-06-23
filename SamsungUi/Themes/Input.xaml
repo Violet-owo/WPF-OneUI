@@ -12,6 +12,7 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Padding" Value="12,10"/>
         <Setter Property="FontSize" Value="15"/>
+        <Setter Property="CornerRadius" Value="12"/>
         <Setter Property="CaretBrush" Value="{DynamicResource OneUiPrimaryBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -19,8 +20,14 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="12">
-                        <ScrollViewer x:Name="PART_ContentHost" Margin="{TemplateBinding Padding}" VerticalAlignment="Center"/>
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <Grid Margin="{TemplateBinding Padding}" VerticalAlignment="Center">
+                            <TextBlock Text="{TemplateBinding Placeholder}"
+                                       Foreground="{DynamicResource OneUiTextSecondaryBrush}"
+                                       Visibility="{TemplateBinding Text, Converter={x:Static local:TextToVisibilityConverter.Instance}}"
+                                       IsHitTestVisible="False"/>
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
@@ -49,7 +56,7 @@
                                         Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="20"
+                                        CornerRadius="{TemplateBinding CornerRadius}"
                                         SnapsToDevicePixels="True"/>
                                 <!-- Search Icon -->
                                 <TextBlock Text="🔍" 
@@ -59,10 +66,18 @@
                                            Margin="16,0,0,0" 
                                            HorizontalAlignment="Left"
                                            IsHitTestVisible="False"/>
-                                <ScrollViewer x:Name="PART_ContentHost"
-                                              Focusable="false"
-                                              HorizontalScrollBarVisibility="Hidden"
-                                              VerticalScrollBarVisibility="Hidden"/>
+                                <Grid Margin="{TemplateBinding Padding}">
+                                    <TextBlock Text="{TemplateBinding Placeholder}"
+                                               Foreground="{DynamicResource OneUiTextSecondaryBrush}"
+                                               Visibility="{TemplateBinding Text, Converter={x:Static local:TextToVisibilityConverter.Instance}}"
+                                               IsHitTestVisible="False"
+                                               VerticalAlignment="Center"/>
+                                    <ScrollViewer x:Name="PART_ContentHost"
+                                                  Focusable="false"
+                                                  HorizontalScrollBarVisibility="Hidden"
+                                                  VerticalScrollBarVisibility="Hidden"
+                                                  VerticalAlignment="Center"/>
+                                </Grid>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsKeyboardFocused" Value="true">

@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sui="clr-namespace:SamsungUi.Controls">
 
-    <!-- ToggleButton per il ComboBox -->
+    <!-- ToggleButton for ComboBox -->
     <ControlTemplate x:Key="SamsungComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -35,7 +35,7 @@
             <Trigger Property="IsChecked" Value="true">
                 <Setter TargetName="Border" Property="Background" Value="{DynamicResource OneUiSurfaceBrush}"/>
                 <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource OneUiPrimaryBrush}"/>
-                <!-- Ruota la freccia quando aperto -->
+                <!-- Rotate arrow when open -->
                 <Setter TargetName="Arrow" Property="RenderTransform">
                     <Setter.Value>
                         <RotateTransform Angle="180" CenterX="4" CenterY="2"/>
@@ -49,7 +49,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <!-- Stile ComboBox -->
+    <!-- ComboBox Style -->
     <Style TargetType="{x:Type sui:SamsungComboBox}">
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
         <Setter Property="Background" Value="{DynamicResource OneUiControlBackgroundBrush}"/>
@@ -59,11 +59,38 @@
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="Padding" Value="16,12"/>
         <Setter Property="FontSize" Value="{DynamicResource OneUiNormalFontSize}"/>
+        <Setter Property="CornerRadius" Value="16"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type sui:SamsungComboBox}">
                     <Grid>
-                        <!-- Pulsante per aprire/chiudere -->
+                        <Border x:Name="Border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                SnapsToDevicePixels="True"/>
+                        
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <TextBlock x:Name="PlaceholderText"
+                                       Text="{TemplateBinding Placeholder}"
+                                       Foreground="{DynamicResource OneUiTextSecondaryBrush}"
+                                       Visibility="Collapsed"
+                                       IsHitTestVisible="False"
+                                       VerticalAlignment="Center"/>
+                            
+                            <!-- ContentPresenter per visualizzare l'elemento selezionato -->
+                            <ContentPresenter x:Name="ContentSite"
+                                              IsHitTestVisible="False" 
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              Margin="0"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left"/>
+                        </Grid>
+
+                        <!-- Button to open/close -->
                         <ToggleButton x:Name="ToggleButton" 
                                       Template="{StaticResource SamsungComboBoxToggleButton}"
                                       Grid.Column="2" 
@@ -71,15 +98,6 @@
                                       IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                       ClickMode="Press">
                         </ToggleButton>
-                        
-                        <ContentPresenter x:Name="ContentSite" 
-                                          IsHitTestVisible="False" 
-                                          Content="{TemplateBinding SelectionBoxItem}"
-                                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                          Margin="{TemplateBinding Padding}"
-                                          VerticalAlignment="Center"
-                                          HorizontalAlignment="Left" />
 
                         <!-- Menu a tendina (Popup) -->
                         <Popup x:Name="Popup" 
@@ -110,7 +128,11 @@
                         </Popup>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <!-- Animazione del Popup -->
+                        <!-- Show placeholder if nothing is selected -->
+                        <Trigger Property="SelectedItem" Value="{x:Null}">
+                            <Setter TargetName="PlaceholderText" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <!-- Popup Animation -->
                         <Trigger Property="IsDropDownOpen" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
@@ -130,7 +152,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <!-- Stile per i singoli ComboBoxItem -->
+        <!-- Style for single ComboBoxItem -->
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type ComboBoxItem}">

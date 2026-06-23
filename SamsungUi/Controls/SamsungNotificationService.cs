@@ -206,7 +206,7 @@ namespace SamsungUi.Controls
             if (state.IsDismissing) return;
             state.IsDismissing = true;
 
-            // Animazione di uscita
+            // Exit animation
             double startX = 0, startY = 0;
             if (_position.ToString().Contains("Left")) startX = -300;
             if (_position.ToString().Contains("Right")) startX = 300;

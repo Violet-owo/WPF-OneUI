@@ -18,6 +18,9 @@ It natively supports all classic events and bindings (`Click`, `Command`, `Comma
 |-----------|------|-------------------|-------------|
 | **Variant** | `ButtonVariant` | `Normal` | Defines the button style. Can be set to `Normal` (light/dark gray background based on theme) or `Primary` (uses the main accent color). |
 | **CornerRadius** | `CornerRadius` | `20` | Corner smoothing. Default is 20 to achieve the typical "pill" effect. |
+| **IsLoading** | `bool` | `False` | When set to true, disables the button and shows a spinning loading indicator. |
+| **IconData** | `Geometry` | `null` | The SVG path data for the icon to display alongside the text. |
+| **IconSize** | `double` | `18` | The size of the icon to display. |
 
 **`ButtonVariant` Enum:**
 - `Normal`: Neutral background, ideal for secondary buttons or standard actions (Cancel, Back, etc.).
@@ -67,6 +70,9 @@ Supporta nativamente tutti gli eventi e i binding classici (`Click`, `Command`, 
 |-----------|------|-------------------|-------------|
 | **Variant** | `ButtonVariant` | `Normal` | Definisce lo stile del pulsante. Può essere impostato su `Normal` (sfondo grigio chiaro/scuro in base al tema) oppure `Primary` (utilizza il colore di accento principale). |
 | **CornerRadius** | `CornerRadius` | `20` | Smussatura degli angoli. Di default è impostato a 20 per ottenere il tipico effetto a "pillola". |
+| **IsLoading** | `bool` | `False` | Quando è true, disabilita il pulsante e mostra un indicatore di caricamento rotante. |
+| **IconData** | `Geometry` | `null` | Il dato del percorso SVG per l'icona da visualizzare accanto al testo. |
+| **IconSize** | `double` | `18` | La dimensione dell'icona da visualizzare. |
 
 **Enumerazione `ButtonVariant`:**
 - `Normal`: Sfondo neutro, ideale per pulsanti secondari o azioni standard (Annulla, Indietro, ecc.).

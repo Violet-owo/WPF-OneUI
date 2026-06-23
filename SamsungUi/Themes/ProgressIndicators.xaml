@@ -16,11 +16,11 @@
                 <!-- Template lineare: usa PART_Track e PART_Indicator come richiesto da WPF ProgressBar -->
                 <ControlTemplate TargetType="{x:Type sui:SamsungProgressBar}">
                     <Grid x:Name="TemplateRoot" SnapsToDevicePixels="true">
-                        <!-- Traccia di sfondo -->
+                        <!-- Background track -->
                         <Border x:Name="PART_Track"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="3"/>
-                        <!-- Barra di avanzamento: la larghezza è gestita internamente da ProgressBar -->
+                        <!-- Progress bar: width is managed internally by ProgressBar -->
                         <Border x:Name="PART_Indicator"
                                 Background="{TemplateBinding Foreground}"
                                 CornerRadius="3"

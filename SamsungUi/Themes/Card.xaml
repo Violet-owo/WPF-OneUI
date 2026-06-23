@@ -2,12 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sui="clr-namespace:SamsungUi.Controls">
 
-    <!-- Stile per la Card Contenitore in stile Samsung One UI -->
+    <!-- Style for Samsung One UI Card Container -->
     <Style TargetType="{x:Type sui:SamsungCard}">
         <Setter Property="Background" Value="{DynamicResource OneUiSurfaceBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="24"/>
+        <Setter Property="CornerRadius" Value="26"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Top"/>
         <Setter Property="Template">
@@ -16,7 +17,7 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="26"
+                            CornerRadius="{TemplateBinding CornerRadius}"
                             Padding="{TemplateBinding Padding}"
                             Effect="{DynamicResource OneUiCardShadow}">
                         <ContentPresenter

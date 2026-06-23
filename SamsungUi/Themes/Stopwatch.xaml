@@ -391,7 +391,7 @@
                                             </Grid.RowDefinitions>
                                             <TextBlock Grid.Row="0" Text="Recorded Laps" FontSize="16" FontWeight="SemiBold" Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,16"/>
                                             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                                                <ItemsControl ItemsSource="{Binding Laps, RelativeSource={RelativeSource AncestorType=sui:SamsungStopwatch}}">
+                                                <ItemsControl Margin="0,0,16,0" ItemsSource="{Binding Laps, RelativeSource={RelativeSource AncestorType=sui:SamsungStopwatch}}">
                                                     <ItemsControl.ItemTemplate>
                                                         <DataTemplate>
                                                             <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource OneUiChartLineBrush}" Padding="0,12">

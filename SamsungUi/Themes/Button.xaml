@@ -2,6 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sui="clr-namespace:SamsungUi.Controls">
 
+    <!-- Loading Spinner Animation -->
+    <Storyboard x:Key="SpinAnimation">
+        <DoubleAnimation Storyboard.TargetName="SpinnerRotate" 
+                         Storyboard.TargetProperty="Angle"
+                         From="0" To="360" Duration="0:0:1" 
+                         RepeatBehavior="Forever" />
+    </Storyboard>
+
     <Style TargetType="{x:Type sui:SamsungButton}">
         <Setter Property="Background" Value="{DynamicResource OneUiControlBackgroundBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextPrimaryBrush}"/>
@@ -11,6 +19,7 @@
         <Setter Property="Padding" Value="16,8"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="16"/>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -19,25 +28,107 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="16" 
+                            CornerRadius="{TemplateBinding CornerRadius}" 
+                            RenderTransformOrigin="0.5,0.5"
                             SnapsToDevicePixels="true">
-                        <ContentPresenter x:Name="contentPresenter" 
-                                          Focusable="false" 
-                                          HorizontalAlignment="Center" 
-                                          Margin="{TemplateBinding Padding}" 
-                                          RecognizesAccessKey="true" 
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                          VerticalAlignment="Center"/>
+                        <Border.RenderTransform>
+                            <ScaleTransform x:Name="ScaleTransform" ScaleX="1" ScaleY="1" />
+                        </Border.RenderTransform>
+
+                        <Grid>
+                            <!-- Main Content (Icon + Text) -->
+                            <StackPanel x:Name="MainContent" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}">
+                                <Path x:Name="IconPath" 
+                                      Data="{TemplateBinding IconData}" 
+                                      Fill="{TemplateBinding Foreground}" 
+                                      Width="{TemplateBinding IconSize}" 
+                                      Height="{TemplateBinding IconSize}"
+                                      Stretch="Uniform"
+                                      Margin="0,0,8,0"
+                                      Visibility="Visible"/>
+                                <ContentPresenter x:Name="contentPresenter" 
+                                                  Focusable="false" 
+                                                  VerticalAlignment="Center"
+                                                  RecognizesAccessKey="true" 
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </StackPanel>
+
+                            <!-- Loading Spinner -->
+                            <Viewbox x:Name="Spinner" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed">
+                                <Canvas Width="24" Height="24">
+                                    <Path Fill="Transparent" Stroke="{TemplateBinding Foreground}" StrokeThickness="2.5" Opacity="0.3" Data="M 12 2 A 10 10 0 1 1 12 22 A 10 10 0 1 1 12 2" />
+                                    <Path Fill="Transparent" Stroke="{TemplateBinding Foreground}" StrokeThickness="2.5" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 12 2 A 10 10 0 0 1 22 12">
+                                        <Path.RenderTransform>
+                                            <RotateTransform x:Name="SpinnerRotate" CenterX="12" CenterY="12" Angle="0"/>
+                                        </Path.RenderTransform>
+                                    </Path>
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
                     </Border>
 
                     <ControlTemplate.Triggers>
+                        <!-- Icon & Content Margins -->
+                        <Trigger Property="IconData" Value="{x:Null}">
+                            <Setter TargetName="IconPath" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="IconPath" Property="Margin" Value="0"/>
+                        </Trigger>
+
+                        <!-- IsLoading State -->
+                        <Trigger Property="IsLoading" Value="true">
+                            <Setter TargetName="MainContent" Property="Opacity" Value="0"/>
+                            <Setter TargetName="Spinner" Property="Visibility" Value="Visible"/>
+                            <Setter Property="IsHitTestVisible" Value="False"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Name="SpinStoryboard" Storyboard="{StaticResource SpinAnimation}"/>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <StopStoryboard BeginStoryboardName="SpinStoryboard"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Opacity" Value="0.85"/>
                             <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
 
+                        <!-- Ripple/Sink Effect on Press -->
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="Opacity" Value="0.7"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleX" To="0.95" Duration="0:0:0.1" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleY" To="0.95" Duration="0:0:0.1" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.2" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="ScaleTransform" Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.2" >
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="false">

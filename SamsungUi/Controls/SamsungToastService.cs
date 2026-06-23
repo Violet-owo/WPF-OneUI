@@ -129,7 +129,7 @@ namespace SamsungUi.Controls
                 adorner = new ToastAdorner(rootElement, overlayGrid);
                 adornerLayer.Add(adorner);
 
-                // Animazione apparizione
+                // Appearance animation
                 var fadeIn = new DoubleAnimation(0, 1, TimeSpan.FromMilliseconds(350)) 
                     { EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut } };
                 var slideUp = new DoubleAnimation(30, 0, TimeSpan.FromMilliseconds(350)) 
@@ -140,7 +140,7 @@ namespace SamsungUi.Controls
 
                 if (autoClose)
                 {
-                    // Auto-close: 3 secondi per label normale, 6 per action toast (così c'è tempo per cliccare)
+                    // Auto-close: 3 seconds for normal label, 6 for action toast (giving time to click)
                     int delayMs = string.IsNullOrEmpty(actionText) ? 3000 : 6000;
                     await Task.Delay(delayMs);
                     

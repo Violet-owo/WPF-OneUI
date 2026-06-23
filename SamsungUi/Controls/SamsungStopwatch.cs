@@ -144,7 +144,7 @@ namespace SamsungUi.Controls
                 { 
                     if (IsPipVisible && _miniPopup != null && !_miniPopup.IsOpen)
                     {
-                        // Forza la visualizzazione se lo stato è disallineato (es. dopo scaricamento pagina)
+                        // Force display if the state is misaligned (e.g. after page unloads)
                         ShowMiniPopup();
                     }
                     else
@@ -297,7 +297,7 @@ namespace SamsungUi.Controls
         private void ParentScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             if (_mainDial == null || _parentScrollViewer == null) return;
-            if (!IsRunning && Laps.Count == 0) return; // Non mostrare il PiP se il cronometro è intonso
+            if (!IsRunning && Laps.Count == 0) return; // Do not show PiP if stopwatch is untouched
 
             try
             {
@@ -328,7 +328,7 @@ namespace SamsungUi.Controls
             }
             catch
             {
-                // In caso di problemi nel layout tree, evita crash
+                // Avoid crashes in case of layout tree issues
             }
         }
 
@@ -396,7 +396,7 @@ namespace SamsungUi.Controls
                 LapChartSegments.Clear();
                 HasLaps = false;
                 LapButtonText = "Lap";
-                IsPipVisible = false; // Nascondi PiP se resettato
+                IsPipVisible = false; // Hide PiP if reset
             }
         }
 

@@ -28,12 +28,19 @@ namespace SamsungUi.Controls
                 typeof(SamsungEditBox),
                 new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTextChanged));
 
-        public static readonly DependencyProperty HintProperty =
+        public static readonly DependencyProperty PlaceholderProperty =
             DependencyProperty.Register(
-                nameof(Hint),
+                nameof(Placeholder),
                 typeof(string),
                 typeof(SamsungEditBox),
                 new PropertyMetadata(string.Empty));
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register(
+                nameof(CornerRadius),
+                typeof(CornerRadius),
+                typeof(SamsungEditBox),
+                new PropertyMetadata(new CornerRadius(16)));
 
         public static readonly DependencyProperty InputTypeProperty =
             DependencyProperty.Register(
@@ -64,10 +71,16 @@ namespace SamsungUi.Controls
             set => SetValue(TextProperty, value);
         }
 
-        public string Hint
+        public string Placeholder
         {
-            get => (string)GetValue(HintProperty);
-            set => SetValue(HintProperty, value);
+            get => (string)GetValue(PlaceholderProperty);
+            set => SetValue(PlaceholderProperty, value);
+        }
+
+        public CornerRadius CornerRadius
+        {
+            get => (CornerRadius)GetValue(CornerRadiusProperty);
+            set => SetValue(CornerRadiusProperty, value);
         }
 
         public InputType InputType

@@ -60,6 +60,24 @@ namespace SamsungUi.Controls
             set => SetValue(IsPasswordRevealedProperty, value);
         }
 
+        public static readonly DependencyProperty PlaceholderProperty =
+            DependencyProperty.Register(nameof(Placeholder), typeof(string), typeof(SamsungPasswordBox), new PropertyMetadata(string.Empty));
+
+        public string Placeholder
+        {
+            get => (string)GetValue(PlaceholderProperty);
+            set => SetValue(PlaceholderProperty, value);
+        }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(SamsungPasswordBox), new PropertyMetadata(new CornerRadius(12)));
+
+        public CornerRadius CornerRadius
+        {
+            get => (CornerRadius)GetValue(CornerRadiusProperty);
+            set => SetValue(CornerRadiusProperty, value);
+        }
+
         // --- Methods ---
 
         public override void OnApplyTemplate()

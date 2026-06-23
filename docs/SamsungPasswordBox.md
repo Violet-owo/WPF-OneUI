@@ -18,8 +18,10 @@ This control inherits from `System.Windows.Controls.Control`. Internally, it man
 
 | Property | Type | Default Value | Description |
 |-----------|------|-------------------|-------------|
-| **Password** | `string` | `""` | The actual text of the password. Unlike the native PasswordBox, this exposes a bindable DependencyProperty (Two-Way). |
-| **IsPasswordRevealed** | `bool` | `False` | Controls the visibility of the characters. When `True`, the password is displayed in plain text. |
+| **Password** | `string` | `""` | The password content. Supports two-way binding. |
+| **IsPasswordRevealed** | `bool` | `False` | Gets or sets whether the password is currently shown as clear text. |
+| **Placeholder** | `string` | `""` | The placeholder text to display when empty. |
+| **CornerRadius** | `CornerRadius` | `12` | Corner smoothing. |
 
 ### Visual Behavior
 - **Reveal Button**: An eye icon is displayed on the right edge of the text field. Clicking it toggles `IsPasswordRevealed`, swapping the masked view with the clear text view.
@@ -43,8 +45,10 @@ Questo controllo eredita da `System.Windows.Controls.Control`. Internamente, ges
 
 | Proprietà | Tipo | Valore di Default | Descrizione |
 |-----------|------|-------------------|-------------|
-| **Password** | `string` | `""` | Il testo effettivo della password. A differenza del PasswordBox nativo, questo espone una DependencyProperty bindabile (Bidirezionale). |
-| **IsPasswordRevealed** | `bool` | `False` | Controlla la visibilità dei caratteri. Quando è a `True`, la password viene mostrata in chiaro. |
+| **Password** | `string` | `""` | Il contenuto della password. Supporta il data-binding bidirezionale. |
+| **IsPasswordRevealed** | `bool` | `False` | Ottiene o imposta se la password è attualmente visibile in chiaro. |
+| **Placeholder** | `string` | `""` | Il testo di suggerimento mostrato quando vuoto. |
+| **CornerRadius** | `CornerRadius` | `12` | Smussatura degli angoli. |
 
 ### Comportamento Visivo
 - **Pulsante Rivela**: Sul margine destro compare l'icona di un occhio. Cliccandola si inverte il valore di `IsPasswordRevealed`, scambiando la vista mascherata (con i puntini neri) con quella in chiaro.

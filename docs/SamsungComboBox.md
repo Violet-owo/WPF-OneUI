@@ -16,7 +16,12 @@ This control inherits directly from `System.Windows.Controls.ComboBox`.
 You can bind items to it using `ItemsSource`, `DisplayMemberPath`, and handle selection via `SelectedItem` or `SelectedIndex`.
 
 ### Custom Properties
-There are no additional `DependencyProperty` configurations for this control. The custom appearance of both the toggle button (the visible field) and the floating popup are defined entirely via XAML control templates.
+| Property | Type | Default Value | Description |
+|-----------|------|-------------------|-------------|
+| **Placeholder** | `string` | `""` | The placeholder text to display when no item is selected. |
+| **CornerRadius** | `CornerRadius` | `16` | Corner smoothing. |
+
+The custom appearance of both the toggle button (the visible field) and the floating popup are defined entirely via XAML control templates.
 
 ### Visual Behavior
 - **Toggle Button (Field)**: The main field is styled similar to `SamsungTextBox`, with a solid neutral background, rounded corners, and a clean chevron arrow on the right.
@@ -44,7 +49,12 @@ Questo controllo eredita direttamente da `System.Windows.Controls.ComboBox`.
 Puoi associare le liste usando `ItemsSource`, `DisplayMemberPath`, e gestire la selezione con `SelectedItem` o `SelectedIndex`.
 
 ### Proprietà Personalizzate
-Non ci sono nuove `DependencyProperty` associate a questo controllo. L'aspetto personalizzato sia del pulsante di apertura (il campo visibile) che del menu a tendina fluttuante sono definiti interamente tramite i template XAML.
+| Proprietà | Tipo | Valore di Default | Descrizione |
+|-----------|------|-------------------|-------------|
+| **Placeholder** | `string` | `""` | Il testo di suggerimento mostrato quando nessun elemento è selezionato. |
+| **CornerRadius** | `CornerRadius` | `16` | Smussatura degli angoli. |
+
+L'aspetto personalizzato sia del pulsante di apertura (il campo visibile) che del menu a tendina fluttuante sono definiti interamente tramite i template XAML.
 
 ### Comportamento Visivo
 - **Campo Base (Toggle Button)**: Il campo principale ricorda lo stile del `SamsungTextBox`, con uno sfondo neutro solido, angoli smussati e una freccetta stilizzata (chevron) sulla destra.
