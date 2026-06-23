@@ -32,6 +32,11 @@
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Stopwatch.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/DateTimePicker.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ColorPicker.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/FileDropZone.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Menu.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/TreeView.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/DataGrid.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Pagination.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

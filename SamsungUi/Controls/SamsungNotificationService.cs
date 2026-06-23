@@ -69,7 +69,16 @@ namespace SamsungUi.Controls
                 var adornerLayer = AdornerLayer.GetAdornerLayer(rootElement);
                 if (adornerLayer == null) return;
 
-                if (!_containers.TryGetValue(position, out var container))
+                if (_containers.TryGetValue(position, out var container))
+                {
+                    if (container.RootElement != rootElement)
+                    {
+                        _containers.Remove(position);
+                        container = null;
+                    }
+                }
+
+                if (container == null)
                 {
                     container = new NotificationStackContainer(position, adornerLayer, rootElement);
                     _containers[position] = container;
@@ -109,6 +118,8 @@ namespace SamsungUi.Controls
 
         private readonly List<NotificationState> _activeNotifications = new();
         private readonly DispatcherTimer _timer;
+
+        public UIElement RootElement => _rootElement;
 
         public NotificationStackContainer(NotificationPosition position, AdornerLayer adornerLayer, UIElement rootElement)
         {

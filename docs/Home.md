@@ -40,6 +40,7 @@ Here you will find specifications, inheritance details, and usage examples for a
 
 #### Overlay & Feedback
 - [SamsungModal](SamsungModal.md)
+- [SamsungNotification](SamsungNotification.md)
 - [SamsungToastService](SamsungToastService.md)
 
 ---
@@ -87,6 +88,7 @@ Qui troverai le specifiche, l'ereditarietà e gli esempi d'uso per tutti i compo
 
 #### Overlay & Feedback
 - [SamsungModal](SamsungModal.md)
+- [SamsungNotification](SamsungNotification.md)
 - [SamsungToastService](SamsungToastService.md)
 
 ---

@@ -1,0 +1,326 @@
+<Page x:Class="SamsungUi.Demo.Pages.EnterprisePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sui="clr-namespace:SamsungUi.Controls;assembly=SamsungUi"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="1100"
+      Title="EnterprisePage">
+
+    <Grid Margin="24,0,24,24">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="24"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar (TreeView) -->
+        <sui:SamsungCard Grid.Column="0" VerticalAlignment="Stretch">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Files &amp; Folders" Margin="0,0,0,16"/>
+                
+                <sui:SamsungTreeView Grid.Row="1">
+                    <sui:SamsungTreeViewItem Header="Documents" IsExpanded="True">
+                        <sui:SamsungTreeViewItem Header="Invoices 2026"/>
+                        <sui:SamsungTreeViewItem Header="Receipts"/>
+                        <sui:SamsungTreeViewItem Header="Contracts"/>
+                    </sui:SamsungTreeViewItem>
+                    <sui:SamsungTreeViewItem Header="Projects">
+                        <sui:SamsungTreeViewItem Header="Alpha Project"/>
+                        <sui:SamsungTreeViewItem Header="Beta Project"/>
+                    </sui:SamsungTreeViewItem>
+                    <sui:SamsungTreeViewItem Header="Settings"/>
+                    <sui:SamsungTreeViewItem Header="Trash"/>
+                </sui:SamsungTreeView>
+            </Grid>
+        </sui:SamsungCard>
+
+        <!-- Main Content Area -->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Top Cards -->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <sui:SamsungCard Grid.Column="0">
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Upload Invoice"/>
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Drag and drop your invoice PDF below." Margin="0,4,0,16"/>
+                        
+                        <sui:SamsungFileDropZone Text="Drag and drop files here, or click to browse" 
+                                                 Icon="&#xE8B7;"
+                                                 FilesDropped="SamsungFileDropZone_FilesDropped"
+                                                 MouseLeftButtonDown="SamsungFileDropZone_MouseLeftButtonDown">
+                            <sui:SamsungFileDropZone.ContextMenu>
+                                <sui:SamsungContextMenu>
+                                    <sui:SamsungMenuItem Header="Upload File" Icon="&#xE8E5;" Click="UploadFile_Click"/>
+                                    <sui:SamsungMenuItem Header="Upload Folder" Icon="&#xE838;"/>
+                                    <Separator/>
+                                    <sui:SamsungMenuItem Header="Clear Area" Icon="&#xE74D;" Click="ClearArea_Click"/>
+                                </sui:SamsungContextMenu>
+                            </sui:SamsungFileDropZone.ContextMenu>
+                        </sui:SamsungFileDropZone>
+                        
+                        <TextBlock x:Name="UploadStatusText" Text="" Foreground="{DynamicResource OneUiPrimaryBrush}" Margin="0,16,0,0" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </sui:SamsungCard>
+                
+                <sui:SamsungCard Grid.Column="2">
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Recent Context Menu"/>
+                        <TextBlock Style="{DynamicResource OneUiSmallGrayStyle}" Text="Right click in the gray box below." Margin="0,4,0,16"/>
+                        
+                        <Border Background="{DynamicResource OneUiControlBackgroundBrush}" CornerRadius="12" Height="150">
+                            <Border.ContextMenu>
+                                <sui:SamsungContextMenu>
+                                    <sui:SamsungMenuItem Header="Edit" Icon="&#xE70F;"/>
+                                    <sui:SamsungMenuItem Header="Copy" Icon="&#xE8C8;" InputGestureText="Ctrl+C"/>
+                                    <sui:SamsungMenuItem Header="Paste" Icon="&#xE77F;" InputGestureText="Ctrl+V"/>
+                                    <Separator/>
+                                    <sui:SamsungMenuItem Header="Properties" Icon="&#xE946;"/>
+                                </sui:SamsungContextMenu>
+                            </Border.ContextMenu>
+                            <TextBlock Text="Right click me!" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                        </Border>
+                    </StackPanel>
+                </sui:SamsungCard>
+            </Grid>
+
+            <!-- Bottom Content: DataGrid -->
+            <sui:SamsungCard x:Name="GridCard" Grid.Row="2" VerticalAlignment="Stretch" Padding="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid Margin="24,24,24,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Grid.Column="0" Style="{DynamicResource OneUiSubtitleStyle}" Text="Employee Directory" VerticalAlignment="Center"/>
+                        <sui:SamsungBadge Grid.Column="1" Content="Huge Dataset" Background="{DynamicResource OneUiPrimaryBrush}" Foreground="White" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                        
+                        <sui:SamsungButton Grid.Column="2" Content="Simulate Pagination (500 rows)" Variant="Ghost" HorizontalAlignment="Right" Margin="0,0,16,0" Click="LoadPagination_Click"/>
+                        <sui:SamsungButton Grid.Column="3" Content="Simulate Async Load (100k rows)" Variant="Primary" Margin="0,0,16,0" Click="LoadData_Click"/>
+                        <sui:SamsungButton x:Name="ExpandButton" Grid.Column="4" Content="&#xE740;" FontFamily="Segoe Fluent Icons, Segoe MDL2 Assets" FontSize="16" Variant="Ghost" Click="ExpandGrid_Click" ToolTip="Expand to Fullscreen"/>
+                    </Grid>
+                    
+                    <!-- The DataGrid -->
+                    <sui:SamsungDataGrid x:Name="EnterpriseGrid" 
+                                         Grid.Row="1"
+                                         CornerRadius="12" 
+                                         Margin="24,0,24,24"
+                                         MaxHeight="400">
+                        <sui:SamsungDataGrid.ContextMenu>
+                            <sui:SamsungContextMenu>
+                                <sui:SamsungMenuItem Header="Edit Employee" Icon="&#xE70F;" Click="EditRow_Click"/>
+                                <Separator/>
+                                <sui:SamsungMenuItem Header="Delete" Icon="&#xE74D;" Foreground="Red" Click="DeleteRow_Click"/>
+                            </sui:SamsungContextMenu>
+                        </sui:SamsungDataGrid.ContextMenu>
+                        <sui:SamsungDataGrid.Columns>
+                            
+                            <!-- Standard DataGridTextColumns for simple data -->
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="100"/>
+                            <DataGridTextColumn Header="Full Name" Binding="{Binding Name}" Width="250"/>
+                            <DataGridTextColumn Header="Department" Binding="{Binding Department}" Width="200"/>
+                            
+                            <!-- Custom Template Column for Badge -->
+                            <DataGridTemplateColumn Header="Status" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <sui:SamsungBadge Content="{Binding Status}" HorizontalAlignment="Left">
+                                            <sui:SamsungBadge.Style>
+                                                <Style TargetType="sui:SamsungBadge" BasedOn="{StaticResource {x:Type sui:SamsungBadge}}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Status}" Value="Active">
+                                                            <Setter Property="BadgeStyle" Value="Success"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Status}" Value="On Leave">
+                                                            <Setter Property="BadgeStyle" Value="Warning"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Status}" Value="Terminated">
+                                                            <Setter Property="BadgeStyle" Value="Error"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Status}" Value="Remote">
+                                                            <Setter Property="BadgeStyle" Value="Primary"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </sui:SamsungBadge.Style>
+                                        </sui:SamsungBadge>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            
+                            <DataGridTextColumn Header="Role" Binding="{Binding Role}" Width="150"/>
+                            
+                            <!-- Custom Template Column for ProgressBar -->
+                            <DataGridTemplateColumn Header="Performance" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <sui:SamsungProgressBar Value="{Binding PerformanceScore}" Maximum="100" Height="8" VerticalAlignment="Center" ToolTip="{Binding PerformanceScore}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            
+                        </sui:SamsungDataGrid.Columns>
+                    </sui:SamsungDataGrid>
+
+                    <!-- Pagination -->
+                    <sui:SamsungPagination x:Name="GridPagination" 
+                                           Grid.Row="2" 
+                                           Margin="0,16,0,16" 
+                                           Visibility="Collapsed" 
+                                           PageChanged="GridPagination_PageChanged" />
+
+                </Grid>
+            </sui:SamsungCard>
+        </Grid>
+
+        <!-- MODALS (Overlay on top of everything) -->
+        <sui:SamsungModal x:Name="EditEmployeeModal">
+            <StackPanel MinWidth="440">
+                <TextBlock Text="Edit Employee" FontSize="20" FontWeight="SemiBold"
+                           Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,4"/>
+                <TextBlock Text="Update employee information below."
+                           Foreground="{DynamicResource OneUiTextSecondaryBrush}" FontSize="13" Margin="0,0,0,20"/>
+
+                <TextBlock Text="Full Name" FontSize="13" FontWeight="Medium"
+                           Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,0,0,6"/>
+                <sui:SamsungTextBox x:Name="EditNameBox" Placeholder="Enter full name" Margin="0,0,0,16"/>
+
+                <Grid Margin="0,0,0,16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="12"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Department" FontSize="13" FontWeight="Medium"
+                                   Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,0,0,6"/>
+                        <sui:SamsungComboBox x:Name="EditDeptBox" Placeholder="Select department">
+                            <ComboBoxItem Content="Engineering"/>
+                            <ComboBoxItem Content="Marketing"/>
+                            <ComboBoxItem Content="Sales"/>
+                            <ComboBoxItem Content="HR"/>
+                            <ComboBoxItem Content="Finance"/>
+                            <ComboBoxItem Content="Legal"/>
+                            <ComboBoxItem Content="Operations"/>
+                        </sui:SamsungComboBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Role" FontSize="13" FontWeight="Medium"
+                                   Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,0,0,6"/>
+                        <sui:SamsungTextBox x:Name="EditRoleBox" Placeholder="Enter role"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Margin="0,0,0,24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="12"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Status" FontSize="13" FontWeight="Medium"
+                                   Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,0,0,6"/>
+                        <sui:SamsungComboBox x:Name="EditStatusBox" Placeholder="Select status">
+                            <ComboBoxItem Content="Active"/>
+                            <ComboBoxItem Content="On Leave"/>
+                            <ComboBoxItem Content="Terminated"/>
+                            <ComboBoxItem Content="Remote"/>
+                        </sui:SamsungComboBox>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Performance Score" FontSize="13" FontWeight="Medium"
+                                   Foreground="{DynamicResource OneUiTextSecondaryBrush}" Margin="0,0,0,6"/>
+                        <sui:SamsungSlider x:Name="EditPerformanceSlider" Minimum="0" Maximum="100"/>
+                        <TextBlock Text="{Binding ElementName=EditPerformanceSlider, Path=Value, StringFormat={}{0:N0}/100}" 
+                                   HorizontalAlignment="Center" Margin="0,6,0,0" FontSize="12"
+                                   Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <sui:SamsungButton Grid.Column="0" Content="Cancel" Variant="Ghost" Click="CancelEdit_Click"/>
+                    <sui:SamsungButton Grid.Column="2" Content="Save Changes" Variant="Primary" Click="SaveEdit_Click"/>
+                </Grid>
+            </StackPanel>
+        </sui:SamsungModal>
+
+        <sui:SamsungModal x:Name="DeleteConfirmModal">
+            <StackPanel MinWidth="320">
+                <TextBlock Text="Delete Employee?" FontSize="20" FontWeight="SemiBold"
+                           Foreground="{DynamicResource OneUiTextPrimaryBrush}" Margin="0,0,0,4"/>
+                <TextBlock Text="This action cannot be undone and will permanently remove the employee from the database." 
+                           TextWrapping="Wrap" Margin="0,0,0,24" Foreground="{DynamicResource OneUiTextSecondaryBrush}"/>
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <sui:SamsungButton Grid.Column="0" Content="Cancel" Variant="Ghost" Click="CancelDelete_Click"/>
+                    <sui:SamsungButton Grid.Column="2" Content="Delete" Background="#FF3B30" Foreground="White" Click="ConfirmDelete_Click"/>
+                </Grid>
+            </StackPanel>
+        </sui:SamsungModal>
+
+        <!-- NOTIFICATIONS (declared in XAML like ModulesPage) -->
+        <sui:SamsungNotification x:Name="EditSuccessNotification"
+                                 Title="Employee Updated"
+                                 NotificationPosition="BottomRight"
+                                 IsSoundOn="True"
+                                 DurationMs="4000">
+            <sui:SamsungNotification.CardBackground>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#34C759" Offset="0"/>
+                    <GradientStop Color="#30D158" Offset="1"/>
+                </LinearGradientBrush>
+            </sui:SamsungNotification.CardBackground>
+        </sui:SamsungNotification>
+
+        <sui:SamsungNotification x:Name="DeleteSuccessNotification"
+                                 Title="Employee Deleted"
+                                 NotificationPosition="BottomRight"
+                                 IsSoundOn="True"
+                                 DurationMs="4000">
+            <sui:SamsungNotification.CardBackground>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF6B6B" Offset="0"/>
+                    <GradientStop Color="#EE3A3A" Offset="1"/>
+                </LinearGradientBrush>
+            </sui:SamsungNotification.CardBackground>
+        </sui:SamsungNotification>
+
+    </Grid>
+</Page>

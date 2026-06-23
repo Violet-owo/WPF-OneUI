@@ -82,6 +82,7 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // or ThemeType.Light
 | Modal | `<sui:SamsungModal>` | 🟢 |
 | NavigationBar | `<sui:SamsungNavigationBar>` | 🟢 |
 | ToastService | `SamsungToastService.Show()` | 🟢 |
+| Notification | `<sui:SamsungNotification>` | 🟢 |
 | DateTimePicker | `<sui:SamsungDateTimePicker>` | 🟢 |
 | ColorPicker | `<sui:SamsungColorPicker>` | 🟢 |
 | Chart (Bar/Donut) | `<sui:SamsungChart>` | 🟢 |
@@ -96,7 +97,10 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // or ThemeType.Light
 | GroupBox | `<sui:SamsungGroupBox>` | 🟢 |
 | Image | `<sui:SamsungImage>` | 🟢 |
 | Label | `<sui:SamsungLabel>` | 🟢 |
-| DataGrid | `<sui:SamsungDataGrid>` | 🟡 |
+| FileDropZone | `<sui:SamsungFileDropZone>` | 🟢 |
+| ContextMenu | `<sui:SamsungContextMenu>` | 🟢 |
+| TreeView | `<sui:SamsungTreeView>` | 🟢 |
+| DataGrid | `<sui:SamsungDataGrid>` | 🟢 |
 | Gallery | `<sui:Gallery>` (Concept) | 🟡 |
 
 *(Legend: 🟢 Completed | 🟡 Work in Progress | 🔴 Draft/Defective)*
@@ -196,6 +200,7 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // o ThemeType.Light
 | Modal | `<sui:SamsungModal>` | 🟢 |
 | NavigationBar | `<sui:SamsungNavigationBar>` | 🟢 |
 | ToastService | `SamsungToastService.Show()` | 🟢 |
+| Notification | `<sui:SamsungNotification>` | 🟢 |
 | DateTimePicker | `<sui:SamsungDateTimePicker>` | 🟢 |
 | ColorPicker | `<sui:SamsungColorPicker>` | 🟢 |
 | Chart (Bar/Donut) | `<sui:SamsungChart>` | 🟢 |
@@ -210,7 +215,10 @@ ThemeManager.ApplyTheme(ThemeType.Dark); // o ThemeType.Light
 | GroupBox | `<sui:SamsungGroupBox>` | 🟢 |
 | Image | `<sui:SamsungImage>` | 🟢 |
 | Label | `<sui:SamsungLabel>` | 🟢 |
-| DataGrid | `<sui:SamsungDataGrid>` | 🟡 |
+| FileDropZone | `<sui:SamsungFileDropZone>` | 🟢 |
+| ContextMenu | `<sui:SamsungContextMenu>` | 🟢 |
+| TreeView | `<sui:SamsungTreeView>` | 🟢 |
+| DataGrid | `<sui:SamsungDataGrid>` | 🟢 |
 | Gallery | `<sui:Gallery>` (Concept) | 🟡 |
 
 *(Legenda: 🟢 Completato | 🟡 Work in Progress | 🔴 Bozza/Difettoso)*
