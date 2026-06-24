@@ -4,7 +4,7 @@
 > 🇬🇧 A beautiful, modern, and fluid UI component library for WPF, inspired by Samsung One UI design guidelines.
 > 🇮🇹 Una libreria di componenti UI bella, moderna e fluida per WPF, ispirata alle linee guida del design Samsung One UI.
 
-[![WPF](https://img.shields.io/badge/WPF-.NET_6%2B-purple.svg)](https://dotnet.microsoft.com/)
+[![WPF](https://img.shields.io/badge/WPF-.NET_10%2B-purple.svg)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Author](https://img.shields.io/badge/Author-Violet%20Miller-blue.svg)](#)
 
@@ -27,6 +27,8 @@ Bring the clean, rounded aesthetics of Samsung devices directly to your Windows 
 
 | Framework | Supported |
 |-----------|:---------:|
+| .NET 10.0  | ✅ Yes    |
+| .NET 9.0  | ✅ Yes    |
 | .NET 8.0  | ✅ Yes    |
 | .NET 7.0  | ✅ Yes    |
 | .NET 6.0  | ✅ Yes    |
