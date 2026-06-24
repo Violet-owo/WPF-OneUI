@@ -71,6 +71,14 @@
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 SnapsToDevicePixels="True"/>
                         
+                        <!-- Button to open/close -->
+                        <ToggleButton x:Name="ToggleButton" 
+                                      Template="{StaticResource SamsungComboBoxToggleButton}"
+                                      Focusable="false"
+                                      IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ClickMode="Press">
+                        </ToggleButton>
+
                         <Grid Margin="{TemplateBinding Padding}">
                             <TextBlock x:Name="PlaceholderText"
                                        Text="{TemplateBinding Placeholder}"
@@ -89,15 +97,6 @@
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Left"/>
                         </Grid>
-
-                        <!-- Button to open/close -->
-                        <ToggleButton x:Name="ToggleButton" 
-                                      Template="{StaticResource SamsungComboBoxToggleButton}"
-                                      Grid.Column="2" 
-                                      Focusable="false"
-                                      IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                      ClickMode="Press">
-                        </ToggleButton>
 
                         <!-- Menu a tendina (Popup) -->
                         <Popup x:Name="Popup" 

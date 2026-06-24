@@ -63,15 +63,24 @@ namespace SamsungUi.Controls
         public static readonly DependencyProperty PlaceholderProperty =
             DependencyProperty.Register(nameof(Placeholder), typeof(string), typeof(SamsungPasswordBox), new PropertyMetadata(string.Empty));
 
+        /// <summary>
+        /// Gets or sets the placeholder text displayed when the password box is empty.
+        /// </summary>
         public string Placeholder
         {
             get => (string)GetValue(PlaceholderProperty);
             set => SetValue(PlaceholderProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the CornerRadius dependency property.
+        /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(SamsungPasswordBox), new PropertyMetadata(new CornerRadius(12)));
 
+        /// <summary>
+        /// Gets or sets the corner radius of the password box.
+        /// </summary>
         public CornerRadius CornerRadius
         {
             get => (CornerRadius)GetValue(CornerRadiusProperty);

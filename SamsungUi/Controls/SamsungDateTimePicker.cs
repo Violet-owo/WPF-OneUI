@@ -46,6 +46,9 @@ namespace SamsungUi.Controls
         public bool IsSelected { get; set; }
     }
 
+    /// <summary>
+    /// Represents a flexible date and time picker inspired by Samsung One UI, featuring scrolling lists and a modern calendar view.
+    /// </summary>
     [TemplatePart(Name = "PART_ToggleButton", Type = typeof(ButtonBase))]
     [TemplatePart(Name = "PART_Popup", Type = typeof(Popup))]
     [TemplatePart(Name = "PART_HeaderButton", Type = typeof(ButtonBase))]
@@ -62,10 +65,17 @@ namespace SamsungUi.Controls
     {
         // --- Dependency Properties ---
 
+        /// <summary>
+        /// Identifies the <see cref="SelectedDate"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty SelectedDateProperty =
             DependencyProperty.Register(nameof(SelectedDate), typeof(DateTime?), typeof(SamsungDateTimePicker), 
                 new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedDateChanged));
 
+        /// <summary>
+        /// Gets or sets the selected date and time.
+        /// </summary>
+        /// <value>A <see cref="DateTime"/> object representing the selected date/time, or null if none is selected.</value>
         public DateTime? SelectedDate
         {
             get => (DateTime?)GetValue(SelectedDateProperty);

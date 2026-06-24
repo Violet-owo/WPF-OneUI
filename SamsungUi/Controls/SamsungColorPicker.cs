@@ -8,6 +8,10 @@ using System.Windows.Media;
 
 namespace SamsungUi.Controls
 {
+    /// <summary>
+    /// A Samsung One UI style color picker dropdown control.
+    /// Provides a spectrum area to pick Hue and Saturation, and sliders for Brightness (Value) and Opacity (Alpha).
+    /// </summary>
     [TemplatePart(Name = "PART_Popup", Type = typeof(Popup))]
     [TemplatePart(Name = "PART_SpectrumArea", Type = typeof(FrameworkElement))]
     [TemplatePart(Name = "PART_SpectrumThumb", Type = typeof(FrameworkElement))]
@@ -40,26 +44,41 @@ namespace SamsungUi.Controls
 
         #region Dependency Properties
 
+        /// <summary>
+        /// Identifies the <see cref="SelectedColor"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty SelectedColorProperty =
             DependencyProperty.Register("SelectedColor", typeof(Color), typeof(SamsungColorPicker), 
                 new FrameworkPropertyMetadata(Colors.LightBlue, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedColorChanged));
 
+        /// <summary>
+        /// Gets or sets the currently selected color. Can be data-bound TwoWay.
+        /// </summary>
         public Color SelectedColor
         {
             get => (Color)GetValue(SelectedColorProperty);
             set => SetValue(SelectedColorProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="IsDropDownOpen"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty IsDropDownOpenProperty =
             DependencyProperty.Register("IsDropDownOpen", typeof(bool), typeof(SamsungColorPicker), 
                 new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsDropDownOpenChanged));
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the color picker popup is currently open.
+        /// </summary>
         public bool IsDropDownOpen
         {
             get => (bool)GetValue(IsDropDownOpenProperty);
             set => SetValue(IsDropDownOpenProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="Hue"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty HueProperty =
             DependencyProperty.Register("Hue", typeof(double), typeof(SamsungColorPicker), new PropertyMetadata(0.0, OnHsvChanged));
 

@@ -10,6 +10,10 @@ namespace SamsungUi.Controls
     public class SamsungTextBox : TextBox
     {
         // --- Dependency Properties ---
+        
+        /// <summary>
+        /// Identifies the <see cref="IsSearchBar"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty IsSearchBarProperty =
             DependencyProperty.Register(
                 nameof(IsSearchBar),
@@ -17,6 +21,9 @@ namespace SamsungUi.Controls
                 typeof(SamsungTextBox),
                 new PropertyMetadata(false));
 
+        /// <summary>
+        /// Identifies the <see cref="Placeholder"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty PlaceholderProperty =
             DependencyProperty.Register(
                 nameof(Placeholder),
@@ -24,6 +31,9 @@ namespace SamsungUi.Controls
                 typeof(SamsungTextBox),
                 new PropertyMetadata(string.Empty));
 
+        /// <summary>
+        /// Identifies the <see cref="CornerRadius"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(
                 nameof(CornerRadius),
@@ -33,18 +43,30 @@ namespace SamsungUi.Controls
 
         // --- Properties ---
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the text box acts as a search bar (typically showing a search icon).
+        /// </summary>
+        /// <value><c>true</c> if it is a search bar; otherwise, <c>false</c>.</value>
         public bool IsSearchBar
         {
             get => (bool)GetValue(IsSearchBarProperty);
             set => SetValue(IsSearchBarProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets the placeholder text displayed when the text box is empty.
+        /// </summary>
+        /// <value>A string representing the placeholder text.</value>
         public string Placeholder
         {
             get => (string)GetValue(PlaceholderProperty);
             set => SetValue(PlaceholderProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets the corner radius of the text box.
+        /// </summary>
+        /// <value>A <see cref="System.Windows.CornerRadius"/> value. Default is 16.</value>
         public CornerRadius CornerRadius
         {
             get => (CornerRadius)GetValue(CornerRadiusProperty);

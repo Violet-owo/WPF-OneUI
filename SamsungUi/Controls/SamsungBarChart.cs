@@ -24,9 +24,15 @@ namespace SamsungUi.Controls
             ScrollViewer.SetVerticalScrollBarVisibility(this, ScrollBarVisibility.Disabled);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="ValueUnit"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty ValueUnitProperty =
             DependencyProperty.Register(nameof(ValueUnit), typeof(string), typeof(SamsungBarChart), new PropertyMetadata(string.Empty));
 
+        /// <summary>
+        /// Gets or sets the unit of measurement text to display alongside the bar values (e.g., "%", "GB", "hrs").
+        /// </summary>
         public string ValueUnit
         {
             get => (string)GetValue(ValueUnitProperty);

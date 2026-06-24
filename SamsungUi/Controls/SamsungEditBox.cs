@@ -21,6 +21,11 @@ namespace SamsungUi.Controls
 
         // --- Dependency Properties ---
         
+        // --- Dependency Properties ---
+        
+        /// <summary>
+        /// Identifies the <see cref="Text"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register(
                 nameof(Text),
@@ -28,6 +33,9 @@ namespace SamsungUi.Controls
                 typeof(SamsungEditBox),
                 new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnTextChanged));
 
+        /// <summary>
+        /// Identifies the <see cref="Placeholder"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty PlaceholderProperty =
             DependencyProperty.Register(
                 nameof(Placeholder),
@@ -35,6 +43,9 @@ namespace SamsungUi.Controls
                 typeof(SamsungEditBox),
                 new PropertyMetadata(string.Empty));
 
+        /// <summary>
+        /// Identifies the <see cref="CornerRadius"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(
                 nameof(CornerRadius),
@@ -42,6 +53,9 @@ namespace SamsungUi.Controls
                 typeof(SamsungEditBox),
                 new PropertyMetadata(new CornerRadius(16)));
 
+        /// <summary>
+        /// Identifies the <see cref="InputType"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty InputTypeProperty =
             DependencyProperty.Register(
                 nameof(InputType),
@@ -49,6 +63,9 @@ namespace SamsungUi.Controls
                 typeof(SamsungEditBox),
                 new PropertyMetadata(InputType.Text, OnInputTypeChanged));
 
+        /// <summary>
+        /// Identifies the <see cref="IsPasswordRevealed"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty IsPasswordRevealedProperty =
             DependencyProperty.Register(
                 nameof(IsPasswordRevealed),
@@ -56,6 +73,9 @@ namespace SamsungUi.Controls
                 typeof(SamsungEditBox),
                 new PropertyMetadata(false));
 
+        /// <summary>
+        /// Identifies the <see cref="HasText"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty HasTextProperty =
             DependencyProperty.Register(
                 nameof(HasText),
@@ -65,36 +85,57 @@ namespace SamsungUi.Controls
 
         // --- Properties ---
 
+        // --- Properties ---
+
+        /// <summary>
+        /// Gets or sets the text content of the edit box. Can be data bound (TwoWay).
+        /// </summary>
         public string Text
         {
             get => (string)GetValue(TextProperty);
             set => SetValue(TextProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets the placeholder text displayed when the edit box is empty.
+        /// </summary>
         public string Placeholder
         {
             get => (string)GetValue(PlaceholderProperty);
             set => SetValue(PlaceholderProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets the corner radius of the edit box.
+        /// </summary>
         public CornerRadius CornerRadius
         {
             get => (CornerRadius)GetValue(CornerRadiusProperty);
             set => SetValue(CornerRadiusProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets the type of input expected (e.g., Text, Password, Number, Email).
+        /// </summary>
         public InputType InputType
         {
             get => (InputType)GetValue(InputTypeProperty);
             set => SetValue(InputTypeProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the password text is revealed in clear text (only applicable if InputType is Password).
+        /// </summary>
         public bool IsPasswordRevealed
         {
             get => (bool)GetValue(IsPasswordRevealedProperty);
             set => SetValue(IsPasswordRevealedProperty, value);
         }
 
+        /// <summary>
+        /// Gets a value indicating whether the edit box currently contains any text.
+        /// Useful for animating the floating placeholder.
+        /// </summary>
         public bool HasText
         {
             get => (bool)GetValue(HasTextProperty);

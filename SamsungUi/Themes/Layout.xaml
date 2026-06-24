@@ -91,7 +91,7 @@
                     <Grid x:Name="RootGrid" Background="Transparent">
                         <Border Background="#66000000" x:Name="Overlay" Opacity="0"/>
                         <Border x:Name="DialogContainer" 
-                                Background="{DynamicResource OneUiControlBackgroundBrush}" 
+                                Background="{DynamicResource OneUiSurfaceBrush}" 
                                 CornerRadius="24" 
                                 HorizontalAlignment="Center" 
                                 VerticalAlignment="Center" 

@@ -3,20 +3,39 @@ using System.Windows.Controls;
 
 namespace SamsungUi.Controls
 {
+    /// <summary>
+    /// A Samsung One UI style DataGrid with rounded corners, custom scrollbars, and an integrated loading overlay.
+    /// </summary>
     public class SamsungDataGrid : DataGrid
     {
+        /// <summary>
+        /// Identifies the <see cref="CornerRadius"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(SamsungDataGrid), new PropertyMetadata(new CornerRadius(16)));
 
+        /// <summary>
+        /// Gets or sets the corner radius of the data grid's outer border.
+        /// </summary>
+        /// <value>A <see cref="System.Windows.CornerRadius"/> value. Default is 16.</value>
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
             set { SetValue(CornerRadiusProperty, value); }
         }
 
+        /// <summary>
+        /// Identifies the <see cref="IsLoading"/> dependency property.
+        /// </summary>
+
         public static readonly DependencyProperty IsLoadingProperty =
             DependencyProperty.Register("IsLoading", typeof(bool), typeof(SamsungDataGrid), new PropertyMetadata(false));
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the data grid is currently loading or processing data.
+        /// When true, an animated loading overlay is displayed over the content.
+        /// </summary>
+        /// <value><c>true</c> to show the loading overlay; otherwise, <c>false</c>.</value>
         public bool IsLoading
         {
             get { return (bool)GetValue(IsLoadingProperty); }
