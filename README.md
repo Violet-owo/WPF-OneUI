@@ -4,7 +4,7 @@
 > 🇬🇧 A beautiful, modern, and fluid UI component library for WPF, inspired by Samsung One UI design guidelines.
 > 🇮🇹 Una libreria di componenti UI bella, moderna e fluida per WPF, ispirata alle linee guida del design Samsung One UI.
 
-[![WPF](https://img.shields.io/badge/WPF-.NET_10-purple.svg)](https://dotnet.microsoft.com/)
+[![WPF](https://img.shields.io/badge/WPF-.NET_6%2B-purple.svg)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Author](https://img.shields.io/badge/Author-Violet%20Miller-blue.svg)](#)
 
@@ -15,112 +15,92 @@
 ### 📖 About this project
 > 📚 **[View the Component Documentation (Wiki)](docs/Home.md)**
 
-I built this library purely out of passion and as a personal hobby. I've always loved the clean, rounded aesthetics of Samsung devices and wanted to bring that same experience to WPF desktop applications. 
-Since this is a solo passion project (with the occasional help of an AI assistant to speed up the boring parts!), please consider it a **Work In Progress**. You might encounter some minor bugs or missing features.
+Bring the clean, rounded aesthetics of Samsung devices directly to your Windows desktop applications. This library provides a comprehensive set of custom controls for WPF, designed to mimic the fluid animations, dynamic theming, and modern feel of Samsung's One UI.
 
-For the official design system documentation, check out the [Samsung One UI Guidelines](https://developer.samsung.com/one-ui).
-
-### ✨ Features
+### ✨ Key Features
+- **Plug & Play**: Fully compliant with MVVM. Just drop the components in your XAML.
 - **Fluid Animations**: Smooth transitions and micro-interactions typical of One UI.
 - **Dynamic Theming**: Easily switch between Light and Dark mode using the built-in `ThemeManager`.
 - **Rich Components**: Cards, Buttons, Calendar with dot-indicators, Animated Bar Charts, and more.
-- **Modular Input Fields & Modals**: Highly customizable inputs and animated overlay modals for data insertion.
 
-### 📦 Installation
+### ⚙️ Compatibility
+
+| Framework | Supported |
+|-----------|:---------:|
+| .NET 8.0  | ✅ Yes    |
+| .NET 7.0  | ✅ Yes    |
+| .NET 6.0  | ✅ Yes    |
+| .NET Framework 4.8 | ⚠️ Partial (Recommended .NET 6+) |
+
+---
+
+### 🚀 Getting Started
+
+#### Step 1: Installation
 *(Soon available on NuGet)*
-For now, clone this repository and add a `ProjectReference` to the `SamsungUi` library in your solution.
+For now, clone this repository and add a `ProjectReference` to the `SamsungUi` library in your Visual Studio solution.
 
-### 🚀 Usage
-Open your `App.xaml` and include the unified control dictionary along with your preferred starting color scheme:
+#### Step 2: Setup Resources (`App.xaml`)
+Open your `App.xaml` and include the unified control dictionary along with your preferred starting color scheme.
 
 ```xml
 <Application.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
+            <!-- 1. Load the color palette (Light or Dark) -->
             <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ColorsLight.xaml"/>
-            <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/SamsungUi.Controls.xaml"/>
+            <!-- 2. Load the generic control templates -->
+            <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Generic.xaml"/>
         </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
 </Application.Resources>
 ```
 
+#### Step 3: Your First Component
+Add the `xmlns:sui` namespace to your Window and start using the components!
+
+```xml
+<Window x:Class="MyApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sui="clr-namespace:SamsungUi.Controls;assembly=SamsungUi"
+        Title="My One UI App" Height="450" Width="800">
+        
+    <Grid Background="{DynamicResource OneUiBackgroundBrush}">
+        <sui:SamsungButton Content="Click Me!" Variant="Primary" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+</Window>
+```
+
+#### Step 4: Changing Themes at Runtime
 You can easily switch the application theme at runtime:
 ```csharp
 using SamsungUi.Appearance;
-ThemeManager.ApplyTheme(ThemeType.Dark); // or ThemeType.Light
+
+// Switch to Dark Mode
+ThemeManager.ApplyTheme(ThemeType.Dark);
 ```
 
-### 📸 Screenshots
-- ![Controls Light Mode](Screen/ControlsLight.png)
-- ![Controls Dark Mode](Screen/ControlsDark.png)
-- ![Modules Light Mode](Screen/ModulesLight.png)
-- ![Modules Dark Mode](Screen/ModulesDark.png)
-- ![Stopwatch Light Mode](Screen/StopwatchLight.png)
-- ![Stopwatch Dark Mode](Screen/StopwatchDark.png)
+---
 
 ### 🧩 Components Status
 
 | Component Name | XAML Tag | Status |
 |----------------|----------|:------:|
-| Button | `<sui:SamsungButton>` | 🟢 |
-| Calendar | `<sui:SamsungCalendar>` | 🟢 |
-| Card | `<sui:SamsungCard>` | 🟢 |
-| CheckBox | `<sui:SamsungCheckBox>` | 🟢 |
-| EditBox | `<sui:SamsungEditBox>` | 🟢 |
-| PasswordBox | `<sui:SamsungPasswordBox>` | 🟢 |
-| TextBox | `<sui:SamsungTextBox>` | 🟢 |
-| ListBox | `<sui:SamsungListBox>` | 🟢 |
-| ListView | `<sui:SamsungListView>` | 🟢 |
-| Slider | `<sui:SamsungSlider>` | 🟢 |
-| RadioButton | `<sui:SamsungRadioButton>` | 🟢 |
-| ProgressBar | `<sui:SamsungProgressBar>` | 🟢 |
-| Stopwatch | `<sui:SamsungStopwatch>` | 🟢 |
-| TabControl | `<sui:SamsungTabControl>` | 🟢 |
-| ToggleSwitch | `<sui:SamsungToggleSwitch>` | 🟢 |
-| ExpandablePage | `<sui:SamsungExpandablePage>` | 🟢 |
-| SegmentedBar | `<sui:SamsungSegmentedBar>` | 🟢 |
-| Modal | `<sui:SamsungModal>` | 🟢 |
-| NavigationBar | `<sui:SamsungNavigationBar>` | 🟢 |
-| ToastService | `SamsungToastService.Show()` | 🟢 |
-| DateTimePicker | `<sui:SamsungDateTimePicker>` | 🟢 |
-| ColorPicker | `<sui:SamsungColorPicker>` | 🟢 |
-| Chart (Bar/Donut) | `<sui:SamsungChart>` | 🟢 |
-| LineChart | `<sui:SamsungLineChart>` | 🟢 |
-| ComboBox | `<sui:SamsungComboBox>` | 🟢 |
-| Badge | `<sui:SamsungBadge>` | 🟢 |
-| Stepper | `<sui:SamsungStepper>` | 🟢 |
-| Expander | `<sui:SamsungExpander>` | 🟢 |
-| Tooltip | `ToolTip="..."` | 🟢 |
-| Window | `<sui:SamsungWindow>` | 🟢 |
-| ScrollViewer | `<sui:SamsungScrollViewer>` | 🟢 |
-| GroupBox | `<sui:SamsungGroupBox>` | 🟢 |
-| Image | `<sui:SamsungImage>` | 🟢 |
-| Label | `<sui:SamsungLabel>` | 🟢 |
-| DataGrid | `<sui:SamsungDataGrid>` | 🟡 |
-| Gallery | `<sui:Gallery>` (Concept) | 🟡 |
+| Button | `<sui:SamsungButton>` | 🟢 Ready |
+| EditBox | `<sui:SamsungEditBox>` | 🟢 Ready |
+| PasswordBox | `<sui:SamsungPasswordBox>` | 🟢 Ready |
+| CheckBox | `<sui:SamsungCheckBox>` | 🟢 Ready |
+| DataGrid | `<sui:SamsungDataGrid>` | 🟢 Ready |
+| DateTimePicker | `<sui:SamsungDateTimePicker>` | 🟢 Ready |
+| ColorPicker | `<sui:SamsungColorPicker>` | 🟢 Ready |
+| Chart (Bar/Donut) | `<sui:SamsungChart>` | 🟢 Ready |
+| LineChart | `<sui:SamsungLineChart>` | 🟢 Ready |
+| Modal | `<sui:SamsungModal>` | 🟢 Ready |
+| Notification | `<sui:SamsungNotification>` | 🟢 Ready |
+| Gallery | `<sui:Gallery>` (Concept) | 🟡 WIP |
 
-*(Legend: 🟢 Completed | 🟡 Work in Progress | 🔴 Draft/Defective)*
-
-### 📝 Examples
-Here are some quick examples of how to use the components in your XAML:
-
-**SamsungButton**
-```xml
-<sui:SamsungButton Content="Click Me" IsPrimary="True" />
-```
-
-**SamsungEditBox**
-```xml
-<sui:SamsungEditBox Placeholder="Username" InputType="Text" />
-<sui:SamsungEditBox Placeholder="Password" InputType="Password" />
-```
-
-**SamsungCard**
-```xml
-<sui:SamsungCard>
-    <TextBlock Text="Hello World from One UI!" FontSize="16" />
-</sui:SamsungCard>
-```
+> *For the full list of components, check the [Wiki](docs/Home.md).*
 
 ---
 
@@ -129,111 +109,70 @@ Here are some quick examples of how to use the components in your XAML:
 ### 📖 Il progetto
 > 📚 **[Visualizza la Documentazione dei Componenti (Wiki)](docs/Home.md)**
 
-Ho creato questa libreria per pura passione e come passatempo personale. Ho sempre adorato l'estetica pulita e tondeggiante dei dispositivi Samsung e volevo portare la stessa esperienza sulle applicazioni desktop WPF.
-Trattandosi di un progetto amatoriale sviluppato nel tempo libero (aiutandomi di tanto in tanto con un assistente IA per velocizzare le parti più tediose!), ti prego di considerarlo un **Work In Progress**. Il codice potrebbe contenere ancora dei piccoli errori o comportamenti imprevisti.
+Porta l'estetica pulita e tondeggiante dei dispositivi Samsung direttamente sulle tue applicazioni desktop Windows. Questa libreria fornisce un set completo di controlli personalizzati per WPF, progettati per replicare le animazioni fluide, i temi dinamici e il feeling moderno della One UI di Samsung.
 
-Per la documentazione ufficiale del design system, puoi visitare le [Linee guida Samsung One UI](https://developer.samsung.com/one-ui).
-
-### ✨ Funzionalità
+### ✨ Funzionalità Chiave
+- **Plug & Play**: Piena compatibilità con MVVM. Trascina e usa i componenti nel tuo XAML.
 - **Animazioni Fluide**: Transizioni morbide e micro-interazioni tipiche di One UI.
 - **Temi Dinamici**: Passa facilmente dalla modalità Chiara a Scura usando il `ThemeManager` integrato.
 - **Componenti Ricchi**: Card, Pulsanti, Calendario con indicatori, Grafici a barre animati e altro ancora.
-- **Campi di Input e Modali Modulari**: Input altamente personalizzabili e modali sovrapposti animati per l'inserimento dati.
 
-### 📦 Installazione
+### ⚙️ Compatibilità
+
+| Framework | Supportato |
+|-----------|:---------:|
+| .NET 8.0  | ✅ Sì    |
+| .NET 7.0  | ✅ Sì    |
+| .NET 6.0  | ✅ Sì    |
+| .NET Framework 4.8 | ⚠️ Parziale (Consigliato .NET 6+) |
+
+---
+
+### 🚀 Getting Started (Guida Rapida)
+
+#### Step 1: Installazione
 *(Presto disponibile su NuGet)*
-Per ora, clona questa repository e aggiungi una `ProjectReference` alla libreria `SamsungUi` nella tua soluzione.
+Per ora, clona questa repository e aggiungi una `ProjectReference` alla libreria `SamsungUi` nella tua soluzione Visual Studio.
 
-### 🚀 Utilizzo
-Apri il file `App.xaml` e includi il dizionario dei controlli unificato insieme alla combinazione di colori preferita per la partenza:
+#### Step 2: Setup Risorse (`App.xaml`)
+Apri il file `App.xaml` e includi il dizionario dei controlli unificato insieme alla combinazione di colori preferita.
 
 ```xml
 <Application.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
+            <!-- 1. Carica la palette colori (Chiara o Scura) -->
             <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ColorsLight.xaml"/>
-            <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/SamsungUi.Controls.xaml"/>
+            <!-- 2. Carica i template generici dei controlli -->
+            <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Generic.xaml"/>
         </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
 </Application.Resources>
 ```
 
-Puoi cambiare il tema dell'applicazione a runtime:
+#### Step 3: Il tuo primo componente
+Aggiungi il namespace `xmlns:sui` alla tua Window e inizia a usare i componenti!
+
+```xml
+<Window x:Class="MyApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sui="clr-namespace:SamsungUi.Controls;assembly=SamsungUi"
+        Title="La mia App One UI" Height="450" Width="800">
+        
+    <Grid Background="{DynamicResource OneUiBackgroundBrush}">
+        <sui:SamsungButton Content="Cliccami!" Variant="Primary" HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Grid>
+</Window>
+```
+
+#### Step 4: Cambiare tema a runtime
+Puoi cambiare il tema dell'applicazione dinamicamente:
 ```csharp
 using SamsungUi.Appearance;
-ThemeManager.ApplyTheme(ThemeType.Dark); // o ThemeType.Light
-```
 
-### 📸 Screenshot
-- ![Controlli Tema Chiaro](Screen/ControlsLight.png)
-- ![Controlli Tema Scuro](Screen/ControlsDark.png)
-- ![Moduli Tema Chiaro](Screen/ModulesLight.png)
-- ![Moduli Tema Scuro](Screen/ModulesDark.png)
-- ![Cronometro Tema Chiaro](Screen/StopwatchLight.png)
-- ![Cronometro Tema Scuro](Screen/StopwatchDark.png)
-
-### 🧩 Stato dei Componenti
-
-| Nome Componente | Tag XAML | Stato |
-|-----------------|----------|:-----:|
-| Button | `<sui:SamsungButton>` | 🟢 |
-| Calendar | `<sui:SamsungCalendar>` | 🟢 |
-| Card | `<sui:SamsungCard>` | 🟢 |
-| CheckBox | `<sui:SamsungCheckBox>` | 🟢 |
-| EditBox | `<sui:SamsungEditBox>` | 🟢 |
-| PasswordBox | `<sui:SamsungPasswordBox>` | 🟢 |
-| TextBox | `<sui:SamsungTextBox>` | 🟢 |
-| ListBox | `<sui:SamsungListBox>` | 🟢 |
-| ListView | `<sui:SamsungListView>` | 🟢 |
-| Slider | `<sui:SamsungSlider>` | 🟢 |
-| RadioButton | `<sui:SamsungRadioButton>` | 🟢 |
-| ProgressBar | `<sui:SamsungProgressBar>` | 🟢 |
-| Stopwatch | `<sui:SamsungStopwatch>` | 🟢 |
-| TabControl | `<sui:SamsungTabControl>` | 🟢 |
-| ToggleSwitch | `<sui:SamsungToggleSwitch>` | 🟢 |
-| ExpandablePage | `<sui:SamsungExpandablePage>` | 🟢 |
-| SegmentedBar | `<sui:SamsungSegmentedBar>` | 🟢 |
-| Modal | `<sui:SamsungModal>` | 🟢 |
-| NavigationBar | `<sui:SamsungNavigationBar>` | 🟢 |
-| ToastService | `SamsungToastService.Show()` | 🟢 |
-| DateTimePicker | `<sui:SamsungDateTimePicker>` | 🟢 |
-| ColorPicker | `<sui:SamsungColorPicker>` | 🟢 |
-| Chart (Bar/Donut) | `<sui:SamsungChart>` | 🟢 |
-| LineChart | `<sui:SamsungLineChart>` | 🟢 |
-| ComboBox | `<sui:SamsungComboBox>` | 🟢 |
-| Badge | `<sui:SamsungBadge>` | 🟢 |
-| Stepper | `<sui:SamsungStepper>` | 🟢 |
-| Expander | `<sui:SamsungExpander>` | 🟢 |
-| Tooltip | `ToolTip="..."` | 🟢 |
-| Window | `<sui:SamsungWindow>` | 🟢 |
-| ScrollViewer | `<sui:SamsungScrollViewer>` | 🟢 |
-| GroupBox | `<sui:SamsungGroupBox>` | 🟢 |
-| Image | `<sui:SamsungImage>` | 🟢 |
-| Label | `<sui:SamsungLabel>` | 🟢 |
-| DataGrid | `<sui:SamsungDataGrid>` | 🟡 |
-| Gallery | `<sui:Gallery>` (Concept) | 🟡 |
-
-*(Legenda: 🟢 Completato | 🟡 Work in Progress | 🔴 Bozza/Difettoso)*
-
-### 📝 Esempi di utilizzo
-Ecco alcuni rapidi esempi di come utilizzare i componenti all'interno del tuo XAML:
-
-**SamsungButton**
-```xml
-<sui:SamsungButton Content="Cliccami" IsPrimary="True" />
-```
-
-**SamsungEditBox**
-```xml
-<sui:SamsungEditBox Placeholder="Nome utente" InputType="Text" />
-<sui:SamsungEditBox Placeholder="Password" InputType="Password" />
-```
-
-**SamsungCard**
-```xml
-<sui:SamsungCard>
-    <TextBlock Text="Ciao Mondo da One UI!" FontSize="16" />
-</sui:SamsungCard>
+// Passa alla modalità Scura
+ThemeManager.ApplyTheme(ThemeType.Dark);
 ```
 
 ---
