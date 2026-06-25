@@ -1,3 +1,4 @@
+#pragma warning disable CS8600, CS8601, CS8602, CS8603, CS8604, CS8618, CS8622, CS8625
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
@@ -8,12 +9,15 @@ namespace SamsungUi.Controls
 {
     public class SamsungWindow : Window
     {
+        public static readonly RoutedCommand OpenDocsCommand = new RoutedCommand();
+
         public SamsungWindow()
         {
             CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, OnCloseWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand, OnMaximizeWindow, OnCanResizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.MinimizeWindowCommand, OnMinimizeWindow, OnCanMinimizeWindow));
             CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand, OnRestoreWindow, OnCanResizeWindow));
+            CommandBindings.Add(new CommandBinding(OpenDocsCommand, OnOpenDocs));
         }
 
         private static ScrollViewer _activeScrollViewer;
@@ -123,6 +127,16 @@ namespace SamsungUi.Controls
         private void OnRestoreWindow(object target, ExecutedRoutedEventArgs e)
         {
             SystemCommands.RestoreWindow(this);
+        }
+
+        private void OnOpenDocs(object target, ExecutedRoutedEventArgs e)
+        {
+            var psi = new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "https://github.com/Violet-owo/WPF-OneUI/blob/main/docs/Home.md",
+                UseShellExecute = true
+            };
+            System.Diagnostics.Process.Start(psi);
         }
     }
 }
