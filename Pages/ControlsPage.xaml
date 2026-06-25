@@ -123,7 +123,7 @@
                         <sui:SamsungEditBox Placeholder="Età" InputType="Number"/>
                     </StackPanel>
                 </sui:SamsungCard>
-                <!--Gestionale Components-->
+                <!--Gestional Components-->
                 <sui:SamsungCard Width="340" Margin="8" VerticalAlignment="Top">
                     <StackPanel>
                         <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Management Controls"/>
@@ -153,7 +153,7 @@
                 
             </WrapPanel>
 
-            <!--Tab Control & Stepper a larghezza intera-->
+            <!--Tab Control & Stepper full size -->
             <sui:SamsungCard Margin="8,8,8,24" HorizontalAlignment="Stretch">
                 <StackPanel>
                     <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Layout &amp; Wizards"/>
@@ -244,15 +244,15 @@
                         </Border>
                     </sui:SamsungGroupBox.IconContent>
                     
-                    <!-- Contenitore interno grigio -->
+                    <!-- gray containero -->
                     <Border Background="{DynamicResource OneUiControlBackgroundBrush}" CornerRadius="16" Padding="16,16,16,16">
                         <StackPanel>
-                            <!-- Titolo con pallino blu -->
+                            <!-- Ttitle wuth blue pill -->
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
                                 <Ellipse Width="8" Height="8" Fill="{DynamicResource OneUiPrimaryBrush}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                 <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Account active" VerticalAlignment="Center" Margin="0"/>
                             </StackPanel>
-                            <!-- Sottotitolo indentato -->
+                            <!-- Subtitle  -->
                             <TextBlock Style="{DynamicResource OneUiNormalStyle}"
                                        Foreground="{DynamicResource OneUiTextSecondaryBrush}" 
                                        Text="Account configured." 
@@ -266,13 +266,13 @@
                 <StackPanel Width="340" Margin="8" VerticalAlignment="Top">
                     <sui:SamsungExpander x:Name="AccountExpander" Header="Custom Expander">
                         <sui:SamsungExpander.IconContent>
-                            <!-- Icona utente -->
+                            <!-- User Icon -->
                             <Path Data="M 12,12 C 14.761,12 17,9.761 17,7 C 17,4.239 14.761,2 12,2 C 9.239,2 7,4.239 7,7 C 7,9.761 9.239,12 12,12 Z M 12,14 C 8.667,14 2,15.667 2,19 L 2,22 L 22,22 L 22,19 C 22,15.667 15.333,14 12,14 Z" 
                                   Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="20" Height="20"/>
                         </sui:SamsungExpander.IconContent>
                         
                         <StackPanel Margin="0,8,0,0">
-                            <!-- Contenuto Profilo -->
+                            <!-- Profile Content -->
                             <TextBlock Style="{DynamicResource OneUiSubtitleStyle}" Text="Profilo Pic" Margin="0,0,0,12"/>
                             <Border Background="{DynamicResource OneUiControlBackgroundHoverBrush}" CornerRadius="30" Width="60" Height="60" HorizontalAlignment="Center" Margin="0,0,0,8">
                                 <TextBlock Style="{DynamicResource OneUiTitleStyle}" Text="MR" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
@@ -308,7 +308,7 @@
                 <!-- ScrollViewer -->
                 <sui:SamsungGroupBox Width="340" Height="280" Margin="8" VerticalAlignment="Top" Header="Custom ScrollView ">
                     <sui:SamsungGroupBox.IconContent>
-                        <!-- Icona Lista (list-ul) -->
+                        <!-- List Icon -->
                         <Path Data="M 3,6 L 3,8 L 5,8 L 5,6 L 3,6 Z M 7,6 L 7,8 L 21,8 L 21,6 L 7,6 Z M 3,11 L 3,13 L 5,13 L 5,11 L 3,11 Z M 7,11 L 7,13 L 21,13 L 21,11 L 7,11 Z M 3,16 L 3,18 L 5,18 L 5,16 L 3,16 Z M 7,16 L 7,18 L 21,18 L 21,16 L 7,16 Z"
                               Fill="{DynamicResource OneUiTextPrimaryBrush}" Stretch="Uniform" Width="20" Height="20"/>
                     </sui:SamsungGroupBox.IconContent>

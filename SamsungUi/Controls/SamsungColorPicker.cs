@@ -323,7 +323,7 @@ namespace SamsungUi.Controls
 
             RgbToHsv(color, out double h, out double s, out double v);
             
-            // If saturation or value is 0, hue gets lost in conversion, preserve it if possible
+            // If saturation or value is 0, hue gets lost in conversion
             if (s > 0 && v > 0) Hue = h;
             Saturation = s;
             Value = v;

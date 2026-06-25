@@ -19,7 +19,7 @@
                     CornerRadius="12,0,0,12" 
                     Margin="1" 
                     Background="Transparent" />
-            <!-- Icona freccia (Arrow) -->
+            <!-- Arrow Icon -->
             <Path x:Name="Arrow" 
                   Grid.Column="1"     
                   Fill="{DynamicResource OneUiTextPrimaryBrush}" 
@@ -87,7 +87,7 @@
                                        IsHitTestVisible="False"
                                        VerticalAlignment="Center"/>
                             
-                            <!-- ContentPresenter per visualizzare l'elemento selezionato -->
+                            <!-- ContentPresenter to visualize the selected content -->
                             <ContentPresenter x:Name="ContentSite"
                                               IsHitTestVisible="False" 
                                               Content="{TemplateBinding SelectionBoxItem}"
@@ -98,7 +98,7 @@
                                               HorizontalAlignment="Left"/>
                         </Grid>
 
-                        <!-- Menu a tendina (Popup) -->
+                        <!-- Pop up Menu -->
                         <Popup x:Name="Popup" 
                                Placement="Bottom"
                                IsOpen="{TemplateBinding IsDropDownOpen}"
@@ -119,7 +119,7 @@
                                         BorderBrush="{DynamicResource OneUiControlBackgroundBrush}"
                                         CornerRadius="12"
                                         Effect="{DynamicResource OneUiModalShadow}"/>
-                                <!-- ScrollViewer contenente gli elementi -->
+                                <!-- ScrollViewer Contains the elements -->
                                 <ScrollViewer Margin="0,8" SnapsToDevicePixels="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
                                 </ScrollViewer>

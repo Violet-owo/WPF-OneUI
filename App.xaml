@@ -6,7 +6,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!-- Carichiamo il tema chiaro come predefinito all'avvio -->
                 <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/ColorsLight.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/SamsungUi;component/Themes/Generic.xaml"/>
             </ResourceDictionary.MergedDictionaries>

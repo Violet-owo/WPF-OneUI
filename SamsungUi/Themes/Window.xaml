@@ -92,7 +92,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <!-- Barra del Titolo -->
+                            <!-- Title Bar -->
                             <Grid Grid.Row="0" Background="Transparent">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -100,14 +100,14 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <!-- Icona Finestra -->
+                                <!-- Window Icona  -->
                                 <Image Source="{TemplateBinding Icon}" 
                                        Margin="12,0,0,0" 
                                        Width="16" Height="16" 
                                        VerticalAlignment="Center" 
                                        WindowChrome.IsHitTestVisibleInChrome="True"/>
 
-                                <!-- Titolo -->
+                                <!-- Title -->
                                 <TextBlock Grid.Column="1" 
                                            Text="{TemplateBinding Title}" 
                                            VerticalAlignment="Center" 
@@ -158,7 +158,7 @@
                                 </StackPanel>
                             </Grid>
 
-                            <!-- Contenuto della Finestra -->
+                            <!-- Window Content -->
                             <AdornerDecorator Grid.Row="1">
                                 <ContentPresenter />
                             </AdornerDecorator>

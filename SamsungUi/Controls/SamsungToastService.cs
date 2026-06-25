@@ -121,7 +121,7 @@ namespace SamsungUi.Controls
                         if (adorner != null) adornerLayer.Remove(adorner);
                     };
                     panel.Children.Add(actionBtn);
-                    overlayGrid.IsHitTestVisible = true; // Need to hit test the overlay if we have a button
+                    overlayGrid.IsHitTestVisible = true; 
                 }
 
                 border.Child = panel;

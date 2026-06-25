@@ -252,7 +252,7 @@ namespace SamsungUi.Controls
             int count = visibleStates.Count;
             bool hasMore = count > 3;
 
-            // Aggiungiamo i primi elementi allo stackpanel
+            // Popolating the  stackpanel
             for (int i = 0; i < Math.Min(count, 3); i++)
             {
                 var state = visibleStates[i];
@@ -285,7 +285,7 @@ namespace SamsungUi.Controls
                         if (!state.HasAppeared)
                         {
                             state.HasAppeared = true;
-                            // Reset timer al momento in cui entra
+                            // Reset timer 
                             state.ExpirationTime = DateTime.Now.AddMilliseconds(state.Request.DurationMs);
                             AnimateCardEntrance(state.Card, state.Request.IsSoundOn);
                         }

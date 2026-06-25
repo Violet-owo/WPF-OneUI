@@ -51,7 +51,7 @@ namespace SamsungUi.Controls
                 // Block the tunneling event for other ScrollViewers (including the Parent)
                 e.Handled = true;
                 
-                // Re-send the bubbling event directly to the locked ScrollViewer (so the scroll is fluid/native)
+                // Re-send the bubbling event directly to the locked ScrollViewer (so the scroll is fluid, i hate my life OwO)
                 var args = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta)
                 {
                     RoutedEvent = UIElement.MouseWheelEvent,
@@ -59,7 +59,7 @@ namespace SamsungUi.Controls
                 };
                 _activeScrollViewer.RaiseEvent(args);
                 
-                // Check if the locked scroll viewer successfully scrolled natively
+                // Check if the locked scroll viewer successfully scrolled natively (Mostly Wont LMAO)
                 if (args.Handled)
                 {
                     _lastScrollTime = now;
@@ -72,7 +72,7 @@ namespace SamsungUi.Controls
                 return;
             }
 
-            // No active lock. We search for the appropriate target (the innermost that can scroll)
+            // No active lock.  search for the appropriate target (the innermost that can scroll Why im doing this OwO?)
             var innermostTarget = GetScrollableParent(e.OriginalSource as DependencyObject, e.Delta);
             if (innermostTarget != null && sv == innermostTarget)
             {
@@ -137,6 +137,8 @@ namespace SamsungUi.Controls
                 UseShellExecute = true
             };
             System.Diagnostics.Process.Start(psi);
+
+            // the code may be clitcy (assa s'antronteca tutto )
         }
     }
 }

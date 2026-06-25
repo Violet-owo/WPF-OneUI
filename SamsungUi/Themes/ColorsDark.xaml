@@ -2,10 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- ========================================== -->
-    <!-- PALETTE DEI COLORI - TEMA SCURO            -->
-    <!-- Contiene i token cromatici principali.     -->
+    <!-- COLOR PALETTE - DARK THEME                 -->
+    <!-- Contains principal colors token.           -->
     <!-- ========================================== -->
-    <!-- Palette Samsung One UI - Tema Scuro (AMOLED Friendly) -->
+    <!-- Palette Samsung One UI - Dark theme (AMOLED Friendly) -->
     <Color x:Key="OneUiBackgroundRaw">#080808</Color>
     <Color x:Key="OneUiSurfaceRaw">#121212</Color>
     <Color x:Key="OneUiPrimaryRaw">#3E91FF</Color>
@@ -14,7 +14,7 @@
     <Color x:Key="OneUiControlBackgroundRaw">#1A1A1A</Color>
     <Color x:Key="OneUiBorderRaw">#2C2C2E</Color>
 
-    <!-- Pennelli (Brushes) pronti all'uso -->
+   
     <SolidColorBrush x:Key="OneUiBackgroundBrush" Color="{StaticResource OneUiBackgroundRaw}"/>
     <SolidColorBrush x:Key="OneUiSurfaceBrush" Color="{StaticResource OneUiSurfaceRaw}"/>
     <SolidColorBrush x:Key="OneUiPrimaryBrush" Color="{StaticResource OneUiPrimaryRaw}"/>

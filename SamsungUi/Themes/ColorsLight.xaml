@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- ========================================== -->
-    <!-- PALETTE DEI COLORI - TEMA CHIARO           -->
-    <!-- Contiene i token cromatici principali.     -->
+    <!-- COLOR PALETTE - LIGTH TEME                 -->
+    <!-- Contains principal colors token.           -->
     <!-- ========================================== -->
     <Color x:Key="OneUiBackgroundRaw">#FAFAFA</Color>
     <Color x:Key="OneUiSurfaceRaw">#FFFFFF</Color>
@@ -13,7 +13,7 @@
     <Color x:Key="OneUiControlBackgroundRaw">#E5E5EA</Color>
     <Color x:Key="OneUiBorderRaw">#C7C7CC</Color>
 
-    <!-- Pennelli (Brushes) pronti all'uso -->
+    
     <SolidColorBrush x:Key="OneUiBackgroundBrush" Color="{StaticResource OneUiBackgroundRaw}"/>
     <SolidColorBrush x:Key="OneUiSurfaceBrush" Color="{StaticResource OneUiSurfaceRaw}"/>
     <SolidColorBrush x:Key="OneUiPrimaryBrush" Color="{StaticResource OneUiPrimaryRaw}"/>

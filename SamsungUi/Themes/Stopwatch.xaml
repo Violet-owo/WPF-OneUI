@@ -444,7 +444,7 @@
                                StaysOpen="True"
                                HorizontalOffset="1000"
                                VerticalOffset="100">
-                            <!-- Il controllo è stato estratto in SamsungMiniStopwatch per essere un componente a sé -->
+                            <!-- The control has been extracted into SamsungMiniStopwatch to be a component in itself -->
                             <sui:SamsungMiniStopwatch x:Name="PART_MiniStopwatch"
                                                       ElapsedTimeText="{Binding ElapsedTimeText, RelativeSource={RelativeSource TemplatedParent}}"
                                                       IsRunning="{Binding IsRunning, RelativeSource={RelativeSource TemplatedParent}}"

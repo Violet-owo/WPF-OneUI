@@ -78,7 +78,7 @@
                             <Setter TargetName="RootPanel" Property="Margin" Value="0,0,0,24"/>
                         </DataTrigger>
 
-                        <!-- Stato Corrente -->
+                        <!-- Current State -->
                         <Trigger Property="IsCurrent" Value="True">
                             <Setter TargetName="IndicatorBg" Property="Fill" Value="{DynamicResource OneUiSurfaceBrush}"/>
                             <Setter TargetName="IndicatorBg" Property="Stroke" Value="{DynamicResource OneUiPrimaryBrush}"/>
@@ -88,7 +88,7 @@
                             <Setter Property="FontWeight" Value="Bold"/>
                         </Trigger>
                         
-                        <!-- Stato Completato -->
+                        <!-- Completed State -->
                         <Trigger Property="IsCompleted" Value="True">
                             <Setter TargetName="IndicatorBg" Property="Fill" Value="{DynamicResource OneUiPrimaryBrush}"/>
                             <Setter TargetName="IndicatorBg" Property="Stroke" Value="{DynamicResource OneUiPrimaryBrush}"/>

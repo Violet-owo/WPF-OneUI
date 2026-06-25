@@ -28,14 +28,14 @@
     <!-- SAMSUNG ONE UI TYPOGRAPHY STYLES           -->
     <!-- ========================================== -->
 
-    <!-- Titolo -->
+    <!-- Title -->
     <Style x:Key="OneUiTitleStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="{DynamicResource OneUiTitleFontSize}"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Margin" Value="0,0,0,16"/>
     </Style>
 
-    <!-- Sottotitolo -->
+    <!-- Subtitle -->
     <Style x:Key="OneUiSubtitleStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="{DynamicResource OneUiSubtitleFontSize}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
@@ -48,20 +48,20 @@
         <Setter Property="FontWeight" Value="Normal"/>
     </Style>
 
-    <!-- Piccolo -->
+    <!-- Small -->
     <Style x:Key="OneUiSmallStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="{DynamicResource OneUiSmallFontSize}"/>
         <Setter Property="FontWeight" Value="Normal"/>
     </Style>
 
-    <!-- Piccolo Grigio -->
+    <!-- Small Gray -->
     <Style x:Key="OneUiSmallGrayStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="{DynamicResource OneUiSmallFontSize}"/>
         <Setter Property="FontWeight" Value="Medium"/>
         <Setter Property="Foreground" Value="{DynamicResource OneUiTextSecondaryBrush}"/>
     </Style>
 
-    <!-- Piccolo Link Blu -->
+    <!-- Smal Link Blu -->
     <Style x:Key="OneUiSmallLinkStyle" TargetType="TextBlock">
         <Setter Property="FontSize" Value="{DynamicResource OneUiSmallFontSize}"/>
         <Setter Property="FontWeight" Value="Medium"/>
