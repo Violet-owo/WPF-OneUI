@@ -11,6 +11,11 @@ namespace SamsungUi.Demo.Pages
         private GalleryItem _selectedImage;
         private bool _isImageModalOpen;
         private System.Windows.Point _zoomOrigin = new System.Windows.Point(0.5, 0.5);
+        private bool _isDialogModalOpen;
+        private string _dialogTitle;
+        private string _dialogMessage;
+        private bool _isConfirmDialog;
+        private Action _onConfirmAction;
 
         public ObservableCollection<GalleryItem> Images { get; set; }
 
@@ -44,10 +49,41 @@ namespace SamsungUi.Demo.Pages
             }
         }
 
+        public bool IsDialogModalOpen
+        {
+            get => _isDialogModalOpen;
+            set { _isDialogModalOpen = value; OnPropertyChanged(nameof(IsDialogModalOpen)); }
+        }
+
+        public string DialogTitle
+        {
+            get => _dialogTitle;
+            set { _dialogTitle = value; OnPropertyChanged(nameof(DialogTitle)); }
+        }
+
+        public string DialogMessage
+        {
+            get => _dialogMessage;
+            set { _dialogMessage = value; OnPropertyChanged(nameof(DialogMessage)); }
+        }
+
+        public bool IsConfirmDialog
+        {
+            get => _isConfirmDialog;
+            set { _isConfirmDialog = value; OnPropertyChanged(nameof(IsConfirmDialog)); }
+        }
+
         public ICommand OpenImageCommand { get; }
         public ICommand CloseImageCommand { get; }
         public ICommand NextImageCommand { get; }
         public ICommand PrevImageCommand { get; }
+        public ICommand FavoriteCommand { get; }
+        public ICommand EditCommand { get; }
+        public ICommand ShareCommand { get; }
+        public ICommand DeleteCommand { get; }
+        public ICommand MenuCommand { get; }
+        public ICommand DialogOkCommand { get; }
+        public ICommand DialogCancelCommand { get; }
 
         public GalleryPage()
         {
@@ -68,6 +104,18 @@ namespace SamsungUi.Demo.Pages
             CloseImageCommand = new RelayCommand<object>(_ => IsImageModalOpen = false);
             NextImageCommand = new RelayCommand<object>(_ => NavigateImage(1));
             PrevImageCommand = new RelayCommand<object>(_ => NavigateImage(-1));
+            FavoriteCommand = new RelayCommand<object>(_ => ToggleFavorite());
+            EditCommand = new RelayCommand<object>(_ => ShowDialog("Edit", "Edit mode is not implemented in this demo."));
+            ShareCommand = new RelayCommand<object>(_ => ShowDialog("Share", "Sharing options are not implemented in this demo."));
+            DeleteCommand = new RelayCommand<object>(_ => DeleteSelectedImage());
+            MenuCommand = new RelayCommand<object>(_ => ShowDialog("Menu", "Menu options are not implemented in this demo."));
+            
+            DialogOkCommand = new RelayCommand<object>(_ => 
+            {
+                IsDialogModalOpen = false;
+                _onConfirmAction?.Invoke();
+            });
+            DialogCancelCommand = new RelayCommand<object>(_ => IsDialogModalOpen = false);
 
             DataContext = this;
         }
@@ -106,16 +154,61 @@ namespace SamsungUi.Demo.Pages
             SelectedImage = Images[nextIndex];
         }
 
+        private void ToggleFavorite()
+        {
+            if (SelectedImage != null)
+            {
+                SelectedImage.IsFavorite = !SelectedImage.IsFavorite;
+            }
+        }
+
+        private void DeleteSelectedImage()
+        {
+            if (SelectedImage != null)
+            {
+                ShowDialog("Delete", $"Are you sure you want to delete '{SelectedImage.Title}'?", true, () =>
+                {
+                    Images.Remove(SelectedImage);
+                    IsImageModalOpen = false;
+                });
+            }
+        }
+
+        private void ShowDialog(string title, string message, bool isConfirm = false, Action onConfirm = null)
+        {
+            DialogTitle = title;
+            DialogMessage = message;
+            IsConfirmDialog = isConfirm;
+            _onConfirmAction = onConfirm;
+            IsDialogModalOpen = true;
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    public class GalleryItem
+    public class GalleryItem : INotifyPropertyChanged
     {
+        private bool _isFavorite;
+
         public string ImagePath { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
+
+        public bool IsFavorite
+        {
+            get => _isFavorite;
+            set
+            {
+                _isFavorite = value;
+                OnPropertyChanged(nameof(IsFavorite));
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
     public class RelayCommand<T> : ICommand
