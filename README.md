@@ -49,6 +49,8 @@ Bring the clean, rounded aesthetics of Samsung devices directly to your Windows 
 
 | Framework | Supported |
 |-----------|:---------:|
+| .NET 10.0 | ✅ Yes    |
+| .NET 9.0  | ✅ Yes    |
 | .NET 8.0  | ✅ Yes    |
 | .NET 7.0  | ✅ Yes    |
 | .NET 6.0  | ✅ Yes    |
@@ -143,6 +145,8 @@ Porta l'estetica pulita e tondeggiante dei dispositivi Samsung direttamente sull
 
 | Framework | Supportato |
 |-----------|:---------:|
+| .NET 10.0 | ✅ Sì    |
+| .NET 9.0  | ✅ Sì    |
 | .NET 8.0  | ✅ Sì    |
 | .NET 7.0  | ✅ Sì    |
 | .NET 6.0  | ✅ Sì    |
