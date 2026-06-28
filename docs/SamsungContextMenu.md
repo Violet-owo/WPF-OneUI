@@ -1,9 +1,11 @@
 # SamsungContextMenu & SamsungMenuItem
 
 ### Screenshots
-| Light | Dark |
+| Light Mode | Dark Mode |
 |:---:|:---:|
 | ![Light](../Screen/SamsungContextMenu.png) | ![Dark](../Screen/SamsungContextMenuDark.png) |
+
+
 
 
 `SamsungContextMenu` and `SamsungMenuItem` provide a custom-styled right-click context menu that adheres to the Samsung One UI design language. They replace the standard, rigid WPF menus with a soft, rounded, and elegantly animated alternative.
@@ -60,4 +62,5 @@ You can attach a `SamsungContextMenu` to any `FrameworkElement` (like a Border, 
 
 - Use `&#x...` hex codes for the `Icon` property using the `Segoe Fluent Icons` or `Segoe MDL2 Assets` font family to maintain a consistent style.
 - Use `<Separator/>` to group related actions inside the menu. The theme automatically styles the separator line to blend seamlessly with the dark/light mode.
+
 

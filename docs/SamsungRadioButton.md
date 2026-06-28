@@ -1,5 +1,11 @@
 # SamsungRadioButton
 
+### Screenshots
+| Light Mode | Dark Mode |
+|:---:|:---:|
+| ![Light](../Screen/SamsungCheckBox_Radio.png) | ![Dark](../Screen/SamsungCheckBox_RadioDark.png) |
+
+
 Il `SamsungRadioButton` è l'elemento essenziale per scelte mutuamente esclusive. Presenta un'estetica circolare minimale, in linea con i pattern di design One UI.
 
 ![SamsungRadioButton Example](../Screen/SamsungRadioButton.png)
@@ -56,3 +62,4 @@ Non sono state aggiunte nuove `DependencyProperty` a livello di codice. Il desig
     <sui:SamsungRadioButton Content="Opzione B" GroupName="Gruppo1" />
 </StackPanel>
 ```
+

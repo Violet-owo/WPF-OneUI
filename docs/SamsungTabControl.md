@@ -1,5 +1,11 @@
 # SamsungTabControl
 
+### Screenshots
+| Light Mode | Dark Mode |
+|:---:|:---:|
+| ![Light](../Screen/SamsungTabControl_Stepper.png) | ![Dark](../Screen/SamsungTabControl_StepperDark.png) |
+
+
 Il `SamsungTabControl` offre una navigazione orizzontale a schede con un'estetica tipica delle app mobile moderne, utilizzando linee di selezione animate ed effetti hover a "pillola".
 
 ![SamsungTabControl Example](../Screen/SamsungTabControl.png)
@@ -62,3 +68,4 @@ Non ci sono nuove `DependencyProperty` in C#. Tutto il design personalizzato e l
     </sui:SamsungTabItem>
 </sui:SamsungTabControl>
 ```
+

@@ -1,5 +1,11 @@
 # SamsungToastService
 
+### Screenshots
+| Light Mode | Dark Mode |
+|:---:|:---:|
+| ![Light](../Screen/SamsungNotification.png) | ![Dark](../Screen/SamsungNotification.png) |
+
+
 Il `SamsungToastService` non è un elemento XAML ma un **servizio C#**. Permette di mostrare piccoli messaggi di notifica fluttuanti (i "Toast" tipici di Android) richiamabili da codice senza inquinare l'interfaccia grafica.
 
 ![SamsungToastService Example](../Screen/SamsungToastService.png)
@@ -76,3 +82,4 @@ SamsungToastService.Show("Download Completato", "Il file è stato salvato con su
 // Toast di Errore
 SamsungToastService.Show("Errore di Sistema", "Impossibile connettersi al database.", isError: true);
 ```
+

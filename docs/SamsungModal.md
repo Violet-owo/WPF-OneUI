@@ -1,9 +1,11 @@
 # SamsungModal
 
 ### Screenshots
-| Light | Dark |
+| Light Mode | Dark Mode |
 |:---:|:---:|
 | ![Light](../Screen/SamsungModal.png) | ![Dark](../Screen/SamsungModalDark.png) |
+
+
 
 
 Il `SamsungModal` è un popup overlay a tutto schermo (Z-Index alto) che oscura il resto dell'applicazione e fa scivolare al centro una Card interattiva. Perfetto per le finestre di conferma, inserimento dati o avvisi critici.
@@ -84,4 +86,5 @@ Il segreto è inserire il `SamsungModal` come **ultimo elemento** all'interno de
     </sui:SamsungModal>
 </Grid>
 ```
+
 

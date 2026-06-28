@@ -1,5 +1,11 @@
 # SamsungCheckBox
 
+### Screenshots
+| Light Mode | Dark Mode |
+|:---:|:---:|
+| ![Light](../Screen/SamsungCheckBox_Radio.png) | ![Dark](../Screen/SamsungCheckBox_RadioDark.png) |
+
+
 Il `SamsungCheckBox` è un componente di selezione multipla che ripropone il design pulito e arrotondato della One UI. Perfetto per le liste di opzioni in cui l'utente può selezionare più elementi contemporaneamente.
 
 ![SamsungCheckBox Example](../Screen/SamsungCheckBox.png)
@@ -50,3 +56,4 @@ Al momento, questo componente non introduce nuove `DependencyProperty`. Tutta la
 ```xml
 <sui:SamsungCheckBox Content="Ricordami" IsChecked="True" />
 ```
+

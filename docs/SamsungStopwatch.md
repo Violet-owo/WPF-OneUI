@@ -1,5 +1,12 @@
 # SamsungStopwatch
 
+### Screenshots
+| Light Mode | Dark Mode |
+|:---:|:---:|
+| ![Light](../Screen/SamsungStopwatch1.png) | ![Dark](../Screen/SamsungStopwatchDark1.png) |
+| ![Light 2](../Screen/SamsungStopwatch2.png) | ![Dark 2](../Screen/SamsungStopwatch2Dark.png) |
+
+
 Il `SamsungStopwatch` è un componente visivo altamente complesso che replica un cronometro circolare in stile "Orologio Samsung". Supporta il conteggio dei tempi parziali (Laps) e possiede anche una modalità Picture-in-Picture (PiP).
 
 ![SamsungStopwatch Example](../Screen/SamsungStopwatch.png)
@@ -66,3 +73,4 @@ Eredita da `System.Windows.Controls.Control`. Gestisce internamente un `Dispatch
 <sui:SamsungStopwatch />
 ```
 *(Tutta la logica temporale è racchiusa dentro il componente. Ti basta inserirlo nella pagina XAML!)*
+

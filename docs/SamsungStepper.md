@@ -1,5 +1,11 @@
 # SamsungStepper
 
+### Screenshots
+| Light Mode | Dark Mode |
+|:---:|:---:|
+| ![Light](../Screen/SamsungTabControl_Stepper.png) | ![Dark](../Screen/SamsungTabControl_StepperDark.png) |
+
+
 Il `SamsungStepper` (o Wizard) è fondamentale nei gestionali per mostrare all'utente l'avanzamento all'interno di un processo a più fasi (es. checkout, creazione guidata).
 
 ![SamsungStepper Example](../Screen/SamsungStepper.png)
@@ -92,3 +98,4 @@ Il `SamsungStepper` (o Wizard) è fondamentale nei gestionali per mostrare all'u
     </sui:SamsungStepperItem>
 </sui:SamsungStepper>
 ```
+

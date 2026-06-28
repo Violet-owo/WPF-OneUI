@@ -25,9 +25,9 @@
     <PackageTags>wpf;ui;samsung;oneui;controls;styles;theme;darkmode;designsystem</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/Violet-owo/SamsungUi.Demo</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Violet-owo/WPF-OneUI</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>https://github.com/Violet-owo/SamsungUi.Demo</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Violet-owo/WPF-OneUI</PackageProjectUrl>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>

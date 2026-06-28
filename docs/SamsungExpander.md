@@ -1,9 +1,11 @@
 # SamsungExpander
 
 ### Screenshots
-| Light | Dark |
+| Light Mode | Dark Mode |
 |:---:|:---:|
 | ![Light](../Screen/SamsungExpander.png) | ![Dark](../Screen/SamsungExpanderDark.png) |
+
+
 
 
 Il `SamsungExpander` è un contenitore pieghevole che permette di nascondere dettagli secondari, rendendo l'interfaccia molto più pulita. 
@@ -76,4 +78,5 @@ Eredita direttamente da `System.Windows.Controls.Expander`. Supporta nativamente
     </StackPanel>
 </sui:SamsungExpander>
 ```
+
 

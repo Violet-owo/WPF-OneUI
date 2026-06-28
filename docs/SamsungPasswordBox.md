@@ -1,5 +1,11 @@
 # SamsungPasswordBox
 
+### Screenshots
+| Light Mode | Dark Mode |
+|:---:|:---:|
+| ![Light](../Screen/SamsungEditBoxVariant.png) | ![Dark](../Screen/SamsungEditBoxVariantDark.png) |
+
+
 Il `SamsungPasswordBox` è il campo specifico per l'inserimento di dati sensibili (come password o PIN), progettato esteticamente come un `SamsungTextBox` ma con funzionalità di mascheramento dei caratteri e un pulsante integrato per rivelare temporaneamente la password.
 
 ![SamsungPasswordBox Example](../Screen/SamsungPasswordBox.png)
@@ -58,3 +64,4 @@ Questo controllo eredita da `System.Windows.Controls.Control`. Internamente, ges
 ```xml
 <sui:SamsungPasswordBox Password="{Binding UserPassword, Mode=TwoWay}" Width="250" />
 ```
+

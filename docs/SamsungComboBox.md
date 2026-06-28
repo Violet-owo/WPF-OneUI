@@ -1,9 +1,11 @@
 # SamsungComboBox
 
 ### Screenshots
-| Light | Dark |
+| Light Mode | Dark Mode |
 |:---:|:---:|
 | ![Light](../Screen/SamsungComboBox.png) | ![Dark](../Screen/SamsungComboBoxDark.png) |
+
+
 
 
 Il `SamsungComboBox` è una rilettura in chiave moderna del classico menu a tendina. Presenta uno stile a comparsa arrotondato e animato per mostrare la lista delle opzioni senza risultare visivamente pesante.
@@ -76,4 +78,5 @@ L'aspetto personalizzato sia del pulsante di apertura (il campo visibile) che de
     <ComboBoxItem Content="Opzione 3" />
 </sui:SamsungComboBox>
 ```
+
 

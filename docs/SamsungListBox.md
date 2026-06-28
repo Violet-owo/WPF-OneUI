@@ -1,9 +1,11 @@
 # SamsungListBox
 
 ### Screenshots
-| Light | Dark |
+| Light Mode | Dark Mode |
 |:---:|:---:|
 | ![Light](../Screen/SamsungListBox.png) | ![Dark](../Screen/SamsungListBoxDark.png) |
+
+
 
 
 Il `SamsungListBox` è un contenitore di liste fortemente arrotondato. Rimuove il classico bordo quadrato grigio di WPF in favore di un pannello morbido in cui ogni elemento selezionato adotta uno sfondo a pillola.
@@ -62,4 +64,5 @@ Questo componente non introduce nuove `DependencyProperty`. L'intera logica visi
     <sui:SamsungListBoxItem Content="Elemento 3" />
 </sui:SamsungListBox>
 ```
+
 

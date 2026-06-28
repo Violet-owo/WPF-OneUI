@@ -1,9 +1,11 @@
 # SamsungBadge
 
 ### Screenshots
-| Light | Dark |
+| Light Mode | Dark Mode |
 |:---:|:---:|
 | ![Light](../Screen/SamsungBadge.png) | ![Dark](../Screen/SamsungBadgeDark.png) |
+
+
 
 
 Il `SamsungBadge` è un piccolo elemento visivo a forma di pillola che serve a evidenziare uno stato, un conteggio, o un'etichetta (es. "Nuovo", "In Attesa", "Completato").
@@ -64,4 +66,5 @@ Eredita da `System.Windows.Controls.ContentControl`. È un controllo molto legge
 ```xml
 <sui:SamsungBadge Content="Completato" BadgeStyle="Success" />
 ```
+
 

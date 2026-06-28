@@ -23,6 +23,9 @@
 | ![Stopwatch Light](Screen/StopwatchLight.png) | ![Stopwatch Dark](Screen/StopwatchDark.png) |
 
 **Other App Pages:**
+- ![Controls Page](Screen/ControlsPage.png)
+- ![Modules Page](Screen/Modules.png)
+- ![Stopwatch Page](Screen/StopwatchPage.png)
 - ![Gallery Page](Screen/Gallery.png)
 - ![Settings Page](Screen/settings.png)
 - ![Enterprise Page](Screen/enterprice.png)

@@ -1,0 +1,51 @@
+name: Publish Release and NuGet
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-publish:
+    runs-on: windows-latest
+    permissions:
+      id-token: write      # Required for OIDC token issuance
+      contents: write      # Required to upload release assets
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      # ==========================================
+      # 1. BUILD DEMO EXECUTABLE FOR RELEASE ASSET
+      # ==========================================
+      - name: Publish Demo App
+        run: dotnet publish SamsungUi.Demo.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o .\demo-app
+
+      - name: Zip Demo App
+        run: Compress-Archive -Path .\demo-app\* -DestinationPath SamsungUi.Demo-win-x64.zip
+
+      - name: Upload Release Asset
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload ${{ github.event.release.tag_name }} SamsungUi.Demo-win-x64.zip
+
+      # ==========================================
+      # 2. PACK AND PUSH TO NUGET.ORG VIA OIDC
+      # ==========================================
+      - name: Pack NuGet Package
+        run: dotnet pack SamsungUi\SamsungUi.csproj -c Release -o .\nuget-pkg
+
+      - name: NuGet Login
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: VioletOwO
+
+      - name: Push package to NuGet.org
+        run: |
+          dotnet nuget push .\nuget-pkg\*.nupkg --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json
