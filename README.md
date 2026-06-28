@@ -18,24 +18,24 @@
 
 | Light Mode | Dark Mode |
 |:---:|:---:|
-| ![Controls Light](Screen/ControlsLight.png) | ![Controls Dark](Screen/ControlsDark.png) |
-| ![Modules Light](Screen/ModulesLight.png) | ![Modules Dark](Screen/ModulesDark.png) |
-| ![Stopwatch Light](Screen/StopwatchLight.png) | ![Stopwatch Dark](Screen/StopwatchDark.png) |
+| ![Controls Light](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/ControlsLight.png) | ![Controls Dark](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/ControlsDark.png) |
+| ![Modules Light](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/ModulesLight.png) | ![Modules Dark](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/ModulesDark.png) |
+| ![Stopwatch Light](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/StopwatchLight.png) | ![Stopwatch Dark](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/StopwatchDark.png) |
 
 **Other App Pages:**
-- ![Controls Page](Screen/ControlsPage.png)
-- ![Modules Page](Screen/Modules.png)
-- ![Stopwatch Page](Screen/StopwatchPage.png)
-- ![Gallery Page](Screen/Gallery.png)
-- ![Settings Page](Screen/settings.png)
-- ![Enterprise Page](Screen/enterprice.png)
+- ![Controls Page](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/ControlsPage.png)
+- ![Modules Page](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/Modules.png)
+- ![Stopwatch Page](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/StopwatchPage.png)
+- ![Gallery Page](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/Gallery.png)
+- ![Settings Page](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/settings.png)
+- ![Enterprise Page](https://raw.githubusercontent.com/Violet-owo/WPF-OneUI/main/Screen/enterprice.png)
 
 ---
 
 ## 🇬🇧 English
 
 ### 📖 About this project
-> 📚 **[View the Component Documentation (Wiki)](docs/Home.md)**
+> 📚 **[View the Component Documentation (Wiki)](https://github.com/Violet-owo/WPF-OneUI/blob/main/docs/Home.md)**
 
 Bring the clean, rounded aesthetics of Samsung devices directly to your Windows desktop applications. This library provides a comprehensive set of custom controls for WPF, designed to mimic the fluid animations, dynamic theming, and modern feel of Samsung's One UI.
 
@@ -124,14 +124,14 @@ ThemeManager.ApplyTheme(ThemeType.Dark);
 | Notification | `<sui:SamsungNotification>` | 🟢 Ready |
 | Gallery | `<sui:Gallery>` (Concept) | 🟡 WIP |
 
-> *For the full list of components, check the [Wiki](docs/Home.md).*
+> *For the full list of components, check the [Wiki](https://github.com/Violet-owo/WPF-OneUI/blob/main/docs/Home.md).*
 
 ---
 
 ## 🇮🇹 Italiano
 
 ### 📖 Il progetto
-> 📚 **[Visualizza la Documentazione dei Componenti (Wiki)](docs/Home.md)**
+> 📚 **[Visualizza la Documentazione dei Componenti (Wiki)](https://github.com/Violet-owo/WPF-OneUI/blob/main/docs/Home.md)**
 
 Porta l'estetica pulita e tondeggiante dei dispositivi Samsung direttamente sulle tue applicazioni desktop Windows. Questa libreria fornisce un set completo di controlli personalizzati per WPF, progettati per replicare le animazioni fluide, i temi dinamici e il feeling moderno della One UI di Samsung.
 
@@ -203,3 +203,4 @@ ThemeManager.ApplyTheme(ThemeType.Dark);
 
 ---
 **Samsung One UI for WPF** - Created by Violet Miller.
+
