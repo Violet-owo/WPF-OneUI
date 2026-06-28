@@ -1,5 +1,11 @@
 # SamsungNotification & SamsungNotificationService
 
+### Screenshots
+| Light | Dark |
+|:---:|:---:|
+| ![Light](../Screen/SamsungNotification.png) | N/A |
+
+
 `SamsungNotification` e `SamsungNotificationService` forniscono un sistema avanzato di notifiche fluttuanti (in stile "Toast") che si impilano elegantemente sullo schermo. Supportano posizionamenti multipli, icone personalizzate, azioni al clic, feedback sonoro e rimozione automatica con animazioni fluide.
 
 ---
@@ -117,3 +123,4 @@ SamsungNotificationService.Show(
     isSoundOn: true
 );
 ```
+

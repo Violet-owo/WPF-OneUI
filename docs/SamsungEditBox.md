@@ -1,5 +1,11 @@
 # SamsungEditBox
 
+### Screenshots
+| Light | Dark |
+|:---:|:---:|
+| ![Light](../Screen/SamsungEditBox.png) | ![Dark](../Screen/SamsungEditBoxDark.png) |
+
+
 Il `SamsungEditBox` è un campo di testo avanzato ispirato allo stile "Material" adottato spesso anche in ambito mobile, caratterizzato da un'etichetta fluttuante (Floating Hint) e una linea di base animata. Supporta inoltre diverse tipologie di input.
 
 ![SamsungEditBox Example](../Screen/SamsungEditBox.png)
@@ -64,3 +70,4 @@ Si tratta di un `Control` personalizzato che incapsula al suo interno sia una `T
 <sui:SamsungEditBox Placeholder="Nome utente" InputType="Text" />
 <sui:SamsungEditBox Placeholder="Codice PIN" InputType="Number" />
 ```
+

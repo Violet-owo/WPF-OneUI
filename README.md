@@ -4,9 +4,28 @@
 > 🇬🇧 A beautiful, modern, and fluid UI component library for WPF, inspired by Samsung One UI design guidelines.
 > 🇮🇹 Una libreria di componenti UI bella, moderna e fluida per WPF, ispirata alle linee guida del design Samsung One UI.
 
+> [!WARNING]
+> **Disclaimer**: This is not an official Samsung library. It is a third-party open-source library created according to their public guidelines: [Samsung One UI Guidelines](https://developer.samsung.com/one-ui/structure/basic.html).<br>
+> **Disclaimer**: Questa non è una libreria ufficiale di Samsung. È una libreria open-source di terze parti creata secondo le loro linee guida pubbliche: [Samsung One UI Guidelines](https://developer.samsung.com/one-ui/structure/basic.html).
+
 [![WPF](https://img.shields.io/badge/WPF-.NET_6%2B-purple.svg)](https://dotnet.microsoft.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Author](https://img.shields.io/badge/Author-Violet%20Miller-blue.svg)](#)
+
+---
+
+### 📸 Screenshots
+
+| Light Mode | Dark Mode |
+|:---:|:---:|
+| ![Controls Light](Screen/ControlsLight.png) | ![Controls Dark](Screen/ControlsDark.png) |
+| ![Modules Light](Screen/ModulesLight.png) | ![Modules Dark](Screen/ModulesDark.png) |
+| ![Stopwatch Light](Screen/StopwatchLight.png) | ![Stopwatch Dark](Screen/StopwatchDark.png) |
+
+**Other App Pages:**
+- ![Gallery Page](Screen/Gallery.png)
+- ![Settings Page](Screen/settings.png)
+- ![Enterprise Page](Screen/enterprice.png)
 
 ---
 

@@ -1,5 +1,11 @@
 # SamsungDataGrid
 
+### Screenshots
+| Light | Dark |
+|:---:|:---:|
+| ![Light](../Screen/SamsungDataGrid.png) | ![Dark](../Screen/SamsungDataGridDark.png) |
+
+
 `SamsungDataGrid` is the ultimate data presentation component for management, CRM, and ERP applications. It wraps the extraordinarily powerful WPF `DataGrid` in the fluid, clean, and rounded aesthetics of Samsung One UI.
 
 ## Features
@@ -82,3 +88,4 @@ private async void LoadData()
 - Always keep `AutoGenerateColumns="False"` (which is our default) and manually declare your columns. Automatically generated columns in WPF can cause unexpected formatting issues.
 - Use `DataGridTemplateColumn` to insert other library components (like `SamsungProgressBar` or `SamsungButton`) inside the grid cells.
 - If you place the `SamsungDataGrid` inside a `SamsungCard`, ensure the Card has `Padding="0"` so the grid can flush nicely against the rounded corners of the card.
+

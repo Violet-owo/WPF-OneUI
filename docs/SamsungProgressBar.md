@@ -1,5 +1,11 @@
 # SamsungProgressBar
 
+### Screenshots
+| Light | Dark |
+|:---:|:---:|
+| ![Light](../Screen/SamsungProgressBar.png) | ![Dark](../Screen/SamsungProgressBarDark.png) |
+
+
 Il `SamsungProgressBar` è una barra di avanzamento moderna che utilizza angoli completamente arrotondati (a pillola) e un'animazione fluida per mostrare il caricamento o lo stato di un'operazione.
 
 ![SamsungProgressBar Example](../Screen/SamsungProgressBar.png)
@@ -54,3 +60,4 @@ Non ci sono `DependencyProperty` aggiuntive. L'animazione per lo stato indetermi
 <!-- Caricamento indeterminato -->
 <sui:SamsungProgressBar IsIndeterminate="True" />
 ```
+

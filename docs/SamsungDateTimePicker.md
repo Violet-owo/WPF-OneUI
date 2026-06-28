@@ -1,5 +1,11 @@
 # SamsungDateTimePicker
 
+### Screenshots
+| Light | Dark |
+|:---:|:---:|
+| ![Light](../Screen/SamsungDateTimePicker.png) | ![Dark](../Screen/SamsungDateTimePickerDark.png) |
+
+
 Il `SamsungDateTimePicker` è un componente estremamente ricco per la selezione di date e orari. Sostituisce il vetusto `DatePicker` di WPF, introducendo un menu a tendina enorme, animato, e navigabile sia con scorrimento che con bottoni.
 
 ![SamsungDateTimePicker Example](../Screen/SamsungDateTimePicker.png)
@@ -72,3 +78,4 @@ Questo controllo eredita da `System.Windows.Controls.Control` e costruisce un'in
 <sui:SamsungDateTimePicker PickerMode="DateTime" 
                            SelectedDate="{Binding MyDate}" />
 ```
+

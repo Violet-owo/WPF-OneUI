@@ -1,5 +1,11 @@
 # SamsungFileDropZone
 
+### Screenshots
+| Light | Dark |
+|:---:|:---:|
+| ![Light](../Screen/SamsungFileDropZone.png) | ![Dark](../Screen/SamsungFileDropZoneDark.png) |
+
+
 `SamsungFileDropZone` is a specialized control for handling drag-and-drop file operations with a modern, One UI-inspired aesthetic. It provides a distinct dashed border area that highlights when files are dragged over it, giving clear visual feedback to the user.
 
 ## Features
@@ -61,3 +67,4 @@ private void MyDropZone_FilesDropped(object sender, string[] files)
 - Use `SamsungFileDropZone` inside an Enterprise or Management application layout where bulk uploading of documents (invoices, photos, PDFs) is required.
 - You can place a `SamsungContextMenu` inside the `SamsungFileDropZone` to offer alternative ways to upload files (e.g., "Click here to browse" or "Upload from folder").
 - Pair this component with `SamsungToastService` to provide immediate feedback to the user upon a successful drop.
+

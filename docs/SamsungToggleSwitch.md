@@ -1,5 +1,11 @@
 # SamsungToggleSwitch
 
+### Screenshots
+| Light | Dark |
+|:---:|:---:|
+| ![Light](../Screen/SamsungToggleSwitch.png) | ![Dark](../Screen/SamsungToggleSwitchDark.png) |
+
+
 Il `SamsungToggleSwitch` sostituisce l'utilizzo della CheckBox per le impostazioni globali o le funzionalità che necessitano di un'attivazione stile "Acceso/Spento". Presenta la classica animazione fluida in cui un "pomello" scivola orizzontalmente.
 
 ![SamsungToggleSwitch Example](../Screen/SamsungToggleSwitch.png)
@@ -50,3 +56,4 @@ Non ci sono nuove `DependencyProperty`. L'animazione di scivolamento e il cambio
 ```xml
 <sui:SamsungToggleSwitch Content="Attiva Wi-Fi" IsChecked="True" />
 ```
+

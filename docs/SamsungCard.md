@@ -1,5 +1,11 @@
 # SamsungCard
 
+### Screenshots
+| Light | Dark |
+|:---:|:---:|
+| ![Light](../Screen/SamsungCard.png) | ![Dark](../Screen/SamsungCardDark.png) |
+
+
 Il `SamsungCard` è il contenitore base per strutturare il layout in stile One UI. Raggruppa i contenuti in blocchi visivi coerenti, con ampi bordi arrotondati e uno sfondo neutro.
 
 ![SamsungCard Example](../Screen/SamsungCard.png)
@@ -62,3 +68,4 @@ Eredita da `System.Windows.Controls.ContentControl`. Puoi inserire qualsiasi ele
     </StackPanel>
 </sui:SamsungCard>
 ```
+

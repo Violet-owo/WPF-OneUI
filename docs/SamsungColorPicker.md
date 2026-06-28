@@ -1,5 +1,11 @@
 # SamsungColorPicker
 
+### Screenshots
+| Light | Dark |
+|:---:|:---:|
+| ![Light](../Screen/SamsungColorPicker.png) | ![Dark](../Screen/SamsungColorPickerDark.png) |
+
+
 Il `SamsungColorPicker` è un pannello avanzato per la selezione del colore. Permette di selezionare tonalità visivamente, inserirle manualmente o recuperare i colori usati di recente.
 
 ![SamsungColorPicker Example](../Screen/SamsungColorPicker.png)
@@ -64,3 +70,4 @@ Eredita da `System.Windows.Controls.Control` e implementa un'interfaccia XAML su
 ```xml
 <sui:SamsungColorPicker SelectedColor="{Binding MioColore, Mode=TwoWay}" />
 ```
+

@@ -1,5 +1,11 @@
 # SamsungButton
 
+### Screenshots
+| Light | Dark |
+|:---:|:---:|
+| ![Light](../Screen/SamsungButton.png) | ![Dark](../Screen/SamsungButtonDark.png) |
+
+
 ![SamsungButton Example](../Screen/SamsungButton.png)
 
 ---
@@ -105,3 +111,4 @@ Ecco alcuni esempi pratici da inserire nel tuo file XAML:
 - **Hover (`IsMouseOver`)**: Il colore di sfondo cambia dolcemente schiarendosi o scurendosi in base al tema.
 - **Pressed (`IsPressed`)**: Viene applicato un effetto di oscuramento/rimpicciolimento per restituire una sensazione tattile realistica.
 - **Disabled (`IsEnabled=False`)**: Abbassa l'opacità globale del componente al 50%.
+

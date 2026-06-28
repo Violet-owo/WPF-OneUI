@@ -1,5 +1,11 @@
 # SamsungSlider
 
+### Screenshots
+| Light | Dark |
+|:---:|:---:|
+| ![Light](../Screen/SamsungSlider.png) | ![Dark](../Screen/SamsungSliderDark.png) |
+
+
 Il `SamsungSlider` è un componente per la selezione continua o a step di valori numerici. Presenta il distintivo binario arrotondato (Track) e un pomello (Thumb) ampio, per facilitare l'uso su schermi touch o con il mouse in modo confortevole.
 
 ![SamsungSlider Example](../Screen/SamsungSlider.png)
@@ -66,3 +72,4 @@ Lo slider non introduce nuove `DependencyProperty`. Il binario arrotondato, il r
 <sui:SamsungSlider Minimum="0" Maximum="10" Value="5" 
                    TickFrequency="1" IsSnapToTickEnabled="True" />
 ```
+
